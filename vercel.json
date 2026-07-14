@@ -1,6 +1,10 @@
 {
   "rewrites": [
-      {
+    {
+      "source": "/scoreboard",
+      "destination": "/scoreboard.html"
+    },
+    {
       "source": "/gameview",
       "destination": "/gameview.html"
     },
@@ -11,10 +15,6 @@
     {
       "source": "/(.*)",
       "destination": "/index.html"
-    },
-    {
-      "source": "/scoreboard",
-      "destination": "/scoreboard.html"
     }
   ]
 }
