@@ -5,6 +5,10 @@
       "destination": "/scoreboard.html"
     },
     {
+      "source": "/scoreboard_horizontal",
+      "destination": "/scoreboard_horizonatal.html"
+    },
+    {
       "source": "/gameview",
       "destination": "/gameview.html"
     },
