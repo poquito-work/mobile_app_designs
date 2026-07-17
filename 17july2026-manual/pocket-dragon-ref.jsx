@@ -3788,16 +3788,17 @@ function NotificationsScreen({ onBack, onAccept }) {
 // pos order: 0 bottom (you), 1 left, 2 top, 3 right
 function LobbySeat({ seat, pos, onTap, tappable: canTap }) {
   const wrap = {
-    bottom: { left: 102, top: 220 },
-    top: { left: 102, top: 20 },
-    left: { left: 2, top: 120 },
-    right: { left: 202, top: 120 },
+    bottom: { left: 112, top: 253 },
+    top: { left: 112, top: -6 },
+    left: { left: 3, top: 141 },
+    right: { left: 243, top: 141 },
   }[pos];
+  const colW = (pos === "left" || pos === "right") ? 74 : 96;
   const empty = seat.state === "empty";
   const tappable = empty && canTap;
   const ringCol = seat.state === "host" ? PQ.rust : seat.state === "bot" ? PQ.green2 : empty ? PQ.lineMid : PQ.line;
   return (
-    <div style={{ position: "absolute", ...wrap, display: "flex", flexDirection: "column", alignItems: "center", gap: 6, width: 96 }}>
+    <div style={{ position: "absolute", ...wrap, display: "flex", flexDirection: "column", alignItems: "center", gap: 6, width: colW }}>
       <button onClick={tappable ? onTap : undefined} className={tappable ? "pq-press" : ""} style={{
         width: 58, height: 58, borderRadius: "50%", padding: 0, cursor: tappable ? "pointer" : "default",
         background: empty ? "transparent" : seat.state === "bot" ? "#1F4A30" : seat.state === "host" ? "#B65A2F" : "#1F8A5B",
@@ -3811,7 +3812,7 @@ function LobbySeat({ seat, pos, onTap, tappable: canTap }) {
         {seat.state === "host" && null}
       </button>
       <div style={{ textAlign: "center", lineHeight: 1.1 }}>
-        <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 11.5, letterSpacing: "0.02em", color: empty ? PQ.inkFaint : PQ.ink, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: 96 }}>{empty ? "Empty seat" : seat.name}</div>
+        <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 11.5, letterSpacing: "0.02em", color: empty ? PQ.inkFaint : PQ.ink, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: colW }}>{empty ? "Empty seat" : seat.name}</div>
         <div style={{ marginTop: 3, fontFamily: HERO, fontWeight: 700, fontSize: 8.5, letterSpacing: "0.12em", textTransform: "uppercase", color: seat.state === "host" ? PQ.rust : seat.state === "bot" ? PQ.green : empty ? "transparent" : PQ.inkFaint }}>{seat.state === "host" ? "Host" : seat.state === "bot" ? "Bot" : empty ? "·" : "Joined"}</div>
       </div>
     </div>
@@ -3866,9 +3867,9 @@ function WaitingLobbyScreen({ isHost = true, lobbyType = "Private Lobby", tableN
 
       {/* the table */}
       <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "8px 22px 0" }}>
-        <div style={{ position: "relative", width: 300, height: 286 }}>
+        <div style={{ position: "relative", width: 320, height: 340 }}>
           {/* felt table */}
-          <div style={{ position: "absolute", top: 57, left: 58, width: 184, height: 184, borderRadius: 26,
+          <div style={{ position: "absolute", top: 95, left: 85, width: 150, height: 150, borderRadius: 24,
             background: `radial-gradient(120% 120% at 50% 38%, #3a3a3a 0%, #262626 55%, #171717 100%)`,
             border: "5px solid #0d0d0d", boxShadow: "0 18px 36px -16px rgba(0,0,0,0.55), inset 0 2px 0 rgba(255,255,255,0.05)",
             display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -3893,7 +3894,9 @@ function WaitingLobbyScreen({ isHost = true, lobbyType = "Private Lobby", tableN
           !mySeated ? (
             <div style={{ textAlign: "center" }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase", color: PQ.rust }}>
-                <Icon name="plus" size={16} stroke={PQ.rust} sw={2}/>Tap to choose your seat
+                <span style={{ width: 20, height: 20, borderRadius: "50%", border: `2px dashed ${PQ.rust}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <Icon name="plus" size={10} stroke={PQ.rust} sw={1.8}/>
+                </span>Tap to choose your seat
               </div>
             </div>
           ) : (
