@@ -2928,7 +2928,7 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
     ? [["42", "Games played"], ["61%", "Win rate"], ["486", "Highest score"], ["2nd", "Avg finish"]]
     : [["1,204", "Games played"], ["58%", "Win rate"], ["512", "Highest score"]];
   const positions = [["1st", "38%"], ["2nd", "27%"], ["3rd", "21%"], ["4th", "14%"]];
-  const favs = [["Mei L.", 2], ["Arjun P.", 1], ["Priya R.", 0], ["Sam K.", 1]];
+  const favs = [["Mei L.", 2, true], ["Arjun P.", 1, true], ["Priya R.", 0, false], ["Sam K.", 1, true]];
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", gap: 14 }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0 }}>
@@ -2951,7 +2951,6 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
                 ? <svg width="46%" height="46%" viewBox="0 0 24 24" fill={PQ.inkFaint} stroke="none"><circle cx="12" cy="8" r="4"/><path d="M4 20.5a8 8 0 0116 0z"/></svg>
                 : <img src={avatarSrc(avatar)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(avatar)})`, transformOrigin: "center 40%" }}/>}
             </span>
-            <span style={{ position: "absolute", right: -1, bottom: -1, width: 30, height: 30, borderRadius: "50%", background: PQ.rust, border: `2.5px solid ${PQ.off}`, display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="plus" size={16} stroke={PQ.off} sw={2.2}/></span>
           </button>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 21, letterSpacing: "0.02em", textTransform: "uppercase", color: PQ.ink }}>avachen88</div>
@@ -2996,10 +2995,13 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
             <button onClick={onFind} className="pq-press" style={{ background: "none", border: "none", cursor: "pointer", fontFamily: HERO, fontWeight: 700, fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", color: PQ.rust }}>Show all</button>
           </div>
           <div className="pq-scroll" style={{ display: "flex", gap: 16, overflowX: "auto", paddingBottom: 4 }}>
-            {favs.map(([name, av]) => (
+            {favs.map(([name, av, online]) => (
               <button key={name} onClick={onOther} className="pq-press" style={{ flexShrink: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: 7, width: 60, background: "none", border: "none", cursor: "pointer" }}>
-                <span style={{ width: 54, height: 54, borderRadius: "50%", overflow: "hidden", background: AVATARS[av].bg, border: `1.5px solid ${PQ.line}` }}>
-                  <img src={avatarSrc(av)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(av)})`, transformOrigin: "center 40%" }}/>
+                <span style={{ position: "relative", width: 54, height: 54, flexShrink: 0 }}>
+                  <span style={{ display: "block", width: 54, height: 54, borderRadius: "50%", overflow: "hidden", background: AVATARS[av].bg, border: `1.5px solid ${PQ.line}` }}>
+                    <img src={avatarSrc(av)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(av)})`, transformOrigin: "center 40%" }}/>
+                  </span>
+                  {online && <span style={{ position: "absolute", top: -1, right: -1, width: 13, height: 13, borderRadius: "50%", background: "#1FA855", border: `2px solid ${PQ.off}` }}/>}
                 </span>
                 <span style={{ fontFamily: HERO, fontSize: 11, fontWeight: 600, color: PQ.inkSoft, whiteSpace: "nowrap" }}>{name}</span>
               </button>
