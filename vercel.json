@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/17july2026",
+      "destination": "/index.html"
+    },
+    {
       "source": "/scoreboard",
       "destination": "/scoreboard.html"
     },
