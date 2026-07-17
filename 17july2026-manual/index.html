@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Noto+Serif+SC:wght@700&display=swap" />
+<meta name="ext-resource-dependency" content="assets/poquito-logo.png" data-resource-id="logo" />
+<meta name="ext-resource-dependency" content="assets/poquito-dragon.png" data-resource-id="dragon" />
+<meta name="ext-resource-dependency" content="assets/poquito-logo-full.png" data-resource-id="logoFull" />
+<meta name="ext-resource-dependency" content="assets/poquito-dragon-green.png" data-resource-id="dragonGreen" />
+<meta name="ext-resource-dependency" content="assets/avatars/boy.png" data-resource-id="boy" />
+<meta name="ext-resource-dependency" content="assets/avatars/girl.png" data-resource-id="girl" />
+<meta name="ext-resource-dependency" content="assets/avatars/bunny.png" data-resource-id="bunny" />
+<meta name="ext-resource-dependency" content="assets/avatars/llama.png" data-resource-id="llama" />
+<meta name="ext-resource-dependency" content="assets/avatars/owl.png" data-resource-id="owl" />
+<meta name="ext-resource-dependency" content="assets/avatars/porc.png" data-resource-id="porc" />
+<template id="__bundler_thumbnail" data-bg-color="#143322">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#143322"></rect>
+    <g fill="none" stroke="#F9F2E4" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="600" cy="330" r="120"></circle>
+      <circle cx="600" cy="330" r="34" fill="#F9F2E4" stroke="none"></circle>
+    </g>
+    <text x="600" y="560" font-family="Georgia, serif" font-size="62" font-weight="700" fill="#F9F2E4" text-anchor="middle" letter-spacing="6">POCKET DRAGON</text>
+  </svg>
+</template>
+<style>
+/* Playfair Display — substitute serif for the "Poquito" wordmark */
+@font-face { font-family:'Playfair Display'; font-style:italic; font-weight:500; font-display:swap; src:url("assets/fonts/pf-italic-latin.woff2") format('woff2'); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family:'Playfair Display'; font-style:italic; font-weight:500; font-display:swap; src:url("assets/fonts/pf-italic-latinext.woff2") format('woff2'); unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family:'Playfair Display'; font-style:normal; font-weight:500; font-display:swap; src:url("assets/fonts/pf-latin.woff2") format('woff2'); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family:'Playfair Display'; font-style:normal; font-weight:500; font-display:swap; src:url("assets/fonts/pf-latinext.woff2") format('woff2'); unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family:'Playfair Display'; font-style:normal; font-weight:600; font-display:swap; src:url("assets/fonts/pf-latin.woff2") format('woff2'); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family:'Playfair Display'; font-style:normal; font-weight:600; font-display:swap; src:url("assets/fonts/pf-latinext.woff2") format('woff2'); unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family:'Playfair Display'; font-style:normal; font-weight:700; font-display:swap; src:url("assets/fonts/pf-latin.woff2") format('woff2'); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family:'Playfair Display'; font-style:normal; font-weight:700; font-display:swap; src:url("assets/fonts/pf-latinext.woff2") format('woff2'); unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family:"Hero"; src:url("assets/fonts/hero-300.ttf") format("truetype"); font-weight:300; font-style:normal; font-display:swap; }
+@font-face { font-family:"Hero"; src:url("assets/fonts/hero-400.ttf") format("truetype"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:"Hero"; src:url("assets/fonts/hero-700.ttf") format("truetype"); font-weight:700; font-style:normal; font-display:swap; }
+</style>
+<style>
+:root {
+  --pq-green: #143322;
+  --pq-rust: #b65a2f;
+  --pq-off: #f9f2e4;
+  --pq-green-deep: #0e2417;
+  --pq-green-2: #1f4a30;
+  --pq-rust-deep: #9c4824;
+  --pq-rust-soft: #cb7c55;
+  --pq-off-warm: #f1e6d2;
+  --pq-off-dim: #e7d9c0;
+  --pq-ink: #37342b;
+  --pq-ink-soft: #6e6a5e;
+  --pq-ink-faint: #9a9385;
+  --pq-surface: #f9f2e4;
+  --pq-field: #f3ead7;
+  --pq-line: #e3d6bb;
+  --pq-line-mid: #cbb78f;
+  --pq-mint: #9ed8b0;
+  --pq-selection: rgba(182, 90, 47, 0.25);
+  --pq-toggle-off: rgba(20, 51, 34, 0.18);
+  --pq-disabled-bg: rgba(20, 51, 34, 0.10);
+  --pq-step-inactive: rgba(20, 51, 34, 0.16);
+  --pq-on-green-70: rgba(249, 242, 228, 0.70);
+  --pq-on-green-55: rgba(249, 242, 228, 0.55);
+  --pq-on-green-40: rgba(249, 242, 228, 0.40);
+  --pq-on-green-18: rgba(249, 242, 228, 0.18);
+  --pq-on-cream-12: rgba(20, 51, 34, 0.12);
+  --pq-on-cream-08: rgba(20, 51, 34, 0.08);
+}
+::selection { background: var(--pq-selection); }
+</style>
+<style>
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; min-height:100%; font-family:'Hero','Helvetica Neue',Helvetica,Arial,sans-serif;
+    background:radial-gradient(120% 90% at 50% 0%, #EFE8DA 0%, #E4DCCB 60%, #DAD1BE 100%); }
+  ::selection{ background:rgba(182,90,47,0.25); }
+  .stage{ min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:26px; padding:40px 20px; }
+
+  @keyframes pqIn{ from{ transform:translateY(9px); } to{ transform:none; } }
+  @keyframes pqOut{ from{ transform:none; } to{ transform:translateY(-5px); } }
+  @keyframes pqDeviceIn{ from{ transform:translateY(14px) scale(.99); } to{ transform:none; } }
+  @keyframes pqFade{ from{ transform:translateY(6px); } to{ transform:none; } }
+  @keyframes pqRise{ from{ transform:translateY(10px); } to{ transform:none; } }
+  @keyframes pqSlideDown{ 0%{ transform:translateY(-16px); } 70%{ transform:translateY(2px); } 100%{ transform:translateY(0); } }
+  @keyframes pqTrayIn{ from{ transform:translateY(8px); } to{ transform:none; } }
+  @keyframes pqSheetUp{ from{ transform:translateY(46px); } to{ transform:none; } }
+  @keyframes pqPopIn{ from{ transform:scale(.9) translateY(10px); } to{ transform:none; } }
+  @keyframes pqReveal{ from{ opacity:0; transform:translateY(12px) scale(.96); } to{ opacity:1; transform:none; } }
+  .pq-reveal{ animation:pqReveal .5s cubic-bezier(.2,.8,.25,1) both; }
+  .device{ animation:pqDeviceIn .5s cubic-bezier(.2,.7,.2,1) both; }
+  .pq-tabview{ animation:pqFade .28s ease both; }
+  .pq-rise{ animation:pqRise .42s cubic-bezier(.2,.7,.2,1) both; }
+  .pq-banner{ animation:pqSlideDown .46s cubic-bezier(.22,.8,.3,1) both; }
+  .pq-tray-in{ animation:pqTrayIn .2s ease both; }
+  .pq-sheet-up{ animation:pqSheetUp .34s cubic-bezier(.22,.8,.3,1) both; }
+  .pq-pop-in{ animation:pqPopIn .34s cubic-bezier(.2,.8,.25,1) both; }
+
+  @keyframes pqPulse{ 0%{ box-shadow:0 0 0 0 rgba(182,90,47,0.45); } 70%{ box-shadow:0 0 0 7px rgba(182,90,47,0); } 100%{ box-shadow:0 0 0 0 rgba(182,90,47,0); } }
+  @keyframes pqCaretBlink{ 0%,100%{ opacity:1; } 50%{ opacity:0; } }
+  @keyframes pqToastIn{ from{ opacity:0; transform:translate(-50%,8px); } to{ opacity:1; transform:translate(-50%,0); } }
+  @keyframes pqGold{ 0%{ box-shadow:0 0 0 0 rgba(201,151,47,0.55), 0 6px 18px -6px rgba(201,151,47,0.5); } 70%{ box-shadow:0 0 0 12px rgba(201,151,47,0), 0 6px 18px -6px rgba(201,151,47,0.5); } 100%{ box-shadow:0 0 0 0 rgba(201,151,47,0), 0 6px 18px -6px rgba(201,151,47,0.5); } }
+  @keyframes pqTimerPulse{ 0%,100%{ opacity:1; } 50%{ opacity:.45; } }
+  .pq-pulse{ animation:pqPulse 1.8s ease-out infinite; }
+  .pq-caret{ animation:pqCaretBlink 1s step-end infinite; }
+  .pq-toast{ animation:pqToastIn .26s ease both; }
+  .pq-toast2{ animation:pqFade .3s ease both; }
+  .pq-mahjong-glow{ animation:pqGold 1.7s ease-out infinite; }
+  .pq-timer-pulse{ animation:pqTimerPulse 1s ease-in-out infinite; }
+
+  .pq-press{ transition:transform .12s ease, filter .12s ease; -webkit-tap-highlight-color:transparent; }
+  .pq-press:active{ transform:scale(.97); filter:brightness(.98); }
+  .pq-scroll{ scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .pq-scroll::-webkit-scrollbar{ width:0; height:0; }
+
+  .ctrl{ display:flex; align-items:center; gap:14px; padding:12px 18px; border-radius:999px; background:#F9F2E4; border:1.5px solid #E3D6BB; user-select:none; }
+  .ctrl .lbl{ font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#37342B; }
+  .ctrl .hint{ font-size:11px; color:#9A9385; letter-spacing:.04em; }
+</style>
+</helmet>
+<x-import component-from-global-scope="PocketDragonApp" from="./pocket-dragon-ref.jsx" hint-size="100%,100vh"></x-import>
+</x-dc>
+</body>
+</html>
