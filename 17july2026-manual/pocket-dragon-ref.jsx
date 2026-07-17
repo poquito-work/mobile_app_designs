@@ -3674,19 +3674,22 @@ function RulesScreen() {
   );
 }
 
-// ═══════════════ SUBSCRIPTION (tab content, 9) ═══════════════
-function SubscriptionScreen({ onSubscribe }) {
+// ═══════════════ SUBSCRIPTION (overlay, pushed from Profile menu) ═══════════════
+function SubscriptionScreen({ onBack, onSubscribe }) {
   const [plan, setPlan] = React.useState("annual");
   const benefits = ["Unlimited private tables", "Priority matchmaking", "Custom tile borders & player tags", "Full career stats history"];
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%", gap: 14 }}>
-      <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 24, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink, flexShrink: 0 }}>Premium</div>
-      <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: 18, margin: "0 -4px", padding: "4px 4px 10px" }}>
+    <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", background: PQ.off }}>
+      <div style={{ padding: "60px 22px 6px", display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+        <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8}/></div>
+        <h1 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 22, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Premium</h1>
+      </div>
+      <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", padding: "12px 22px 24px", display: "flex", flexDirection: "column", gap: 18 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12, borderRadius: 16, padding: "14px 16px", background: PQ.offWarm, border: `1px solid ${PQ.line}` }}>
-          <XIcon name="timer" size={20} stroke={PQ.rust}/><div><div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 14, color: PQ.ink }}>Free trial active</div><div style={{ marginTop: 2, fontSize: 12.5, color: PQ.inkSoft }}>Your 2-week trial ends 3 July.</div></div>
+          <XIcon name="timer" size={20} stroke={PQ.rust}/><div><div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 14, color: PQ.ink }}>Free trial active</div><div style={{ marginTop: 2, fontSize: 12.5, color: PQ.inkSoft }}>Your trial has 6 days left.</div></div>
         </div>
         <div style={{ display: "flex", gap: 12 }}>
-          {[["monthly", "Monthly", "₹149", "per month", ""], ["annual", "Annual", "₹1,299", "per year", "SAVE 27%"]].map(([id, name, price, per, save]) => {
+          {[["monthly", "Monthly Pro", "₹199.0", "monthly", ""], ["annual", "Annual Pro", "₹1999.0", "annual", "SAVE 27%"]].map(([id, name, price, per, save]) => {
             const on = plan === id;
             return <button key={id} onClick={() => { pock("select"); setPlan(id); }} className="pq-press" style={{ flex: 1, position: "relative", textAlign: "left", cursor: "pointer", borderRadius: 18, padding: "18px 16px", background: on ? "rgba(182,90,47,0.05)" : PQ.off, border: `1.5px solid ${on ? PQ.rust : PQ.line}` }}>
               {save && <span style={{ position: "absolute", top: -10, right: 14, height: 20, padding: "0 8px", display: "flex", alignItems: "center", borderRadius: 999, background: PQ.rust, fontFamily: HERO, fontWeight: 700, fontSize: 9, letterSpacing: "0.1em", color: PQ.off }}>{save}</span>}
@@ -3699,8 +3702,8 @@ function SubscriptionScreen({ onSubscribe }) {
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           {benefits.map((b) => <div key={b} style={{ display: "flex", alignItems: "center", gap: 11 }}><span style={{ width: 22, height: 22, flexShrink: 0, borderRadius: "50%", background: "rgba(20,51,34,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="check" size={13} stroke={PQ.green} sw={2.4}/></span><span style={{ fontFamily: HERO, fontSize: 13.5, color: PQ.ink }}>{b}</span></div>)}
         </div>
-        <Btn variant="primary" onClick={() => onSubscribe(plan)}>Subscribe · {plan === "annual" ? "Annual" : "Monthly"}</Btn>
-        <div style={{ fontFamily: HERO, fontSize: 11, lineHeight: 1.5, color: PQ.inkFaint, textAlign: "center" }}>Auto-renews via e-NACH — manage or cancel anytime.</div>
+        <Btn variant="primary" onClick={() => onSubscribe(plan)}>SUBSCRIBE · <span style={{ textTransform: "none" }}>{plan === "annual" ? "Annual" : "Monthly"}</span></Btn>
+        <div style={{ fontFamily: HERO, fontSize: 11, lineHeight: 1.5, color: PQ.inkFaint, textAlign: "center" }}>Auto-renews via e-NACH – manage or cancel anytime.</div>
       </div>
     </div>
   );
@@ -4420,8 +4423,10 @@ function PocketDragonApp() {
     phoneBody = <OtherProfileScreen onBack={() => setRoute(otherFrom)}/>;
   } else if (route === "notifications") {
     phoneBody = <NotificationsScreen onBack={() => goTab("profile")} onAccept={() => { setLobbyHost(false); setRoute("waiting"); }}/>;
+  } else if (route === "subscription") {
+    phoneBody = <SubscriptionScreen onBack={() => goTab("profile")} onSubscribe={(p) => { setPlan(p); setRoute("payment"); }}/>;
   } else if (route === "payment") {
-    phoneBody = <PaymentScreen plan={plan} onClose={() => { setRoute("home"); setTab("subscription"); }} onSuccess={() => { home(); flash("Welcome to Premium"); }}/>;
+    phoneBody = <PaymentScreen plan={plan} onClose={() => setRoute("subscription")} onSuccess={() => { home(); flash("Welcome to Premium"); }}/>;
   } else {
     phoneBody = (
       <>
@@ -4431,7 +4436,7 @@ function PocketDragonApp() {
             {tab === "home"
               ? <HomeScreen showOngoing={ongoing} onCard={onCard} onAvatar={() => goTab("profile")} onLeave={() => { setOngoing(false); flash("You left the table"); }} selected={selected} onNotify={() => setRoute("notifications")}/>
               : tab === "profile"
-              ? <ProfileScreen onFind={() => setRoute("search")} onOther={() => openOther("home")} onLogout={() => { home(); go("splash"); }} onNotifications={() => setRoute("notifications")} onSubscriptions={() => goTab("subscription")}/>
+              ? <ProfileScreen onFind={() => setRoute("search")} onOther={() => openOther("home")} onLogout={() => { home(); go("splash"); }} onNotifications={() => setRoute("notifications")} onSubscriptions={() => setRoute("subscription")}/>
               : tab === "settings"
               ? <SettingsScreen/>
               : tab === "subscription"
