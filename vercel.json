@@ -1,28 +1,39 @@
 {
+  "redirects": [
+    {
+      "source": "/17july2026-manual",
+      "destination": "/17july2026-manual/",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
+      "source": "/16july2026",
+      "destination": "/16july2026/index.html"
+    },
+    {
+      "source": "/16july2026/scoreboard",
+      "destination": "/16july2026/scoreboard.html"
+    },
+    {
+      "source": "/16july2026/scoreboard_horizontal",
+      "destination": "/16july2026/scoreboard_horizonatal.html"
+    },
+    {
+      "source": "/16july2026/gameview",
+      "destination": "/16july2026/gameview.html"
+    },
+    {
+      "source": "/16july2026/game",
+      "destination": "/16july2026/gameplay.html"
+    },
+    {
       "source": "/17july2026",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/scoreboard",
-      "destination": "/scoreboard.html"
-    },
-    {
-      "source": "/scoreboard_horizontal",
-      "destination": "/scoreboard_horizonatal.html"
-    },
-    {
-      "source": "/gameview",
-      "destination": "/gameview.html"
-    },
-    {
-      "source": "/game",
-      "destination": "/gameplay.html"
+      "destination": "/17july2026/index.html"
     },
     {
       "source": "/",
-      "destination": "/index.html"
+      "destination": "/16july2026/index.html"
     }
   ]
 }
