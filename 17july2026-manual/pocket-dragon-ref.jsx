@@ -2951,6 +2951,7 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
                 ? <svg width="46%" height="46%" viewBox="0 0 24 24" fill={PQ.inkFaint} stroke="none"><circle cx="12" cy="8" r="4"/><path d="M4 20.5a8 8 0 0116 0z"/></svg>
                 : <img src={avatarSrc(avatar)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(avatar)})`, transformOrigin: "center 40%" }}/>}
             </span>
+            <span style={{ position: "absolute", right: -1, bottom: -1, width: 30, height: 30, borderRadius: "50%", background: PQ.off, border: `1.5px solid ${PQ.line}`, display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="plus" size={16} stroke={PQ.ink} sw={2.2}/></span>
           </button>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 21, letterSpacing: "0.02em", textTransform: "uppercase", color: PQ.ink }}>avachen88</div>
