@@ -5,10 +5,6 @@
       "destination": "/index.html"
     },
     {
-      "source": "/17july2026-manual",
-      "destination": "/17july2026-manual/index.html"
-    },
-    {
       "source": "/scoreboard",
       "destination": "/scoreboard.html"
     },
