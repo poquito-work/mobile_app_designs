@@ -21,7 +21,7 @@
       "destination": "/gameplay.html"
     },
     {
-      "source": "/(.*)",
+      "source": "/",
       "destination": "/index.html"
     }
   ]
