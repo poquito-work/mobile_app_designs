@@ -454,50 +454,58 @@ function Scoreboard({
     </button>
   );
   const extendPanel = (
-    <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", background: "#F9F2E4" }}>
-      <div className="pq-scroll" style={{ flex: 1, minHeight: 0, overflowY: "auto", padding: "16px 26px 8px 66px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <button onClick={() => setExtendConfig(false)} className="pq-press" style={{ width: 32, height: 32, flexShrink: 0, borderRadius: "50%", border: "1.5px solid #E3D6BB", background: "transparent", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#37342B" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 5l-7 7 7 7" /></svg>
-          </button>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B65A2F" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="8" r="3" /><path d="M2.5 19a6.5 6.5 0 0113 0" /><circle cx="17.5" cy="9" r="2.4" /><path d="M15 19a5 5 0 016.5-4.8" /></svg>
-        </div>
-        <div style={{ marginTop: 12, maxWidth: 360, fontFamily: F, fontWeight: 700, fontSize: 26, letterSpacing: "0.02em", textTransform: "uppercase", color: "#37342B", lineHeight: 1.05 }}>Extend the Game</div>
-        <div style={{ marginTop: 5, maxWidth: 360, fontFamily: F, fontSize: 13, color: "#9A9385" }}>Set the house rules – blame them later</div>
-        <div style={{ ...L, letterSpacing: "0.18em", color: "#9A9385", marginTop: 20 }}>Game Setup</div>
-        <div style={{ marginTop: 10, maxWidth: 360, ...cardBox, padding: "12px 14px", display: "flex", alignItems: "center", gap: 14 }}>
-          <span style={{ width: 46, height: 46, flexShrink: 0, borderRadius: 12, background: "#EDE3CF", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: F, fontWeight: 700, fontSize: 20, color: "#37342B" }}>W</span>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontFamily: F, fontWeight: 700, fontSize: 16, color: "#37342B" }}>West</div>
-            <div style={{ fontFamily: F, fontSize: 12, color: "#9A9385", marginTop: 2 }}>Goulash</div>
+    <div className="pq-scroll" style={{ position: "absolute", inset: 0, overflowY: "auto", display: "flex", flexDirection: "column", padding: "16px 26px 16px 66px", background: "#F9F2E4" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <button onClick={() => setExtendConfig(false)} className="pq-press" style={{ width: 34, height: 34, flexShrink: 0, borderRadius: "50%", border: "1.5px solid #E3D6BB", background: "transparent", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#37342B" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 5l-7 7 7 7" /></svg>
+        </button>
+        <div>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B65A2F" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="8" r="3" /><path d="M2.5 19a6.5 6.5 0 0113 0" /><circle cx="17.5" cy="9" r="2.4" /><path d="M15 19a5 5 0 016.5-4.8" /></svg>
+            <span style={{ fontFamily: F, fontWeight: 700, fontSize: 24, letterSpacing: "0.02em", textTransform: "uppercase", color: "#37342B" }}>Extend the Game</span>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
-            <button onClick={() => setExtendCount((c) => Math.max(0, c - 1))} className="pq-press" style={{ width: 34, height: 34, borderRadius: 10, border: "1.5px solid #E3D6BB", background: "transparent", fontFamily: F, fontWeight: 700, fontSize: 20, color: "#37342B", lineHeight: 1 }}>–</button>
-            <span style={{ minWidth: 20, textAlign: "center", fontFamily: F, fontWeight: 700, fontSize: 18, color: "#37342B", fontVariantNumeric: "tabular-nums" }}>{extendCount}</span>
-            <button onClick={() => setExtendCount((c) => c + 1)} className="pq-press" style={{ width: 34, height: 34, borderRadius: 10, border: "1.5px solid #E3D6BB", background: "transparent", fontFamily: F, fontWeight: 700, fontSize: 20, color: "#37342B", lineHeight: 1 }}>+</button>
-          </div>
+          <div style={{ marginTop: 2, fontFamily: F, fontSize: 12.5, color: "#9A9385" }}>Set the house rules – blame them later</div>
         </div>
-        <div style={{ marginTop: 20, maxWidth: 360, display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
-          <span style={{ ...L, letterSpacing: "0.18em", color: "#9A9385" }}>Turn Timer</span>
-          <span style={{ fontFamily: F, fontWeight: 700, fontSize: 12, color: RUST }}>{timerOn ? sp.sec + "s · " + sp.name : "Off"}</span>
-        </div>
-        <div style={{ marginTop: 10, maxWidth: 360, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
-          <span style={{ fontFamily: F, fontWeight: 700, fontSize: 14, color: "#37342B" }}>Enable / Disable Turn Timer</span>
-          <button onClick={() => setTimerOn((t) => !t)} className="pq-press" style={{ width: 46, height: 26, flexShrink: 0, borderRadius: 999, position: "relative", border: "none", background: timerOn ? "#B65A2F" : "#D8CDB4" }}>
-            <span style={{ position: "absolute", top: 3, left: timerOn ? 23 : 3, width: 20, height: 20, borderRadius: "50%", background: "#F9F2E4", transition: "left .18s ease", boxShadow: "0 1px 3px rgba(0,0,0,0.3)" }} />
-          </button>
-        </div>
-        <div style={{ marginTop: 16, maxWidth: 360, position: "relative", height: 6, borderRadius: 999, background: "#E3D6BB" }}>
-          <div style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: timerOn ? sp.fill : "8%", background: RUST, borderRadius: 999 }} />
-          <span style={{ position: "absolute", top: "50%", left: timerOn ? sp.fill : "8%", transform: "translate(-50%,-50%)", width: 16, height: 16, borderRadius: "50%", background: RUST, border: "2px solid #F9F2E4", boxShadow: "0 1px 3px rgba(0,0,0,0.25)" }} />
-        </div>
-        <div style={{ marginTop: 8, maxWidth: 360, display: "flex", justifyContent: "space-between" }}>
-          {speedBtn("Slow", "60s", 0, "left")}{speedBtn("Medium", "30s", 1, "center")}{speedBtn("Fast", "10s", 2, "right")}
-        </div>
-        <div style={{ marginTop: 12, maxWidth: 360, fontFamily: F, fontSize: 11.5, lineHeight: 1.4, color: "#9A9385" }}>If time runs out, a bot automatically plays your turn.</div>
       </div>
-      <div style={{ flexShrink: 0, borderTop: "1px solid #E3D6BB", padding: "10px 26px 16px 66px" }}>
-        <button onClick={() => { setExtendConfig(false); setActivePanel(0); setOutcome("win"); }} className="pq-press" style={{ width: "100%", maxWidth: 360, height: 48, borderRadius: 14, fontSize: 13, letterSpacing: "0.14em", ...primaryBtn }}>Extend the Game</button>
+      <div style={{ marginTop: 16, flex: 1, minHeight: 0, display: "flex", gap: 22, alignItems: "stretch" }}>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+          <div style={{ ...L, letterSpacing: "0.18em" }}>Game Setup</div>
+          <div style={{ marginTop: 10, ...cardBox, padding: "12px 14px", display: "flex", alignItems: "center", gap: 14 }}>
+            <span style={{ width: 46, height: 46, flexShrink: 0, borderRadius: 12, background: "#EDE3CF", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: F, fontWeight: 700, fontSize: 20, color: "#37342B" }}>W</span>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ fontFamily: F, fontWeight: 700, fontSize: 16, color: "#37342B" }}>West</div>
+              <div style={{ fontFamily: F, fontSize: 12, color: "#9A9385", marginTop: 2 }}>Goulash</div>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
+              <button onClick={() => setExtendCount((c) => Math.max(0, c - 1))} className="pq-press" style={{ width: 34, height: 34, borderRadius: 10, border: "1.5px solid #E3D6BB", background: "transparent", fontFamily: F, fontWeight: 700, fontSize: 20, color: "#37342B", lineHeight: 1 }}>–</button>
+              <span style={{ minWidth: 20, textAlign: "center", fontFamily: F, fontWeight: 700, fontSize: 18, color: "#37342B", fontVariantNumeric: "tabular-nums" }}>{extendCount}</span>
+              <button onClick={() => setExtendCount((c) => c + 1)} className="pq-press" style={{ width: 34, height: 34, borderRadius: 10, border: "1.5px solid #E3D6BB", background: "transparent", fontFamily: F, fontWeight: 700, fontSize: 20, color: "#37342B", lineHeight: 1 }}>+</button>
+            </div>
+          </div>
+        </div>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
+            <span style={{ ...L, letterSpacing: "0.18em" }}>Turn Timer</span>
+            <span style={{ fontFamily: F, fontWeight: 700, fontSize: 12, color: RUST }}>{timerOn ? sp.sec + "s · " + sp.name : "Off"}</span>
+          </div>
+          <div style={{ marginTop: 10, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+            <span style={{ fontFamily: F, fontWeight: 700, fontSize: 14, color: "#37342B" }}>Enable / Disable Turn Timer</span>
+            <button onClick={() => setTimerOn((t) => !t)} className="pq-press" style={{ width: 46, height: 26, flexShrink: 0, borderRadius: 999, position: "relative", border: "none", background: timerOn ? "#B65A2F" : "#D8CDB4" }}>
+              <span style={{ position: "absolute", top: 3, left: timerOn ? 23 : 3, width: 20, height: 20, borderRadius: "50%", background: "#F9F2E4", transition: "left .18s ease", boxShadow: "0 1px 3px rgba(0,0,0,0.3)" }} />
+            </button>
+          </div>
+          <div style={{ marginTop: 16, position: "relative", height: 6, borderRadius: 999, background: "#E3D6BB" }}>
+            <div style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: timerOn ? sp.fill : "8%", background: RUST, borderRadius: 999 }} />
+            <span style={{ position: "absolute", top: "50%", left: timerOn ? sp.fill : "8%", transform: "translate(-50%,-50%)", width: 16, height: 16, borderRadius: "50%", background: RUST, border: "2px solid #F9F2E4", boxShadow: "0 1px 3px rgba(0,0,0,0.25)" }} />
+          </div>
+          <div style={{ marginTop: 8, display: "flex", justifyContent: "space-between" }}>
+            {speedBtn("Slow", "60s", 0, "left")}{speedBtn("Medium", "30s", 1, "center")}{speedBtn("Fast", "10s", 2, "right")}
+          </div>
+          <div style={{ marginTop: 12, fontFamily: F, fontSize: 11.5, lineHeight: 1.4, color: "#9A9385" }}>If time runs out, a bot automatically plays your turn.</div>
+        </div>
+      </div>
+      <div style={{ marginTop: 14, flexShrink: 0 }}>
+        <button onClick={() => { setExtendConfig(false); setActivePanel(0); setOutcome("win"); }} className="pq-press" style={{ width: "100%", height: 48, borderRadius: 14, fontSize: 13, letterSpacing: "0.14em", ...primaryBtn }}>Extend the Game</button>
       </div>
     </div>
   );
