@@ -36,20 +36,20 @@ function IOSStatusBar({ dark = false, time = '9:41' }) {
       </div>
       <div style={{ flex: 1, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, paddingTop: 1, paddingRight: 1 }}>
         <svg width="19" height="12" viewBox="0 0 19 12">
-          <rect x="0" y="7.5" width="3.2" height="4.5" rx="0.7" fill={c}/>
-          <rect x="4.8" y="5" width="3.2" height="7" rx="0.7" fill={c}/>
-          <rect x="9.6" y="2.5" width="3.2" height="9.5" rx="0.7" fill={c}/>
-          <rect x="14.4" y="0" width="3.2" height="12" rx="0.7" fill={c}/>
+          <rect x="0" y="7.5" width="3.2" height="4.5" rx="0.7" fill={c} />
+          <rect x="4.8" y="5" width="3.2" height="7" rx="0.7" fill={c} />
+          <rect x="9.6" y="2.5" width="3.2" height="9.5" rx="0.7" fill={c} />
+          <rect x="14.4" y="0" width="3.2" height="12" rx="0.7" fill={c} />
         </svg>
         <svg width="17" height="12" viewBox="0 0 17 12">
-          <path d="M8.5 3.2C10.8 3.2 12.9 4.1 14.4 5.6L15.5 4.5C13.7 2.7 11.2 1.5 8.5 1.5C5.8 1.5 3.3 2.7 1.5 4.5L2.6 5.6C4.1 4.1 6.2 3.2 8.5 3.2Z" fill={c}/>
-          <path d="M8.5 6.8C9.9 6.8 11.1 7.3 12 8.2L13.1 7.1C11.8 5.9 10.2 5.1 8.5 5.1C6.8 5.1 5.2 5.9 3.9 7.1L5 8.2C5.9 7.3 7.1 6.8 8.5 6.8Z" fill={c}/>
-          <circle cx="8.5" cy="10.5" r="1.5" fill={c}/>
+          <path d="M8.5 3.2C10.8 3.2 12.9 4.1 14.4 5.6L15.5 4.5C13.7 2.7 11.2 1.5 8.5 1.5C5.8 1.5 3.3 2.7 1.5 4.5L2.6 5.6C4.1 4.1 6.2 3.2 8.5 3.2Z" fill={c} />
+          <path d="M8.5 6.8C9.9 6.8 11.1 7.3 12 8.2L13.1 7.1C11.8 5.9 10.2 5.1 8.5 5.1C6.8 5.1 5.2 5.9 3.9 7.1L5 8.2C5.9 7.3 7.1 6.8 8.5 6.8Z" fill={c} />
+          <circle cx="8.5" cy="10.5" r="1.5" fill={c} />
         </svg>
         <svg width="27" height="13" viewBox="0 0 27 13">
-          <rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke={c} strokeOpacity="0.35" fill="none"/>
-          <rect x="2" y="2" width="20" height="9" rx="2" fill={c}/>
-          <path d="M25 4.5V8.5C25.8 8.2 26.5 7.2 26.5 6.5C26.5 5.8 25.8 4.8 25 4.5Z" fill={c} fillOpacity="0.4"/>
+          <rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke={c} strokeOpacity="0.35" fill="none" />
+          <rect x="2" y="2" width="20" height="9" rx="2" fill={c} />
+          <path d="M25 4.5V8.5C25.8 8.2 26.5 7.2 26.5 6.5C26.5 5.8 25.8 4.8 25 4.5Z" fill={c} fillOpacity="0.4" />
         </svg>
       </div>
     </div>
@@ -117,15 +117,15 @@ function IOSNavBar({ title = 'Title', dark = false, trailingIcon = true }) {
         {/* back chevron */}
         {pillIcon(
           <svg width="12" height="20" viewBox="0 0 12 20" fill="none" style={{ marginLeft: -1 }}>
-            <path d="M10 2L2 10l8 8" stroke={muted} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M10 2L2 10l8 8" stroke={muted} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         )}
         {/* trailing ellipsis */}
         {trailingIcon && pillIcon(
           <svg width="22" height="6" viewBox="0 0 22 6">
-            <circle cx="3" cy="3" r="2.5" fill={muted}/>
-            <circle cx="11" cy="3" r="2.5" fill={muted}/>
-            <circle cx="19" cy="3" r="2.5" fill={muted}/>
+            <circle cx="3" cy="3" r="2.5" fill={muted} />
+            <circle cx="11" cy="3" r="2.5" fill={muted} />
+            <circle cx="19" cy="3" r="2.5" fill={muted} />
           </svg>
         )}
       </div>
@@ -165,7 +165,7 @@ function IOSListRow({ title, detail, icon, chevron = true, isLast = false, dark 
       {detail && <span style={{ color: sec, marginRight: 6 }}>{detail}</span>}
       {chevron && (
         <svg width="8" height="14" viewBox="0 0 8 14" style={{ flexShrink: 0 }}>
-          <path d="M1 1l6 6-6 6" stroke={ter} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M1 1l6 6-6 6" stroke={ter} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )}
       {!isLast && (
@@ -253,9 +253,9 @@ function IOSKeyboard({ dark = false }) {
 
   // special-key icons
   const icons = {
-    shift: <svg width="19" height="17" viewBox="0 0 19 17"><path d="M9.5 1L1 9.5h4.5V16h8V9.5H18L9.5 1z" fill={glyph}/></svg>,
-    del: <svg width="23" height="17" viewBox="0 0 23 17"><path d="M7 1h13a2 2 0 012 2v11a2 2 0 01-2 2H7l-6-7.5L7 1z" fill="none" stroke={glyph} strokeWidth="1.6" strokeLinejoin="round"/><path d="M10 5l7 7M17 5l-7 7" stroke={glyph} strokeWidth="1.6" strokeLinecap="round"/></svg>,
-    ret: <svg width="20" height="14" viewBox="0 0 20 14"><path d="M18 1v6H4m0 0l4-4M4 7l4 4" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+    shift: <svg width="19" height="17" viewBox="0 0 19 17"><path d="M9.5 1L1 9.5h4.5V16h8V9.5H18L9.5 1z" fill={glyph} /></svg>,
+    del: <svg width="23" height="17" viewBox="0 0 23 17"><path d="M7 1h13a2 2 0 012 2v11a2 2 0 01-2 2H7l-6-7.5L7 1z" fill="none" stroke={glyph} strokeWidth="1.6" strokeLinejoin="round" /><path d="M10 5l7 7M17 5l-7 7" stroke={glyph} strokeWidth="1.6" strokeLinecap="round" /></svg>,
+    ret: <svg width="20" height="14" viewBox="0 0 20 14"><path d="M18 1v6H4m0 0l4-4M4 7l4 4" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>,
   };
 
   const key = (content, { w, flex, ret, fs = 25, k } = {}) => (
@@ -325,12 +325,12 @@ function IOSKeyboard({ dark = false }) {
         padding: '0 6.5px', width: '100%', boxSizing: 'border-box',
         position: 'relative',
       }}>
-        {row(['q','w','e','r','t','y','u','i','o','p'])}
-        {row(['a','s','d','f','g','h','j','k','l'], 20)}
+        {row(['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'])}
+        {row(['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'], 20)}
         <div style={{ display: 'flex', gap: 14.25, alignItems: 'center' }}>
           {key(icons.shift, { w: 45, k: 'shift' })}
           <div style={{ display: 'flex', gap: 6.5, flex: 1 }}>
-            {['z','x','c','v','b','n','m'].map(l => key(l, { flex: true, k: l }))}
+            {['z', 'x', 'c', 'v', 'b', 'n', 'm'].map(l => key(l, { flex: true, k: l }))}
           </div>
           {key(icons.del, { w: 45, k: 'del' })}
         </div>
@@ -357,27 +357,27 @@ Object.assign(window, {
 // Exports to window. Palette: Deep Green, Rust Orange, Off White (+ warm dark grey for text).
 
 const PQ = {
-  green:    "#143322",
-  greenDeep:"#0E2417",
-  green2:   "#1F4A30",
+  green: "#143322",
+  greenDeep: "#0E2417",
+  green2: "#1F4A30",
   greenInk: "#143322",
-  rust:     "#B65A2F",
+  rust: "#B65A2F",
   rustDeep: "#9C4824",
   rustSoft: "#CB7C55",
-  off:      "#F9F2E4",
-  offWarm:  "#F1E6D2",
-  offDim:   "#E7D9C0",
+  off: "#F9F2E4",
+  offWarm: "#F1E6D2",
+  offDim: "#E7D9C0",
   // warm dark-grey text ink (client request: "all text to be in dark grey")
-  ink:      "#37342B",   // headings + input text
-  inkSoft:  "#6E6A5E",   // labels + secondary copy
+  ink: "#37342B",   // headings + input text
+  inkSoft: "#6E6A5E",   // labels + secondary copy
   inkFaint: "#9A9385",   // placeholders / hints
   // flat field system on cream
-  field:    "#F3EAD7",   // field / otp / keypad fill — a slightly darker shade of the bg
-  line:     "#E3D6BB",   // idle border (darker shade of background)
-  lineMid:  "#CBB78F",   // focus / valid border (a touch darker still)
+  field: "#F3EAD7",   // field / otp / keypad fill — a slightly darker shade of the bg
+  line: "#E3D6BB",   // idle border (darker shade of background)
+  lineMid: "#CBB78F",   // focus / valid border (a touch darker still)
   // translucent helpers
-  onGreen:  "rgba(249,242,228,",   // off-white alpha on green
-  onOff:    "rgba(20,51,34,",      // green alpha on off-white
+  onGreen: "rgba(249,242,228,",   // off-white alpha on green
+  onOff: "rgba(20,51,34,",      // green alpha on off-white
 };
 
 const HERO = '"Hero", "Helvetica Neue", Helvetica, Arial, sans-serif';
@@ -390,23 +390,23 @@ const diffColorOf = (d) => DIFF_COLORS[d] || "#6E6A5E";
 function Icon({ name, size = 20, stroke = "currentColor", sw = 1.6, style }) {
   const p = { fill: "none", stroke, strokeWidth: sw, strokeLinecap: "round", strokeLinejoin: "round" };
   const paths = {
-    mail:   <g {...p}><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></g>,
-    phone:  <g {...p}><rect x="6.5" y="3" width="11" height="18" rx="2.8"/><path d="M10.5 18.2h3"/></g>,
-    user:   <g {...p}><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0114 0"/></g>,
-    lock:   <g {...p}><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 018 0v2.5"/></g>,
-    pin:    <g {...p}><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></g>,
-    check:  <g {...p}><path d="M4 12.5l5 5 11-12"/></g>,
-    alert:  <g {...p}><circle cx="12" cy="12" r="9"/><path d="M12 7.5v6"/><circle cx="12" cy="16.6" r="0.4" fill={stroke} stroke="none"/></g>,
-    eye:    <g {...p}><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></g>,
-    eyeoff: <g {...p}><path d="M4 4l16 16"/><path d="M9.5 5.9A9.8 9.8 0 0112 5.5c6 0 9.5 6.5 9.5 6.5a16 16 0 01-3 3.6M6.3 7.6A16 16 0 002.5 12s3.5 6.5 9.5 6.5a9.6 9.6 0 003.4-.6"/><path d="M9.9 9.9A3 3 0 0014 14"/></g>,
-    chevL:  <g {...p}><path d="M15 5l-7 7 7 7"/></g>,
-    clock:  <g {...p}><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></g>,
-    arrowR: <g {...p}><path d="M5 12h14M13 6l6 6-6 6"/></g>,
-    chevD:  <g {...p}><path d="M6 9l6 6 6-6"/></g>,
-    camera: <g {...p}><path d="M3 8.5A2 2 0 015 6.5h2l1.4-2h7.2L18 6.5h1a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><circle cx="12" cy="13" r="3.4"/></g>,
-    plus:   <g {...p}><path d="M12 5.5v13M5.5 12h13"/></g>,
-    close:  <g {...p}><path d="M6 6l12 12M18 6L6 18"/></g>,
-    sliders:<g {...p}><path d="M4 8h10M18 8h2M4 16h2M10 16h10"/><circle cx="16" cy="8" r="2.2"/><circle cx="8" cy="16" r="2.2"/></g>,
+    mail: <g {...p}><rect x="3" y="5" width="18" height="14" rx="2.5" /><path d="M3.5 7l8.5 6 8.5-6" /></g>,
+    phone: <g {...p}><rect x="6.5" y="3" width="11" height="18" rx="2.8" /><path d="M10.5 18.2h3" /></g>,
+    user: <g {...p}><circle cx="12" cy="8" r="4" /><path d="M5 21a7 7 0 0114 0" /></g>,
+    lock: <g {...p}><rect x="4.5" y="10.5" width="15" height="10" rx="2.5" /><path d="M8 10.5V8a4 4 0 018 0v2.5" /></g>,
+    pin: <g {...p}><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" /><circle cx="12" cy="10" r="2.6" /></g>,
+    check: <g {...p}><path d="M4 12.5l5 5 11-12" /></g>,
+    alert: <g {...p}><circle cx="12" cy="12" r="9" /><path d="M12 7.5v6" /><circle cx="12" cy="16.6" r="0.4" fill={stroke} stroke="none" /></g>,
+    eye: <g {...p}><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z" /><circle cx="12" cy="12" r="3" /></g>,
+    eyeoff: <g {...p}><path d="M4 4l16 16" /><path d="M9.5 5.9A9.8 9.8 0 0112 5.5c6 0 9.5 6.5 9.5 6.5a16 16 0 01-3 3.6M6.3 7.6A16 16 0 002.5 12s3.5 6.5 9.5 6.5a9.6 9.6 0 003.4-.6" /><path d="M9.9 9.9A3 3 0 0014 14" /></g>,
+    chevL: <g {...p}><path d="M15 5l-7 7 7 7" /></g>,
+    clock: <g {...p}><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></g>,
+    arrowR: <g {...p}><path d="M5 12h14M13 6l6 6-6 6" /></g>,
+    chevD: <g {...p}><path d="M6 9l6 6 6-6" /></g>,
+    camera: <g {...p}><path d="M3 8.5A2 2 0 015 6.5h2l1.4-2h7.2L18 6.5h1a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><circle cx="12" cy="13" r="3.4" /></g>,
+    plus: <g {...p}><path d="M12 5.5v13M5.5 12h13" /></g>,
+    close: <g {...p}><path d="M6 6l12 12M18 6L6 18" /></g>,
+    sliders: <g {...p}><path d="M4 8h10M18 8h2M4 16h2M10 16h10" /><circle cx="16" cy="8" r="2.2" /><circle cx="8" cy="16" r="2.2" /></g>,
   };
   return <svg width={size} height={size} viewBox="0 0 24 24" style={{ display: "block", ...style }}>{paths[name]}</svg>;
 }
@@ -415,11 +415,11 @@ function Icon({ name, size = 20, stroke = "currentColor", sw = 1.6, style }) {
 function SocialIcon({ name, size = 20 }) {
   const c = PQ.green;
   const g = {
-    instagram: <g fill="none" stroke={c} strokeWidth="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="16.6" cy="7.4" r="1" fill={c} stroke="none"/></g>,
-    x:         <path fill={c} d="M17.2 3h2.9l-6.4 7.3L21.4 21h-6l-4.6-6-5.3 6H2.6l6.9-7.8L2.3 3h6.1l4.2 5.5zM16 19.3h1.6L7.9 4.6H6.2z"/>,
-    facebook:  <path fill={c} d="M13.5 21v-7h2.3l.4-2.8h-2.7V9.4c0-.8.2-1.4 1.4-1.4h1.5V5.6a20 20 0 00-2.2-.1c-2.2 0-3.7 1.3-3.7 3.8v2H8v2.8h2.6V21z"/>,
-    youtube:   <g><path fill={c} d="M21.6 8.2a2.5 2.5 0 00-1.8-1.8C18.2 6 12 6 12 6s-6.2 0-7.8.4A2.5 2.5 0 002.4 8.2 26 26 0 002 12a26 26 0 00.4 3.8 2.5 2.5 0 001.8 1.8C5.8 18 12 18 12 18s6.2 0 7.8-.4a2.5 2.5 0 001.8-1.8A26 26 0 0022 12a26 26 0 00-.4-3.8z"/><path fill={PQ.off} d="M10 15l5-3-5-3z"/></g>,
-    tiktok:    <path fill={c} d="M16.5 3c.3 2 1.6 3.6 3.5 3.9v2.6a6.2 6.2 0 01-3.5-1.1v5.6a5.3 5.3 0 11-5.3-5.3c.3 0 .5 0 .8.1v2.7a2.6 2.6 0 102.1 2.5V3z"/>,
+    instagram: <g fill="none" stroke={c} strokeWidth="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="16.6" cy="7.4" r="1" fill={c} stroke="none" /></g>,
+    x: <path fill={c} d="M17.2 3h2.9l-6.4 7.3L21.4 21h-6l-4.6-6-5.3 6H2.6l6.9-7.8L2.3 3h6.1l4.2 5.5zM16 19.3h1.6L7.9 4.6H6.2z" />,
+    facebook: <path fill={c} d="M13.5 21v-7h2.3l.4-2.8h-2.7V9.4c0-.8.2-1.4 1.4-1.4h1.5V5.6a20 20 0 00-2.2-.1c-2.2 0-3.7 1.3-3.7 3.8v2H8v2.8h2.6V21z" />,
+    youtube: <g><path fill={c} d="M21.6 8.2a2.5 2.5 0 00-1.8-1.8C18.2 6 12 6 12 6s-6.2 0-7.8.4A2.5 2.5 0 002.4 8.2 26 26 0 002 12a26 26 0 00.4 3.8 2.5 2.5 0 001.8 1.8C5.8 18 12 18 12 18s6.2 0 7.8-.4a2.5 2.5 0 001.8-1.8A26 26 0 0022 12a26 26 0 00-.4-3.8z" /><path fill={PQ.off} d="M10 15l5-3-5-3z" /></g>,
+    tiktok: <path fill={c} d="M16.5 3c.3 2 1.6 3.6 3.5 3.9v2.6a6.2 6.2 0 01-3.5-1.1v5.6a5.3 5.3 0 11-5.3-5.3c.3 0 .5 0 .8.1v2.7a2.6 2.6 0 102.1 2.5V3z" />,
   };
   return <svg width={size} height={size} viewBox="0 0 24 24" style={{ display: "block" }}>{g[name]}</svg>;
 }
@@ -440,15 +440,15 @@ function TileMark({ size = 56, tone = "light" }) {
     }}>
       <div style={{
         position: "absolute", inset: size * 0.12, borderRadius: r * 0.7,
-        border: `${Math.max(1, size*0.028)}px solid ${motif}`, opacity: 0.32,
-      }}/>
+        border: `${Math.max(1, size * 0.028)}px solid ${motif}`, opacity: 0.32,
+      }} />
       <div style={{
         position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)",
         width: size * 0.40, height: size * 0.40, borderRadius: "50%",
-        border: `${Math.max(1.5, size*0.05)}px solid ${motif}`,
+        border: `${Math.max(1.5, size * 0.05)}px solid ${motif}`,
         display: "flex", alignItems: "center", justifyContent: "center",
       }}>
-        <div style={{ width: size*0.13, height: size*0.13, borderRadius: "50%", background: motif }}/>
+        <div style={{ width: size * 0.13, height: size * 0.13, borderRadius: "50%", background: motif }} />
       </div>
     </div>
   );
@@ -462,7 +462,7 @@ function Wordmark({ color = PQ.green, size = 26, ls = 0.16, stackWords = false }
     paddingLeft: `${ls}em`,
   };
   if (stackWords) return (
-    <span style={{ ...base, display: "block", textAlign: "center" }}>Pocket<br/>Dragon</span>
+    <span style={{ ...base, display: "block", textAlign: "center" }}>Pocket<br />Dragon</span>
   );
   return <span style={base}>Pocket&nbsp;Dragon</span>;
 }
@@ -470,15 +470,15 @@ function Wordmark({ color = PQ.green, size = 26, ls = 0.16, stackWords = false }
 function Lockup({ tone = "light", size = 52, stack = true, mark = true }) {
   const color = tone === "light" ? PQ.off : PQ.green;
   if (stack) return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: size*0.30 }}>
-      {mark && <TileMark size={size} tone={tone}/>}
-      <Wordmark color={color} size={size*0.46} stackWords/>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: size * 0.30 }}>
+      {mark && <TileMark size={size} tone={tone} />}
+      <Wordmark color={color} size={size * 0.46} stackWords />
     </div>
   );
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: size*0.30 }}>
-      {mark && <TileMark size={size} tone={tone}/>}
-      <Wordmark color={color} size={size*0.40}/>
+    <div style={{ display: "flex", alignItems: "center", gap: size * 0.30 }}>
+      {mark && <TileMark size={size} tone={tone} />}
+      <Wordmark color={color} size={size * 0.40} />
     </div>
   );
 }
@@ -490,7 +490,7 @@ const FULLLOGO_SRC = (typeof window !== "undefined" && window.__resources && win
 const DRAGON_GREEN_SRC = (typeof window !== "undefined" && window.__resources && window.__resources.dragonGreen) || "assets/poquito-dragon-green.png";
 function LogoImg({ height = 88, style }) {
   return <img src={LOGO_SRC} alt="Pocket Dragon" draggable={false}
-    style={{ height, width: "auto", flexShrink: 0, objectFit: "contain", display: "block", userSelect: "none", ...style }}/>;
+    style={{ height, width: "auto", flexShrink: 0, objectFit: "contain", display: "block", userSelect: "none", ...style }} />;
 }
 
 // ── Decorative backdrops ───────────────────────────────────────
@@ -502,16 +502,16 @@ function GreenBackdrop({ children, glow = true }) {
         position: "absolute", top: "-18%", left: "50%", transform: "translateX(-50%)",
         width: "150%", height: "55%",
         background: "radial-gradient(60% 100% at 50% 0%, rgba(203,124,85,0.30), rgba(31,74,48,0.0) 70%)",
-      }}/>}
+      }} />}
       <div style={{
         position: "absolute", bottom: "-12%", right: "-10%", width: "70%", height: "45%",
         background: "radial-gradient(closest-side, rgba(182,90,47,0.16), rgba(20,51,34,0))",
-      }}/>
+      }} />
       <div style={{
         position: "absolute", inset: 0, opacity: 0.05,
         backgroundImage: `radial-gradient(${PQ.off} 1.4px, transparent 1.5px)`,
         backgroundSize: "26px 26px", backgroundPosition: "0 0",
-      }}/>
+      }} />
       {children}
     </div>
   );
@@ -525,16 +525,16 @@ function LightBackdrop({ children, glow = true }) {
         position: "absolute", top: "-16%", left: "50%", transform: "translateX(-50%)",
         width: "150%", height: "52%",
         background: "radial-gradient(60% 100% at 50% 0%, rgba(203,124,85,0.16), rgba(249,242,228,0) 72%)",
-      }}/>}
+      }} />}
       <div style={{
         position: "absolute", bottom: "-14%", right: "-12%", width: "72%", height: "46%",
         background: "radial-gradient(closest-side, rgba(20,51,34,0.06), rgba(249,242,228,0))",
-      }}/>
+      }} />
       <div style={{
         position: "absolute", inset: 0, opacity: 0.045,
         backgroundImage: `radial-gradient(${PQ.green} 1.3px, transparent 1.4px)`,
         backgroundSize: "26px 26px", backgroundPosition: "0 0",
-      }}/>
+      }} />
       {children}
     </div>
   );
@@ -552,9 +552,9 @@ function FloatingTiles({ items, tone = "light" }) {
           transform: `rotate(${t.r}deg)`, opacity: t.o ?? 0.10,
         }}>
           <div style={{
-            width: t.s, height: t.s*1.32, borderRadius: t.s*0.24,
+            width: t.s, height: t.s * 1.32, borderRadius: t.s * 0.24,
             border: `1.5px solid ${stroke}`, background: fill,
-          }}/>
+          }} />
         </div>
       ))}
     </div>
@@ -592,8 +592,10 @@ function Btn({ children, variant = "primary", dark = false, disabled, onClick, s
     ? { background: "rgba(20,51,34,0.10)", color: PQ.inkFaint, border: "1.5px solid transparent" }
     : { background: rustGrad, color: PQ.off, border: "1.5px solid transparent" };
   // ghost with rust text (client: secondary "Login — text in rust")
-  if (variant === "ghost") v = { background: "transparent", color: PQ.rust,
-        border: `1.5px solid rgba(182,90,47,0.32)` };
+  if (variant === "ghost") v = {
+    background: "transparent", color: PQ.rust,
+    border: `1.5px solid rgba(182,90,47,0.32)`
+  };
   return <button onClick={disabled ? undefined : onClick} disabled={disabled} style={{ ...base, ...v, ...style }}>{children}</button>;
 }
 
@@ -611,14 +613,14 @@ function Field({ icon, label, value, onChange, placeholder, type = "text", dark 
   // Transparent fill, outline-only. Error → rust border; valid → darker-cream border + green check.
   const border =
     state === "error" ? PQ.rust :
-    state === "valid" ? PQ.lineMid :
-    focused ? (dark ? PQ.off : PQ.lineMid) :
-    dark ? "rgba(249,242,228,0.22)" : PQ.line;
+      state === "valid" ? PQ.lineMid :
+        focused ? (dark ? PQ.off : PQ.lineMid) :
+          dark ? "rgba(249,242,228,0.22)" : PQ.line;
   const labelCol = dark ? "rgba(249,242,228,0.7)" : PQ.inkSoft;
   const txt = dark ? PQ.off : PQ.ink;
   const iconCol = state === "error" ? PQ.rust
     : (focused || state === "valid") ? (dark ? PQ.off : PQ.inkSoft)
-    : (dark ? "rgba(249,242,228,0.55)" : PQ.inkFaint);
+      : (dark ? "rgba(249,242,228,0.55)" : PQ.inkFaint);
   return (
     <div>
       {label && <div style={{
@@ -636,23 +638,27 @@ function Field({ icon, label, value, onChange, placeholder, type = "text", dark 
         {prefix && (
           <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
             <span style={{ fontFamily: HERO, fontSize: 16, fontWeight: 400, color: txt, letterSpacing: "0.02em" }}>{prefix}</span>
-            <span style={{ width: 1.5, height: 22, background: PQ.line, borderRadius: 1 }}/>
+            <span style={{ width: 1.5, height: 22, background: PQ.line, borderRadius: 1 }} />
           </div>
         )}
         {as === "select" ? (
           <select value={value} onChange={onChange} onFocus={onFocus} onBlur={onBlur}
-            style={{ flex: 1, border: "none", outline: "none", background: "transparent",
+            style={{
+              flex: 1, border: "none", outline: "none", background: "transparent",
               fontFamily: HERO, fontSize: 16, color: value ? txt : PQ.inkFaint,
-              appearance: "none", cursor: "pointer" }}>
+              appearance: "none", cursor: "pointer"
+            }}>
             {right /* options passed via right for selects */}
           </select>
         ) : (
           <input value={value} onChange={onChange} placeholder={placeholder} type={type}
             inputMode={inputMode} maxLength={maxLength}
             onFocus={onFocus} onBlur={onBlur}
-            style={{ flex: 1, border: "none", outline: "none", background: "transparent",
+            style={{
+              flex: 1, border: "none", outline: "none", background: "transparent",
               fontFamily: HERO, fontSize: 16, color: txt, letterSpacing: "0",
-              minWidth: 0 }}/>
+              minWidth: 0
+            }} />
         )}
         {as === "select" && <Icon name="chevD" size={18} stroke={PQ.inkFaint} />}
         {as !== "select" && right}
@@ -684,9 +690,9 @@ function Helper({ state, children, dark = false }) {
     dark ? "rgba(249,242,228,0.6)" : PQ.inkSoft;
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 8, paddingLeft: 2 }}>
-      {state === "valid" && <Icon name="check" size={14} stroke={col} sw={2.2}/>}
-      {state === "error" && <Icon name="alert" size={14} stroke={col} sw={2}/>}
-      <span style={{ fontSize: 12.5, fontWeight: state==="hint"?400:600, color: col, letterSpacing: "0.01em" }}>{children}</span>
+      {state === "valid" && <Icon name="check" size={14} stroke={col} sw={2.2} />}
+      {state === "error" && <Icon name="alert" size={14} stroke={col} sw={2} />}
+      <span style={{ fontSize: 12.5, fontWeight: state === "hint" ? 400 : 600, color: col, letterSpacing: "0.01em" }}>{children}</span>
     </div>
   );
 }
@@ -700,7 +706,7 @@ function Check({ checked, onChange, children, dark = false }) {
         background: checked ? PQ.green : "transparent",
         border: `1.5px solid ${checked ? PQ.green : dark ? "rgba(249,242,228,0.4)" : PQ.lineMid}`,
         display: "flex", alignItems: "center", justifyContent: "center", transition: "all .15s",
-      }}>{checked && <Icon name="check" size={14} stroke={PQ.off} sw={2.4}/>}</div>
+      }}>{checked && <Icon name="check" size={14} stroke={PQ.off} sw={2.4} />}</div>
       <div style={{ fontSize: 13.5, lineHeight: 1.45, color: dark ? "rgba(249,242,228,0.85)" : PQ.inkSoft, fontWeight: 400 }}>{children}</div>
     </div>
   );
@@ -713,9 +719,11 @@ function Toggle({ on, onChange }) {
       width: 42, height: 25, borderRadius: 999, padding: 2, cursor: "pointer",
       background: on ? PQ.rust : "rgba(20,51,34,0.18)", transition: "all .18s", flexShrink: 0,
     }}>
-      <div style={{ width: 21, height: 21, borderRadius: "50%", background: PQ.off,
+      <div style={{
+        width: 21, height: 21, borderRadius: "50%", background: PQ.off,
         transform: on ? "translateX(17px)" : "translateX(0)", transition: "all .18s",
-        boxShadow: "0 1px 3px rgba(0,0,0,0.25)" }}/>
+        boxShadow: "0 1px 3px rgba(0,0,0,0.25)"
+      }} />
     </div>
   );
 }
@@ -731,8 +739,8 @@ function OTP({ value = "", length = 6, onChange, state = "idle", focusedIdx = -1
         // no background fill; border turns green when verified, red when invalid
         const border =
           state === "valid" ? PQ.green :
-          state === "error" ? PQ.rust :
-          active ? PQ.lineMid : PQ.line;
+            state === "error" ? PQ.rust :
+              active ? PQ.lineMid : PQ.line;
         return (
           <div key={i} style={{
             flex: 1, height: 58, borderRadius: 13, background: "transparent",
@@ -740,7 +748,7 @@ function OTP({ value = "", length = 6, onChange, state = "idle", focusedIdx = -1
             display: "flex", alignItems: "center", justifyContent: "center",
             fontFamily: HERO, fontSize: 26, fontWeight: 700,
             color: state === "error" ? PQ.rust : state === "valid" ? PQ.green : PQ.ink, transition: "all .15s",
-          }}>{ch}{active && !ch && <span className="pq-caret" style={{ width: 2, height: 26, background: PQ.inkSoft }}/>}</div>
+          }}>{ch}{active && !ch && <span className="pq-caret" style={{ width: 2, height: 26, background: PQ.inkSoft }} />}</div>
         );
       })}
     </div>
@@ -756,7 +764,7 @@ function Steps({ n, i }) {
           height: 4, borderRadius: 2, transition: "all .25s",
           width: k === i ? 26 : 14,
           background: k <= i ? PQ.rust : "rgba(20,51,34,0.16)",
-        }}/>
+        }} />
       ))}
     </div>
   );
@@ -807,7 +815,7 @@ function RustRing({ size = 96, sw = 2.5 }) {
       border: `${sw}px solid ${PQ.rust}`, background: "transparent",
       display: "flex", alignItems: "center", justifyContent: "center",
     }}>
-      <Icon name="check" size={size*0.46} stroke={PQ.rust} sw={2.4}/>
+      <Icon name="check" size={size * 0.46} stroke={PQ.rust} sw={2.4} />
     </div>
   );
 }
@@ -824,7 +832,7 @@ Object.assign(window, {
 
 const TAKEN = ["pocketdrag", "mahjong1", "player001", "winston88", "thetable"];
 const emailOK = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.trim());
-const CITIES = ["Mumbai","Delhi","Bengaluru","Hyderabad","Ahmedabad","Chennai","Kolkata","Pune","Jaipur","Surat","Lucknow","Kanpur","Nagpur","Indore","Thane","Bhopal","Visakhapatnam","Patna","Vadodara","Ghaziabad","Ludhiana","Agra","Nashik","Faridabad","Meerut","Rajkot","Varanasi","Srinagar","Aurangabad","Dhanbad","Amritsar","Allahabad","Ranchi","Coimbatore","Jabalpur","Gwalior","Vijayawada","Jodhpur","Madurai","Raipur","Kota","Chandigarh","Guwahati","Mysuru","Thiruvananthapuram","Kochi","Noida","Gurugram","Other"];
+const CITIES = ["Mumbai", "Delhi", "Bengaluru", "Hyderabad", "Ahmedabad", "Chennai", "Kolkata", "Pune", "Jaipur", "Surat", "Lucknow", "Kanpur", "Nagpur", "Indore", "Thane", "Bhopal", "Visakhapatnam", "Patna", "Vadodara", "Ghaziabad", "Ludhiana", "Agra", "Nashik", "Faridabad", "Meerut", "Rajkot", "Varanasi", "Srinagar", "Aurangabad", "Dhanbad", "Amritsar", "Allahabad", "Ranchi", "Coimbatore", "Jabalpur", "Gwalior", "Vijayawada", "Jodhpur", "Madurai", "Raipur", "Kota", "Chandigarh", "Guwahati", "Mysuru", "Thiruvananthapuram", "Kochi", "Noida", "Gurugram", "Other"];
 
 // Username: only alphanumeric, no minimum, max 10, must be unique. Reserved brand names blocked.
 function userCheck(u) {
@@ -839,12 +847,12 @@ function userCheck(u) {
 // avatar presets — real illustrated avatars (resolved for export via window.__resources)
 const AV_RES = (path, id) => (typeof window !== "undefined" && window.__resources && window.__resources[id]) || path;
 const AVATARS = [
-  { id: "boy",    label: "Boy",      src: "assets/avatars/boy.png",    bg: "#DCEAF2", scale: 1.0 },
-  { id: "girl",   label: "Girl",     src: "assets/avatars/girl.png",   bg: "#C2A18C", scale: 1.0 },
-  { id: "bunny",  label: "Bunny",    src: "assets/avatars/bunny.png",  bg: "#F4EFE9", scale: 1.0 },
-  { id: "llama",  label: "Llama",    src: "assets/avatars/llama.png",  bg: "#2E3192", scale: 1.0 },
-  { id: "owl",    label: "Owl",      src: "assets/avatars/owl.png",    bg: "#E8A857", scale: 1.0 },
-  { id: "porc",   label: "Hedgehog", src: "assets/avatars/porc.png",   bg: "#F6F3EC", scale: 1.0 },
+  { id: "boy", label: "Boy", src: "assets/avatars/boy.png", bg: "#DCEAF2", scale: 1.0 },
+  { id: "girl", label: "Girl", src: "assets/avatars/girl.png", bg: "#C2A18C", scale: 1.0 },
+  { id: "bunny", label: "Bunny", src: "assets/avatars/bunny.png", bg: "#F4EFE9", scale: 1.0 },
+  { id: "llama", label: "Llama", src: "assets/avatars/llama.png", bg: "#2E3192", scale: 1.0 },
+  { id: "owl", label: "Owl", src: "assets/avatars/owl.png", bg: "#E8A857", scale: 1.0 },
+  { id: "porc", label: "Hedgehog", src: "assets/avatars/porc.png", bg: "#F6F3EC", scale: 1.0 },
 ];
 function avatarSrc(i) { const a = AVATARS[i] || AVATARS[0]; return AV_RES(a.src, a.id); }
 function avatarScale(i) { const a = AVATARS[i] || AVATARS[0]; return a.scale || 1; }
@@ -858,12 +866,16 @@ function SplashScreen({ go, live }) {
   }, [live]);
   return (
     <div style={{ position: "relative", height: "100%" }}>
-      <LightBackdrop/>
-      <div style={{ position: "relative", height: "100%", display: "flex", flexDirection: "column",
-        alignItems: "center", justifyContent: "center", padding: 40 }}>
-        <LogoImg height={84}/>
-        <div style={{ marginTop: 18, fontFamily: HERO, fontSize: 14.5, fontWeight: 400, letterSpacing: "0.03em",
-          color: PQ.rust, textAlign: "center", maxWidth: 280 }}>Mahjong on your time, anywhere you are!</div>
+      <LightBackdrop />
+      <div style={{
+        position: "relative", height: "100%", display: "flex", flexDirection: "column",
+        alignItems: "center", justifyContent: "center", padding: 40
+      }}>
+        <LogoImg height={84} />
+        <div style={{
+          marginTop: 18, fontFamily: HERO, fontSize: 14.5, fontWeight: 400, letterSpacing: "0.03em",
+          color: PQ.rust, textAlign: "center", maxWidth: 280
+        }}>Mahjong on your time, anywhere you are!</div>
       </div>
     </div>
   );
@@ -873,17 +885,21 @@ function SplashScreen({ go, live }) {
 function WelcomeScreen({ go }) {
   return (
     <div style={{ position: "relative", height: "100%" }}>
-      <div style={{ position: "absolute", inset: 0, background: PQ.off }}/>
+      <div style={{ position: "absolute", inset: 0, background: PQ.off }} />
       <Screen bg="transparent" top={66} bottom={34} style={{ justifyContent: "space-between" }}>
         <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", gap: 20 }}>
-          <LogoImg height={84} style={{ alignSelf: "flex-start" }}/>
+          <LogoImg height={84} style={{ alignSelf: "flex-start" }} />
           <div>
-            <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 40, lineHeight: 1.04,
-              letterSpacing: "0.02em", textTransform: "uppercase", color: PQ.ink }}>
-              Every<br/><span style={{ color: PQ.rust }}>Dragon</span><br/>Starts Here
+            <div style={{
+              fontFamily: HERO, fontWeight: 700, fontSize: 40, lineHeight: 1.04,
+              letterSpacing: "0.02em", textTransform: "uppercase", color: PQ.ink
+            }}>
+              Every<br /><span style={{ color: PQ.rust }}>Dragon</span><br />Starts Here
             </div>
-            <p style={{ marginTop: 22, fontSize: 15, lineHeight: 1.6, fontWeight: 400, maxWidth: "94%",
-              textAlign: "justify", color: PQ.inkSoft }}>
+            <p style={{
+              marginTop: 22, fontSize: 15, lineHeight: 1.6, fontWeight: 400, maxWidth: "94%",
+              textAlign: "justify", color: PQ.inkSoft
+            }}>
               Pocket Dragon brings together the strategy, skill, and social spirit of Mahjong. No wagers or real-money stakes—just fair play, friendly competition, and the joy of the game.
             </p>
           </div>
@@ -909,17 +925,17 @@ function AvatarPicker({ value = 0, onPick }) {
       }}>
         <span style={{ display: "block", width: "100%", height: "100%", borderRadius: "50%", overflow: "hidden" }}>
           <img src={avatarSrc(value)} alt={AVATARS[value].label} draggable={false}
-            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(value)})`, transformOrigin: "center 40%" }}/>
+            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(value)})`, transformOrigin: "center 40%" }} />
         </span>
         <span style={{
           position: "absolute", right: 0, bottom: 0, width: 26, height: 26, borderRadius: "50%",
           background: PQ.rust, border: `2px solid ${PQ.off}`,
           display: "flex", alignItems: "center", justifyContent: "center",
-        }}><Icon name="plus" size={14} stroke={PQ.off} sw={2.4}/></span>
+        }}><Icon name="plus" size={14} stroke={PQ.off} sw={2.4} /></span>
       </button>
       <div style={{ fontSize: 12, color: PQ.inkSoft, letterSpacing: "0.02em" }}>Tap to choose your avatar</div>
       {open && <AvatarModal value={value} onClose={() => setOpen(false)}
-        onConfirm={(i) => { onPick && onPick(i); setOpen(false); }}/>}
+        onConfirm={(i) => { onPick && onPick(i); setOpen(false); }} />}
     </div>
   );
 }
@@ -936,13 +952,13 @@ function AvatarModal({ value = 0, onClose, onConfirm }) {
         width: "100%", background: PQ.off, borderTopLeftRadius: 26, borderTopRightRadius: 26,
         padding: "14px 22px 30px",
       }}>
-        <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }}/>
+        <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }} />
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
           <h2 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 18, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Choose Avatar</h2>
           <button onClick={onClose} className="pq-press" style={{
             width: 36, height: 36, borderRadius: "50%", border: `1.5px solid ${PQ.line}`,
             background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
-          }}><Icon name="close" size={18} stroke={PQ.ink} sw={1.9}/></button>
+          }}><Icon name="close" size={18} stroke={PQ.ink} sw={1.9} /></button>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 24, padding: "4px 4px 0" }}>
           <button onClick={() => setSel("default")} className="pq-press" style={{
@@ -950,7 +966,7 @@ function AvatarModal({ value = 0, onClose, onConfirm }) {
             background: "rgba(20,51,34,0.06)", border: "none", padding: 0, display: "flex", alignItems: "center", justifyContent: "center",
             boxShadow: sel === "default" ? `0 0 0 3px ${PQ.rust}` : `0 0 0 1.5px ${PQ.line}`,
           }}>
-            <svg width="46%" height="46%" viewBox="0 0 24 24" fill={PQ.inkFaint} stroke="none"><circle cx="12" cy="8" r="4"/><path d="M4 20.5a8 8 0 0116 0z"/></svg>
+            <svg width="46%" height="46%" viewBox="0 0 24 24" fill={PQ.inkFaint} stroke="none"><circle cx="12" cy="8" r="4" /><path d="M4 20.5a8 8 0 0116 0z" /></svg>
           </button>
           {AVATARS.map((a, i) => (
             <button key={a.id} onClick={() => setSel(i)} className="pq-press" style={{
@@ -959,7 +975,7 @@ function AvatarModal({ value = 0, onClose, onConfirm }) {
               boxShadow: i === sel ? `0 0 0 3px ${PQ.rust}` : `0 0 0 1.5px ${PQ.line}`,
             }}>
               <img src={avatarSrc(i)} alt={a.label} draggable={false}
-                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(i)})`, transformOrigin: "center 40%" }}/>
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(i)})`, transformOrigin: "center 40%" }} />
             </button>
           ))}
         </div>
@@ -988,8 +1004,10 @@ function CitySelect({ value, onChange, focused, onFocus, onBlur }) {
   const pick = (c) => { onChange && onChange({ target: { value: c } }); setOpen(false); onBlur && onBlur(); };
   return (
     <div ref={ref} style={{ position: "relative" }}>
-      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase",
-        color: PQ.inkSoft, marginBottom: 8 }}>City<span style={{ color: "#d64542", fontWeight: 700 }}>*</span></div>
+      <div style={{
+        fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase",
+        color: PQ.inkSoft, marginBottom: 8
+      }}>City<span style={{ color: "#d64542", fontWeight: 700 }}>*</span></div>
       <div onClick={() => { setOpen(o => !o); onFocus && onFocus(); }} style={{
         display: "flex", alignItems: "center", gap: 11, height: 48, padding: "0 15px", borderRadius: 13,
         background: "transparent", border: `1.5px solid ${border}`, cursor: "pointer",
@@ -1056,46 +1074,46 @@ function RegisterScreen({ go, seed = {}, setEmail }) {
       <TopBar onBack={() => go("welcome")} plain />
       <div style={{ flex: 1, overflowY: "auto", marginRight: -8, paddingRight: 8 }} className="pq-scroll">
         <Title size={20} sub="Email verification is required before your account goes live">Create Account</Title>
-        <AvatarPicker value={avatar} onPick={setAvatar}/>
+        <AvatarPicker value={avatar} onPick={setAvatar} />
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div>
-            <Field icon="mail" label="Email Address" required value={email} onChange={(e)=>setE(e.target.value)}
+            <Field icon="mail" label="Email Address" required value={email} onChange={(e) => setE(e.target.value)}
               placeholder="you@example.com" inputMode="email" state={eState} {...ff("email")}
-              right={eState==="valid" && <Icon name="check" size={18} stroke={PQ.green} sw={2.2}/>} />
-            {eState==="error" && <Helper state="error">Enter a valid email address</Helper>}
+              right={eState === "valid" && <Icon name="check" size={18} stroke={PQ.green} sw={2.2} />} />
+            {eState === "error" && <Helper state="error">Enter a valid email address</Helper>}
           </div>
           <Field icon="phone" label="Phone Number" optional prefix="+91" value={phone}
-            onChange={(e)=>setPhone(e.target.value.replace(/\D/g,"").slice(0,10))}
+            onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
             placeholder="10-digit number" inputMode="tel" maxLength={10} {...ff("phone")} />
-          <CitySelect value={city} onChange={(e)=>setCity(e.target.value)} {...ff("city")} />
+          <CitySelect value={city} onChange={(e) => setCity(e.target.value)} {...ff("city")} />
           <div>
-            <Field label="Username" required value={user} onChange={(e)=>setUser(e.target.value.replace(/\s/g,""))}
+            <Field label="Username" required value={user} onChange={(e) => setUser(e.target.value.replace(/\s/g, ""))}
               placeholder="Up to 10 characters" maxLength={10} state={uc.state} {...ff("user")}
-              right={uc.state==="valid" && <Icon name="check" size={18} stroke={PQ.green} sw={2.2}/>} />
-            <Helper state={uc.state==="idle"?"hint":uc.state}>{uc.state==="idle" ? "Unique · up to 10 characters · letters & numbers" : uc.msg}</Helper>
+              right={uc.state === "valid" && <Icon name="check" size={18} stroke={PQ.green} sw={2.2} />} />
+            <Helper state={uc.state === "idle" ? "hint" : uc.state}>{uc.state === "idle" ? "Unique · up to 10 characters · letters & numbers" : uc.msg}</Helper>
           </div>
           <div>
-            <Field icon="lock" label="Password" required type={showPw?"text":"password"} value={pw} onChange={(e)=>setPw(e.target.value)}
+            <Field icon="lock" label="Password" required type={showPw ? "text" : "password"} value={pw} onChange={(e) => setPw(e.target.value)}
               placeholder="Enter a password" state={pwState} {...ff("pw")}
-              right={<span onClick={()=>setShowPw(s=>!s)} style={{cursor:"pointer"}}><Icon name={showPw?"eyeoff":"eye"} size={19} stroke={PQ.inkFaint}/></span>} />
+              right={<span onClick={() => setShowPw(s => !s)} style={{ cursor: "pointer" }}><Icon name={showPw ? "eyeoff" : "eye"} size={19} stroke={PQ.inkFaint} /></span>} />
           </div>
           <div>
-            <Field icon="lock" label="Confirm Password" type={showCpw?"text":"password"} value={cpw} onChange={(e)=>setCpw(e.target.value)}
+            <Field icon="lock" label="Confirm Password" type={showCpw ? "text" : "password"} value={cpw} onChange={(e) => setCpw(e.target.value)}
               placeholder="Re-enter password" state={cState} {...ff("cpw")}
-              right={<span onClick={()=>setShowCpw(s=>!s)} style={{cursor:"pointer"}}><Icon name={showCpw?"eyeoff":"eye"} size={19} stroke={PQ.inkFaint}/></span>} />
-            {cState==="error" && <Helper state="error">Passwords do not match</Helper>}
-            {cState==="valid" && <Helper state="valid">Passwords match</Helper>}
+              right={<span onClick={() => setShowCpw(s => !s)} style={{ cursor: "pointer" }}><Icon name={showCpw ? "eyeoff" : "eye"} size={19} stroke={PQ.inkFaint} /></span>} />
+            {cState === "error" && <Helper state="error">Passwords do not match</Helper>}
+            {cState === "valid" && <Helper state="valid">Passwords match</Helper>}
           </div>
           <div style={{ marginTop: 4 }}>
-            <Check checked={agree} onChange={()=>setAgree(a=>!a)}>I agree to the <TextLink size={13.5}>Terms &amp; Conditions</TextLink> and <TextLink size={13.5}>Privacy Policy</TextLink></Check>
+            <Check checked={agree} onChange={() => setAgree(a => !a)}>I agree to the <TextLink size={13.5}>Terms &amp; Conditions</TextLink> and <TextLink size={13.5}>Privacy Policy</TextLink></Check>
           </div>
         </div>
-        <div style={{ height: 18 }}/>
+        <div style={{ height: 18 }} />
       </div>
       <div style={{ paddingTop: 14 }}>
-        <Btn variant="primary" disabled={!canSubmit} onClick={()=>{ setEmail && setEmail(email); go("verify"); }}>Get Started</Btn>
+        <Btn variant="primary" disabled={!canSubmit} onClick={() => { setEmail && setEmail(email); go("verify"); }}>Get Started</Btn>
         <div style={{ textAlign: "center", marginTop: 16, fontSize: 13.5, color: PQ.inkSoft }}>
-          Been here before? <TextLink onClick={()=>go("login")}>Log in</TextLink>
+          Been here before? <TextLink onClick={() => go("login")}>Log in</TextLink>
         </div>
       </div>
     </Screen>
@@ -1111,13 +1129,13 @@ function VerifiedPanel({ go, cta, live }) {
   }, [live]);
   return (
     <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
-      <RustRing size={96}/>
+      <RustRing size={96} />
       <h1 style={{ margin: "28px 0 8px", fontFamily: HERO, fontWeight: 700, fontSize: 26, letterSpacing: "0.05em", textTransform: "uppercase", color: PQ.ink }}>Email Verified</h1>
       <p style={{ margin: "0 0 6px", fontSize: 16, fontWeight: 700, color: PQ.green, letterSpacing: "0.01em" }}>Start your free trial</p>
       <p style={{ margin: 0, fontSize: 14, lineHeight: 1.5, color: PQ.inkSoft, maxWidth: 250 }}>Two weeks on us. Enjoy full access from day one.</p>
       {cta && (
         <div style={{ position: "absolute", left: 24, right: 24, bottom: 30 }}>
-          <Btn variant="primary" onClick={()=>go("welcome")}>{cta}</Btn>
+          <Btn variant="primary" onClick={() => go("welcome")}>{cta}</Btn>
         </div>
       )}
     </div>
@@ -1156,7 +1174,7 @@ function VerifyScreen({ go, email = "you@example.com", live, seed = {} }) {
     <Screen bg={PQ.off} top={62} bottom={28}>
       <TopBar onBack={() => go("register")} plain />
       {status === "verified" ? (
-        <VerifiedPanel go={go} live={live}/>
+        <VerifiedPanel go={go} live={live} />
       ) : (
         <>
           <Title size={22} sub={<>Enter the 6-digit code we sent to{" "}<strong style={{ fontWeight: 700, color: PQ.ink }}>{email}</strong></>}>Verify Email</Title>
@@ -1164,14 +1182,14 @@ function VerifyScreen({ go, email = "you@example.com", live, seed = {} }) {
           {status === "error"
             ? <Helper state="error">Invalid or expired code — please try again</Helper>
             : <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 12 }}>
-                <Icon name="check" size={14} stroke={PQ.green} sw={2.2}/>
-                <span style={{ fontSize: 12.5, color: PQ.inkSoft, fontWeight: 600 }}>Code sent — check your inbox</span>
-              </div>}
+              <Icon name="check" size={14} stroke={PQ.green} sw={2.2} />
+              <span style={{ fontSize: 12.5, color: PQ.inkSoft, fontWeight: 600 }}>Code sent — check your inbox</span>
+            </div>}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginTop: 26, fontSize: 13.5, color: PQ.inkSoft }}>
-            {secs > 0 ? (<><Icon name="clock" size={16} stroke={PQ.inkFaint}/><span>Resend code in <strong style={{ color: PQ.ink, fontWeight: 700 }}>{mm}:{ss}</strong></span></>)
+            {secs > 0 ? (<><Icon name="clock" size={16} stroke={PQ.inkFaint} /><span>Resend code in <strong style={{ color: PQ.ink, fontWeight: 700 }}>{mm}:{ss}</strong></span></>)
               : <TextLink onClick={() => { setSecs(42); setStatus("idle"); setOtp(""); }}>Resend code</TextLink>}
           </div>
-          <div style={{ flex: 1 }}/>
+          <div style={{ flex: 1 }} />
           <Btn variant="primary" disabled={otp.length < 6} onClick={() => { if (otp === CODE || otp === "000000") setStatus("verified"); else setStatus("error"); }}>Verify Email</Btn>
           <Keypad onKey={onKey} />
         </>
@@ -1182,15 +1200,15 @@ function VerifyScreen({ go, email = "you@example.com", live, seed = {} }) {
 
 // numeric keypad — flat cream keys, darker-cream borders (no white fill)
 function Keypad({ onKey }) {
-  const keys = ["1","2","3","4","5","6","7","8","9","","0","del"];
+  const keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "", "0", "del"];
   return (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10, marginTop: 16 }}>
-      {keys.map((k, i) => k === "" ? <div key={i}/> : (
+      {keys.map((k, i) => k === "" ? <div key={i} /> : (
         <div key={i} onClick={() => onKey(k)} style={{
           height: 50, borderRadius: 13, display: "flex", alignItems: "center", justifyContent: "center",
           cursor: "pointer", background: "transparent",
           fontFamily: HERO, fontSize: 24, fontWeight: 700, color: PQ.ink, userSelect: "none",
-        }}>{k === "del" ? <Icon name="chevL" size={20} stroke={PQ.ink}/> : k}</div>
+        }}>{k === "del" ? <Icon name="chevL" size={20} stroke={PQ.ink} /> : k}</div>
       ))}
     </div>
   );
@@ -1208,28 +1226,28 @@ function LoginScreen({ go, seed = {} }) {
   return (
     <div style={{ position: "relative", height: "100%" }}>
       <Screen bg={PQ.off} top={70} bottom={32}>
-        <div style={{ display: "flex", justifyContent: "flex-start", marginBottom: 30 }}><LogoImg height={64} style={{ alignSelf: "flex-start" }}/></div>
+        <div style={{ display: "flex", justifyContent: "flex-start", marginBottom: 30 }}><LogoImg height={64} style={{ alignSelf: "flex-start" }} /></div>
         <Title size={20}>Good to see you again!</Title>
         <div style={{ display: "flex", flexDirection: "column", gap: 18, marginTop: 4 }}>
-          <Field icon="user" label="Email or Username" value={id} onChange={(e)=>setId(e.target.value)}
+          <Field icon="user" label="Email or Username" value={id} onChange={(e) => setId(e.target.value)}
             placeholder="you@example.com" {...ff("id")} />
           <div>
-            <Field icon="lock" label="Password" type={show?"text":"password"} value={pw} onChange={(e)=>setPw(e.target.value)}
+            <Field icon="lock" label="Password" type={show ? "text" : "password"} value={pw} onChange={(e) => setPw(e.target.value)}
               placeholder="Password" {...ff("pw")}
-              right={<span onClick={()=>setShow(s=>!s)} style={{cursor:"pointer"}}><Icon name={show?"eyeoff":"eye"} size={19} stroke={PQ.inkFaint}/></span>} />
+              right={<span onClick={() => setShow(s => !s)} style={{ cursor: "pointer" }}><Icon name={show ? "eyeoff" : "eye"} size={19} stroke={PQ.inkFaint} /></span>} />
           </div>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 2 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <Toggle on={remember} onChange={()=>setRemember(r=>!r)}/>
+              <Toggle on={remember} onChange={() => setRemember(r => !r)} />
               <span style={{ fontSize: 13.5, color: PQ.ink }}>Remember me</span>
             </div>
-            <TextLink onClick={()=>go("forgot")}>Forgot password?</TextLink>
+            <TextLink onClick={() => go("forgot")}>Forgot password?</TextLink>
           </div>
         </div>
-        <div style={{ flex: 1 }}/>
-        <Btn variant="primary" disabled={!canSubmit} onClick={()=>go("welcome")}>Login</Btn>
+        <div style={{ flex: 1 }} />
+        <Btn variant="primary" disabled={!canSubmit} onClick={() => go("welcome")}>Login</Btn>
         <div style={{ textAlign: "center", marginTop: 18, fontSize: 13.5, color: PQ.inkSoft }}>
-          New to Pocket Dragon? <TextLink onClick={()=>go("register")}>Get Started</TextLink>
+          New to Pocket Dragon? <TextLink onClick={() => go("register")}>Get Started</TextLink>
         </div>
       </Screen>
     </div>
@@ -1258,11 +1276,11 @@ function ForgotFlow({ go, live, seed = {} }) {
 
   const pwState = pw ? "valid" : "idle";                 // no minimum length
   const cState = cpw ? (cpw === pw ? "valid" : "error") : "idle";
-  const mm = Math.floor(secs/60), ss = String(secs%60).padStart(2,"0");
+  const mm = Math.floor(secs / 60), ss = String(secs % 60).padStart(2, "0");
   const back = () => step === 0 ? go("login") : setStep(s => s - 1);
 
   const otpKey = (d) => {
-    if (d === "del") { setOtpStatus("idle"); return setOtp(o => o.slice(0,-1)); }
+    if (d === "del") { setOtpStatus("idle"); return setOtp(o => o.slice(0, -1)); }
     if (otp.length >= 6) return;
     const n = otp + d; setOtpStatus("idle"); setOtp(n);
     if (n.length === 6) setTimeout(() => { if (n === "402231" || n === "000000") setOtpStatus("valid"); else setOtpStatus("error"); }, 220);
@@ -1270,59 +1288,59 @@ function ForgotFlow({ go, live, seed = {} }) {
 
   return (
     <Screen bg={PQ.off} top={62} bottom={28}>
-      {step < 3 && <TopBar onBack={back} plain right={<Steps n={3} i={step}/>} />}
+      {step < 3 && <TopBar onBack={back} plain right={<Steps n={3} i={step} />} />}
 
       {step === 0 && (<>
         <Title size={22} sub="Enter the email linked to your account and we'll send a reset code.">Reset Password</Title>
-        <Field icon="mail" label="Email Address" value={email} onChange={(e)=>setEmail(e.target.value)}
+        <Field icon="mail" label="Email Address" value={email} onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com" inputMode="email"
           state={email ? (emailOK(email) ? "valid" : "error") : "idle"} {...ff("email")}
-          right={emailOK(email) && <Icon name="check" size={18} stroke={PQ.green} sw={2.2}/>} />
+          right={emailOK(email) && <Icon name="check" size={18} stroke={PQ.green} sw={2.2} />} />
         {email && !emailOK(email) && <Helper state="error">Enter a valid email address</Helper>}
-        <div style={{ flex: 1 }}/>
-        <Btn variant="primary" disabled={!emailOK(email)} onClick={()=>{ setStep(1); setSecs(42); }}>Send OTP</Btn>
+        <div style={{ flex: 1 }} />
+        <Btn variant="primary" disabled={!emailOK(email)} onClick={() => { setStep(1); setSecs(42); }}>Send OTP</Btn>
       </>)}
 
       {step === 1 && (<>
-        <Title size={22} sub={<>Enter the 6-digit code sent to{" "}<strong style={{fontWeight:700,color:PQ.ink}}>{email||"your email"}</strong></>}>Verify OTP</Title>
-        <OTP value={otp} state={otpStatus}/>
-        {otpStatus==="error" && <Helper state="error">Invalid or expired code</Helper>}
-        {otpStatus==="valid" && <Helper state="valid">Code verified</Helper>}
-        <div style={{ display:"flex", alignItems:"center", justifyContent:"center", gap:8, marginTop:26, fontSize:13.5, color:PQ.inkSoft }}>
-          {secs>0 ? (<><Icon name="clock" size={16} stroke={PQ.inkFaint}/><span>Resend in <strong style={{color:PQ.ink,fontWeight:700}}>{mm}:{ss}</strong></span></>)
-            : <TextLink onClick={()=>{setSecs(42);setOtp("");setOtpStatus("idle");}}>Resend code</TextLink>}
+        <Title size={22} sub={<>Enter the 6-digit code sent to{" "}<strong style={{ fontWeight: 700, color: PQ.ink }}>{email || "your email"}</strong></>}>Verify OTP</Title>
+        <OTP value={otp} state={otpStatus} />
+        {otpStatus === "error" && <Helper state="error">Invalid or expired code</Helper>}
+        {otpStatus === "valid" && <Helper state="valid">Code verified</Helper>}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginTop: 26, fontSize: 13.5, color: PQ.inkSoft }}>
+          {secs > 0 ? (<><Icon name="clock" size={16} stroke={PQ.inkFaint} /><span>Resend in <strong style={{ color: PQ.ink, fontWeight: 700 }}>{mm}:{ss}</strong></span></>)
+            : <TextLink onClick={() => { setSecs(42); setOtp(""); setOtpStatus("idle"); }}>Resend code</TextLink>}
         </div>
-        <div style={{ flex: 1 }}/>
-        <Btn variant="primary" disabled={otp.length<6} onClick={()=>{ if(otp==="402231"||otp==="000000"){setOtpStatus("valid");setStep(2);} else setOtpStatus("error"); }}>Verify OTP</Btn>
-        <Keypad onKey={otpKey}/>
+        <div style={{ flex: 1 }} />
+        <Btn variant="primary" disabled={otp.length < 6} onClick={() => { if (otp === "402231" || otp === "000000") { setOtpStatus("valid"); setStep(2); } else setOtpStatus("error"); }}>Verify OTP</Btn>
+        <Keypad onKey={otpKey} />
       </>)}
 
       {step === 2 && (<>
         <Title size={22} sub="Choose a new password for your account.">New Password</Title>
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div>
-            <Field icon="lock" label="New Password" type={show?"text":"password"} value={pw} onChange={(e)=>setPw(e.target.value)}
+            <Field icon="lock" label="New Password" type={show ? "text" : "password"} value={pw} onChange={(e) => setPw(e.target.value)}
               placeholder="Enter a new password" state={pwState} {...ff("pw")}
-              right={<span onClick={()=>setShow(s=>!s)} style={{cursor:"pointer"}}><Icon name={show?"eyeoff":"eye"} size={19} stroke={PQ.inkFaint}/></span>} />
+              right={<span onClick={() => setShow(s => !s)} style={{ cursor: "pointer" }}><Icon name={show ? "eyeoff" : "eye"} size={19} stroke={PQ.inkFaint} /></span>} />
           </div>
           <div>
-            <Field icon="lock" label="Confirm Password" type={showCpw?"text":"password"} value={cpw} onChange={(e)=>setCpw(e.target.value)}
+            <Field icon="lock" label="Confirm Password" type={showCpw ? "text" : "password"} value={cpw} onChange={(e) => setCpw(e.target.value)}
               placeholder="Re-enter password" state={cState} {...ff("cpw")}
-              right={<span onClick={()=>setShowCpw(s=>!s)} style={{cursor:"pointer"}}><Icon name={showCpw?"eyeoff":"eye"} size={19} stroke={PQ.inkFaint}/></span>} />
-            {cState==="error" && <Helper state="error">Passwords do not match</Helper>}
-            {cState==="valid" && <Helper state="valid">Passwords match</Helper>}
+              right={<span onClick={() => setShowCpw(s => !s)} style={{ cursor: "pointer" }}><Icon name={showCpw ? "eyeoff" : "eye"} size={19} stroke={PQ.inkFaint} /></span>} />
+            {cState === "error" && <Helper state="error">Passwords do not match</Helper>}
+            {cState === "valid" && <Helper state="valid">Passwords match</Helper>}
           </div>
         </div>
-        <div style={{ flex: 1 }}/>
-        <Btn variant="primary" disabled={!(pwState==="valid"&&cState==="valid")} onClick={()=>setStep(3)}>Update Password</Btn>
+        <div style={{ flex: 1 }} />
+        <Btn variant="primary" disabled={!(pwState === "valid" && cState === "valid")} onClick={() => setStep(3)}>Update Password</Btn>
       </>)}
 
       {step === 3 && (
         <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", position: "relative" }}>
-          <RustRing size={96}/>
+          <RustRing size={96} />
           <h1 style={{ margin: "28px 0 0", fontFamily: HERO, fontWeight: 700, fontSize: 25, letterSpacing: "0.05em", textTransform: "uppercase", color: PQ.ink }}>Password Updated</h1>
           <div style={{ position: "absolute", left: 0, right: 0, bottom: 2 }}>
-            <Btn variant="primary" onClick={()=>go("login")}>Back to Login</Btn>
+            <Btn variant="primary" onClick={() => go("login")}>Back to Login</Btn>
           </div>
         </div>
       )}
@@ -1334,7 +1352,7 @@ function ForgotFlow({ go, live, seed = {} }) {
 function SuccessScreen({ go }) {
   return (
     <Screen bg={PQ.off} top={70} bottom={30} style={{ position: "relative" }}>
-      <VerifiedPanel go={go}/>
+      <VerifiedPanel go={go} />
     </Screen>
   );
 }
@@ -1347,14 +1365,14 @@ function PoquitoApp() {
   const go = (s) => { setAnim("out"); setTimeout(() => { setScreen(s); setAnim("in"); }, 160); };
   const common = { go, live: true };
   let view = null;
-  if (screen === "splash") view = <SplashScreen {...common}/>;
-  else if (screen === "welcome") view = <WelcomeScreen {...common}/>;
-  else if (screen === "register") view = <RegisterScreen {...common} setEmail={setEmail}/>;
-  else if (screen === "verify") view = <VerifyScreen {...common} email={email}/>;
-  else if (screen === "success") view = <SuccessScreen {...common}/>;
-  else if (screen === "login") view = <LoginScreen {...common}/>;
-  else if (screen === "forgot") view = <ForgotFlow {...common}/>;
-  return <div key={screen} style={{ height: "100%", animation: `${anim==="in"?"pqIn":"pqOut"} .26s ease both` }}>{view}</div>;
+  if (screen === "splash") view = <SplashScreen {...common} />;
+  else if (screen === "welcome") view = <WelcomeScreen {...common} />;
+  else if (screen === "register") view = <RegisterScreen {...common} setEmail={setEmail} />;
+  else if (screen === "verify") view = <VerifyScreen {...common} email={email} />;
+  else if (screen === "success") view = <SuccessScreen {...common} />;
+  else if (screen === "login") view = <LoginScreen {...common} />;
+  else if (screen === "forgot") view = <ForgotFlow {...common} />;
+  return <div key={screen} style={{ height: "100%", animation: `${anim === "in" ? "pqIn" : "pqOut"} .26s ease both` }}>{view}</div>;
 }
 
 Object.assign(window, {
@@ -1371,23 +1389,23 @@ Object.assign(window, {
 function HIcon({ name, size = 24, stroke = "currentColor", sw = 1.7, style }) {
   const p = { fill: "none", stroke, strokeWidth: sw, strokeLinecap: "round", strokeLinejoin: "round" };
   const paths = {
-    home:    <g {...p}><path d="M4 11.5L12 4.5l8 7"/><path d="M6 10v9.5h12V10"/><path d="M10 19.5v-5h4v5"/></g>,
-    crown:   <g {...p}><path d="M4 8l3.2 3L12 5.5 16.8 11 20 8l-1.4 10.5H5.4z"/><path d="M5.4 18.5h13.2"/></g>,
-    gear:    <g {...p}><circle cx="12" cy="12" r="3.2"/><path d="M12 3.2v2.3M12 18.5v2.3M3.2 12h2.3M18.5 12h2.3M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6"/></g>,
-    users:   <g {...p}><circle cx="9" cy="9" r="3"/><path d="M3.5 19a5.5 5.5 0 0111 0"/><path d="M16 6.2a3 3 0 010 5.6M20.5 19a5.5 5.5 0 00-3.5-5.1"/></g>,
-    clock:   <g {...p}><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></g>,
-    arrowR:  <g {...p}><path d="M5 12h13M12.5 6l6 6-6 6"/></g>,
+    home: <g {...p}><path d="M4 11.5L12 4.5l8 7" /><path d="M6 10v9.5h12V10" /><path d="M10 19.5v-5h4v5" /></g>,
+    crown: <g {...p}><path d="M4 8l3.2 3L12 5.5 16.8 11 20 8l-1.4 10.5H5.4z" /><path d="M5.4 18.5h13.2" /></g>,
+    gear: <g {...p}><circle cx="12" cy="12" r="3.2" /><path d="M12 3.2v2.3M12 18.5v2.3M3.2 12h2.3M18.5 12h2.3M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6" /></g>,
+    users: <g {...p}><circle cx="9" cy="9" r="3" /><path d="M3.5 19a5.5 5.5 0 0111 0" /><path d="M16 6.2a3 3 0 010 5.6M20.5 19a5.5 5.5 0 00-3.5-5.1" /></g>,
+    clock: <g {...p}><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></g>,
+    arrowR: <g {...p}><path d="M5 12h13M12.5 6l6 6-6 6" /></g>,
     // gameplay action icons (landing-page style, no box)
-    create:  <g {...p}><rect x="5" y="3.5" width="14" height="17" rx="3"/><path d="M12 8.5v7M8.5 12h7"/></g>,
-    join:    <g {...p}><path d="M13 4.5h4.5a1 1 0 011 1v13a1 1 0 01-1 1H13"/><path d="M9 8.5l3.5 3.5L9 15.5M12.5 12H3.5"/></g>,
-    bot:     <g {...p}><rect x="5" y="8.5" width="14" height="10" rx="3"/><path d="M12 5.5v3"/><circle cx="12" cy="4.4" r="1.3" fill={stroke} stroke="none"/><circle cx="9.4" cy="13" r="1.15" fill={stroke} stroke="none"/><circle cx="14.6" cy="13" r="1.15" fill={stroke} stroke="none"/><path d="M9.6 16h4.8"/></g>,
-    leave:   <g {...p}><path d="M14 19.5H6a1 1 0 01-1-1v-13a1 1 0 011-1h8"/><path d="M18 8.5l3.5 3.5L18 15.5M21 12H10.5"/></g>,
-    lock:    <g {...p}><rect x="5" y="10.5" width="14" height="9.5" rx="2.5"/><path d="M8 10.5V8a4 4 0 018 0v2.5"/></g>,
-    cap:     <g {...p}><path d="M12 4.5L2.5 9 12 13.5 21.5 9 12 4.5z"/><path d="M6.5 11v4.2c0 1.6 2.5 2.8 5.5 2.8s5.5-1.2 5.5-2.8V11"/><path d="M21.5 9v4.2"/></g>,
-    grid:    <g {...p}><rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.6"/></g>,
-    book:    <g {...p}><path d="M5 4.5h11a2 2 0 012 2v13H7a2 2 0 01-2-2z"/><path d="M5 17.5a2 2 0 012-2h11"/></g>,
-    dice:    <g {...p}><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="9" cy="9" r="1.2" fill={stroke} stroke="none"/><circle cx="15" cy="15" r="1.2" fill={stroke} stroke="none"/><circle cx="15" cy="9" r="1.2" fill={stroke} stroke="none"/><circle cx="9" cy="15" r="1.2" fill={stroke} stroke="none"/></g>,
-    sliders: <g {...p}><path d="M4 8h9M17 8h3M4 16h3M11 16h9"/><circle cx="15" cy="8" r="2.3"/><circle cx="9" cy="16" r="2.3"/></g>,
+    create: <g {...p}><rect x="5" y="3.5" width="14" height="17" rx="3" /><path d="M12 8.5v7M8.5 12h7" /></g>,
+    join: <g {...p}><path d="M13 4.5h4.5a1 1 0 011 1v13a1 1 0 01-1 1H13" /><path d="M9 8.5l3.5 3.5L9 15.5M12.5 12H3.5" /></g>,
+    bot: <g {...p}><rect x="5" y="8.5" width="14" height="10" rx="3" /><path d="M12 5.5v3" /><circle cx="12" cy="4.4" r="1.3" fill={stroke} stroke="none" /><circle cx="9.4" cy="13" r="1.15" fill={stroke} stroke="none" /><circle cx="14.6" cy="13" r="1.15" fill={stroke} stroke="none" /><path d="M9.6 16h4.8" /></g>,
+    leave: <g {...p}><path d="M14 19.5H6a1 1 0 01-1-1v-13a1 1 0 011-1h8" /><path d="M18 8.5l3.5 3.5L18 15.5M21 12H10.5" /></g>,
+    lock: <g {...p}><rect x="5" y="10.5" width="14" height="9.5" rx="2.5" /><path d="M8 10.5V8a4 4 0 018 0v2.5" /></g>,
+    cap: <g {...p}><path d="M12 4.5L2.5 9 12 13.5 21.5 9 12 4.5z" /><path d="M6.5 11v4.2c0 1.6 2.5 2.8 5.5 2.8s5.5-1.2 5.5-2.8V11" /><path d="M21.5 9v4.2" /></g>,
+    grid: <g {...p}><rect x="3.5" y="3.5" width="7" height="7" rx="1.6" /><rect x="13.5" y="3.5" width="7" height="7" rx="1.6" /><rect x="3.5" y="13.5" width="7" height="7" rx="1.6" /><rect x="13.5" y="13.5" width="7" height="7" rx="1.6" /></g>,
+    book: <g {...p}><path d="M5 4.5h11a2 2 0 012 2v13H7a2 2 0 01-2-2z" /><path d="M5 17.5a2 2 0 012-2h11" /></g>,
+    dice: <g {...p}><rect x="4" y="4" width="16" height="16" rx="4" /><circle cx="9" cy="9" r="1.2" fill={stroke} stroke="none" /><circle cx="15" cy="15" r="1.2" fill={stroke} stroke="none" /><circle cx="15" cy="9" r="1.2" fill={stroke} stroke="none" /><circle cx="9" cy="15" r="1.2" fill={stroke} stroke="none" /></g>,
+    sliders: <g {...p}><path d="M4 8h9M17 8h3M4 16h3M11 16h9" /><circle cx="15" cy="8" r="2.3" /><circle cx="9" cy="16" r="2.3" /></g>,
   };
   return <svg width={size} height={size} viewBox="0 0 24 24" style={{ display: "block", ...style }}>{paths[name]}</svg>;
 }
@@ -1419,17 +1437,17 @@ function SuitGlyph({ suit, size = 30, color = PQ.green }) {
   if (suit === "bamboo") {
     const stalk = (x, h, top) => (
       <g key={x}>
-        <rect x={x-2.1} y={top} width={4.2} height={h} rx={2.1} fill="none" stroke={color} strokeWidth={1.7}/>
-        <line x1={x-2.1} y1={top + h*0.5} x2={x+2.1} y2={top + h*0.5} stroke={color} strokeWidth={1.4}/>
+        <rect x={x - 2.1} y={top} width={4.2} height={h} rx={2.1} fill="none" stroke={color} strokeWidth={1.7} />
+        <line x1={x - 2.1} y1={top + h * 0.5} x2={x + 2.1} y2={top + h * 0.5} stroke={color} strokeWidth={1.4} />
       </g>
     );
-    return (<svg width={s} height={s} viewBox="0 0 32 32">{stalk(8,18,9)}{stalk(16,22,6)}{stalk(24,18,9)}<path d="M16 4.5l-3 3M16 4.5l3 3" stroke={color} strokeWidth={1.7} strokeLinecap="round" fill="none"/></svg>);
+    return (<svg width={s} height={s} viewBox="0 0 32 32">{stalk(8, 18, 9)}{stalk(16, 22, 6)}{stalk(24, 18, 9)}<path d="M16 4.5l-3 3M16 4.5l3 3" stroke={color} strokeWidth={1.7} strokeLinecap="round" fill="none" /></svg>);
   }
   if (suit === "dot") {
-    const dot = (cx, cy) => <circle key={cx+","+cy} cx={cx} cy={cy} r={3.2} fill="none" stroke={color} strokeWidth={1.7}/>;
-    return (<svg width={s} height={s} viewBox="0 0 32 32">{dot(16,7)}{dot(7,16)}{dot(25,16)}{dot(16,25)}<circle cx={16} cy={16} r={3.6} fill={color}/></svg>);
+    const dot = (cx, cy) => <circle key={cx + "," + cy} cx={cx} cy={cy} r={3.2} fill="none" stroke={color} strokeWidth={1.7} />;
+    return (<svg width={s} height={s} viewBox="0 0 32 32">{dot(16, 7)}{dot(7, 16)}{dot(25, 16)}{dot(16, 25)}<circle cx={16} cy={16} r={3.6} fill={color} /></svg>);
   }
-  return (<svg width={s} height={s} viewBox="0 0 32 32"><g fill="none" stroke={color} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round"><path d="M7 8h18"/><path d="M11 8v6h11v4c0 3-1.5 5-4 6"/><path d="M11 14c-1 5-3 7.5-5 9"/></g></svg>);
+  return (<svg width={s} height={s} viewBox="0 0 32 32"><g fill="none" stroke={color} strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round"><path d="M7 8h18" /><path d="M11 8v6h11v4c0 3-1.5 5-4 6" /><path d="M11 14c-1 5-3 7.5-5 9" /></g></svg>);
 }
 
 // ── Hero panel (deep-green surface — whole box clickable → Profile) ──
@@ -1447,13 +1465,15 @@ function HeroPanel({ username = "avachen88", tier = "Firefly I", nextTier = "Fir
         background: "transparent", border: "none", cursor: "pointer", padding: 0,
         display: "flex", alignItems: "center", justifyContent: "center",
       }}>
-        <XIcon name="bell" size={19} stroke="rgba(249,242,228,0.72)"/>
-        <span style={{ position: "absolute", top: 3, right: 4, width: 7, height: 7, borderRadius: "50%", background: PQ.rust, border: `1.5px solid ${PQ.green}` }}/>
+        <XIcon name="bell" size={19} stroke="rgba(249,242,228,0.72)" />
+        <span style={{ position: "absolute", top: 3, right: 4, width: 7, height: 7, borderRadius: "50%", background: PQ.rust, border: `1.5px solid ${PQ.green}` }} />
       </button>
       <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-        <button onClick={() => { pock("select"); onOpen && onOpen(); }} className="pq-press" style={{ width: 88, height: 88, borderRadius: "50%", flexShrink: 0, overflow: "hidden", padding: 0, cursor: "pointer",
-          background: "rgba(249,242,228,0.12)", border: "2px solid rgba(249,242,228,0.35)" }}>
-          <img src={HERO_AVATAR} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}/>
+        <button onClick={() => { pock("select"); onOpen && onOpen(); }} className="pq-press" style={{
+          width: 88, height: 88, borderRadius: "50%", flexShrink: 0, overflow: "hidden", padding: 0, cursor: "pointer",
+          background: "rgba(249,242,228,0.12)", border: "2px solid rgba(249,242,228,0.35)"
+        }}>
+          <img src={HERO_AVATAR} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </button>
         <div style={{ flex: 1, minWidth: 0, paddingRight: 34 }}>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(249,242,228,0.6)" }}>Hey</div>
@@ -1464,7 +1484,7 @@ function HeroPanel({ username = "avachen88", tier = "Firefly I", nextTier = "Fir
         <span style={{ fontFamily: HERO, fontSize: 12, fontWeight: 700, letterSpacing: "0.04em", color: "rgba(249,242,228,0.72)" }}>{rp} / {rpMax} RP</span>
       </div>
       <div style={{ marginTop: 8, height: 6, borderRadius: 4, background: "rgba(249,242,228,0.16)", overflow: "hidden" }}>
-        <div style={{ height: "100%", width: `${pct}%`, background: `linear-gradient(90deg, ${PQ.rustSoft}, ${PQ.rust})`, borderRadius: 4 }}/>
+        <div style={{ height: "100%", width: `${pct}%`, background: `linear-gradient(90deg, ${PQ.rustSoft}, ${PQ.rust})`, borderRadius: 4 }} />
       </div>
       <div style={{ marginTop: 8, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <span style={{ fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: PQ.off }}>{tier}</span>
@@ -1481,25 +1501,25 @@ function ResumeCard({ onResume, onLeave }) {
       borderRadius: 18, background: PQ.off, border: `1.5px solid ${PQ.line}`, padding: "16px 16px 16px 18px", flexShrink: 0,
     }}>
       <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 9 }}>
-        <span className="pq-pulse" style={{ width: 8, height: 8, borderRadius: "50%", background: PQ.rust }}/>
+        <span className="pq-pulse" style={{ width: 8, height: 8, borderRadius: "50%", background: PQ.rust }} />
         <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust }}>Your turn · Ongoing</span>
       </div>
       <div style={{ fontSize: 13, lineHeight: 1.45, color: PQ.inkSoft, fontWeight: 400 }}>Life happens. A bot stepped in. Pick up where you left off.</div>
       <div style={{ marginTop: 10, display: "flex", alignItems: "center", gap: 7, fontFamily: HERO, fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: PQ.green }}>
-        <HIcon name="clock" size={14} stroke={PQ.green} sw={1.8}/><span>Game 3 of 5</span>
+        <HIcon name="clock" size={14} stroke={PQ.green} sw={1.8} /><span>Game 3 of 5</span>
       </div>
       <div style={{ marginTop: 14, display: "flex", gap: 10 }}>
         <button onClick={() => { pock("select"); onLeave && onLeave(); }} className="pq-press" style={{
           flex: 1, height: 40, borderRadius: 12, cursor: "pointer", background: "transparent",
           border: `1.5px solid ${PQ.lineMid}`, color: PQ.ink, fontFamily: HERO, fontWeight: 700, fontSize: 11.5,
           letterSpacing: "0.1em", textTransform: "uppercase", display: "flex", alignItems: "center", justifyContent: "center", gap: 7,
-        }}>Leave<HIcon name="leave" size={15} stroke={PQ.ink} sw={1.9}/></button>
+        }}>Leave<HIcon name="leave" size={15} stroke={PQ.ink} sw={1.9} /></button>
         <button onClick={() => { pock("select"); onResume && onResume(); }} className="pq-press" style={{
           flex: 1, height: 40, borderRadius: 12, border: "none", cursor: "pointer",
           background: `linear-gradient(160deg, ${PQ.rustSoft} 0%, ${PQ.rust} 52%, ${PQ.rustDeep} 100%)`,
           color: PQ.off, fontFamily: HERO, fontWeight: 700, fontSize: 11.5, letterSpacing: "0.1em", textTransform: "uppercase",
           display: "flex", alignItems: "center", justifyContent: "center", gap: 7,
-        }}>Resume<HIcon name="arrowR" size={15} stroke={PQ.off} sw={2}/></button>
+        }}>Resume<HIcon name="arrowR" size={15} stroke={PQ.off} sw={2} /></button>
       </div>
     </div>
   );
@@ -1519,14 +1539,14 @@ function HubCard({ icon, title, sub, subParts, active, onTap, delay = 0 }) {
         display: "flex", flexDirection: "row", alignItems: "center", gap: 14, overflow: "hidden",
       }}>
       {/* icon to the left of the title */}
-      <HIcon name={icon} size={26} stroke={accent} sw={1.8} style={{ flexShrink: 0 }}/>
+      <HIcon name={icon} size={26} stroke={accent} sw={1.8} style={{ flexShrink: 0 }} />
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 15.5, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink, lineHeight: 1.12 }}>{title}</div>
         <div style={{ marginTop: 7, fontSize: 12, lineHeight: 1.45, color: PQ.inkSoft, fontWeight: 400, overflowWrap: "break-word", textWrap: "pretty" }}>
           {subParts ? subParts.map((p, i) => <span key={i} style={p.rust ? { color: PQ.rust, fontWeight: 600 } : null}>{p.t}</span>) : sub}
         </div>
       </div>
-      <HIcon name="arrowR" size={20} stroke={accent} sw={2} style={{ flexShrink: 0 }}/>
+      <HIcon name="arrowR" size={20} stroke={accent} sw={2} style={{ flexShrink: 0 }} />
     </button>
   );
 }
@@ -1553,8 +1573,8 @@ function BottomNav({ active, onChange }) {
             background: "transparent", border: "none", cursor: "pointer",
             display: "flex", flexDirection: "column", alignItems: "center", gap: 5, padding: "4px 10px", position: "relative",
           }}>
-            <span style={{ position: "absolute", top: -10, width: 18, height: 3, borderRadius: 2, background: on ? PQ.rust : "transparent" }}/>
-            <HIcon name={t.icon} size={23} stroke={col} sw={on ? 1.9 : 1.6}/>
+            <span style={{ position: "absolute", top: -10, width: 18, height: 3, borderRadius: 2, background: on ? PQ.rust : "transparent" }} />
+            <HIcon name={t.icon} size={23} stroke={col} sw={on ? 1.9 : 1.6} />
             <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: col, textAlign: "center", lineHeight: 1.15, whiteSpace: "pre-line" }}>{t.label.replace(" & ", " &\n")}</span>
           </button>
         );
@@ -1581,7 +1601,7 @@ function TabStub({ icon, label }) {
   return (
     <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: 40, gap: 16 }}>
       <div style={{ width: 72, height: 72, borderRadius: "50%", background: PQ.off, border: `1.5px solid ${PQ.line}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <HIcon name={icon} size={32} stroke={PQ.inkFaint} sw={1.6}/>
+        <HIcon name={icon} size={32} stroke={PQ.inkFaint} sw={1.6} />
       </div>
       <div>
         <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 20, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>{label}</div>
@@ -1596,17 +1616,17 @@ function HomeScreen({ showOngoing, onCard, onAvatar, onLeave, selected, onNotify
   const A = (id) => ({ active: selected === id, onTap: () => onCard(id) });
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", gap: 16 }}>
-      <HeroPanel onOpen={onAvatar} onNotify={onNotify}/>
+      <HeroPanel onOpen={onAvatar} onNotify={onNotify} />
       <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 23, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>The Hub</div>
       <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: 12, margin: "0 -4px", padding: "2px 4px 4px" }}>
-        {showOngoing && <ResumeCard onResume={() => onCard("resume")} onLeave={onLeave}/>}
+        {showOngoing && <ResumeCard onResume={() => onCard("resume")} onLeave={onLeave} />}
         <HubCard icon="cap" title="Practice With Bots"
           subParts={[{ t: "Learn, experiment, and refine your game. Unranked and " }, { t: "offline", rust: true }, { t: "-ready." }]}
-          {...A("practice")} delay={showOngoing ? 90 : 40}/>
+          {...A("practice")} delay={showOngoing ? 90 : 40} />
         <HubCard icon="grid" title="Join A Game" sub="Where it gets real. Private tables. Public matches. Ranked play."
-          {...A("join")} delay={showOngoing ? 150 : 110}/>
+          {...A("join")} delay={showOngoing ? 150 : 110} />
         <HubCard icon="users" title="Create A Game" sub="Your table. Your way. Invite friends or go public. Ranked play."
-          {...A("create")} delay={showOngoing ? 210 : 180}/>
+          {...A("create")} delay={showOngoing ? 210 : 180} />
       </div>
     </div>
   );
@@ -1633,9 +1653,11 @@ function VariantRow({ letter, name, subtitle, desc, active, onTap }) {
       border: `1.5px solid ${active ? "rgba(182,90,47,0.55)" : PQ.line}`, borderRadius: 16, padding: "15px 16px",
       display: "flex", alignItems: "center", gap: 14,
     }}>
-      <span style={{ width: 48, height: 48, borderRadius: 13, flexShrink: 0, background: active ? PQ.rust : "rgba(20,51,34,0.05)",
+      <span style={{
+        width: 48, height: 48, borderRadius: 13, flexShrink: 0, background: active ? PQ.rust : "rgba(20,51,34,0.05)",
         border: `1.5px solid ${active ? PQ.rust : PQ.line}`, display: "flex", alignItems: "center", justifyContent: "center",
-        fontFamily: HERO, fontWeight: 700, fontSize: 20, color: active ? PQ.off : PQ.green }}>{letter}</span>
+        fontFamily: HERO, fontWeight: 700, fontSize: 20, color: active ? PQ.off : PQ.green
+      }}>{letter}</span>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
           <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 15.5, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>{name}</span>
@@ -1643,9 +1665,11 @@ function VariantRow({ letter, name, subtitle, desc, active, onTap }) {
         </div>
         <div style={{ marginTop: 5, fontSize: 11.5, lineHeight: 1.35, color: PQ.inkSoft }}>{desc}</div>
       </div>
-      <span style={{ width: 22, height: 22, borderRadius: "50%", flexShrink: 0, border: `2px solid ${active ? PQ.rust : PQ.line}`,
-        background: active ? PQ.rust : "transparent", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        {active && <Icon name="check" size={13} stroke={PQ.off} sw={2.6}/>}
+      <span style={{
+        width: 22, height: 22, borderRadius: "50%", flexShrink: 0, border: `2px solid ${active ? PQ.rust : PQ.line}`,
+        background: active ? PQ.rust : "transparent", display: "flex", alignItems: "center", justifyContent: "center"
+      }}>
+        {active && <Icon name="check" size={13} stroke={PQ.off} sw={2.6} />}
       </span>
     </button>
   );
@@ -1660,13 +1684,15 @@ function Stepper({ label, value, min = 3, max = 4, onChange }) {
       color: dis ? PQ.inkFaint : PQ.ink, display: "flex", alignItems: "center", justifyContent: "center",
     }}>
       <span style={{ width: 13, height: 1.8, borderRadius: 2, background: "currentColor", position: "relative" }}>
-        {glyph === "+" && <span style={{ position: "absolute", left: "50%", top: "50%", width: 1.8, height: 13, borderRadius: 2, background: "currentColor", transform: "translate(-50%,-50%)" }}/>}
+        {glyph === "+" && <span style={{ position: "absolute", left: "50%", top: "50%", width: 1.8, height: 13, borderRadius: 2, background: "currentColor", transform: "translate(-50%,-50%)" }} />}
       </span>
     </button>
   );
   return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14,
-      padding: "7px 8px 7px 16px", border: `1.5px solid ${PQ.line}`, borderRadius: 14 }}>
+    <div style={{
+      display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14,
+      padding: "7px 8px 7px 16px", border: `1.5px solid ${PQ.line}`, borderRadius: 14
+    }}>
       <span style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>{label}</span>
       <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
         {btn("-", value <= min, () => onChange(value - 1))}
@@ -1687,16 +1713,20 @@ function VariantCounter({ letter, name, subtitle, value, min = 0, max = 10, onCh
       color: dis ? PQ.inkFaint : PQ.ink, display: "flex", alignItems: "center", justifyContent: "center",
     }}>
       <span style={{ width: 12, height: 1.8, borderRadius: 2, background: "currentColor", position: "relative" }}>
-        {glyph === "+" && <span style={{ position: "absolute", left: "50%", top: "50%", width: 1.8, height: 12, borderRadius: 2, background: "currentColor", transform: "translate(-50%,-50%)" }}/>}
+        {glyph === "+" && <span style={{ position: "absolute", left: "50%", top: "50%", width: 1.8, height: 12, borderRadius: 2, background: "currentColor", transform: "translate(-50%,-50%)" }} />}
       </span>
     </button>
   );
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: 12,
-      padding: "8px 10px 8px 12px", border: `1.5px solid ${on ? "rgba(182,90,47,0.55)" : PQ.line}`, borderRadius: 14 }}>
-      <span style={{ width: 38, height: 38, borderRadius: 10, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center",
+    <div style={{
+      display: "flex", alignItems: "center", gap: 12,
+      padding: "8px 10px 8px 12px", border: `1.5px solid ${on ? "rgba(182,90,47,0.55)" : PQ.line}`, borderRadius: 14
+    }}>
+      <span style={{
+        width: 38, height: 38, borderRadius: 10, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center",
         background: on ? PQ.rust : "rgba(20,51,34,0.05)", border: `1.5px solid ${on ? PQ.rust : PQ.line}`,
-        fontFamily: HERO, fontWeight: 700, fontSize: 16, color: on ? PQ.off : PQ.inkSoft }}>{letter}</span>
+        fontFamily: HERO, fontWeight: 700, fontSize: 16, color: on ? PQ.off : PQ.inkSoft
+      }}>{letter}</span>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 14, letterSpacing: "0.03em", textTransform: "uppercase", color: PQ.ink }}>{name}</div>
         <div style={{ marginTop: 2, fontSize: 11.5, color: PQ.inkSoft }}>{subtitle}</div>
@@ -1728,14 +1758,16 @@ function AccessOption({ icon, title, desc, active, onTap }) {
       border: `1.5px solid ${active ? "rgba(182,90,47,0.55)" : PQ.line}`, borderRadius: 16, padding: "14px 16px",
       display: "flex", alignItems: "center", gap: 14,
     }}>
-      <HIcon name={icon} size={24} stroke={active ? PQ.rust : PQ.inkSoft} sw={1.8} style={{ flexShrink: 0 }}/>
+      <HIcon name={icon} size={24} stroke={active ? PQ.rust : PQ.inkSoft} sw={1.8} style={{ flexShrink: 0 }} />
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 14, letterSpacing: "0.03em", textTransform: "uppercase", color: PQ.ink }}>{title}</div>
         <div style={{ marginTop: 4, fontSize: 11.5, lineHeight: 1.35, color: PQ.inkSoft }}>{desc}</div>
       </div>
-      <span style={{ width: 22, height: 22, borderRadius: "50%", flexShrink: 0, border: `2px solid ${active ? PQ.rust : PQ.line}`,
-        background: active ? PQ.rust : "transparent", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        {active && <span style={{ width: 8, height: 8, borderRadius: "50%", background: PQ.off }}/>}
+      <span style={{
+        width: 22, height: 22, borderRadius: "50%", flexShrink: 0, border: `2px solid ${active ? PQ.rust : PQ.line}`,
+        background: active ? PQ.rust : "transparent", display: "flex", alignItems: "center", justifyContent: "center"
+      }}>
+        {active && <span style={{ width: 8, height: 8, borderRadius: "50%", background: PQ.off }} />}
       </span>
     </button>
   );
@@ -1760,15 +1792,15 @@ function InvitePlayersModal({ onClose }) {
   return (
     <div onClick={onClose} className="pq-modal-backdrop" style={{ position: "absolute", inset: 0, zIndex: 70, background: "rgba(20,51,34,0.45)", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
       <div onClick={(e) => e.stopPropagation()} className="pq-sheet-up" style={{ width: "100%", maxHeight: "82%", background: PQ.off, borderTopLeftRadius: 26, borderTopRightRadius: 26, display: "flex", flexDirection: "column" }}>
-        <div style={{ flexShrink: 0, padding: "11px 0 2px", display: "flex", justifyContent: "center" }}><div style={{ width: 40, height: 4, borderRadius: 999, background: PQ.line }}/></div>
+        <div style={{ flexShrink: 0, padding: "11px 0 2px", display: "flex", justifyContent: "center" }}><div style={{ width: 40, height: 4, borderRadius: 999, background: PQ.line }} /></div>
         <div style={{ flexShrink: 0, padding: "8px 22px 12px" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
             <h2 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 18, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Invite Players</h2>
-            <button onClick={onClose} className="pq-press" style={{ width: 36, height: 36, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="close" size={18} stroke={PQ.ink} sw={1.9}/></button>
+            <button onClick={onClose} className="pq-press" style={{ width: 36, height: 36, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="close" size={18} stroke={PQ.ink} sw={1.9} /></button>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 11, height: 46, padding: "0 15px", borderRadius: 13, border: `1.5px solid ${PQ.lineMid}` }}>
-            <XIcon name="search" size={19} stroke={PQ.inkSoft}/>
-            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search by username" style={{ flex: 1, border: "none", outline: "none", background: "transparent", fontFamily: HERO, fontSize: 15, color: PQ.ink, minWidth: 0 }}/>
+            <XIcon name="search" size={19} stroke={PQ.inkSoft} />
+            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search by username" style={{ flex: 1, border: "none", outline: "none", background: "transparent", fontFamily: HERO, fontSize: 15, color: PQ.ink, minWidth: 0 }} />
           </div>
           <div style={{ marginTop: 12, fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.inkSoft }}>My Peeps</div>
         </div>
@@ -1779,16 +1811,16 @@ function InvitePlayersModal({ onClose }) {
               <div key={p.id} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 12px", border: `1px solid rgba(20,51,34,0.08)`, borderRadius: 16 }}>
                 <span style={{ position: "relative", width: 44, height: 44, flexShrink: 0 }}>
                   <span style={{ display: "block", width: 44, height: 44, borderRadius: "50%", overflow: "hidden", background: AVATARS[p.av].bg, border: `1.5px solid ${PQ.line}` }}>
-                    <img src={avatarSrc(p.av)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(p.av)})`, transformOrigin: "center 40%" }}/>
+                    <img src={avatarSrc(p.av)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(p.av)})`, transformOrigin: "center 40%" }} />
                   </span>
-                  {p.online && <span style={{ position: "absolute", top: -1, right: -1, width: 12, height: 12, borderRadius: "50%", background: "#1FA855", border: `2px solid ${PQ.off}` }}/>}
+                  {p.online && <span style={{ position: "absolute", top: -1, right: -1, width: 12, height: 12, borderRadius: "50%", background: "#1FA855", border: `2px solid ${PQ.off}` }} />}
                 </span>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 15, color: PQ.ink }}>{p.name}</div>
                   <div style={{ marginTop: 2, fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.inkFaint }}>{p.tier}</div>
                 </div>
                 {st === "joined" ? (
-                  <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 6, height: 38, minWidth: 100, padding: "0 16px", borderRadius: 11, border: `1.5px solid ${PQ.line}`, background: "transparent", fontFamily: HERO, fontWeight: 700, fontSize: 11.5, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.green }}><Icon name="check" size={14} stroke={PQ.green} sw={2.4}/>Joined</span>
+                  <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 6, height: 38, minWidth: 100, padding: "0 16px", borderRadius: 11, border: `1.5px solid ${PQ.line}`, background: "transparent", fontFamily: HERO, fontWeight: 700, fontSize: 11.5, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.green }}><Icon name="check" size={14} stroke={PQ.green} sw={2.4} />Joined</span>
                 ) : (
                   <button onClick={() => { pock("select"); cycle(p.id); }} className="pq-press" style={{ height: 38, minWidth: 100, padding: "0 16px", borderRadius: 11, cursor: "pointer", border: `1.5px solid ${st === "invited" ? PQ.line : PQ.rust}`, background: "transparent", color: st === "invited" ? PQ.inkFaint : PQ.rust, fontFamily: HERO, fontWeight: 700, fontSize: 11.5, letterSpacing: "0.1em", textTransform: "uppercase" }}>{st === "invited" ? "Invited" : "Invite"}</button>
                 )}
@@ -1819,7 +1851,7 @@ function GameConfigScreen({ onBack, onCreate, onInvite, onShare, title = "Create
       <div style={{ padding: "60px 22px 6px" }}>
         <TopBar onBack={onBack} plain />
         <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "2px 0 0" }}>
-          <HIcon name="users" size={24} stroke={PQ.rust} sw={1.8}/>
+          <HIcon name="users" size={24} stroke={PQ.rust} sw={1.8} />
           <h1 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 22, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>{title}</h1>
         </div>
         <p style={{ margin: "9px 0 0", fontSize: 13.5, lineHeight: 1.5, color: PQ.inkSoft }}>{subtitle}</p>
@@ -1828,7 +1860,7 @@ function GameConfigScreen({ onBack, onCreate, onInvite, onShare, title = "Create
         {/* consolidated Game Setup: variant + rounds */}
         <CfgSection label="Game Setup">
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            <VariantCounter letter="W" name="West" subtitle="Goulash" value={west} onChange={setWest}/>
+            <VariantCounter letter="W" name="West" subtitle="Goulash" value={west} onChange={setWest} />
           </div>
         </CfgSection>
 
@@ -1836,13 +1868,13 @@ function GameConfigScreen({ onBack, onCreate, onInvite, onShare, title = "Create
         <CfgSection label="Turn Timer" hint={timerOn ? `${secs}s · ${tier}` : "Off"}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14 }}>
             <div style={{ fontFamily: HERO, fontWeight: 600, fontSize: 12.5, color: PQ.ink }}>Enable / Disable Turn Timer</div>
-            <Toggle on={timerOn} onChange={() => setTimerOn((v) => !v)}/>
+            <Toggle on={timerOn} onChange={() => setTimerOn((v) => !v)} />
           </div>
           {timerOn && (<>
             <input type="range" min={0} max={100} step={1} value={pos} onChange={(e) => setPos(+e.target.value)}
-              style={{ width: "100%", marginTop: 16, accentColor: PQ.rust, height: 6, cursor: "pointer", outline: "none", border: "none", borderRadius: 3, background: `linear-gradient(to right, ${PQ.rust} 0%, ${PQ.rust} ${pos}%, #C8C0AE ${pos}%, #C8C0AE 100%)` }}/>
+              style={{ width: "100%", marginTop: 16, accentColor: PQ.rust, height: 6, cursor: "pointer", outline: "none", border: "none", borderRadius: 3, background: `linear-gradient(to right, ${PQ.rust} 0%, ${PQ.rust} ${pos}%, #C8C0AE ${pos}%, #C8C0AE 100%)` }} />
             <div style={{ position: "relative", height: 32, marginTop: 8 }}>
-              {[["Slow","60s",0],["Medium","30s",60],["Fast","10s",100]].map(([t, sLabel, fp]) => (
+              {[["Slow", "60s", 0], ["Medium", "30s", 60], ["Fast", "10s", 100]].map(([t, sLabel, fp]) => (
                 <div key={t} style={{ position: "absolute", left: fp + "%", transform: `translateX(${fp === 0 ? "0" : fp === 100 ? "-100%" : "-50%"})`, textAlign: "center" }}>
                   <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color: tier === t ? PQ.rust : PQ.inkFaint }}>{t}</div>
                   <div style={{ marginTop: 2, fontSize: 10, color: PQ.inkFaint }}>{sLabel}</div>
@@ -1856,8 +1888,8 @@ function GameConfigScreen({ onBack, onCreate, onInvite, onShare, title = "Create
         {/* player access */}
         <CfgSection label="Player Access">
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            <AccessOption icon="users" title="Public" desc="Visible to all players in the public lobby" active={access === "public"} onTap={() => setAccess("public")}/>
-            <AccessOption icon="lock" title="Private" desc="Accessible only via invitation link or room code" active={access === "private"} onTap={() => setAccess("private")}/>
+            <AccessOption icon="users" title="Public" desc="Visible to all players in the public lobby" active={access === "public"} onTap={() => setAccess("public")} />
+            <AccessOption icon="lock" title="Private" desc="Accessible only via invitation link or room code" active={access === "private"} onTap={() => setAccess("private")} />
           </div>
         </CfgSection>
 
@@ -1869,17 +1901,17 @@ function GameConfigScreen({ onBack, onCreate, onInvite, onShare, title = "Create
                 <div style={{ display: "flex", gap: 8 }}>
                   <button onClick={copyCode} className="pq-press" style={{ width: 42, height: 42, border: `1.5px solid ${copied ? "#1FA855" : PQ.line}`, borderRadius: 12, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     {copied
-                      ? <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1FA855" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>
-                      : <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke={PQ.inkSoft} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="8.5" y="8.5" width="11" height="11" rx="2.5"/><path d="M5.5 15.5H5A1.5 1.5 0 013.5 14V5A1.5 1.5 0 015 3.5h9A1.5 1.5 0 0115.5 5v.5"/></svg>}
+                      ? <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1FA855" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7" /></svg>
+                      : <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke={PQ.inkSoft} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="8.5" y="8.5" width="11" height="11" rx="2.5" /><path d="M5.5 15.5H5A1.5 1.5 0 013.5 14V5A1.5 1.5 0 015 3.5h9A1.5 1.5 0 0115.5 5v.5" /></svg>}
                   </button>
                   <button onClick={() => { pock("select"); onShare && onShare(); }} className="pq-press" style={{ width: 42, height: 42, border: `1.5px solid ${PQ.line}`, borderRadius: 12, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1FA855" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1z"/></svg>
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1FA855" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1z" /></svg>
                   </button>
                 </div>
               </div>
-              {copied && <div className="pq-toast" style={{ position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)", display: "inline-flex", alignItems: "center", gap: 7, height: 34, padding: "0 16px", borderRadius: 999, background: PQ.green, color: PQ.off, fontFamily: HERO, fontWeight: 700, fontSize: 11.5, letterSpacing: "0.08em", textTransform: "uppercase", boxShadow: "0 8px 20px -8px rgba(20,51,34,0.6)", zIndex: 5 }}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={PQ.off} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Code Copied</div>}
+              {copied && <div className="pq-toast" style={{ position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)", display: "inline-flex", alignItems: "center", gap: 7, height: 34, padding: "0 16px", borderRadius: 999, background: PQ.green, color: PQ.off, fontFamily: HERO, fontWeight: 700, fontSize: 11.5, letterSpacing: "0.08em", textTransform: "uppercase", boxShadow: "0 8px 20px -8px rgba(20,51,34,0.6)", zIndex: 5 }}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={PQ.off} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7" /></svg>Code Copied</div>}
               <button onClick={() => { pock("select"); setInviteOpen(true); }} className="pq-press" style={{ marginTop: 12, width: "100%", height: 44, border: `1.5px dashed ${PQ.lineMid}`, borderRadius: 12, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, fontFamily: HERO, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.rust }}>
-                <Icon name="plus" size={18} stroke={PQ.rust}/>Invite by username
+                <Icon name="plus" size={18} stroke={PQ.rust} />Invite by username
               </button>
             </div>
           </CfgSection>
@@ -1888,7 +1920,7 @@ function GameConfigScreen({ onBack, onCreate, onInvite, onShare, title = "Create
       <div style={{ padding: "14px 22px 26px", borderTop: `1px solid ${PQ.line}`, background: PQ.off }}>
         <Btn variant="primary" disabled={!canCreate} onClick={() => { pock("select"); onCreate && onCreate(); }}>{title}</Btn>
       </div>
-      {inviteOpen && <InvitePlayersModal onClose={() => setInviteOpen(false)}/>}
+      {inviteOpen && <InvitePlayersModal onClose={() => setInviteOpen(false)} />}
     </div>
   );
 }
@@ -2018,8 +2050,10 @@ function Tile({ suit, value, w = 32, faceDown, side, selected, raised, onTap, st
         border: "1px solid rgba(249,242,228,0.12)", position: "relative", overflow: "hidden",
         boxShadow: "0 1px 2px rgba(0,0,0,0.35)", ...style,
       }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage:
-          "repeating-linear-gradient(45deg, rgba(249,242,228,0.09) 0 1.5px, transparent 1.5px 6px), repeating-linear-gradient(-45deg, rgba(249,242,228,0.07) 0 1.5px, transparent 1.5px 6px)" }} />
+        <div style={{
+          position: "absolute", inset: 0, backgroundImage:
+            "repeating-linear-gradient(45deg, rgba(249,242,228,0.09) 0 1.5px, transparent 1.5px 6px), repeating-linear-gradient(-45deg, rgba(249,242,228,0.07) 0 1.5px, transparent 1.5px 6px)"
+        }} />
         <div style={{ position: "absolute", inset: "24% 28%", borderRadius: 3, border: "1px solid rgba(203,124,85,0.45)" }} />
       </div>
     );
@@ -2071,9 +2105,11 @@ function TimerArc({ pct, secs, size = 36 }) {
           strokeDasharray={c} strokeDashoffset={c * (1 - pct)} strokeLinecap="round"
           style={{ transition: "stroke-dashoffset .9s linear, stroke .3s" }} />
       </svg>
-      <span className={danger ? "pq-timer-pulse" : ""} style={{ position: "absolute", inset: 0, display: "flex",
+      <span className={danger ? "pq-timer-pulse" : ""} style={{
+        position: "absolute", inset: 0, display: "flex",
         alignItems: "center", justifyContent: "center", fontFamily: HERO, fontWeight: 700,
-        fontSize: 13, color: danger ? GP.purple : GP.cream }}>{secs}</span>
+        fontSize: 13, color: danger ? GP.purple : GP.cream
+      }}>{secs}</span>
     </div>
   );
 }
@@ -2089,14 +2125,18 @@ function Nameplate({ name, wind, tiles, score, tier, flowers = 0, active, bot, d
       borderRadius: 13, padding: "6px 9px",
       boxShadow: active ? "0 6px 18px -8px rgba(199,125,214,0.5)" : "0 4px 14px -8px rgba(0,0,0,0.55)",
     }}>
-      <span style={{ width: 26, height: 26, borderRadius: 8, flexShrink: 0, display: "flex", alignItems: "center",
+      <span style={{
+        width: 26, height: 26, borderRadius: 8, flexShrink: 0, display: "flex", alignItems: "center",
         justifyContent: "center", background: active ? GP.purple : "rgba(244,236,221,0.1)",
         border: `1px solid ${active ? GP.purpleSoft : "rgba(244,236,221,0.2)"}`,
-        fontFamily: HERO, fontWeight: 700, fontSize: 13, color: active ? "#2A1A38" : GP.cream }}>{wind}</span>
+        fontFamily: HERO, fontWeight: 700, fontSize: 13, color: active ? "#2A1A38" : GP.cream
+      }}>{wind}</span>
       <div style={{ minWidth: 0, textAlign: "left" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-          <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 12, letterSpacing: "0.02em",
-            color: GP.cream, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: 96 }}>{name}</span>
+          <span style={{
+            fontFamily: HERO, fontWeight: 700, fontSize: 12, letterSpacing: "0.02em",
+            color: GP.cream, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: 96
+          }}>{name}</span>
           {flowers > 0 && <span style={{ display: "inline-flex", alignItems: "center", gap: 2 }}>
             {Array.from({ length: flowers }).map((_, i) => <span key={i} style={{ width: 5, height: 5, borderRadius: "50%", background: GP.frameSoft }} />)}
           </span>}
@@ -2124,14 +2164,18 @@ function Nameplate({ name, wind, tiles, score, tier, flowers = 0, active, bot, d
 function Compass({ prevailing = "E" }) {
   const winds = [["N", "50%", "8%"], ["E", "84%", "50%"], ["S", "50%", "84%"], ["W", "16%", "50%"]];
   return (
-    <div style={{ position: "relative", width: 46, height: 46, borderRadius: 12,
+    <div style={{
+      position: "relative", width: 46, height: 46, borderRadius: 12,
       background: "rgba(10,28,18,0.55)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)",
-      border: "1px solid rgba(249,242,228,0.16)" }}>
+      border: "1px solid rgba(249,242,228,0.16)"
+    }}>
       <div style={{ position: "absolute", inset: 13, transform: "rotate(45deg)", border: "1px solid rgba(249,242,228,0.25)", borderRadius: 3 }} />
       {winds.map(([w, l, t]) => (
-        <span key={w} style={{ position: "absolute", left: l, top: t, transform: "translate(-50%,-50%)",
+        <span key={w} style={{
+          position: "absolute", left: l, top: t, transform: "translate(-50%,-50%)",
           fontFamily: HERO, fontWeight: 700, fontSize: 10,
-          color: w === prevailing ? PQ.rustSoft : "rgba(249,242,228,0.5)" }}>{w}</span>
+          color: w === prevailing ? PQ.rustSoft : "rgba(249,242,228,0.5)"
+        }}>{w}</span>
       ))}
     </div>
   );
@@ -2140,10 +2184,12 @@ function Compass({ prevailing = "E" }) {
 // ── Round / wall info pill ───────────────────────────────────────
 function InfoPill({ children }) {
   return (
-    <div style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "6px 12px", borderRadius: 999,
+    <div style={{
+      display: "inline-flex", alignItems: "center", gap: 7, padding: "6px 12px", borderRadius: 999,
       background: "rgba(10,28,18,0.5)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)",
       border: "1px solid rgba(249,242,228,0.16)", fontFamily: HERO, fontWeight: 700, fontSize: 11,
-      letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(249,242,228,0.82)" }}>{children}</div>
+      letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(249,242,228,0.82)"
+    }}>{children}</div>
   );
 }
 
@@ -2153,10 +2199,12 @@ function EdgeStrip({ side, name, tier, pts, disconnected, exposed = [] }) {
   const rot = isLeft ? "rotate(180deg)" : "none";
   const lbl = { writingMode: "vertical-rl", transform: rot, fontFamily: HERO, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", whiteSpace: "nowrap" };
   return (
-    <div style={{ position: "absolute", [isLeft ? "left" : "right"]: 10, top: 56, bottom: 150, width: 54, zIndex: 6,
+    <div style={{
+      position: "absolute", [isLeft ? "left" : "right"]: 10, top: 56, bottom: 150, width: 54, zIndex: 6,
       display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 12,
       background: GP.panel, border: `1.5px solid ${GP.frame}`, borderRadius: 12,
-      boxShadow: "inset 0 0 20px rgba(0,0,0,0.35)", padding: "10px 0" }}>
+      boxShadow: "inset 0 0 20px rgba(0,0,0,0.35)", padding: "10px 0"
+    }}>
       <span style={{ ...lbl, fontSize: 11.5, color: GP.cream }}>{name}</span>
       {disconnected
         ? <span style={{ ...lbl, fontSize: 10, color: GP.purpleSoft }}>Reconnecting</span>
@@ -2362,10 +2410,12 @@ function GameScreen({ onExit, demo = {} }) {
   // ── reference gameplay palette (dark casino table on beige) ──
   const OSW = "'Oswald', 'Hero', sans-serif";
   const PF = "'Playfair Display', serif";
-  const RG = { bg: "#ded6c4", table: "#242424", panel: "linear-gradient(#34373b,#26282b)", panelBorder: "#565b5f",
+  const RG = {
+    bg: "#ded6c4", table: "#242424", panel: "linear-gradient(#34373b,#26282b)", panelBorder: "#565b5f",
     cream: "#f3ecdc", label: "#b7bdb5", labelDim: "#8a9a8c", teal: "#6fa0ae", scoreBox: "#0a1a10",
     gold: "#d8a53a", tierGold: "#9a7c44", youBlue: "#3a5f86", youGold: "#c9a24a", rust: "#c47a34", orange: "#c76334", ptGrey: "#888e92", gameGrey: "#757b80",
-    btn: "linear-gradient(#3a3d40,#2a2c2e)", btnText: "#dfe6da", menuText: "#cfd8cc" };
+    btn: "linear-gradient(#3a3d40,#2a2c2e)", btnText: "#dfe6da", menuText: "#cfd8cc"
+  };
   // static opponent exposed melds (mapped to this app's tile renderer)
   const oppMelds = [
     [{ suit: "char", value: 3 }, { suit: "char", value: 4 }, { suit: "char", value: 5 }],
@@ -2395,9 +2445,11 @@ function GameScreen({ onExit, demo = {} }) {
 
   // vertical side panel (North / South opponents) — narrowed; left panel clears the phone notch
   const SidePanel = ({ side, wind, name, av }) => (
-    <div style={{ position: "absolute", [side]: side === "left" ? 20 : 8, top: 32, width: 92, bottom: 60, zIndex: 4,
+    <div style={{
+      position: "absolute", [side]: side === "left" ? 20 : 8, top: 32, width: 92, bottom: 60, zIndex: 4,
       background: RG.panel, border: `2px solid ${RG.panelBorder}`, borderRadius: 12, padding: 7,
-      boxShadow: "inset 0 0 18px rgba(0,0,0,0.5)", overflow: "hidden" }}>
+      boxShadow: "inset 0 0 18px rgba(0,0,0,0.5)", overflow: "hidden"
+    }}>
       <div style={{ display: "flex", gap: 6 }}>
         <div style={{ flexShrink: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
           <span style={{ width: 38, height: 38, borderRadius: "50%", overflow: "hidden", border: "2px solid #c9b48a", display: "block" }}>
@@ -2435,8 +2487,10 @@ function GameScreen({ onExit, demo = {} }) {
   return (
     <div style={{ position: "absolute", inset: 0, overflow: "hidden", background: RG.bg, fontFamily: OSW }}>
       {/* dark casino table */}
-      <div style={{ position: "absolute", inset: 4, background: RG.table, borderRadius: 22,
-        boxShadow: "inset 0 0 0 2px #3a3a3a, inset 0 0 40px rgba(0,0,0,0.6)", pointerEvents: "none" }} />
+      <div style={{
+        position: "absolute", inset: 4, background: RG.table, borderRadius: 22,
+        boxShadow: "inset 0 0 0 2px #3a3a3a, inset 0 0 40px rgba(0,0,0,0.6)", pointerEvents: "none"
+      }} />
 
       {/* TOP BAR */}
       <div style={{ position: "absolute", left: 12, top: 8, right: 12, height: 26, zIndex: 12, display: "flex", alignItems: "stretch" }}>
@@ -2457,12 +2511,12 @@ function GameScreen({ onExit, demo = {} }) {
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, paddingLeft: 14 }}>
           <button onClick={() => setMenuOpen(true)} className="pq-press" style={{ height: 22, display: "flex", alignItems: "center", gap: 5, padding: "0 10px", border: `1.5px solid ${RG.panelBorder}`, borderRadius: 7, background: RG.btn, cursor: "pointer" }}>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="#cbd3cb"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="#cbd3cb"><rect x="6" y="4" width="4" height="16" rx="1" /><rect x="14" y="4" width="4" height="16" rx="1" /></svg>
             <span style={{ fontFamily: OSW, fontSize: 10, letterSpacing: "0.12em", color: RG.gameGrey, fontWeight: 600 }}>PAUSE</span>
           </button>
           <button onClick={() => onExit && onExit("home")} className="pq-press" style={{ height: 22, display: "flex", alignItems: "center", gap: 5, padding: "0 10px", border: `1.5px solid ${RG.panelBorder}`, borderRadius: 7, background: RG.btn, cursor: "pointer" }}>
             <span style={{ fontFamily: OSW, fontSize: 10, letterSpacing: "0.12em", color: RG.gameGrey, fontWeight: 600 }}>EXIT</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#cbd3cb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 4H6a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#cbd3cb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 4H6a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4" /><path d="M16 17l5-5-5-5" /><path d="M21 12H9" /></svg>
           </button>
         </div>
       </div>
@@ -2472,8 +2526,10 @@ function GameScreen({ onExit, demo = {} }) {
       <SidePanel side="right" wind="SOUTH" name="Sam" av={seatAv(2)} />
 
       {/* TOP HAND (West player, exposed melds) */}
-      <div style={{ position: "absolute", left: 112, top: 32, width: 588, height: 44, zIndex: 4,
-        background: RG.panel, border: `2px solid ${RG.panelBorder}`, borderRadius: 10, display: "flex", alignItems: "center", padding: "0 8px", gap: 10 }}>
+      <div style={{
+        position: "absolute", left: 112, top: 32, width: 588, height: 44, zIndex: 4,
+        background: RG.panel, border: `2px solid ${RG.panelBorder}`, borderRadius: 10, display: "flex", alignItems: "center", padding: "0 8px", gap: 10
+      }}>
         <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
           <span style={{ width: 32, height: 32, borderRadius: "50%", overflow: "hidden", border: `2px solid ${RG.youBlue}`, display: "block" }}>
             <img src={seatAv(0)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
@@ -2491,10 +2547,12 @@ function GameScreen({ onExit, demo = {} }) {
       </div>
 
       {/* CENTER FELT — discard pile + dragon watermark + scroll chevron */}
-      <div style={{ position: "absolute", left: 112, top: 80, width: 588, height: 150, zIndex: 3,
+      <div style={{
+        position: "absolute", left: 112, top: 80, width: 588, height: 150, zIndex: 3,
         background: "radial-gradient(ellipse 62% 90% at 50% 46%, #3d3d3d 0%, #2c2c2c 46%, #202020 74%, #191919 100%)",
         border: "2px solid #a05a24", borderRadius: 12, boxShadow: "inset 0 0 34px rgba(0,0,0,0.75)", overflow: "hidden",
-        display: "flex", alignItems: "center", justifyContent: "center", padding: 8 }}>
+        display: "flex", alignItems: "center", justifyContent: "center", padding: 8
+      }}>
         <img src={DRAGON_GREEN_SRC} alt="Poquito" draggable={false} style={{ position: "absolute", left: "50%", top: "47%", transform: "translate(-50%,-50%)", height: 118, width: "auto", opacity: 0.5, pointerEvents: "none" }} />
         <div style={{ position: "relative", display: "flex", flexWrap: "wrap", gap: 2, justifyContent: "center", alignContent: "center", maxHeight: "100%", overflow: "hidden" }}>
           {pool.map((t, i) => <Tile key={i} suit={t.suit} value={t.value} w={discardW} raised={i === pool.length - 1} />)}
@@ -2510,8 +2568,10 @@ function GameScreen({ onExit, demo = {} }) {
       </div>
 
       {/* YOUR EXPOSED AREA (rust border + glow on your turn) — extends to end of buttons */}
-      <div style={{ position: "absolute", left: 108, top: 234, width: 592, height: 66, zIndex: 4,
-        border: `2px solid ${expBorder}`, borderRadius: 12, boxShadow: expShadow }} />
+      <div style={{
+        position: "absolute", left: 108, top: 234, width: 592, height: 66, zIndex: 4,
+        border: `2px solid ${expBorder}`, borderRadius: 12, boxShadow: expShadow
+      }} />
       {/* exposed tiles inside the area: flowers group + centred rust vertical divider + exposed melds */}
       <div className="pq-scroll" style={{ position: "absolute", left: 118, top: 240, width: 412, height: 54, zIndex: 5, display: "flex", alignItems: "center", gap: 6, overflowX: "auto" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 2, flexShrink: 0 }}>
@@ -2525,36 +2585,46 @@ function GameScreen({ onExit, demo = {} }) {
       </div>
 
       {/* MAHJONG / LET'S GO + CLAIM / DIB DAB + DRAW / WALLING */}
-      <button onClick={() => { if (exchange) { setExchange(false); resetTimer(); } else if (mahjongReady) setWon(true); }} className={(!exchange && mahjongReady) ? "pq-mahjong-glow" : "pq-press"} style={{ position: "absolute", left: 546, top: 234, width: 90, height: 66, zIndex: 6,
+      <button onClick={() => { if (exchange) { setExchange(false); resetTimer(); } else if (mahjongReady) setWon(true); }} className={(!exchange && mahjongReady) ? "pq-mahjong-glow" : "pq-press"} style={{
+        position: "absolute", left: 546, top: 234, width: 90, height: 66, zIndex: 6,
         background: PQ.rust, border: `2px solid ${PQ.rust}`, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center",
-        boxShadow: "0 3px 8px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.25)", cursor: "pointer" }}>
+        boxShadow: "0 3px 8px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.25)", cursor: "pointer"
+      }}>
         <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: exchange ? 18 : 20, color: "#fbf3e4", textAlign: "center", lineHeight: 1.05, letterSpacing: "0.02em" }}>{exchange ? "Let's Go" : "Mahjong"}</span>
       </button>
       {exchange ? (
         <>
-          <button onClick={() => { pock("select"); setDibDab((n) => Math.min(3, n + 1)); }} className="pq-press" style={{ position: "absolute", left: 642, top: 234, width: 58, height: 31, zIndex: 6,
-            background: RG.btn, border: `1.5px solid ${RG.rust}`, borderRadius: 9, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 2, cursor: "pointer" }}>
+          <button onClick={() => { pock("select"); setDibDab((n) => Math.min(3, n + 1)); }} className="pq-press" style={{
+            position: "absolute", left: 642, top: 234, width: 58, height: 31, zIndex: 6,
+            background: RG.btn, border: `1.5px solid ${RG.rust}`, borderRadius: 9, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 2, cursor: "pointer"
+          }}>
             <span style={{ fontFamily: OSW, fontSize: 10.5, letterSpacing: "0.06em", color: RG.rust, fontWeight: 700 }}>DIB DAB</span>
             <span style={{ display: "flex", gap: 3 }}>{[0, 1, 2].map((i) => <span key={i} style={{ width: 4, height: 4, borderRadius: "50%", background: i < dibDab ? PQ.rust : "rgba(196,122,52,0.3)" }} />)}</span>
           </button>
-          <button onClick={() => { pock("select"); setWalling((n) => Math.min(3, n + 1)); }} className="pq-press" style={{ position: "absolute", left: 642, top: 269, width: 58, height: 31, zIndex: 6,
-            background: RG.btn, border: `1.5px solid ${RG.rust}`, borderRadius: 9, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 2, cursor: "pointer" }}>
+          <button onClick={() => { pock("select"); setWalling((n) => Math.min(3, n + 1)); }} className="pq-press" style={{
+            position: "absolute", left: 642, top: 269, width: 58, height: 31, zIndex: 6,
+            background: RG.btn, border: `1.5px solid ${RG.rust}`, borderRadius: 9, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 2, cursor: "pointer"
+          }}>
             <span style={{ fontFamily: OSW, fontSize: 10.5, letterSpacing: "0.06em", color: RG.rust, fontWeight: 700 }}>WALLING</span>
             <span style={{ display: "flex", gap: 3 }}>{[0, 1, 2].map((i) => <span key={i} style={{ width: 4, height: 4, borderRadius: "50%", background: i < walling ? PQ.rust : "rgba(196,122,52,0.3)" }} />)}</span>
           </button>
         </>
       ) : (
         <>
-      <button onClick={claim} disabled={!actions.length} className={actions.length ? "pq-press" : ""} style={{ position: "absolute", left: 642, top: 234, width: 58, height: 31, zIndex: 6,
-        background: RG.btn, border: `1.5px solid ${actions.length ? RG.rust : "rgba(86,91,95,0.5)"}`, borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center",
-        cursor: actions.length ? "pointer" : "not-allowed" }}>
-        <span style={{ fontFamily: OSW, fontSize: 13, letterSpacing: "0.1em", color: RG.rust, fontWeight: 700 }}>CLAIM</span>
-      </button>
-      <button onClick={drawTile} disabled={!!drawn} className={drawn ? "" : "pq-press"} style={{ position: "absolute", left: 642, top: 269, width: 58, height: 31, zIndex: 6,
-        background: RG.btn, border: `1.5px solid ${drawn ? "rgba(86,91,95,0.5)" : RG.rust}`, borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center",
-        cursor: drawn ? "not-allowed" : "pointer" }}>
-        <span style={{ fontFamily: OSW, fontSize: 13, letterSpacing: "0.1em", color: RG.rust, fontWeight: 700 }}>DRAW</span>
-      </button>
+          <button onClick={claim} disabled={!actions.length} className={actions.length ? "pq-press" : ""} style={{
+            position: "absolute", left: 642, top: 234, width: 58, height: 31, zIndex: 6,
+            background: RG.btn, border: `1.5px solid ${actions.length ? RG.rust : "rgba(86,91,95,0.5)"}`, borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center",
+            cursor: actions.length ? "pointer" : "not-allowed"
+          }}>
+            <span style={{ fontFamily: OSW, fontSize: 13, letterSpacing: "0.1em", color: RG.rust, fontWeight: 700 }}>CLAIM</span>
+          </button>
+          <button onClick={drawTile} disabled={!!drawn} className={drawn ? "" : "pq-press"} style={{
+            position: "absolute", left: 642, top: 269, width: 58, height: 31, zIndex: 6,
+            background: RG.btn, border: `1.5px solid ${drawn ? "rgba(86,91,95,0.5)" : RG.rust}`, borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center",
+            cursor: drawn ? "not-allowed" : "pointer"
+          }}>
+            <span style={{ fontFamily: OSW, fontSize: 13, letterSpacing: "0.1em", color: RG.rust, fontWeight: 700 }}>DRAW</span>
+          </button>
         </>
       )}
 
@@ -2565,7 +2635,7 @@ function GameScreen({ onExit, demo = {} }) {
           <span style={{ fontFamily: OSW, fontSize: 8, letterSpacing: "0.1em", color: RG.menuText }}>MENU</span>
         </button>
         <button onClick={() => onExit && onExit("info")} className="pq-press" style={{ background: "none", border: "none", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: 4, padding: 0 }}>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={RG.menuText} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.2 9a2.8 2.8 0 015.6.3c0 1.9-2.8 2.5-2.8 4.2"/><circle cx="12" cy="17.6" r="0.5" fill={RG.menuText} stroke="none"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={RG.menuText} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.2 9a2.8 2.8 0 015.6.3c0 1.9-2.8 2.5-2.8 4.2" /><circle cx="12" cy="17.6" r="0.5" fill={RG.menuText} stroke="none" /></svg>
           <span style={{ fontFamily: OSW, fontSize: 8, letterSpacing: "0.1em", color: RG.menuText }}>RULES</span>
         </button>
       </div>
@@ -2602,11 +2672,11 @@ function GameScreen({ onExit, demo = {} }) {
       {/* TIMER + SORT (bottom-right) */}
       <div style={{ position: "absolute", right: 12, bottom: 8, width: 96, display: "flex", flexDirection: "column", alignItems: "center", gap: 5, zIndex: 6 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={RG.orange} strokeWidth="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2"/><path d="M9 2h6"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={RG.orange} strokeWidth="2"><circle cx="12" cy="13" r="8" /><path d="M12 9v4l2.5 2" /><path d="M9 2h6" /></svg>
           <span style={{ fontFamily: OSW, fontWeight: 700, fontSize: 15, color: RG.orange }}>0:{String(secs).padStart(2, "0")}</span>
         </div>
         <button onClick={sortHand} className="pq-press" style={{ width: 96, height: 44, background: RG.btn, border: `1.5px solid ${RG.panelBorder}`, borderRadius: 11, display: "flex", alignItems: "center", justifyContent: "center", gap: 7, cursor: "pointer" }}>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke={RG.btnText} strokeWidth="2" strokeLinecap="round"><path d="M4 6h13M4 12h9M4 18h5"/><path d="M18 15l3 3 3-3M21 18V9"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke={RG.btnText} strokeWidth="2" strokeLinecap="round"><path d="M4 6h13M4 12h9M4 18h5" /><path d="M18 15l3 3 3-3M21 18V9" /></svg>
           <span style={{ fontFamily: OSW, fontSize: 14, letterSpacing: "0.1em", color: RG.btnText, fontWeight: 600 }}>SORT</span>
         </button>
       </div>
@@ -2624,11 +2694,11 @@ function GameScreen({ onExit, demo = {} }) {
           <div onClick={(e) => e.stopPropagation()} className="pq-pop-in" style={{ width: 320, maxHeight: "86%", overflowY: "auto", background: PQ.off, borderRadius: 20, boxShadow: "0 24px 60px -20px rgba(0,0,0,0.6)" }}>
             <div style={{ padding: "16px 18px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: `1px solid ${PQ.line}` }}>
               <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 14, letterSpacing: "0.06em", textTransform: "uppercase", color: PQ.ink }}>Menu</span>
-              <button onClick={() => setMenuOpen(false)} className="pq-press" style={{ width: 32, height: 32, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="close" size={16} stroke={PQ.ink} sw={1.9}/></button>
+              <button onClick={() => setMenuOpen(false)} className="pq-press" style={{ width: 32, height: 32, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="close" size={16} stroke={PQ.ink} sw={1.9} /></button>
             </div>
             <div style={{ padding: "6px 18px 4px", fontFamily: HERO, fontWeight: 700, fontSize: 10.5, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.inkFaint, marginTop: 8 }}>Game Settings</div>
             {["Tile Configuration", "Turn Timer", "Sound", "Haptic", "Volume", "Layout"].map((s) => (
-              <button key={s} onClick={() => pock("select")} className="pq-press" style={{ ...menuRow, display: "flex", alignItems: "center", justifyContent: "space-between" }}>{s}<Icon name="chevR" size={16} stroke={PQ.inkFaint}/></button>
+              <button key={s} onClick={() => pock("select")} className="pq-press" style={{ ...menuRow, display: "flex", alignItems: "center", justifyContent: "space-between" }}>{s}<Icon name="chevR" size={16} stroke={PQ.inkFaint} /></button>
             ))}
             <div style={{ padding: "12px 18px 4px", fontFamily: HERO, fontWeight: 700, fontSize: 10.5, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.inkFaint }}>More</div>
             <button onClick={() => { setMenuOpen(false); onExit && onExit("info"); }} className="pq-press" style={menuRow}>Rules</button>
@@ -2640,18 +2710,24 @@ function GameScreen({ onExit, demo = {} }) {
 
       {/* win celebration (light, in-flow — not a separate end screen) */}
       {won && (
-        <div className="pq-modal-backdrop" onClick={() => setWon(false)} style={{ position: "absolute", inset: 0, zIndex: 30,
-          background: "rgba(10,28,18,0.72)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 28 }}>
+        <div className="pq-modal-backdrop" onClick={() => setWon(false)} style={{
+          position: "absolute", inset: 0, zIndex: 30,
+          background: "rgba(10,28,18,0.72)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 28
+        }}>
           <div className="pq-pop-in" style={{ textAlign: "center" }}>
-            <div className="pq-mahjong-glow" style={{ width: 96, height: 96, margin: "0 auto", borderRadius: "50%",
+            <div className="pq-mahjong-glow" style={{
+              width: 96, height: 96, margin: "0 auto", borderRadius: "50%",
               background: `linear-gradient(160deg, ${GOLD_SOFT}, ${GOLD} 55%, ${GOLD_DEEP})`, display: "flex", alignItems: "center", justifyContent: "center",
-              border: "2px solid #EBCE81" }}>
+              border: "2px solid #EBCE81"
+            }}>
               <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 30, color: "#3A2A06" }}>萬</span>
             </div>
             <div style={{ marginTop: 18, fontFamily: HERO, fontWeight: 700, fontSize: 30, letterSpacing: "0.08em", textTransform: "uppercase", color: PQ.off }}>Mahjong!</div>
             <div style={{ marginTop: 8, fontSize: 13.5, color: "rgba(249,242,228,0.7)" }}>Self-drawn · East Round · +120 points</div>
-            <button onClick={() => { setWon(false); onExit && onExit("results"); }} className="pq-press" style={{ marginTop: 20, height: 46, padding: "0 26px", borderRadius: 13,
-              background: PQ.rust, border: "none", color: PQ.off, fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase", cursor: "pointer" }}>Continue</button>
+            <button onClick={() => { setWon(false); onExit && onExit("results"); }} className="pq-press" style={{
+              marginTop: 20, height: 46, padding: "0 26px", borderRadius: 13,
+              background: PQ.rust, border: "none", color: PQ.off, fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase", cursor: "pointer"
+            }}>Continue</button>
           </div>
         </div>
       )}
@@ -2674,27 +2750,27 @@ const PE_AV = (typeof window !== "undefined" && window.__resources && window.__r
 function XIcon({ name, size = 20, stroke = "currentColor", sw = 1.7, style }) {
   const p = { fill: "none", stroke, strokeWidth: sw, strokeLinecap: "round", strokeLinejoin: "round" };
   const paths = {
-    search:  <g {...p}><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></g>,
-    bell:    <g {...p}><path d="M6 9a6 6 0 1112 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 20a2 2 0 004 0"/></g>,
-    chevR:   <g {...p}><path d="M9 5l7 7-7 7"/></g>,
-    copy:    <g {...p}><rect x="8.5" y="8.5" width="11" height="11" rx="2.5"/><path d="M5.5 15.5H5a1.5 1.5 0 01-1.5-1.5V5A1.5 1.5 0 015 3.5h9A1.5 1.5 0 0115.5 5v.5"/></g>,
-    share:   <g {...p}><circle cx="6" cy="12" r="2.4"/><circle cx="17.5" cy="6" r="2.4"/><circle cx="17.5" cy="18" r="2.4"/><path d="M8.1 10.9l7.3-3.7M8.1 13.1l7.3 3.7"/></g>,
-    trophy:  <g {...p}><path d="M7 4.5h10v4a5 5 0 01-10 0z"/><path d="M7 6.5H4.5a2.5 2.5 0 002.5 2.5M17 6.5h2.5a2.5 2.5 0 01-2.5 2.5"/><path d="M12 13.5v3M9 20h6M9.5 20a2.5 2.5 0 015 0"/></g>,
-    spark:   <g {...p}><path d="M12 4l1.8 4.7L18.5 10l-4.7 1.8L12 16.5l-1.8-4.7L5.5 10l4.7-1.3z"/></g>,
-    card:    <g {...p}><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10h18"/></g>,
-    doc:     <g {...p}><path d="M7 3.5h7l4 4V20a.5.5 0 01-.5.5h-10A.5.5 0 016 20V4a.5.5 0 01.5-.5z"/><path d="M14 3.5V8h4"/></g>,
-    arrowUp: <g {...p}><path d="M12 19.5V5M6 11l6-6 6 6"/></g>,
-    shield:  <g {...p}><path d="M12 3.5l7 2.5v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.2 12l2 2 3.6-4"/></g>,
-    help:    <g {...p}><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.5a2.4 2.4 0 114 1.8c-.9.7-1.6 1.2-1.6 2.2"/><circle cx="12" cy="16.6" r="0.3" fill={stroke} stroke="none"/></g>,
-    globe:   <g {...p}><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.3 2.4 14.7 0 17M12 3.5c-2.4 2.3-2.4 14.7 0 17"/></g>,
-    timer:   <g {...p}><circle cx="12" cy="13" r="7.5"/><path d="M12 13V9M9.5 3.5h5"/></g>,
-    wa:      <g {...p}><path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.6.8-1.1l-1.4-1-1 .8a4 4 0 01-2.4-2.4l.8-1-1-1.4C9.6 8.5 9 8.9 9 9.5z" fill={stroke} stroke="none"/></g>,
+    search: <g {...p}><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.6-3.6" /></g>,
+    bell: <g {...p}><path d="M6 9a6 6 0 1112 0c0 5 2 6 2 6H4s2-1 2-6z" /><path d="M10 20a2 2 0 004 0" /></g>,
+    chevR: <g {...p}><path d="M9 5l7 7-7 7" /></g>,
+    copy: <g {...p}><rect x="8.5" y="8.5" width="11" height="11" rx="2.5" /><path d="M5.5 15.5H5a1.5 1.5 0 01-1.5-1.5V5A1.5 1.5 0 015 3.5h9A1.5 1.5 0 0115.5 5v.5" /></g>,
+    share: <g {...p}><circle cx="6" cy="12" r="2.4" /><circle cx="17.5" cy="6" r="2.4" /><circle cx="17.5" cy="18" r="2.4" /><path d="M8.1 10.9l7.3-3.7M8.1 13.1l7.3 3.7" /></g>,
+    trophy: <g {...p}><path d="M7 4.5h10v4a5 5 0 01-10 0z" /><path d="M7 6.5H4.5a2.5 2.5 0 002.5 2.5M17 6.5h2.5a2.5 2.5 0 01-2.5 2.5" /><path d="M12 13.5v3M9 20h6M9.5 20a2.5 2.5 0 015 0" /></g>,
+    spark: <g {...p}><path d="M12 4l1.8 4.7L18.5 10l-4.7 1.8L12 16.5l-1.8-4.7L5.5 10l4.7-1.3z" /></g>,
+    card: <g {...p}><rect x="3" y="6" width="18" height="12" rx="2.5" /><path d="M3 10h18" /></g>,
+    doc: <g {...p}><path d="M7 3.5h7l4 4V20a.5.5 0 01-.5.5h-10A.5.5 0 016 20V4a.5.5 0 01.5-.5z" /><path d="M14 3.5V8h4" /></g>,
+    arrowUp: <g {...p}><path d="M12 19.5V5M6 11l6-6 6 6" /></g>,
+    shield: <g {...p}><path d="M12 3.5l7 2.5v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" /><path d="M9.2 12l2 2 3.6-4" /></g>,
+    help: <g {...p}><circle cx="12" cy="12" r="8.5" /><path d="M9.6 9.5a2.4 2.4 0 114 1.8c-.9.7-1.6 1.2-1.6 2.2" /><circle cx="12" cy="16.6" r="0.3" fill={stroke} stroke="none" /></g>,
+    globe: <g {...p}><circle cx="12" cy="12" r="8.5" /><path d="M3.5 12h17M12 3.5c2.4 2.3 2.4 14.7 0 17M12 3.5c-2.4 2.3-2.4 14.7 0 17" /></g>,
+    timer: <g {...p}><circle cx="12" cy="13" r="7.5" /><path d="M12 13V9M9.5 3.5h5" /></g>,
+    wa: <g {...p}><path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1z" /><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.6.8-1.1l-1.4-1-1 .8a4 4 0 01-2.4-2.4l.8-1-1-1.4C9.6 8.5 9 8.9 9 9.5z" fill={stroke} stroke="none" /></g>,
   };
   return <svg width={size} height={size} viewBox="0 0 24 24" style={{ display: "block", ...style }}>{paths[name]}</svg>;
 }
 
 function Star({ on, size = 22 }) {
-  return <svg width={size} height={size} viewBox="0 0 24 24" fill={on ? PQ.rust : "none"} stroke={on ? PQ.rust : PQ.inkFaint} strokeWidth="1.7" strokeLinejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.2 1 5.9L12 17l-5.2 2.7 1-5.9L3.5 9.7l5.9-.9z"/></svg>;
+  return <svg width={size} height={size} viewBox="0 0 24 24" fill={on ? PQ.rust : "none"} stroke={on ? PQ.rust : PQ.inkFaint} strokeWidth="1.7" strokeLinejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.2 1 5.9L12 17l-5.2 2.7 1-5.9L3.5 9.7l5.9-.9z" /></svg>;
 }
 
 // ── shared overlay shell (back header + scroll + optional footer) ─
@@ -2703,12 +2779,12 @@ function Shell({ title, sub, icon, onBack, right, footer, children, pad = true }
     <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", background: PQ.off }}>
       <div style={{ padding: "60px 22px 6px", flexShrink: 0 }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", minHeight: 40 }}>
-          {onBack ? <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8}/></div> : <div/>}
-          {right || <div/>}
+          {onBack ? <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8} /></div> : <div />}
+          {right || <div />}
         </div>
         {title && (
           <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "2px 0 0" }}>
-            {icon && <HIcon name={icon} size={24} stroke={PQ.rust} sw={1.8}/>}
+            {icon && <HIcon name={icon} size={24} stroke={PQ.rust} sw={1.8} />}
             <h1 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 22, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>{title}</h1>
           </div>
         )}
@@ -2737,7 +2813,8 @@ function Seg({ options, value, onChange }) {
         return <button key={o.value} onClick={() => { pock("select"); onChange(o.value); }} className="pq-press" style={{
           flex: 1, height: 38, borderRadius: 9, border: "none", cursor: "pointer",
           background: on ? PQ.rust : "transparent", color: on ? PQ.off : PQ.inkSoft,
-          fontFamily: HERO, fontWeight: 700, fontSize: 12.5, letterSpacing: "0.06em", textTransform: "uppercase" }}>{o.label}</button>;
+          fontFamily: HERO, fontWeight: 700, fontSize: 12.5, letterSpacing: "0.06em", textTransform: "uppercase"
+        }}>{o.label}</button>;
       })}
     </div>
   );
@@ -2750,19 +2827,22 @@ function Row({ icon, label, value, onClick, danger, last, plain }) {
   return (
     <button onClick={onClick} className="pq-press" style={{
       width: "100%", display: "flex", alignItems: "center", gap: 12, padding: "15px 16px", background: PQ.off,
-      border: "none", borderBottom: (last || plain) ? "none" : "1px solid rgba(20,51,34,0.07)", cursor: "pointer", textAlign: "left" }}>
-      {icon && <XIcon name={icon} size={19} stroke={danger ? PQ.rust : PQ.inkSoft}/>}
+      border: "none", borderBottom: (last || plain) ? "none" : "1px solid rgba(20,51,34,0.07)", cursor: "pointer", textAlign: "left"
+    }}>
+      {icon && <XIcon name={icon} size={19} stroke={danger ? PQ.rust : PQ.inkSoft} />}
       <span style={{ flex: 1, fontFamily: HERO, fontWeight: 600, fontSize: 14.5, color: danger ? PQ.rust : PQ.ink }}>{label}</span>
       {value && <span style={{ fontSize: 13, color: PQ.inkFaint }}>{value}</span>}
-      <XIcon name="chevR" size={18} stroke={danger ? PQ.rust : PQ.inkFaint}/>
+      <XIcon name="chevR" size={18} stroke={danger ? PQ.rust : PQ.inkFaint} />
     </button>
   );
 }
 
 function Avi({ ini, size = 54, ring }) {
-  return <span style={{ width: size, height: size, flexShrink: 0, borderRadius: "50%", background: "rgba(20,51,34,0.08)",
+  return <span style={{
+    width: size, height: size, flexShrink: 0, borderRadius: "50%", background: "rgba(20,51,34,0.08)",
     border: `${ring ? 2 : 1.5}px solid ${ring ? PQ.rust : PQ.line}`, display: "flex", alignItems: "center", justifyContent: "center",
-    fontFamily: HERO, fontWeight: 700, fontSize: size * 0.3, color: PQ.green }}>{ini}</span>;
+    fontFamily: HERO, fontWeight: 700, fontSize: size * 0.3, color: PQ.green
+  }}>{ini}</span>;
 }
 
 // ═══════════════ EDIT PROFILE (bottom sheet) — only phone editable ═══════════════
@@ -2778,16 +2858,16 @@ function EditProfileSheet({ onClose }) {
   return (
     <div onClick={onClose} className="pq-modal-backdrop" style={{ position: "absolute", inset: 0, zIndex: 65, background: "rgba(20,51,34,0.45)", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
       <div onClick={(e) => e.stopPropagation()} className="pq-modal-sheet" style={{ width: "100%", background: PQ.off, borderTopLeftRadius: 26, borderTopRightRadius: 26, padding: "14px 22px 30px" }}>
-        <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }}/>
+        <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }} />
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
           <h2 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 18, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Edit Profile</h2>
-          <button onClick={onClose} className="pq-press" style={{ width: 36, height: 36, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="close" size={18} stroke={PQ.ink} sw={1.9}/></button>
+          <button onClick={onClose} className="pq-press" style={{ width: 36, height: 36, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="close" size={18} stroke={PQ.ink} sw={1.9} /></button>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          <ReadRow label="Username" value="avachen88"/>
-          <ReadRow label="Email" value="ava.chen@email.com"/>
-          <Field icon="phone" label="Phone number" value={phone} onChange={(e) => setPhone(e.target.value)} inputMode="numeric" prefix="+91"/>
-          <CitySelect value={city} onChange={(e) => setCity(e.target.value)}/>
+          <ReadRow label="Username" value="avachen88" />
+          <ReadRow label="Email" value="ava.chen@email.com" />
+          <Field icon="phone" label="Phone number" value={phone} onChange={(e) => setPhone(e.target.value)} inputMode="numeric" prefix="+91" />
+          <CitySelect value={city} onChange={(e) => setCity(e.target.value)} />
         </div>
         <div style={{ marginTop: 14, fontSize: 12, color: PQ.inkFaint, lineHeight: 1.45 }}>You can update your phone number and city here.</div>
         <div style={{ marginTop: 18 }}><Btn variant="primary" onClick={onClose}>Save changes</Btn></div>
@@ -2809,26 +2889,26 @@ function ChangePasswordSheet({ onClose }) {
   const mismatch = confirm.length > 0 && next !== confirm;
   const valid = cur.length > 0 && next.length > 0 && next === confirm;
   const save = () => { if (!valid) return; pock("select"); setDone(true); setTimeout(onClose, 1100); };
-  const eye = (on, fn) => <span onClick={fn} style={{ cursor: "pointer" }}><Icon name={on ? "eyeoff" : "eye"} size={19} stroke={PQ.inkFaint}/></span>;
+  const eye = (on, fn) => <span onClick={fn} style={{ cursor: "pointer" }}><Icon name={on ? "eyeoff" : "eye"} size={19} stroke={PQ.inkFaint} /></span>;
   return (
     <div onClick={onClose} className="pq-modal-backdrop" style={{ position: "absolute", inset: 0, zIndex: 66, background: "rgba(20,51,34,0.45)", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
       <div onClick={(e) => e.stopPropagation()} className="pq-modal-sheet" style={{ width: "100%", background: PQ.off, borderTopLeftRadius: 26, borderTopRightRadius: 26, padding: "14px 22px 30px" }}>
-        <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }}/>
+        <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }} />
         {done ? (
           <div style={{ padding: "16px 0 8px", display: "flex", flexDirection: "column", alignItems: "center", gap: 14, textAlign: "center" }}>
-            <span style={{ width: 60, height: 60, borderRadius: "50%", background: "rgba(31,168,85,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1FA855" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span>
+            <span style={{ width: 60, height: 60, borderRadius: "50%", background: "rgba(31,168,85,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1FA855" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7" /></svg></span>
             <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 18, letterSpacing: "0.03em", textTransform: "uppercase", color: PQ.ink }}>Password updated</div>
           </div>
         ) : (<>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
             <h2 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 18, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Change Password</h2>
-            <button onClick={onClose} className="pq-press" style={{ width: 36, height: 36, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="close" size={18} stroke={PQ.ink} sw={1.9}/></button>
+            <button onClick={onClose} className="pq-press" style={{ width: 36, height: 36, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="close" size={18} stroke={PQ.ink} sw={1.9} /></button>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            <Field icon="lock" label="Current password" type={sc ? "text" : "password"} value={cur} onChange={(e) => setCur(e.target.value)} placeholder="Enter current password" right={eye(sc, () => setSc(v => !v))}/>
-            <Field icon="lock" label="New password" type={sn ? "text" : "password"} value={next} onChange={(e) => setNext(e.target.value)} placeholder="Enter new password" right={eye(sn, () => setSn(v => !v))}/>
+            <Field icon="lock" label="Current password" type={sc ? "text" : "password"} value={cur} onChange={(e) => setCur(e.target.value)} placeholder="Enter current password" right={eye(sc, () => setSc(v => !v))} />
+            <Field icon="lock" label="New password" type={sn ? "text" : "password"} value={next} onChange={(e) => setNext(e.target.value)} placeholder="Enter new password" right={eye(sn, () => setSn(v => !v))} />
             <div>
-              <Field icon="lock" label="Confirm new password" type={scf ? "text" : "password"} value={confirm} onChange={(e) => setConfirm(e.target.value)} placeholder="Re-enter new password" state={mismatch ? "error" : match ? "valid" : "idle"} right={eye(scf, () => setScf(v => !v))}/>
+              <Field icon="lock" label="Confirm new password" type={scf ? "text" : "password"} value={confirm} onChange={(e) => setConfirm(e.target.value)} placeholder="Re-enter new password" state={mismatch ? "error" : match ? "valid" : "idle"} right={eye(scf, () => setScf(v => !v))} />
               {match && <Helper state="valid">Passwords match</Helper>}
               {mismatch && <Helper state="error">Passwords don't match</Helper>}
             </div>
@@ -2860,10 +2940,10 @@ function FaqSheet({ onClose }) {
     <div onClick={onClose} className="pq-modal-backdrop" style={{ position: "absolute", inset: 0, zIndex: 66, background: "rgba(20,51,34,0.45)", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
       <div onClick={(e) => e.stopPropagation()} className="pq-modal-sheet" style={{ width: "100%", maxHeight: "80%", background: PQ.off, borderTopLeftRadius: 26, borderTopRightRadius: 26, display: "flex", flexDirection: "column" }}>
         <div style={{ flexShrink: 0, padding: "14px 22px 4px" }}>
-          <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }}/>
+          <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }} />
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
             <h2 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 18, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>FAQ</h2>
-            <button onClick={onClose} className="pq-press" style={{ width: 36, height: 36, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="close" size={18} stroke={PQ.ink} sw={1.9}/></button>
+            <button onClick={onClose} className="pq-press" style={{ width: 36, height: 36, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="close" size={18} stroke={PQ.ink} sw={1.9} /></button>
           </div>
         </div>
         <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", padding: "6px 22px 28px" }}>
@@ -2871,7 +2951,7 @@ function FaqSheet({ onClose }) {
             <div key={i} style={{ borderBottom: `1px solid ${PQ.line}` }}>
               <button onClick={() => setOpen(open === i ? -1 : i)} className="pq-press" style={{ width: "100%", display: "flex", alignItems: "center", gap: 12, padding: "16px 0", background: "none", border: "none", cursor: "pointer", textAlign: "left" }}>
                 <span style={{ flex: 1, fontFamily: HERO, fontWeight: 700, fontSize: 14, color: PQ.ink }}>{q}</span>
-                <span style={{ transform: open === i ? "rotate(180deg)" : "none", transition: "transform .2s", flexShrink: 0 }}><Icon name="chevD" size={18} stroke={PQ.inkFaint}/></span>
+                <span style={{ transform: open === i ? "rotate(180deg)" : "none", transition: "transform .2s", flexShrink: 0 }}><Icon name="chevD" size={18} stroke={PQ.inkFaint} /></span>
               </button>
               {open === i && <div style={{ padding: "0 0 16px", fontSize: 13.5, lineHeight: 1.55, color: PQ.inkSoft }}>{a}</div>}
             </div>
@@ -2897,11 +2977,11 @@ function ConfirmSheet({ kind, onClose, onConfirm }) {
   return (
     <div onClick={onClose} className="pq-modal-backdrop" style={{ position: "absolute", inset: 0, zIndex: 70, background: "rgba(20,51,34,0.5)", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
       <div onClick={(e) => e.stopPropagation()} className="pq-pop-in" style={{ width: "100%", background: PQ.off, borderTopLeftRadius: 26, borderTopRightRadius: 26, padding: "14px 22px 30px" }}>
-        <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }}/>
+        <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }} />
         <span style={{ width: 54, height: 54, borderRadius: "50%", background: isDelete ? "rgba(99,2,6,0.1)" : "rgba(182,90,47,0.1)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
           {isDelete
-            ? <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#630206" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M5 7h14M9 7V5a1.5 1.5 0 011.5-1.5h3A1.5 1.5 0 0115 5v2M7 7l1 12.5a1.5 1.5 0 001.5 1.4h5A1.5 1.5 0 0016 19.5L17 7"/></svg>
-            : <HIcon name="leave" size={24} stroke={PQ.rust} sw={1.9}/>}
+            ? <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#630206" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M5 7h14M9 7V5a1.5 1.5 0 011.5-1.5h3A1.5 1.5 0 0115 5v2M7 7l1 12.5a1.5 1.5 0 001.5 1.4h5A1.5 1.5 0 0016 19.5L17 7" /></svg>
+            : <HIcon name="leave" size={24} stroke={PQ.rust} sw={1.9} />}
         </span>
         <h2 style={{ margin: 0, textAlign: "center", fontFamily: HERO, fontWeight: 700, fontSize: 19, letterSpacing: "0.03em", textTransform: "uppercase", color: PQ.ink }}>{title}</h2>
         <p style={{ margin: "10px 0 22px", textAlign: "center", fontSize: 14, lineHeight: 1.5, color: PQ.inkSoft, whiteSpace: "pre-line" }}>{body}</p>
@@ -2936,11 +3016,11 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
         <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 24, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Profile</div>
         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
           <button onClick={onNotifications} className="pq-press" style={{ position: "relative", width: 42, height: 42, borderRadius: "50%", border: "none", background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <svg width="23" height="23" viewBox="0 0 24 24" fill={PQ.ink} stroke="none"><path d="M12 2.6a6 6 0 00-6 6c0 4.5-1.8 5.7-1.8 5.7-.4.3-.2 1 .3 1h15c.5 0 .7-.7.3-1 0 0-1.8-1.2-1.8-5.7a6 6 0 00-6-6z"/><path d="M10 19.5a2 2 0 004 0z"/></svg>
-            <span style={{ position: "absolute", top: 8, right: 9, width: 8, height: 8, borderRadius: "50%", background: PQ.rust, border: `1.5px solid ${PQ.off}` }}/>
+            <svg width="23" height="23" viewBox="0 0 24 24" fill={PQ.ink} stroke="none"><path d="M12 2.6a6 6 0 00-6 6c0 4.5-1.8 5.7-1.8 5.7-.4.3-.2 1 .3 1h15c.5 0 .7-.7.3-1 0 0-1.8-1.2-1.8-5.7a6 6 0 00-6-6z" /><path d="M10 19.5a2 2 0 004 0z" /></svg>
+            <span style={{ position: "absolute", top: 8, right: 9, width: 8, height: 8, borderRadius: "50%", background: PQ.rust, border: `1.5px solid ${PQ.off}` }} />
           </button>
           <button onClick={() => setMenu(true)} className="pq-press" style={{ width: 42, height: 42, borderRadius: "50%", border: "none", background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke={PQ.ink} strokeWidth="2.6" strokeLinecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke={PQ.ink} strokeWidth="2.6" strokeLinecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
           </button>
         </div>
       </div>
@@ -2949,24 +3029,24 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
           <button onClick={() => { pock("select"); setPicker(true); }} className="pq-press" style={{ position: "relative", width: 96, height: 96, padding: 0, border: "none", background: "none", cursor: "pointer" }}>
             <span style={{ position: "absolute", inset: 0, borderRadius: "50%", overflow: "hidden", background: avatar === "default" ? "rgba(20,51,34,0.06)" : AVATARS[avatar].bg, display: "flex", alignItems: "center", justifyContent: "center" }}>
               {avatar === "default"
-                ? <svg width="46%" height="46%" viewBox="0 0 24 24" fill={PQ.inkFaint} stroke="none"><circle cx="12" cy="8" r="4"/><path d="M4 20.5a8 8 0 0116 0z"/></svg>
-                : <img src={avatarSrc(avatar)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(avatar)})`, transformOrigin: "center 40%" }}/>}
+                ? <svg width="46%" height="46%" viewBox="0 0 24 24" fill={PQ.inkFaint} stroke="none"><circle cx="12" cy="8" r="4" /><path d="M4 20.5a8 8 0 0116 0z" /></svg>
+                : <img src={avatarSrc(avatar)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(avatar)})`, transformOrigin: "center 40%" }} />}
             </span>
-            <span style={{ position: "absolute", right: -1, bottom: -1, width: 30, height: 30, borderRadius: "50%", background: PQ.rust, border: `2.5px solid ${PQ.off}`, display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="plus" size={16} stroke={PQ.off} sw={2.2}/></span>
+            <span style={{ position: "absolute", right: -1, bottom: -1, width: 30, height: 30, borderRadius: "50%", background: PQ.rust, border: `2.5px solid ${PQ.off}`, display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="plus" size={16} stroke={PQ.off} sw={2.2} /></span>
           </button>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 21, letterSpacing: "0.02em", textTransform: "uppercase", color: PQ.ink }}>avachen88</div>
             <div style={{ marginTop: 8, display: "flex", alignItems: "center", justifyContent: "center", gap: 10 }}>
               <span style={{ display: "inline-flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
-                <HIcon name="crown" size={14} stroke={PQ.rust} sw={1.8}/><span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.06em", color: PQ.ink, whiteSpace: "nowrap" }}>FIREFLY I</span>
+                <HIcon name="crown" size={14} stroke={PQ.rust} sw={1.8} /><span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.06em", color: PQ.ink, whiteSpace: "nowrap" }}>FIREFLY I</span>
               </span>
-              <span style={{ width: 4, height: 4, borderRadius: "50%", background: PQ.inkFaint, flexShrink: 0 }}/>
+              <span style={{ width: 4, height: 4, borderRadius: "50%", background: PQ.inkFaint, flexShrink: 0 }} />
               <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.04em", color: PQ.green, whiteSpace: "nowrap" }}>100 / 200 RP</span>
             </div>
           </div>
         </div>
 
-        <Seg options={[{ label: "Current Season", value: "season" }, { label: "Career", value: "career" }]} value={seg} onChange={setSeg}/>
+        <Seg options={[{ label: "Current Season", value: "season" }, { label: "Career", value: "career" }]} value={seg} onChange={setSeg} />
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
           {stats.map(([v, l]) => (
@@ -3001,9 +3081,9 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
               <button key={name} onClick={onOther} className="pq-press" style={{ flexShrink: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: 7, width: 60, background: "none", border: "none", cursor: "pointer" }}>
                 <span style={{ position: "relative", width: 54, height: 54, flexShrink: 0 }}>
                   <span style={{ display: "block", width: 54, height: 54, borderRadius: "50%", overflow: "hidden", background: AVATARS[av].bg, border: `1.5px solid ${PQ.line}` }}>
-                    <img src={avatarSrc(av)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(av)})`, transformOrigin: "center 40%" }}/>
+                    <img src={avatarSrc(av)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(av)})`, transformOrigin: "center 40%" }} />
                   </span>
-                  {online && <span style={{ position: "absolute", top: -1, right: -1, width: 13, height: 13, borderRadius: "50%", background: "#1FA855", border: `2px solid ${PQ.off}` }}/>}
+                  {online && <span style={{ position: "absolute", top: -1, right: -1, width: 13, height: 13, borderRadius: "50%", background: "#1FA855", border: `2px solid ${PQ.off}` }} />}
                 </span>
                 <span style={{ fontFamily: HERO, fontSize: 11, fontWeight: 600, color: PQ.inkSoft, whiteSpace: "nowrap" }}>{name}</span>
               </button>
@@ -3015,26 +3095,26 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
       {menu && (
         <div onClick={() => setMenu(false)} className="pq-modal-backdrop" style={{ position: "absolute", inset: 0, zIndex: 60, background: "rgba(20,51,34,0.45)", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
           <div onClick={(e) => e.stopPropagation()} className="pq-modal-sheet" style={{ width: "100%", background: PQ.off, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: "14px 22px 30px" }}>
-            <div style={{ width: 40, height: 4, borderRadius: 999, background: PQ.line, margin: "0 auto 16px" }}/>
+            <div style={{ width: 40, height: 4, borderRadius: 999, background: PQ.line, margin: "0 auto 16px" }} />
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <Row label="Edit profile" plain onClick={() => { setMenu(false); setEdit(true); }}/>
-              <Row label="Change password" plain onClick={() => { setMenu(false); setPwOpen(true); }}/>
-              <Row label="Subscription" plain onClick={() => { setMenu(false); setSubOpen(true); }}/>
-              <Row label="FAQ" plain onClick={() => { setMenu(false); setFaqOpen(true); }}/>
-              <Row label="Log out" plain onClick={() => { setMenu(false); setConfirm("logout"); }}/>
-              <Row label="Delete account" plain last onClick={() => { setMenu(false); setConfirm("delete"); }}/>
+              <Row label="Edit profile" plain onClick={() => { setMenu(false); setEdit(true); }} />
+              <Row label="Change password" plain onClick={() => { setMenu(false); setPwOpen(true); }} />
+              <Row label="Subscription" plain onClick={() => { setMenu(false); setSubOpen(true); }} />
+              <Row label="FAQ" plain onClick={() => { setMenu(false); setFaqOpen(true); }} />
+              <Row label="Log out" plain onClick={() => { setMenu(false); setConfirm("logout"); }} />
+              <Row label="Delete account" plain last onClick={() => { setMenu(false); setConfirm("delete"); }} />
             </div>
           </div>
         </div>
       )}
 
-      {picker && <AvatarModal value={avatar} onClose={() => setPicker(false)} onConfirm={(i) => { setAvatar(i); setPicker(false); }}/>}
+      {picker && <AvatarModal value={avatar} onClose={() => setPicker(false)} onConfirm={(i) => { setAvatar(i); setPicker(false); }} />}
 
-      {edit && <EditProfileSheet onClose={() => setEdit(false)}/>}
-      {pwOpen && <ChangePasswordSheet onClose={() => setPwOpen(false)}/>}
-      {subOpen && <SubscriptionSheet onClose={() => setSubOpen(false)}/>}
-      {faqOpen && <FaqSheet onClose={() => setFaqOpen(false)}/>}
-      {confirm && <ConfirmSheet kind={confirm} onClose={() => setConfirm(null)} onConfirm={() => { const k = confirm; setConfirm(null); if (k === "logout") onLogout && onLogout(); else onLogout && onLogout(); }}/>}
+      {edit && <EditProfileSheet onClose={() => setEdit(false)} />}
+      {pwOpen && <ChangePasswordSheet onClose={() => setPwOpen(false)} />}
+      {subOpen && <SubscriptionSheet onClose={() => setSubOpen(false)} />}
+      {faqOpen && <FaqSheet onClose={() => setFaqOpen(false)} />}
+      {confirm && <ConfirmSheet kind={confirm} onClose={() => setConfirm(null)} onConfirm={() => { const k = confirm; setConfirm(null); if (k === "logout") onLogout && onLogout(); else onLogout && onLogout(); }} />}
     </div>
   );
 }
@@ -3048,16 +3128,16 @@ function SearchScreen({ onBack, onOther }) {
   return (
     <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", background: PQ.off }}>
       <div style={{ padding: "58px 20px 10px", display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
-        <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8}/></div>
+        <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8} /></div>
         <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 11, height: 48, padding: "0 15px", borderRadius: 13, border: `1.5px solid ${PQ.lineMid}` }}>
-          <XIcon name="search" size={19} stroke={PQ.inkSoft}/>
-          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search username" style={{ flex: 1, border: "none", outline: "none", background: "transparent", fontFamily: HERO, fontSize: 16, color: PQ.ink, minWidth: 0 }}/>
+          <XIcon name="search" size={19} stroke={PQ.inkSoft} />
+          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search username" style={{ flex: 1, border: "none", outline: "none", background: "transparent", fontFamily: HERO, fontSize: 16, color: PQ.ink, minWidth: 0 }} />
         </div>
       </div>
       <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", padding: "8px 20px 28px", display: "flex", flexDirection: "column", gap: 10 }}>
         {res.length === 0 ? (
           <div style={{ marginTop: 60, display: "flex", flexDirection: "column", alignItems: "center", gap: 14, textAlign: "center" }}>
-            <span style={{ width: 64, height: 64, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, display: "flex", alignItems: "center", justifyContent: "center" }}><XIcon name="search" size={26} stroke={PQ.inkFaint}/></span>
+            <span style={{ width: 64, height: 64, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, display: "flex", alignItems: "center", justifyContent: "center" }}><XIcon name="search" size={26} stroke={PQ.inkFaint} /></span>
             <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 15, letterSpacing: "0.03em", textTransform: "uppercase", color: PQ.ink }}>No players found</div>
             <div style={{ fontSize: 13, color: PQ.inkSoft, maxWidth: 220 }}>Try a different username.</div>
           </div>
@@ -3066,13 +3146,13 @@ function SearchScreen({ onBack, onOther }) {
           {res.map(([id, name, tier, ini]) => (
             <div key={id} style={{ display: "flex", alignItems: "center", gap: 12, padding: 12, border: "1px solid rgba(20,51,34,0.08)", borderRadius: 16, background: PQ.off }}>
               <button onClick={onOther} className="pq-press" style={{ flex: 1, minWidth: 0, display: "flex", alignItems: "center", gap: 12, background: "none", border: "none", cursor: "pointer", textAlign: "left", padding: 0 }}>
-                <Avi ini={ini} size={44}/>
+                <Avi ini={ini} size={44} />
                 <span style={{ minWidth: 0 }}>
                   <span style={{ display: "block", fontFamily: HERO, fontWeight: 700, fontSize: 15, color: PQ.ink }}>{name}</span>
                   <span style={{ display: "block", marginTop: 2, fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: PQ.inkFaint }}>{tier}</span>
                 </span>
               </button>
-              <button onClick={() => { pock("select"); setFav((f) => ({ ...f, [id]: !f[id] })); }} className="pq-press" style={{ width: 40, height: 40, border: "none", background: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Star on={!!fav[id]}/></button>
+              <button onClick={() => { pock("select"); setFav((f) => ({ ...f, [id]: !f[id] })); }} className="pq-press" style={{ width: 40, height: 40, border: "none", background: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Star on={!!fav[id]} /></button>
             </div>
           ))}
         </>)}
@@ -3088,22 +3168,22 @@ function OtherProfileScreen({ onBack }) {
     <Shell onBack={onBack}>
       <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", paddingTop: 26, gap: 16 }}>
         <span style={{ position: "relative", width: 96, height: 96 }}>
-          <span style={{ position: "absolute", inset: 0, borderRadius: "50%", border: `2.5px solid ${PQ.rust}` }}/>
+          <span style={{ position: "absolute", inset: 0, borderRadius: "50%", border: `2.5px solid ${PQ.rust}` }} />
           <span style={{ position: "absolute", inset: 5, borderRadius: "50%", overflow: "hidden", background: AVATARS[2].bg }}>
-            <img src={avatarSrc(2)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(2)})`, transformOrigin: "center 40%" }}/>
+            <img src={avatarSrc(2)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(2)})`, transformOrigin: "center 40%" }} />
           </span>
         </span>
         <div style={{ textAlign: "center" }}>
           <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 22, letterSpacing: "0.02em", textTransform: "uppercase", color: PQ.ink }}>Mei Lin</div>
           <div style={{ marginTop: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
-            <HIcon name="crown" size={14} stroke={PQ.rust} sw={1.8}/><span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.06em", color: PQ.ink }}>JADE I</span>
+            <HIcon name="crown" size={14} stroke={PQ.rust} sw={1.8} /><span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.06em", color: PQ.ink }}>JADE I</span>
           </div>
         </div>
         <button onClick={() => { pock("select"); setFav((v) => !v); }} className="pq-press" style={{ marginTop: 8, display: "inline-flex", alignItems: "center", gap: 9, height: 50, padding: "0 24px", borderRadius: 14, border: `1.5px solid ${PQ.rust}`, background: fav ? "rgba(182,90,47,0.08)" : "transparent", cursor: "pointer", fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.rust }}>
-          <Star on={fav} size={20}/>{fav ? "Favourited" : "Add favourite"}
+          <Star on={fav} size={20} />{fav ? "Favourited" : "Add favourite"}
         </button>
         <div style={{ width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 10 }}>
-          {[["128","Games played"],["54%","Win rate"],["472","Highest score"],["2nd","Avg finish"]].map(([v,l])=>(
+          {[["128", "Games played"], ["54%", "Win rate"], ["472", "Highest score"], ["2nd", "Avg finish"]].map(([v, l]) => (
             <div key={l} style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 16, padding: "16px 16px 14px" }}>
               <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 26, color: PQ.green, lineHeight: 1 }}>{v}</div>
               <div style={{ marginTop: 8, fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.inkFaint }}>{l}</div>
@@ -3134,7 +3214,7 @@ function SettingsDetail({ panel, onBack }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", gap: 14 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
-        <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8}/></div>
+        <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8} /></div>
         <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 21, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>{meta.title}</div>
       </div>
       <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", padding: "4px 4px 20px", display: "flex", flexDirection: "column", gap: 16 }}>
@@ -3146,7 +3226,7 @@ function SettingsDetail({ panel, onBack }) {
         )}
         {isForm && sent && (
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14, padding: "30px 0", textAlign: "center" }}>
-            <span style={{ width: 60, height: 60, borderRadius: "50%", background: "rgba(31,168,85,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1FA855" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span>
+            <span style={{ width: 60, height: 60, borderRadius: "50%", background: "rgba(31,168,85,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1FA855" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7" /></svg></span>
             <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 17, letterSpacing: "0.03em", textTransform: "uppercase", color: PQ.ink }}>Thanks — we got it</div>
             <div style={{ fontFamily: HERO, fontSize: 13, color: PQ.inkSoft }}>Our team will review your submission.</div>
           </div>
@@ -3156,7 +3236,7 @@ function SettingsDetail({ panel, onBack }) {
             <div>
               <span style={label}>Issue Category</span>
               <div style={{ position: "relative" }}>
-                <button onClick={() => setCatOpen((v) => !v)} className="pq-press" style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", height: 48, padding: "0 15px", borderRadius: 13, border: `1.5px solid ${PQ.line}`, background: "transparent", cursor: "pointer", fontFamily: HERO, fontSize: 15, color: PQ.ink }}>{cat}<Icon name="chevD" size={18} stroke={PQ.inkFaint}/></button>
+                <button onClick={() => setCatOpen((v) => !v)} className="pq-press" style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", height: 48, padding: "0 15px", borderRadius: 13, border: `1.5px solid ${PQ.line}`, background: "transparent", cursor: "pointer", fontFamily: HERO, fontSize: 15, color: PQ.ink }}>{cat}<Icon name="chevD" size={18} stroke={PQ.inkFaint} /></button>
                 {catOpen && (
                   <div style={{ marginTop: 6, border: `1.5px solid ${PQ.line}`, borderRadius: 13, overflow: "hidden", background: PQ.off }}>
                     {["Gameplay", "Technical Issue", "Profile", "Subscription & Payments", "Other"].map((o) => (
@@ -3169,10 +3249,10 @@ function SettingsDetail({ panel, onBack }) {
           )}
           <div>
             <span style={label}>Description{panel === "bug" && <span style={{ color: "#d64542" }}>*</span>}</span>
-            <textarea value={desc} onChange={(e) => setDesc(e.target.value)} placeholder={panel === "feature" ? "Describe the feature you'd like to see" : panel === "contact" ? "How can we help?" : "Describe what went wrong"} style={field}/>
+            <textarea value={desc} onChange={(e) => setDesc(e.target.value)} placeholder={panel === "feature" ? "Describe the feature you'd like to see" : panel === "contact" ? "How can we help?" : "Describe what went wrong"} style={field} />
           </div>
           {panel === "bug" && (
-            <button className="pq-press" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, height: 52, borderRadius: 13, border: `1.5px dashed ${PQ.lineMid}`, background: "transparent", cursor: "pointer", fontFamily: HERO, fontWeight: 700, fontSize: 12.5, letterSpacing: "0.06em", textTransform: "uppercase", color: PQ.inkSoft }}><Icon name="plus" size={16} stroke={PQ.inkSoft} sw={2}/>Attach screenshot / recording <span style={{ fontWeight: 400, textTransform: "none", letterSpacing: 0 }}>· optional</span></button>
+            <button className="pq-press" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, height: 52, borderRadius: 13, border: `1.5px dashed ${PQ.lineMid}`, background: "transparent", cursor: "pointer", fontFamily: HERO, fontWeight: 700, fontSize: 12.5, letterSpacing: "0.06em", textTransform: "uppercase", color: PQ.inkSoft }}><Icon name="plus" size={16} stroke={PQ.inkSoft} sw={2} />Attach screenshot / recording <span style={{ fontWeight: 400, textTransform: "none", letterSpacing: 0 }}>· optional</span></button>
           )}
           <Btn variant="primary" disabled={panel === "bug" && !desc.trim()} onClick={() => { pock("select"); setSent(true); }}>Submit</Btn>
         </>)}
@@ -3187,11 +3267,11 @@ function SettingsScreen() {
   const [sound, setSound] = React.useState(true);
   const [vol, setVol] = React.useState(70);
   const [panel, setPanel] = React.useState(null);
-  if (panel) return <SettingsDetail panel={panel} onBack={() => setPanel(null)}/>;
+  if (panel) return <SettingsDetail panel={panel} onBack={() => setPanel(null)} />;
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", gap: 14 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
-        <HIcon name="sliders" size={24} stroke={PQ.rust} sw={1.8}/>
+        <HIcon name="sliders" size={24} stroke={PQ.rust} sw={1.8} />
         <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 24, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Settings</div>
       </div>
       <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: 26, margin: "0 -4px", padding: "4px 4px 10px" }}>
@@ -3199,37 +3279,37 @@ function SettingsScreen() {
           <SectionLabel>Game settings</SectionLabel>
           <div style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 16, overflow: "hidden" }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "15px 16px", borderBottom: "1px solid rgba(20,51,34,0.07)" }}>
-              <span style={{ fontFamily: HERO, fontWeight: 600, fontSize: 14.5, color: PQ.ink }}>Haptics</span><Toggle on={haptic} onChange={() => setHaptic((v) => !v)}/>
+              <span style={{ fontFamily: HERO, fontWeight: 600, fontSize: 14.5, color: PQ.ink }}>Haptics</span><Toggle on={haptic} onChange={() => setHaptic((v) => !v)} />
             </div>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "15px 16px", borderBottom: "1px solid rgba(20,51,34,0.07)" }}>
-              <span style={{ fontFamily: HERO, fontWeight: 600, fontSize: 14.5, color: PQ.ink }}>Sound</span><Toggle on={sound} onChange={() => setSound((v) => !v)}/>
+              <span style={{ fontFamily: HERO, fontWeight: 600, fontSize: 14.5, color: PQ.ink }}>Sound</span><Toggle on={sound} onChange={() => setSound((v) => !v)} />
             </div>
             <div style={{ padding: "15px 16px", opacity: sound ? 1 : 0.4, pointerEvents: sound ? "auto" : "none" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
                 <span style={{ fontFamily: HERO, fontWeight: 600, fontSize: 14.5, color: PQ.ink }}>Volume</span>
                 <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 13, color: PQ.rust }}>{vol}</span>
               </div>
-              <input type="range" min={0} max={100} value={vol} onChange={(e) => setVol(+e.target.value)} style={{ width: "100%", accentColor: PQ.rust, height: 6, cursor: "pointer", outline: "none", border: "none", borderRadius: 3, background: `linear-gradient(to right, ${PQ.rust} 0%, ${PQ.rust} ${vol}%, #C8C0AE ${vol}%, #C8C0AE 100%)` }}/>
+              <input type="range" min={0} max={100} value={vol} onChange={(e) => setVol(+e.target.value)} style={{ width: "100%", accentColor: PQ.rust, height: 6, cursor: "pointer", outline: "none", border: "none", borderRadius: 3, background: `linear-gradient(to right, ${PQ.rust} 0%, ${PQ.rust} ${vol}%, #C8C0AE ${vol}%, #C8C0AE 100%)` }} />
             </div>
           </div>
         </div>
         <div>
           <SectionLabel>About Pocket Dragon</SectionLabel>
           <Group>
-            <Row icon="spark" label="About Us" onClick={() => setPanel("aboutus")}/>
-            <Row icon="doc" label="Terms & Conditions" onClick={() => window.open("https://pocketdragon.in/terms", "_blank")}/>
-            <Row icon="shield" label="Privacy Policy" onClick={() => window.open("https://pocketdragon.in/privacy", "_blank")}/>
-            <Row icon="spark" label="App Version" value="1.0.0" last onClick={() => {}}/>
+            <Row icon="spark" label="About Us" onClick={() => setPanel("aboutus")} />
+            <Row icon="doc" label="Terms & Conditions" onClick={() => window.open("https://pocketdragon.in/terms", "_blank")} />
+            <Row icon="shield" label="Privacy Policy" onClick={() => window.open("https://pocketdragon.in/privacy", "_blank")} />
+            <Row icon="spark" label="App Version" value="1.0.0" last onClick={() => { }} />
           </Group>
           <div style={{ marginTop: 8, fontFamily: HERO, fontSize: 12, color: PQ.inkFaint, paddingLeft: 4 }}>You're on the latest version.</div>
         </div>
         <div>
           <SectionLabel>Support</SectionLabel>
           <Group>
-            <Row icon="help" label="Report a Bug" onClick={() => setPanel("bug")}/>
-            <Row icon="spark" label="Feature Request" onClick={() => setPanel("feature")}/>
-            <Row icon="help" label="Contact Support" onClick={() => setPanel("contact")}/>
-            <Row icon="doc" label="FAQs" value="↗" last onClick={() => window.open("https://pocketdragon.in/faqs", "_blank")}/>
+            <Row icon="help" label="Report a Bug" onClick={() => setPanel("bug")} />
+            <Row icon="spark" label="Feature Request" onClick={() => setPanel("feature")} />
+            <Row icon="help" label="Contact Support" onClick={() => setPanel("contact")} />
+            <Row icon="doc" label="FAQs" value="↗" last onClick={() => window.open("https://pocketdragon.in/faqs", "_blank")} />
           </Group>
         </div>
       </div>
@@ -3255,7 +3335,7 @@ function PublicLobbyScreen({ onBack, onJoin, onPrivate }) {
   const FilterBtn = ({ id, label, value }) => (
     <div style={{ position: "relative" }}>
       <button onClick={() => setOpenFilter(openFilter === id ? null : id)} className="pq-press" style={{ display: "inline-flex", alignItems: "center", gap: 6, height: 36, padding: "0 14px", borderRadius: 999, cursor: "pointer", border: `1.5px solid ${value !== "All" ? PQ.rust : PQ.line}`, background: "transparent", color: value !== "All" ? PQ.rust : PQ.inkSoft, fontFamily: HERO, fontWeight: 700, fontSize: 11.5, letterSpacing: "0.04em", textTransform: "uppercase" }}>
-        {label}: {value}<Icon name="chevD" size={14} stroke={value !== "All" ? PQ.rust : PQ.inkFaint}/>
+        {label}: {value}<Icon name="chevD" size={14} stroke={value !== "All" ? PQ.rust : PQ.inkFaint} />
       </button>
     </div>
   );
@@ -3263,16 +3343,16 @@ function PublicLobbyScreen({ onBack, onJoin, onPrivate }) {
     <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", background: PQ.off }}>
       <div style={{ padding: "60px 22px 10px", flexShrink: 0 }}>
         <div style={{ display: "flex", alignItems: "center", minHeight: 40 }}>
-          <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8}/></div>
+          <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8} /></div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "2px 0 12px" }}>
-          <HIcon name="grid" size={24} stroke={PQ.rust} sw={1.8}/>
+          <HIcon name="grid" size={24} stroke={PQ.rust} sw={1.8} />
           <h1 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 22, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Join Game</h1>
         </div>
-        <Seg options={[{ label: "Public Lobby", value: "public" }, { label: "Private", value: "private" }]} value={seg} onChange={(v) => { if (v === "private") { setSeg("public"); onPrivate(); } }}/>
+        <Seg options={[{ label: "Public Lobby", value: "public" }, { label: "Private", value: "private" }]} value={seg} onChange={(v) => { if (v === "private") { setSeg("public"); onPrivate(); } }} />
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 14 }}>
-          <FilterBtn id="speed" label="Speed" value={speedF}/>
-          <FilterBtn id="diff" label="Difficulty" value={diffF}/>
+          <FilterBtn id="speed" label="Speed" value={speedF} />
+          <FilterBtn id="diff" label="Difficulty" value={diffF} />
           <span style={{ fontFamily: HERO, fontSize: 10.5, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: PQ.inkFaint }}>Optional</span>
           {(speedF !== "All" || diffF !== "All") && (
             <button onClick={() => { setSpeedF("All"); setDiffF("All"); setOpenFilter(null); }} className="pq-press" style={{ marginLeft: "auto", background: "none", border: "none", cursor: "pointer", fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: PQ.rust }}>Clear</button>
@@ -3303,13 +3383,13 @@ function PublicLobbyScreen({ onBack, onJoin, onPrivate }) {
               </button>
               {/* difficulty tag — equal-sized box, tappable → difficulty overlay */}
               <button onClick={() => { pock("select"); setOverlay({ kind: "diff", current: t.diff }); }} className="pq-press" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 92, height: 44, padding: "0 8px", borderRadius: 11, cursor: "pointer", background: "transparent", border: `1.5px solid ${diffColor(t.diff)}`, color: diffColor(t.diff), fontFamily: HERO, fontWeight: 700, fontSize: 11.5, letterSpacing: "0.08em", textTransform: "uppercase" }}>{t.diff}</button>
-              <div style={{ flex: 1 }}/>
+              <div style={{ flex: 1 }} />
               <button onClick={() => { if (!t.full) { pock("select"); onJoin(); } }} className={t.full ? "" : "pq-press"} style={{ flexShrink: 0, height: 44, padding: "0 20px", border: "none", borderRadius: 11, cursor: t.full ? "not-allowed" : "pointer", background: t.full ? "rgba(20,51,34,0.08)" : PQ.rust, color: t.full ? PQ.inkFaint : PQ.off, fontFamily: HERO, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase" }}>{t.full ? "Full" : "Join"}</button>
             </div>
           </div>
         ))}
       </div>
-      {overlay && <LobbyInfoOverlay overlay={overlay} onClose={() => setOverlay(null)}/>}
+      {overlay && <LobbyInfoOverlay overlay={overlay} onClose={() => setOverlay(null)} />}
     </div>
   );
 }
@@ -3327,7 +3407,7 @@ function LobbyInfoOverlay({ overlay, onClose }) {
   return (
     <div className="pq-modal-backdrop" onClick={onClose} style={{ position: "absolute", inset: 0, zIndex: 60, background: "rgba(20,51,34,0.45)", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
       <div className="pq-modal-sheet" onClick={(e) => e.stopPropagation()} style={{ width: "100%", background: PQ.off, borderTopLeftRadius: 26, borderTopRightRadius: 26, padding: "14px 22px 30px" }}>
-        <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }}/>
+        <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }} />
         {overlay.kind === "speed" ? (
           <>
             <h2 style={{ margin: "0 0 16px", fontFamily: HERO, fontWeight: 700, fontSize: 17, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.green }}>Time Allowed Per Turn</h2>
@@ -3347,7 +3427,7 @@ function LobbyInfoOverlay({ overlay, onClose }) {
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {diffs.map(([name, desc, col]) => (
                 <div key={name} style={{ display: "flex", gap: 11 }}>
-                  <span style={{ marginTop: 7, width: 7, height: 7, flexShrink: 0, borderRadius: "50%", background: col }}/>
+                  <span style={{ marginTop: 7, width: 7, height: 7, flexShrink: 0, borderRadius: "50%", background: col }} />
                   <div>
                     <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 14, letterSpacing: "0.03em", textTransform: "uppercase", color: col }}>{name}</div>
                     <div style={{ marginTop: 4, fontSize: 13, lineHeight: 1.5, color: PQ.inkSoft }}>{desc}</div>
@@ -3390,7 +3470,7 @@ function PrivateLobbyScreen({ onBack, onJoin }) {
         })}
       </div>
       <input value={code} onChange={(e) => { setError(false); setCode(e.target.value.replace(/[^A-Za-z0-9]/g, "").toUpperCase().slice(0, 4)); }} maxLength={4}
-        style={{ position: "absolute", opacity: 0, pointerEvents: "none", height: 0 }} autoFocus/>
+        style={{ position: "absolute", opacity: 0, pointerEvents: "none", height: 0 }} autoFocus />
       <div style={{ minHeight: 20, display: "flex", justifyContent: "center" }}>
         {error && <Helper state="error">That code didn't match any open table</Helper>}
       </div>
@@ -3414,29 +3494,29 @@ function InviteScreen({ onBack }) {
     <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", background: PQ.off }}>
       <div style={{ padding: "60px 22px 10px", flexShrink: 0 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-          <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8}/></div>
+          <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8} /></div>
           <h1 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 21, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Invite Players</h1>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 11, height: 48, padding: "0 15px", borderRadius: 13, border: `1.5px solid ${PQ.lineMid}` }}>
-          <XIcon name="search" size={19} stroke={PQ.inkSoft}/>
-          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search by username" style={{ flex: 1, border: "none", outline: "none", background: "transparent", fontFamily: HERO, fontSize: 16, color: PQ.ink, minWidth: 0 }}/>
+          <XIcon name="search" size={19} stroke={PQ.inkSoft} />
+          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search by username" style={{ flex: 1, border: "none", outline: "none", background: "transparent", fontFamily: HERO, fontSize: 16, color: PQ.ink, minWidth: 0 }} />
         </div>
       </div>
       <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", padding: "12px 22px 28px", display: "flex", flexDirection: "column", gap: 10 }}>
         {res.map(([id, name, tier, av, online, joined]) => (
           <div key={id} style={{ display: "flex", alignItems: "center", gap: 12, padding: "11px 13px", border: "1px solid rgba(20,51,34,0.08)", borderRadius: 16, background: PQ.off }}>
             <span style={{ position: "relative", width: 44, height: 44, flexShrink: 0, borderRadius: "50%", overflow: "hidden", background: AVATARS[av].bg, border: `1.5px solid ${PQ.line}` }}>
-              <img src={avatarSrc(av)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(av)})`, transformOrigin: "center 40%" }}/>
+              <img src={avatarSrc(av)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(av)})`, transformOrigin: "center 40%" }} />
             </span>
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
                 <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 15, color: PQ.ink }}>{name}</span>
-                {online && <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#1FA855", flexShrink: 0 }}/>}
+                {online && <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#1FA855", flexShrink: 0 }} />}
               </div>
               <div style={{ marginTop: 2, fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: PQ.inkFaint }}>{tier}</div>
             </div>
             {joined ? (
-              <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 6, height: 38, minWidth: 96, padding: "0 18px", borderRadius: 11, background: "rgba(20,51,34,0.06)", fontFamily: HERO, fontWeight: 700, fontSize: 11.5, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.green }}><Icon name="check" size={14} stroke={PQ.green} sw={2.4}/>Joined</span>
+              <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 6, height: 38, minWidth: 96, padding: "0 18px", borderRadius: 11, background: "rgba(20,51,34,0.06)", fontFamily: HERO, fontWeight: 700, fontSize: 11.5, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.green }}><Icon name="check" size={14} stroke={PQ.green} sw={2.4} />Joined</span>
             ) : (
               <button onClick={() => { pock("select"); setInv((s) => ({ ...s, [id]: !s[id] })); }} className="pq-press" style={{ height: 38, minWidth: 96, padding: "0 18px", borderRadius: 11, cursor: "pointer", border: `1.5px solid ${inv[id] ? PQ.line : PQ.rust}`, background: inv[id] ? "rgba(20,51,34,0.05)" : "rgba(182,90,47,0.08)", color: inv[id] ? PQ.inkFaint : PQ.rust, fontFamily: HERO, fontWeight: 700, fontSize: 11.5, letterSpacing: "0.1em", textTransform: "uppercase" }}>{inv[id] ? "Invited" : "Invite"}</button>
             )}
@@ -3463,7 +3543,7 @@ function PracticeScreen({ onBack, onStart }) {
       {/* Game Setup — same as Create A Game */}
       <CfgSection label="Game Setup">
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <VariantCounter letter="W" name="West" subtitle="Goulash" value={west} onChange={setWest}/>
+          <VariantCounter letter="W" name="West" subtitle="Goulash" value={west} onChange={setWest} />
         </div>
       </CfgSection>
 
@@ -3473,12 +3553,12 @@ function PracticeScreen({ onBack, onStart }) {
           <div style={{ minWidth: 0 }}>
             <div style={{ fontFamily: HERO, fontWeight: 600, fontSize: 12.5, color: PQ.ink }}>Enable / Disable Turn Timer</div>
           </div>
-          <Toggle on={timerOn} onChange={() => setTimerOn((v) => !v)}/>
+          <Toggle on={timerOn} onChange={() => setTimerOn((v) => !v)} />
         </div>
         {timerOn && (
           <div style={{ marginTop: 16 }}>
             <input type="range" min={0} max={100} step={1} value={pos} onChange={(e) => setPos(+e.target.value)}
-              style={{ width: "100%", accentColor: PQ.rust, height: 6, cursor: "pointer", outline: "none", border: "none", borderRadius: 3, background: `linear-gradient(to right, ${PQ.rust} 0%, ${PQ.rust} ${pos}%, #C8C0AE ${pos}%, #C8C0AE 100%)` }}/>
+              style={{ width: "100%", accentColor: PQ.rust, height: 6, cursor: "pointer", outline: "none", border: "none", borderRadius: 3, background: `linear-gradient(to right, ${PQ.rust} 0%, ${PQ.rust} ${pos}%, #C8C0AE ${pos}%, #C8C0AE 100%)` }} />
             <div style={{ position: "relative", height: 32, marginTop: 8 }}>
               {[["Slow", "60s", 0], ["Medium", "30s", 60], ["Fast", "10s", 100]].map(([t, sLabel, fp]) => (
                 <div key={t} style={{ position: "absolute", left: fp + "%", transform: `translateX(${fp === 0 ? "0" : fp === 100 ? "-100%" : "-50%"})`, textAlign: "center" }}>
@@ -3498,7 +3578,7 @@ function PracticeScreen({ onBack, onStart }) {
           <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 14.5, color: PQ.ink }}>Hints</div>
           <div style={{ marginTop: 4, fontSize: 12, color: PQ.inkSoft }}>Suggests moves while you play</div>
         </div>
-        <Toggle on={hints} onChange={() => setHints((v) => !v)}/>
+        <Toggle on={hints} onChange={() => setHints((v) => !v)} />
       </div>
     </Shell>
   );
@@ -3510,10 +3590,10 @@ function RejoinScreen({ onBack, onRejoin, onHome, expired, botTurns = 2 }) {
     return (
       <Shell onBack={onBack}>
         <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", paddingBottom: 30 }}>
-          <span style={{ width: 64, height: 64, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, display: "flex", alignItems: "center", justifyContent: "center" }}><XIcon name="timer" size={28} stroke={PQ.inkFaint}/></span>
-          <h1 style={{ margin: "20px 0 0", fontFamily: HERO, fontWeight: 700, fontSize: 24, letterSpacing: "0.03em", textTransform: "uppercase", color: PQ.ink, lineHeight: 1.1 }}>This game<br/>has ended</h1>
+          <span style={{ width: 64, height: 64, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, display: "flex", alignItems: "center", justifyContent: "center" }}><XIcon name="timer" size={28} stroke={PQ.inkFaint} /></span>
+          <h1 style={{ margin: "20px 0 0", fontFamily: HERO, fontWeight: 700, fontSize: 24, letterSpacing: "0.03em", textTransform: "uppercase", color: PQ.ink, lineHeight: 1.1 }}>This game<br />has ended</h1>
           <p style={{ margin: "14px 0 0", fontSize: 14.5, lineHeight: 1.5, color: PQ.inkSoft }}>The table finished before you could rejoin. Your results are saved to your profile.</p>
-          <div style={{ flex: 1 }}/>
+          <div style={{ flex: 1 }} />
           <Btn variant="primary" onClick={onHome}>Return to Hub</Btn>
         </div>
       </Shell>
@@ -3522,14 +3602,14 @@ function RejoinScreen({ onBack, onRejoin, onHome, expired, botTurns = 2 }) {
   return (
     <Shell onBack={onBack}>
       <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", paddingBottom: 30 }}>
-        <div style={{ display: "inline-flex", alignSelf: "flex-start", alignItems: "center", gap: 8, height: 26, padding: "0 12px", borderRadius: 999, background: "rgba(182,90,47,0.1)" }}><span className="pq-pulse" style={{ width: 7, height: 7, borderRadius: "50%", background: PQ.rust }}/><span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: PQ.rust }}>Game in progress</span></div>
-        <h1 style={{ margin: "18px 0 0", fontFamily: HERO, fontWeight: 700, fontSize: 25, letterSpacing: "0.03em", textTransform: "uppercase", color: PQ.ink, lineHeight: 1.1 }}>You haven't<br/>lost your place</h1>
+        <div style={{ display: "inline-flex", alignSelf: "flex-start", alignItems: "center", gap: 8, height: 26, padding: "0 12px", borderRadius: 999, background: "rgba(182,90,47,0.1)" }}><span className="pq-pulse" style={{ width: 7, height: 7, borderRadius: "50%", background: PQ.rust }} /><span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: PQ.rust }}>Game in progress</span></div>
+        <h1 style={{ margin: "18px 0 0", fontFamily: HERO, fontWeight: 700, fontSize: 25, letterSpacing: "0.03em", textTransform: "uppercase", color: PQ.ink, lineHeight: 1.1 }}>You haven't<br />lost your place</h1>
         <p style={{ margin: "14px 0 0", fontFamily: HERO, fontSize: 14.5, lineHeight: 1.5, color: PQ.inkSoft }}>A bot has been playing your hand for <span style={{ color: PQ.rust, fontWeight: 700 }}>{botTurns} turns</span>. Rejoin to take back control.</p>
         <div style={{ marginTop: 24, display: "flex", gap: 12 }}>
           <div style={{ flex: 1, border: "1px solid rgba(20,51,34,0.08)", borderRadius: 16, padding: 16 }}><div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 22, color: PQ.green }}>3 / 8</div><div style={{ marginTop: 6, fontFamily: HERO, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: PQ.inkFaint }}>Games</div></div>
           <div style={{ flex: 1, border: "1px solid rgba(20,51,34,0.08)", borderRadius: 16, padding: 16 }}><div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 22, color: PQ.green }}>128</div><div style={{ marginTop: 6, fontFamily: HERO, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: PQ.inkFaint }}>Your score</div></div>
         </div>
-        <div style={{ flex: 1 }}/>
+        <div style={{ flex: 1 }} />
         <div style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 11 }}>
           <Btn variant="primary" trailingIcon="arrowR" onClick={onRejoin}>Rejoin now</Btn>
           <Btn variant="ghost" onClick={onHome}>Return to Hub</Btn>
@@ -3560,7 +3640,7 @@ function SetChip({ title, sub }) {
 function ClimbItem({ title, children }) {
   return (
     <div style={{ display: "flex", gap: 12 }}>
-      <span style={{ flexShrink: 0, marginTop: 3 }}><XIcon name="arrowUp" size={20} stroke={PQ.rust}/></span>
+      <span style={{ flexShrink: 0, marginTop: 3 }}><XIcon name="arrowUp" size={20} stroke={PQ.rust} /></span>
       <div>
         <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 14, color: PQ.rust }}>{title}</div>
         <div style={{ marginTop: 3, fontSize: 13, lineHeight: 1.55, color: PQ.inkSoft }}>{children}</div>
@@ -3592,14 +3672,14 @@ function RulesScreen() {
       {/* current subscription status */}
       <div style={{ flexShrink: 0, border: `1.5px solid ${PQ.line}`, borderRadius: 16, padding: "14px 16px", background: "rgba(182,90,47,0.05)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-          <HIcon name="crown" size={16} stroke={PQ.rust} sw={1.8}/>
+          <HIcon name="crown" size={16} stroke={PQ.rust} sw={1.8} />
           <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: PQ.rust }}>Free Trial</span>
         </div>
         <div style={{ fontFamily: HERO, fontSize: 13.5, lineHeight: 1.5, color: PQ.inkSoft }}>You are currently enjoying the free trial period. It ends on <span style={{ color: PQ.ink, fontWeight: 700 }}>23 Jul 2026</span>.</div>
-        <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.5, color: PQ.inkSoft }}>Subscriptions are available exclusively through our website <a href="https://pocketdragon.in" target="_blank" style={{ color: PQ.rust, fontWeight: 700, textDecoration: "none" }}>pocketdragon.in</a></div>
+        <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.5, color: PQ.inkSoft }}>Subscriptions are available exclusively through our website <a href="https://pocketdragon.in" target="_blank" style={{ color: PQ.rust, fontWeight: 700, textDecoration: "none" }}>https://www.pocketdragon.in</a></div>
       </div>
       <div style={{ flexShrink: 0 }}>
-        <Seg options={[{ label: "Rules", value: "rules" }, { label: "Tiers & Ranks", value: "ranks" }]} value={seg} onChange={setSeg}/>
+        <Seg options={[{ label: "Rules", value: "rules" }, { label: "Tiers & Ranks", value: "ranks" }]} value={seg} onChange={setSeg} />
       </div>
 
       <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", margin: "0 -4px", padding: "2px 4px 12px" }}>
@@ -3610,9 +3690,9 @@ function RulesScreen() {
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 10 }}>Sets</div>
               <div style={{ display: "flex", gap: 10 }}>
-                <SetChip title="Pung" sub="3 of a kind"/>
-                <SetChip title="Kong" sub="4 of a kind"/>
-                <SetChip title="Pair" sub="2 of a kind"/>
+                <SetChip title="Pung" sub="3 of a kind" />
+                <SetChip title="Kong" sub="4 of a kind" />
+                <SetChip title="Pair" sub="2 of a kind" />
               </div>
               <div style={{ marginTop: 10, fontSize: 12.5, lineHeight: 1.55, color: PQ.inkSoft, fontStyle: "italic" }}>Kongs count as 3 tiles once placed on the rack (exposed or concealed) and earn 1 extra tile from the Flower Wall.</div>
             </div>
@@ -3633,9 +3713,9 @@ function RulesScreen() {
             </div>
             <RuleBlock label="General Rules">
               The tile for Mahjong can be picked from anywhere, for any set (even a pair). If two players need the same tile to declare, the one closest to the discarder wins (order E–S–W–N).
-              <div style={{ height: 8 }}/>
+              <div style={{ height: 8 }} />
               East always gives and gets double points to and from all players.
-              <div style={{ height: 8 }}/>
+              <div style={{ height: 8 }} />
               A wrong Mahjong declaration makes the defaulter a "dead hand": they pay a 1000/2000E penalty, keep playing to the end, and can't claim any sets or Mahjong.
             </RuleBlock>
             <RuleBlock label="Nobody Wins">If no tiles remain on the wall, the game is a draw — each player puts 500 points in the bank for the next game's winner. The East player keeps the East position.</RuleBlock>
@@ -3644,7 +3724,7 @@ function RulesScreen() {
           <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
             <div>
               <div style={{ display: "flex", height: 12, borderRadius: 999, overflow: "hidden", border: `1px solid ${PQ.line}` }}>
-                {TIERS.map((t) => <span key={t.name} style={{ flex: 1, background: t.c }}/>)}
+                {TIERS.map((t) => <span key={t.name} style={{ flex: 1, background: t.c }} />)}
               </div>
               <div style={{ display: "flex", justifyContent: "space-between", marginTop: 8 }}>
                 {TIERS.map((t) => <span key={t.name} style={{ fontFamily: HERO, fontWeight: 700, fontSize: 10.5, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>{t.name}</span>)}
@@ -3683,11 +3763,11 @@ function SubscriptionSheet({ onClose }) {
   return (
     <div onClick={onClose} className="pq-modal-backdrop" style={{ position: "absolute", inset: 0, zIndex: 66, background: "rgba(20,51,34,0.45)", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
       <div onClick={(e) => e.stopPropagation()} className="pq-modal-sheet" style={{ width: "100%", background: PQ.off, borderTopLeftRadius: 26, borderTopRightRadius: 26, padding: "14px 22px 30px" }}>
-        <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }}/>
+        <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }} />
 
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
           <h2 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 18, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Subscription</h2>
-          <button onClick={onClose} className="pq-press" style={{ width: 36, height: 36, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="close" size={18} stroke={PQ.ink} sw={1.9}/></button>
+          <button onClick={onClose} className="pq-press" style={{ width: 36, height: 36, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="close" size={18} stroke={PQ.ink} sw={1.9} /></button>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
@@ -3733,26 +3813,26 @@ function PaymentScreen({ plan, onClose, onSuccess }) {
     <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", background: PQ.off }}>
       <div style={{ padding: "60px 22px 14px", display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0, borderBottom: `1px solid ${PQ.line}` }}>
         <div><div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 14, letterSpacing: "0.02em", textTransform: "uppercase", color: PQ.ink }}>Pocket Dragon Premium</div><div style={{ marginTop: 2, fontFamily: HERO, fontSize: 12.5, color: PQ.inkSoft }}>{plan === "annual" ? "Annual" : "Monthly"} · {price}</div></div>
-        <button onClick={onClose} className="pq-press" style={{ width: 40, height: 40, border: `1px solid ${PQ.line}`, borderRadius: "50%", background: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="close" size={18} stroke={PQ.ink}/></button>
+        <button onClick={onClose} className="pq-press" style={{ width: 40, height: 40, border: `1px solid ${PQ.line}`, borderRadius: "50%", background: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="close" size={18} stroke={PQ.ink} /></button>
       </div>
       {state === "success" ? (
         <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "24px 28px", textAlign: "center" }}>
-          <RustRing size={96}/>
+          <RustRing size={96} />
           <h1 style={{ margin: "24px 0 0", fontFamily: HERO, fontWeight: 700, fontSize: 24, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>You're subscribed</h1>
           <p style={{ margin: "12px 0 0", fontSize: 14, lineHeight: 1.5, color: PQ.inkSoft, maxWidth: 240 }}>Premium is active. Every table, border and tag is yours.</p>
           <div style={{ position: "absolute", left: 28, right: 28, bottom: 28 }}><Btn variant="primary" onClick={onSuccess}>Continue</Btn></div>
         </div>
       ) : (
         <div style={{ flex: 1, display: "flex", flexDirection: "column", padding: 22 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: PQ.inkFaint, marginBottom: 16 }}><XIcon name="shield" size={15} stroke={PQ.inkFaint}/>Secure hosted payment</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: PQ.inkFaint, marginBottom: 16 }}><XIcon name="shield" size={15} stroke={PQ.inkFaint} />Secure hosted payment</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-            <div><div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 7 }}>Card number</div><div style={{ height: 50, border: `1.5px solid ${PQ.line}`, borderRadius: 13, display: "flex", alignItems: "center", gap: 11, padding: "0 15px" }}><XIcon name="card" size={19} stroke={PQ.inkFaint}/><span style={{ fontFamily: HERO, fontSize: 15, color: PQ.ink, letterSpacing: "0.05em" }}>4242 4242 4242 4242</span></div></div>
+            <div><div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 7 }}>Card number</div><div style={{ height: 50, border: `1.5px solid ${PQ.line}`, borderRadius: 13, display: "flex", alignItems: "center", gap: 11, padding: "0 15px" }}><XIcon name="card" size={19} stroke={PQ.inkFaint} /><span style={{ fontFamily: HERO, fontSize: 15, color: PQ.ink, letterSpacing: "0.05em" }}>4242 4242 4242 4242</span></div></div>
             <div style={{ display: "flex", gap: 12 }}>
               <div style={{ flex: 1 }}><div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 7 }}>Expiry</div><div style={{ height: 50, border: `1.5px solid ${PQ.line}`, borderRadius: 13, display: "flex", alignItems: "center", padding: "0 15px", fontFamily: HERO, fontSize: 15, color: PQ.ink }}>08 / 28</div></div>
               <div style={{ flex: 1 }}><div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 7 }}>CVC</div><div style={{ height: 50, border: `1.5px solid ${PQ.line}`, borderRadius: 13, display: "flex", alignItems: "center", padding: "0 15px", fontFamily: HERO, fontSize: 15, color: PQ.ink }}>•••</div></div>
             </div>
           </div>
-          <div style={{ flex: 1 }}/>
+          <div style={{ flex: 1 }} />
           <Btn variant="primary" disabled={state === "loading"} onClick={pay}>{state === "loading" ? "Processing…" : `Pay ${price}`}</Btn>
         </div>
       )}
@@ -3772,14 +3852,14 @@ function NotificationsScreen({ onBack, onAccept }) {
   return (
     <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", background: PQ.off }}>
       <div style={{ padding: "60px 22px 6px", display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
-        <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8}/></div>
+        <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8} /></div>
         <h1 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 20, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Notifications</h1>
       </div>
       <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", padding: "12px 22px 28px", display: "flex", flexDirection: "column", gap: 10 }}>
         {items.map((n) => (
           <div key={n.id} style={{ position: "relative", overflow: "hidden", display: "flex", gap: 12, padding: "14px 14px 14px 16px", border: "1px solid rgba(20,51,34,0.08)", borderRadius: 16, background: PQ.off }}>
-            {n.unread && <span style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 3, background: PQ.rust }}/>}
-            <span style={{ width: 40, height: 40, flexShrink: 0, borderRadius: "50%", overflow: "hidden", background: AVATARS[(n.name.charCodeAt(0)) % AVATARS.length].bg, border: `1.5px solid ${PQ.line}` }}><img src={avatarSrc((n.name.charCodeAt(0)) % AVATARS.length)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale((n.name.charCodeAt(0)) % AVATARS.length)})`, transformOrigin: "center 40%" }}/></span>
+            {n.unread && <span style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 3, background: PQ.rust }} />}
+            <span style={{ width: 40, height: 40, flexShrink: 0, borderRadius: "50%", overflow: "hidden", background: AVATARS[(n.name.charCodeAt(0)) % AVATARS.length].bg, border: `1.5px solid ${PQ.line}` }}><img src={avatarSrc((n.name.charCodeAt(0)) % AVATARS.length)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale((n.name.charCodeAt(0)) % AVATARS.length)})`, transformOrigin: "center 40%" }} /></span>
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ fontFamily: HERO, fontSize: 13.5, lineHeight: 1.45, color: PQ.ink }}><span style={{ fontWeight: 700 }}>{n.name}</span> {n.text}</div>
               <div style={{ marginTop: 4, fontFamily: HERO, fontSize: 11, fontWeight: 600, color: PQ.inkFaint }}>{n.time} ago</div>
@@ -3819,9 +3899,9 @@ function LobbySeat({ seat, pos, onTap, tappable: canTap }) {
         display: "flex", alignItems: "center", justifyContent: "center", position: "relative",
         transition: "border-color .2s, background .2s",
       }}>
-        {empty ? <Icon name="plus" size={20} stroke={PQ.inkFaint} sw={1.8}/>
-          : seat.state === "bot" ? <HIcon name="bot" size={26} stroke={PQ.off} sw={1.8}/>
-          : <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 17, color: PQ.off }}>{seat.ini}</span>}
+        {empty ? <Icon name="plus" size={20} stroke={PQ.inkFaint} sw={1.8} />
+          : seat.state === "bot" ? <HIcon name="bot" size={26} stroke={PQ.off} sw={1.8} />
+            : <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 17, color: PQ.off }}>{seat.ini}</span>}
         {seat.state === "host" && null}
       </button>
       <div style={{ textAlign: "center", lineHeight: 1.1 }}>
@@ -3858,23 +3938,23 @@ function WaitingLobbyScreen({ isHost = true, lobbyType = "Private Lobby", tableN
     <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", background: PQ.off }}>
       {/* header */}
       <div style={{ padding: "60px 22px 8px", display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0 }}>
-        <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8}/></div>
+        <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8} /></div>
         <div style={{ textAlign: "center" }}>
           <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 18, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Waiting Lobby</div>
         </div>
-        <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><HIcon name="leave" size={22} stroke={PQ.rust} sw={1.9}/></div>
+        <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><HIcon name="leave" size={22} stroke={PQ.rust} sw={1.9} /></div>
       </div>
 
       {/* game info chips — line 1: counts · line 2: difficulty + speed */}
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, padding: "8px 22px 4px", flexShrink: 0 }}>
         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 8 }}>
-          {[{t:"West 4"},{t:"Seats 2"}].map((c, i) => (
+          {[{ t: "West 4" }, { t: "Seats 2" }].map((c, i) => (
             <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: 5, height: 26, fontFamily: HERO, fontWeight: 700, fontSize: 11, letterSpacing: "0.06em", textTransform: "uppercase", color: PQ.inkSoft }}>{c.t}</span>
           ))}
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 14 }}>
           <span style={{ display: "inline-flex", alignItems: "center", height: 26, fontFamily: HERO, fontWeight: 700, fontSize: 11, letterSpacing: "0.06em", textTransform: "uppercase", color: diffColorOf("Hard") }}>Hard</span>
-          <span style={{ display: "inline-flex", alignItems: "center", gap: 5, height: 26, fontFamily: HERO, fontWeight: 700, fontSize: 11, letterSpacing: "0.06em", textTransform: "uppercase", color: PQ.inkSoft }}><XIcon name="timer" size={13} stroke={PQ.inkSoft}/>Medium</span>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 5, height: 26, fontFamily: HERO, fontWeight: 700, fontSize: 11, letterSpacing: "0.06em", textTransform: "uppercase", color: PQ.inkSoft }}><XIcon name="timer" size={13} stroke={PQ.inkSoft} />Medium</span>
         </div>
       </div>
 
@@ -3882,19 +3962,21 @@ function WaitingLobbyScreen({ isHost = true, lobbyType = "Private Lobby", tableN
       <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "8px 22px 0" }}>
         <div style={{ position: "relative", width: 320, height: 340 }}>
           {/* felt table */}
-          <div style={{ position: "absolute", top: 95, left: 85, width: 150, height: 150, borderRadius: 24,
+          <div style={{
+            position: "absolute", top: 95, left: 85, width: 150, height: 150, borderRadius: 24,
             background: `radial-gradient(120% 120% at 50% 38%, #3a3a3a 0%, #262626 55%, #171717 100%)`,
             border: "5px solid #0d0d0d", boxShadow: "0 18px 36px -16px rgba(0,0,0,0.55), inset 0 2px 0 rgba(255,255,255,0.05)",
-            display: "flex", alignItems: "center", justifyContent: "center" }}>
+            display: "flex", alignItems: "center", justifyContent: "center"
+          }}>
             {/* Pocket Dragon mark (dragon only, no wordmark) at the centre of the table */}
-            <img src={DRAGON_SRC} alt="" draggable={false} style={{ position: "absolute", width: "30%", height: "auto", opacity: 0.82, filter: "brightness(0) invert(1)", pointerEvents: "none" }}/>
+            <img src={DRAGON_SRC} alt="" draggable={false} style={{ position: "absolute", width: "30%", height: "auto", opacity: 0.82, filter: "brightness(0) invert(1)", pointerEvents: "none" }} />
           </div>
-          {seats.map((s, i) => <LobbySeat key={i} seat={s} pos={posOf[i]} tappable={!mySeated || isHost} onTap={() => handleSeatTap(i)}/>)}
+          {seats.map((s, i) => <LobbySeat key={i} seat={s} pos={posOf[i]} tappable={!mySeated || isHost} onTap={() => handleSeatTap(i)} />)}
         </div>
 
         {/* status bar */}
         <div style={{ marginTop: 14, minHeight: 22, display: "flex", alignItems: "center", gap: 8 }}>
-          {anyEmpty && <span className="pq-pulse" style={{ width: 8, height: 8, borderRadius: "50%", background: PQ.rust }}/>}
+          {anyEmpty && <span className="pq-pulse" style={{ width: 8, height: 8, borderRadius: "50%", background: PQ.rust }} />}
           <span className={status ? "pq-toast2" : ""} style={{ fontFamily: HERO, fontWeight: 600, fontSize: 13, letterSpacing: "0.02em", color: PQ.inkSoft }}>
             {status || (anyEmpty ? `Looking for players · ${filled} of 4 seated` : "Table is full · ready to begin")}
           </span>
@@ -3908,7 +3990,7 @@ function WaitingLobbyScreen({ isHost = true, lobbyType = "Private Lobby", tableN
             <div style={{ textAlign: "center" }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase", color: PQ.rust }}>
                 <span style={{ width: 20, height: 20, borderRadius: "50%", border: `2px dashed ${PQ.rust}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <Icon name="plus" size={10} stroke={PQ.rust} sw={1.8}/>
+                  <Icon name="plus" size={10} stroke={PQ.rust} sw={1.8} />
                 </span>Tap to choose your seat
               </div>
             </div>
@@ -3918,7 +4000,7 @@ function WaitingLobbyScreen({ isHost = true, lobbyType = "Private Lobby", tableN
         ) : !mySeated ? (
           <div style={{ textAlign: "center" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase", color: PQ.rust }}>
-              <Icon name="plus" size={16} stroke={PQ.rust} sw={2}/>Tap to choose your seat
+              <Icon name="plus" size={16} stroke={PQ.rust} sw={2} />Tap to choose your seat
             </div>
           </div>
         ) : (
@@ -3935,7 +4017,7 @@ function WaitingLobbyScreen({ isHost = true, lobbyType = "Private Lobby", tableN
       {botSeat != null && (
         <div onClick={() => setBotSeat(null)} className="pq-modal-backdrop" style={{ position: "absolute", inset: 0, zIndex: 40, background: "rgba(20,51,34,0.45)", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
           <div onClick={(e) => e.stopPropagation()} className="pq-pop-in" style={{ width: "100%", background: PQ.off, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: "14px 22px 28px" }}>
-            <div style={{ width: 40, height: 4, borderRadius: 999, background: PQ.line, margin: "0 auto 18px" }}/>
+            <div style={{ width: 40, height: 4, borderRadius: 999, background: PQ.line, margin: "0 auto 18px" }} />
             <h2 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 18, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Fill empty seat</h2>
             <p style={{ margin: "10px 0 18px", fontFamily: HERO, fontSize: 14, lineHeight: 1.5, color: PQ.inkSoft }}>Start the game with a bot occupying this seat?</p>
             <div style={{ display: "flex", gap: 12 }}>
@@ -3974,7 +4056,7 @@ function Dice({ value, rolling }) {
     <div style={{ width: 52, height: 52, borderRadius: 13, background: "linear-gradient(180deg,#FFFDF6,#F2E8D2)", border: `1.5px solid ${PQ.line}`, boxShadow: "inset 0 -2px 0 rgba(20,51,34,0.07), 0 6px 14px -8px rgba(20,51,34,0.5)", padding: 8, display: "grid", gridTemplateColumns: "repeat(3,1fr)", gridTemplateRows: "repeat(3,1fr)", gap: 2, transition: "transform .12s", transform: rolling ? "rotate(-8deg) scale(1.04)" : "none" }}>
       {Array.from({ length: 9 }).map((_, i) => (
         <span key={i} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <span style={{ width: 8, height: 8, borderRadius: "50%", background: on.has(i) ? PQ.green : "transparent" }}/>
+          <span style={{ width: 8, height: 8, borderRadius: "50%", background: on.has(i) ? PQ.green : "transparent" }} />
         </span>
       ))}
     </div>
@@ -4021,10 +4103,10 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
     <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", background: PQ.off }}>
       <div style={{ padding: "60px 22px 6px", flexShrink: 0 }}>
         <div style={{ display: "flex", alignItems: "center", minHeight: 40 }}>
-          <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8}/></div>
+          <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8} /></div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "2px 0 0" }}>
-          <HIcon name="dice" size={24} stroke={PQ.rust} sw={1.8}/>
+          <HIcon name="dice" size={24} stroke={PQ.rust} sw={1.8} />
           <h1 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 22, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Roll for East</h1>
         </div>
         <p style={{ margin: "9px 0 0", fontSize: 13.5, lineHeight: 1.5, color: phase === "tie" ? PQ.rust : PQ.inkSoft, fontWeight: phase === "tie" ? 700 : 400 }}>{phase === "tie" ? "It's a tie! Please roll again." : phase === "rolling" ? "Rolling for everyone…" : "Highest roll becomes East. May the tiles be in your favour."}</p>
@@ -4040,7 +4122,7 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
           return (
             <div key={p.name} style={{ display: "flex", alignItems: "center", gap: 14, padding: "12px 14px", borderRadius: 16, background: PQ.off, border: `1.5px solid ${isEast ? PQ.rust : you && canTap ? PQ.lineMid : PQ.line}`, transition: "border-color .3s" }}>
               <span style={{ width: 48, height: 48, flexShrink: 0, borderRadius: "50%", overflow: "hidden", background: AVATARS[p.av].bg, border: `1.5px solid ${PQ.line}` }}>
-                <img src={avatarSrc(p.av)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(p.av)})`, transformOrigin: "center 40%" }}/>
+                <img src={avatarSrc(p.av)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(p.av)})`, transformOrigin: "center 40%" }} />
               </span>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 15, color: PQ.ink }}>{p.name}</div>
@@ -4048,8 +4130,8 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
                   {seated ? `${wind} seat · ${vals[i][0] + vals[i][1]}` : canTap ? "Tap to roll" : phase === "rolling" ? "Rolling…" : "Ready"}                </div>
               </div>
               <button onClick={canTap ? roll : undefined} className={canTap ? "pq-press pq-pulse" : ""} style={{ display: "flex", gap: 6, padding: canTap ? 6 : 0, borderRadius: 12, border: canTap ? `1.5px solid ${PQ.rust}` : "none", background: "transparent", cursor: canTap ? "pointer" : "default" }}>
-                <Dice value={vals[i][0]} rolling={phase === "rolling"}/>
-                <Dice value={vals[i][1]} rolling={phase === "rolling"}/>
+                <Dice value={vals[i][0]} rolling={phase === "rolling"} />
+                <Dice value={vals[i][1]} rolling={phase === "rolling"} />
               </button>
             </div>
           );
@@ -4075,36 +4157,42 @@ const TC = { bamboo: "#1F8A5B", character: "#B65A2F", wind: "#3E6B8C" };
 // small cream tile face with a glyph (mirrors the gameplay tile look)
 function MiniTile({ glyph, color = PQ.ink, w = 46, h = 60, dashed }) {
   if (dashed) {
-    return <span style={{ width: w, height: h, borderRadius: 8, background: "transparent",
+    return <span style={{
+      width: w, height: h, borderRadius: 8, background: "transparent",
       border: `1.5px dashed ${PQ.lineMid}`, display: "flex", alignItems: "center", justifyContent: "center",
-      fontFamily: HERO, fontSize: 22, color: PQ.inkFaint }}>?</span>;
+      fontFamily: HERO, fontSize: 22, color: PQ.inkFaint
+    }}>?</span>;
   }
-  return <span style={{ width: w, height: h, borderRadius: 8, background: "linear-gradient(180deg,#FFFDF6,#F2E8D2)",
+  return <span style={{
+    width: w, height: h, borderRadius: 8, background: "linear-gradient(180deg,#FFFDF6,#F2E8D2)",
     border: `1px solid ${PQ.line}`, boxShadow: "inset 0 -2px 0 rgba(20,51,34,0.07), 0 4px 10px -6px rgba(20,51,34,0.4)",
-    display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: h * 0.42, color }}>{glyph}</span>;
+    display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: h * 0.42, color
+  }}>{glyph}</span>;
 }
 
 function PreGameSheet({ kicker, title, children, onSkip, primaryLabel, onPrimary, stepNo }) {
   return (
     <div onClick={onSkip} className="pq-modal-backdrop" style={{ position: "absolute", inset: 0, zIndex: 50, display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
-      <div onClick={(e) => e.stopPropagation()} className="pq-sheet-up" style={{ width: "100%", maxHeight: "86%", background: PQ.off,
-        borderTopLeftRadius: 26, borderTopRightRadius: 26, display: "flex", flexDirection: "column", boxShadow: "0 -20px 50px -20px rgba(14,36,23,0.5)" }}>
+      <div onClick={(e) => e.stopPropagation()} className="pq-sheet-up" style={{
+        width: "100%", maxHeight: "86%", background: PQ.off,
+        borderTopLeftRadius: 26, borderTopRightRadius: 26, display: "flex", flexDirection: "column", boxShadow: "0 -20px 50px -20px rgba(14,36,23,0.5)"
+      }}>
         {/* grab handle */}
         <div style={{ flexShrink: 0, padding: "11px 0 2px", display: "flex", justifyContent: "center" }}>
-          <div style={{ width: 40, height: 4, borderRadius: 999, background: PQ.line }}/>
+          <div style={{ width: 40, height: 4, borderRadius: 999, background: PQ.line }} />
         </div>
         {/* header */}
         <div style={{ flexShrink: 0, padding: "8px 22px 14px", display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 11 }}>
-            <TileMark size={30} tone="dark"/>
+            <TileMark size={30} tone="dark" />
             <div>
               <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", color: PQ.rust }}>{kicker}</div>
               <h2 style={{ margin: "3px 0 0", fontFamily: HERO, fontWeight: 700, fontSize: 19, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>{title}</h2>
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 2 }}>
-            <span style={{ width: 7, height: 7, borderRadius: "50%", background: stepNo === 0 ? PQ.rust : PQ.line }}/>
-            <span style={{ width: 7, height: 7, borderRadius: "50%", background: stepNo === 1 ? PQ.rust : PQ.line }}/>
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: stepNo === 0 ? PQ.rust : PQ.line }} />
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: stepNo === 1 ? PQ.rust : PQ.line }} />
           </div>
         </div>
         {/* scroll body */}
@@ -4112,8 +4200,10 @@ function PreGameSheet({ kicker, title, children, onSkip, primaryLabel, onPrimary
         {/* footer */}
         <div style={{ flexShrink: 0, padding: "13px 22px 26px", borderTop: `1px solid ${PQ.line}`, display: "flex", flexDirection: "column", gap: 9 }}>
           <Btn variant="primary" trailingIcon="arrowR" onClick={onPrimary}>{primaryLabel}</Btn>
-          <button onClick={onSkip} className="pq-press" style={{ height: 44, borderRadius: 13, border: "none", background: "transparent", cursor: "pointer",
-            fontFamily: HERO, fontWeight: 700, fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: PQ.inkFaint }}>Skip</button>
+          <button onClick={onSkip} className="pq-press" style={{
+            height: 44, borderRadius: 13, border: "none", background: "transparent", cursor: "pointer",
+            fontFamily: HERO, fontWeight: 700, fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: PQ.inkFaint
+          }}>Skip</button>
         </div>
       </div>
     </div>
@@ -4141,13 +4231,15 @@ function PreGameScreen({ lobbyType = "Public Lobby", tableName = "East Wind Tabl
     <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
       {/* branded backdrop — the table you're about to enter, subtly visible */}
       <div style={{ position: "absolute", inset: 0, background: `radial-gradient(130% 100% at 50% 0%, ${PQ.green2} 0%, ${PQ.green} 52%, ${PQ.greenDeep} 100%)` }}>
-        <div style={{ position: "absolute", inset: 0, opacity: 0.06,
-          backgroundImage: "radial-gradient(rgba(249,242,228,0.5) 1px, transparent 1.4px)", backgroundSize: "22px 22px" }}/>
+        <div style={{
+          position: "absolute", inset: 0, opacity: 0.06,
+          backgroundImage: "radial-gradient(rgba(249,242,228,0.5) 1px, transparent 1.4px)", backgroundSize: "22px 22px"
+        }} />
         <div style={{ position: "absolute", top: 70, left: 0, right: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
           <div onClick={onSkip} className="pq-press" style={{ position: "absolute", top: -4, left: 22, width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>
-            <Icon name="chevL" size={24} stroke="rgba(249,242,228,0.85)" sw={1.8}/>
+            <Icon name="chevL" size={24} stroke="rgba(249,242,228,0.85)" sw={1.8} />
           </div>
-          <div style={{ marginTop: 26, opacity: 0.9 }}><TileMark size={52} tone="light"/></div>
+          <div style={{ marginTop: 26, opacity: 0.9 }}><TileMark size={52} tone="light" /></div>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: PQ.rustSoft }}>{lobbyType}</div>
             <div style={{ marginTop: 5, fontFamily: HERO, fontWeight: 700, fontSize: 22, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.off }}>{tableName}</div>
@@ -4155,7 +4247,7 @@ function PreGameScreen({ lobbyType = "Public Lobby", tableName = "East Wind Tabl
           </div>
         </div>
         {/* dim wash so the sheet reads above the table */}
-        <div style={{ position: "absolute", inset: 0, background: "rgba(14,36,23,0.32)" }}/>
+        <div style={{ position: "absolute", inset: 0, background: "rgba(14,36,23,0.32)" }} />
       </div>
 
       {step === 0 ? (
@@ -4179,14 +4271,14 @@ function PreGameScreen({ lobbyType = "Public Lobby", tableName = "East Wind Tabl
               <div style={{ fontFamily: HERO, fontSize: 10.5, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 12 }}>Special tiles</div>
               <div style={{ display: "flex", gap: 12 }}>
                 <div style={{ flex: 1, display: "flex", gap: 11, alignItems: "center", padding: "12px 13px", border: "1px solid rgba(20,51,34,0.08)", borderRadius: 14 }}>
-                  <MiniTile glyph="5" color={TC.bamboo} w={40} h={52}/>
+                  <MiniTile glyph="5" color={TC.bamboo} w={40} h={52} />
                   <div>
                     <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 12.5, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Marking Tile</div>
                     <div style={{ marginTop: 3, fontFamily: HERO, fontSize: 11.5, lineHeight: 1.4, color: PQ.inkSoft }}>Sets the round's bonus suit. Match it for extra points.</div>
                   </div>
                 </div>
                 <div style={{ flex: 1, display: "flex", gap: 11, alignItems: "center", padding: "12px 13px", border: "1px solid rgba(20,51,34,0.08)", borderRadius: 14 }}>
-                  <MiniTile glyph="🃏" color={PQ.rust} w={40} h={52}/>
+                  <MiniTile glyph="🃏" color={PQ.rust} w={40} h={52} />
                   <div>
                     <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 12.5, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Joker Tile</div>
                     <div style={{ marginTop: 3, fontFamily: HERO, fontSize: 11.5, lineHeight: 1.4, color: PQ.inkSoft }}>Stands in for any tile to complete a set.</div>
@@ -4205,9 +4297,11 @@ function PreGameScreen({ lobbyType = "Public Lobby", tableName = "East Wind Tabl
                       <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.03em", textTransform: "uppercase", color: PQ.ink }}>{m.label}</div>
                       <div style={{ marginTop: 2, fontFamily: HERO, fontSize: 11.5, color: PQ.inkSoft }}>{m.sub}</div>
                     </div>
-                    <span style={{ flexShrink: 0, minWidth: 40, textAlign: "center", height: 28, lineHeight: "28px", padding: "0 11px", borderRadius: 999,
+                    <span style={{
+                      flexShrink: 0, minWidth: 40, textAlign: "center", height: 28, lineHeight: "28px", padding: "0 11px", borderRadius: 999,
                       background: m.active ? PQ.rust : "transparent", border: `1.5px solid ${m.active ? PQ.rust : PQ.line}`,
-                      fontFamily: HERO, fontWeight: 700, fontSize: 13, color: m.active ? PQ.off : PQ.inkFaint }}>{m.val}</span>
+                      fontFamily: HERO, fontWeight: 700, fontSize: 13, color: m.active ? PQ.off : PQ.inkFaint
+                    }}>{m.val}</span>
                   </div>
                 ))}
               </div>
@@ -4240,13 +4334,15 @@ const DW = 384, DH = 832;
 
 function Phone({ children, dark = false }) {
   return (
-    <div className="device" style={{ width: DW, height: DH, borderRadius: 56, background: "#080808",
+    <div className="device" style={{
+      width: DW, height: DH, borderRadius: 56, background: "#080808",
       padding: 10, position: "relative",
-      boxShadow: "0 2px 0 1px rgba(255,255,255,0.06) inset, 0 60px 110px -30px rgba(20,51,34,0.5), 0 0 0 2px #000" }}>
+      boxShadow: "0 2px 0 1px rgba(255,255,255,0.06) inset, 0 60px 110px -30px rgba(20,51,34,0.5), 0 0 0 2px #000"
+    }}>
       <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: 47, overflow: "hidden", background: PQ.off }}>
         {children}
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 30 }}><IOSStatusBar dark={dark}/></div>
-        <div style={{ position: "absolute", top: 12, left: "50%", transform: "translateX(-50%)", width: 120, height: 35, borderRadius: 22, background: "#000", zIndex: 40 }}/>
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 30 }}><IOSStatusBar dark={dark} /></div>
+        <div style={{ position: "absolute", top: 12, left: "50%", transform: "translateX(-50%)", width: 120, height: 35, borderRadius: 22, background: "#000", zIndex: 40 }} />
       </div>
     </div>
   );
@@ -4254,12 +4350,14 @@ function Phone({ children, dark = false }) {
 
 function PhoneLandscape({ children }) {
   return (
-    <div className="device" style={{ width: DH, height: DW, borderRadius: 56, background: "#080808",
+    <div className="device" style={{
+      width: DH, height: DW, borderRadius: 56, background: "#080808",
       padding: 10, position: "relative",
-      boxShadow: "0 2px 0 1px rgba(255,255,255,0.06) inset, 0 60px 110px -30px rgba(20,51,34,0.5), 0 0 0 2px #000" }}>
+      boxShadow: "0 2px 0 1px rgba(255,255,255,0.06) inset, 0 60px 110px -30px rgba(20,51,34,0.5), 0 0 0 2px #000"
+    }}>
       <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: 47, overflow: "hidden", background: PQ.green }}>
         {children}
-        <div style={{ position: "absolute", bottom: 6, left: "50%", transform: "translateX(-50%)", width: 134, height: 5, borderRadius: 100, background: "rgba(249,242,228,0.35)", zIndex: 50 }}/>
+        <div style={{ position: "absolute", bottom: 6, left: "50%", transform: "translateX(-50%)", width: 134, height: 5, borderRadius: 100, background: "rgba(249,242,228,0.35)", zIndex: 50 }} />
       </div>
     </div>
   );
@@ -4269,11 +4367,15 @@ function Sw({ label, on, set }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
       <span className="lbl">{label}</span>
-      <div onClick={set} style={{ width: 42, height: 25, borderRadius: 999, padding: 2, cursor: "pointer",
-        background: on ? PQ.rust : "rgba(20,51,34,0.18)", transition: "background .18s", flexShrink: 0 }}>
-        <div style={{ width: 21, height: 21, borderRadius: "50%", background: PQ.off,
+      <div onClick={set} style={{
+        width: 42, height: 25, borderRadius: 999, padding: 2, cursor: "pointer",
+        background: on ? PQ.rust : "rgba(20,51,34,0.18)", transition: "background .18s", flexShrink: 0
+      }}>
+        <div style={{
+          width: 21, height: 21, borderRadius: "50%", background: PQ.off,
           transform: on ? "translateX(17px)" : "translateX(0)", transition: "transform .18s",
-          boxShadow: "0 1px 3px rgba(0,0,0,0.25)" }}/>
+          boxShadow: "0 1px 3px rgba(0,0,0,0.25)"
+        }} />
       </div>
     </div>
   );
@@ -4285,9 +4387,9 @@ function Sw({ label, on, set }) {
 function RewardCard({ reward, index }) {
   const emblem = {
     points: <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 20, color: "#3A2A06" }}>P</span>,
-    border: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3A2A06" strokeWidth="2"><rect x="4" y="4" width="16" height="16" rx="3"/><rect x="8.5" y="8.5" width="7" height="7" rx="1.5"/></svg>,
-    tier:   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3A2A06" strokeWidth="1.9" strokeLinejoin="round"><path d="M4 8l3.2 3L12 5.5 16.8 11 20 8l-1.4 10.5H5.4z"/></svg>,
-    tag:    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3A2A06" strokeWidth="1.9" strokeLinejoin="round"><path d="M4 12.5V5.5A1.5 1.5 0 015.5 4h7L20 11.5 12.5 19 4 12.5z"/><circle cx="8.4" cy="8.4" r="1.2" fill="#3A2A06" stroke="none"/></svg>,
+    border: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3A2A06" strokeWidth="2"><rect x="4" y="4" width="16" height="16" rx="3" /><rect x="8.5" y="8.5" width="7" height="7" rx="1.5" /></svg>,
+    tier: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3A2A06" strokeWidth="1.9" strokeLinejoin="round"><path d="M4 8l3.2 3L12 5.5 16.8 11 20 8l-1.4 10.5H5.4z" /></svg>,
+    tag: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3A2A06" strokeWidth="1.9" strokeLinejoin="round"><path d="M4 12.5V5.5A1.5 1.5 0 015.5 4h7L20 11.5 12.5 19 4 12.5z" /><circle cx="8.4" cy="8.4" r="1.2" fill="#3A2A06" stroke="none" /></svg>,
   }[reward.kind] || null;
   return (
     <div className="pq-reveal" style={{
@@ -4296,9 +4398,11 @@ function RewardCard({ reward, index }) {
       background: "linear-gradient(150deg, rgba(230,190,99,0.16), rgba(201,151,47,0.08))",
       border: `1.5px solid ${GOLD}`,
     }}>
-      <span className="pq-mahjong-glow" style={{ width: 48, height: 48, flexShrink: 0, borderRadius: 14,
+      <span className="pq-mahjong-glow" style={{
+        width: 48, height: 48, flexShrink: 0, borderRadius: 14,
         background: `linear-gradient(160deg, ${GOLD_SOFT}, ${GOLD} 55%, ${GOLD_DEEP})`, border: "1.5px solid #EBCE81",
-        display: "flex", alignItems: "center", justifyContent: "center" }}>{emblem}</span>
+        display: "flex", alignItems: "center", justifyContent: "center"
+      }}>{emblem}</span>
       <div style={{ minWidth: 0 }}>
         <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 14.5, letterSpacing: "0.02em", color: PQ.ink }}>{reward.title}</div>
         <div style={{ marginTop: 3, fontSize: 12, lineHeight: 1.4, color: PQ.inkSoft }}>{reward.sub}</div>
@@ -4321,10 +4425,12 @@ function ResultsScreen({ canExtend = true, onExtend, onHome, rewards = null }) {
       <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", padding: "58px 22px 12px" }}>
         {/* header — calm celebratory beat */}
         <div style={{ textAlign: "center" }}>
-          <div className="pq-mahjong-glow" style={{ width: 64, height: 64, margin: "0 auto", borderRadius: "50%",
+          <div className="pq-mahjong-glow" style={{
+            width: 64, height: 64, margin: "0 auto", borderRadius: "50%",
             background: `linear-gradient(160deg, ${GOLD_SOFT}, ${GOLD} 55%, ${GOLD_DEEP})`, border: "2px solid #EBCE81",
-            display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3A2A06" strokeWidth="1.8" strokeLinejoin="round"><path d="M4 8l3.2 3L12 5.5 16.8 11 20 8l-1.4 10.5H5.4z"/></svg>
+            display: "flex", alignItems: "center", justifyContent: "center"
+          }}>
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3A2A06" strokeWidth="1.8" strokeLinejoin="round"><path d="M4 8l3.2 3L12 5.5 16.8 11 20 8l-1.4 10.5H5.4z" /></svg>
           </div>
           <div style={{ marginTop: 14, fontFamily: HERO, fontWeight: 700, fontSize: 24, letterSpacing: "0.05em", textTransform: "uppercase", color: PQ.ink }}>Game Over</div>
           <div style={{ marginTop: 6, fontSize: 13, color: PQ.inkSoft }}>East Round complete · You finished 1st</div>
@@ -4334,12 +4440,14 @@ function ResultsScreen({ canExtend = true, onExtend, onHome, rewards = null }) {
         <div style={{ marginTop: 24, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 10 }}>Final Scores</div>
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {ranked.map((p) => (
-            <div key={p.name} style={{ display: "flex", alignItems: "center", gap: 13, padding: "11px 14px", borderRadius: 16,
+            <div key={p.name} style={{
+              display: "flex", alignItems: "center", gap: 13, padding: "11px 14px", borderRadius: 16,
               background: p.you ? "rgba(182,90,47,0.08)" : PQ.off,
-              border: `1.5px solid ${p.you ? PQ.rust : PQ.line}` }}>
+              border: `1.5px solid ${p.you ? PQ.rust : PQ.line}`
+            }}>
               <span style={{ width: 24, fontFamily: HERO, fontWeight: 700, fontSize: 16, textAlign: "center", color: rankColor(p.rank), flexShrink: 0 }}>{p.rank}</span>
               <span style={{ width: 42, height: 42, flexShrink: 0, borderRadius: "50%", overflow: "hidden", background: AVATARS[p.av].bg, border: `1.5px solid ${PQ.line}` }}>
-                <img src={avatarSrc(p.av)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(p.av)})`, transformOrigin: "center 40%" }}/>
+                <img src={avatarSrc(p.av)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(p.av)})`, transformOrigin: "center 40%" }} />
               </span>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
@@ -4398,12 +4506,12 @@ function PocketDragonApp() {
   // ── ONBOARDING (untouched) ─────────────────────────────────
   if (screen !== "app") {
     let view = null;
-    if (screen === "splash") view = <SplashScreen go={go} live/>;
-    else if (screen === "welcome") view = <WelcomeScreen go={go}/>;
-    else if (screen === "register") view = <RegisterScreen go={go} live setEmail={setEmail}/>;
-    else if (screen === "verify") view = <VerifyScreen go={goApp} live email={email}/>;
-    else if (screen === "login") view = <LoginScreen go={goApp}/>;
-    else if (screen === "forgot") view = <ForgotFlow go={go} live/>;
+    if (screen === "splash") view = <SplashScreen go={go} live />;
+    else if (screen === "welcome") view = <WelcomeScreen go={go} />;
+    else if (screen === "register") view = <RegisterScreen go={go} live setEmail={setEmail} />;
+    else if (screen === "verify") view = <VerifyScreen go={goApp} live email={email} />;
+    else if (screen === "login") view = <LoginScreen go={goApp} />;
+    else if (screen === "forgot") view = <ForgotFlow go={go} live />;
     return (
       <div className="stage">
         <Phone>
@@ -4416,35 +4524,35 @@ function PocketDragonApp() {
   // ── IN-APP ─────────────────────────────────────────────────
   let phoneBody;
   if (route === "config") {
-    phoneBody = <GameConfigScreen title={extendMode ? "Extend Game" : "Create A Game"} subtitle={extendMode ? "Adjust the setup and keep playing" : "Set the house rules — blame them later"} onBack={home} onCreate={() => { setLobbyHost(true); setRoute("waiting"); }} onShare={() => { setLobbyHost(true); setRoute("waiting"); }} onInvite={() => setRoute("invite")}/>;
+    phoneBody = <GameConfigScreen title={extendMode ? "Extend Game" : "Create A Game"} subtitle={extendMode ? "Adjust the setup and keep playing" : "Set the house rules — blame them later"} onBack={home} onCreate={() => { setLobbyHost(true); setRoute("waiting"); }} onShare={() => { setLobbyHost(true); setRoute("waiting"); }} onInvite={() => setRoute("invite")} />;
   } else if (route === "waiting") {
-    phoneBody = <WaitingLobbyScreen isHost={lobbyHost} lobbyType={lobbyHost ? "Private Lobby" : "Public Lobby"} tableName={lobbyHost ? "The Jade Parlour" : "East Wind Table"} onBack={home} onStart={() => setRoute("seating")}/>;
+    phoneBody = <WaitingLobbyScreen isHost={lobbyHost} lobbyType={lobbyHost ? "Private Lobby" : "Public Lobby"} tableName={lobbyHost ? "The Jade Parlour" : "East Wind Table"} onBack={home} onStart={() => setRoute("seating")} />;
   } else if (route === "seating") {
-    phoneBody = <SeatAssignmentScreen onBack={() => setRoute("waiting")} onEnter={() => setRoute("game")}/>;
+    phoneBody = <SeatAssignmentScreen onBack={() => setRoute("waiting")} onEnter={() => setRoute("game")} />;
   } else if (route === "results") {
-    phoneBody = <ResultsScreen canExtend={true} onExtend={() => { setExtendMode(true); setRoute("config"); }} onHome={() => { setOngoing(false); home(); }}/>;
+    phoneBody = <ResultsScreen canExtend={true} onExtend={() => { setExtendMode(true); setRoute("config"); }} onHome={() => { setOngoing(false); home(); }} />;
   } else if (route === "practice") {
-    phoneBody = <PracticeScreen onBack={home} onStart={() => setRoute("seating")}/>;
+    phoneBody = <PracticeScreen onBack={home} onStart={() => setRoute("seating")} />;
   } else if (route === "lobby") {
-    phoneBody = <PublicLobbyScreen onBack={home} onJoin={() => { setLobbyHost(false); setRoute("waiting"); }} onPrivate={() => setRoute("private")}/>;
+    phoneBody = <PublicLobbyScreen onBack={home} onJoin={() => { setLobbyHost(false); setRoute("waiting"); }} onPrivate={() => setRoute("private")} />;
   } else if (route === "private") {
-    phoneBody = <PrivateLobbyScreen onBack={() => setRoute("lobby")} onJoin={() => { setLobbyHost(false); setRoute("waiting"); }}/>;
+    phoneBody = <PrivateLobbyScreen onBack={() => setRoute("lobby")} onJoin={() => { setLobbyHost(false); setRoute("waiting"); }} />;
   } else if (route === "pregame") {
-    phoneBody = <PreGameScreen onSkip={() => setRoute("waiting")} onEnter={() => setRoute("waiting")}/>;
+    phoneBody = <PreGameScreen onSkip={() => setRoute("waiting")} onEnter={() => setRoute("waiting")} />;
   } else if (route === "invite") {
-    phoneBody = <InviteScreen onBack={() => setRoute("config")}/>;
+    phoneBody = <InviteScreen onBack={() => setRoute("config")} />;
   } else if (route === "rejoin") {
-    phoneBody = <RejoinScreen onBack={home} onRejoin={() => setRoute("game")} onHome={home}/>;
+    phoneBody = <RejoinScreen onBack={home} onRejoin={() => setRoute("game")} onHome={home} />;
   } else if (route === "search") {
-    phoneBody = <SearchScreen onBack={home} onOther={() => openOther("search")}/>;
+    phoneBody = <SearchScreen onBack={home} onOther={() => openOther("search")} />;
   } else if (route === "otherprofile") {
-    phoneBody = <OtherProfileScreen onBack={() => setRoute(otherFrom)}/>;
+    phoneBody = <OtherProfileScreen onBack={() => setRoute(otherFrom)} />;
   } else if (route === "notifications") {
-    phoneBody = <NotificationsScreen onBack={() => goTab("profile")} onAccept={() => { setLobbyHost(false); setRoute("waiting"); }}/>;
+    phoneBody = <NotificationsScreen onBack={() => goTab("profile")} onAccept={() => { setLobbyHost(false); setRoute("waiting"); }} />;
   } else if (route === "subscription") {
-    phoneBody = <SubscriptionScreen onBack={() => goTab("profile")} onSubscribe={(p) => { setPlan(p); setRoute("payment"); }}/>;
+    phoneBody = <SubscriptionScreen onBack={() => goTab("profile")} onSubscribe={(p) => { setPlan(p); setRoute("payment"); }} />;
   } else if (route === "payment") {
-    phoneBody = <PaymentScreen plan={plan} onClose={() => setRoute("subscription")} onSuccess={() => { home(); flash("Welcome to Premium"); }}/>;
+    phoneBody = <PaymentScreen plan={plan} onClose={() => setRoute("subscription")} onSuccess={() => { home(); flash("Welcome to Premium"); }} />;
   } else {
     phoneBody = (
       <>
@@ -4452,17 +4560,17 @@ function PocketDragonApp() {
           <div key={tab + (tab === "home" ? (ongoing ? "-1" : "-0") : "")} className="pq-tabview"
             style={{ flex: 1, padding: "62px 22px 18px", display: "flex", flexDirection: "column", overflow: "hidden" }}>
             {tab === "home"
-              ? <HomeScreen showOngoing={ongoing} onCard={onCard} onAvatar={() => goTab("profile")} onLeave={() => { setOngoing(false); flash("You left the table"); }} selected={selected} onNotify={() => setRoute("notifications")}/>
+              ? <HomeScreen showOngoing={ongoing} onCard={onCard} onAvatar={() => goTab("profile")} onLeave={() => { setOngoing(false); flash("You left the table"); }} selected={selected} onNotify={() => setRoute("notifications")} />
               : tab === "profile"
-              ? <ProfileScreen onFind={() => setRoute("search")} onOther={() => openOther("home")} onLogout={() => { home(); go("splash"); }} onNotifications={() => setRoute("notifications")} onSubscriptions={() => setRoute("subscription")}/>
-              : tab === "settings"
-              ? <SettingsScreen/>
-              : tab === "subscription"
-              ? <RulesScreen/>
-              : <TabStub icon="users" label="Profile"/>}
+                ? <ProfileScreen onFind={() => setRoute("search")} onOther={() => openOther("home")} onLogout={() => { home(); go("splash"); }} onNotifications={() => setRoute("notifications")} onSubscriptions={() => setRoute("subscription")} />
+                : tab === "settings"
+                  ? <SettingsScreen />
+                  : tab === "subscription"
+                    ? <RulesScreen />
+                    : <TabStub icon="users" label="Profile" />}
           </div>
         </div>
-        <BottomNav active={tab} onChange={goTab}/>
+        <BottomNav active={tab} onChange={goTab} />
       </>
     );
   }
@@ -4471,14 +4579,14 @@ function PocketDragonApp() {
     <div className="stage">
       {route === "game" ? (
         <PhoneLandscape>
-          <GameScreen demo={game} onExit={(what) => { if (what === "info") return flash("Rule Book"); if (what === "logout") return go("login"); if (what === "results") return setRoute("results"); home(); }}/>
-          <Toast msg={toast}/>
+          <GameScreen demo={game} onExit={(what) => { if (what === "info") return flash("Rule Book"); if (what === "logout") return go("login"); if (what === "results") return setRoute("results"); home(); }} />
+          <Toast msg={toast} />
         </PhoneLandscape>
       ) : (
         <Phone>
           <div style={{ position: "relative", height: "100%", width: "100%" }}>
             {phoneBody}
-            <Toast msg={toast}/>
+            <Toast msg={toast} />
           </div>
         </Phone>
       )}
@@ -4486,9 +4594,9 @@ function PocketDragonApp() {
       {/* design-review control (not part of the product UI) */}
       {route === "game" ? (
         <div className="ctrl" style={{ gap: 18, flexWrap: "wrap", justifyContent: "center" }}>
-          <Sw label="Bot playing" on={game.bot} set={() => setGame((g) => ({ ...g, bot: !g.bot }))}/>
-          <Sw label="Reconnecting" on={game.disc} set={() => setGame((g) => ({ ...g, disc: !g.disc }))}/>
-          <Sw label="Mahjong ready" on={game.win} set={() => setGame((g) => ({ ...g, win: !g.win }))}/>
+          <Sw label="Bot playing" on={game.bot} set={() => setGame((g) => ({ ...g, bot: !g.bot }))} />
+          <Sw label="Reconnecting" on={game.disc} set={() => setGame((g) => ({ ...g, disc: !g.disc }))} />
+          <Sw label="Mahjong ready" on={game.win} set={() => setGame((g) => ({ ...g, win: !g.win }))} />
         </div>
       ) : (
         <div className="ctrl">
@@ -4497,7 +4605,7 @@ function PocketDragonApp() {
             <span className="hint">{ongoing ? "Banner visible" : "No active game"}</span>
           </div>
           <div onClick={() => { home(); setOngoing((v) => !v); }} style={{ width: 46, height: 27, borderRadius: 999, padding: 2, cursor: "pointer", background: ongoing ? PQ.rust : "rgba(20,51,34,0.18)", transition: "background .18s" }}>
-            <div style={{ width: 23, height: 23, borderRadius: "50%", background: PQ.off, transform: ongoing ? "translateX(19px)" : "translateX(0)", transition: "transform .18s", boxShadow: "0 1px 3px rgba(0,0,0,0.25)" }}/>
+            <div style={{ width: 23, height: 23, borderRadius: "50%", background: PQ.off, transform: ongoing ? "translateX(19px)" : "translateX(0)", transition: "transform .18s", boxShadow: "0 1px 3px rgba(0,0,0,0.25)" }} />
           </div>
         </div>
       )}
