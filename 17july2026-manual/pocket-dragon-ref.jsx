@@ -3787,7 +3787,7 @@ function SubscriptionSheet({ onClose }) {
               paddingBottom: 1,
               transition: "opacity 0.2s ease"
             }}>
-              pocketdragon.in
+              https://www.pocketdragon.in
             </a>
           </div>
 
