@@ -24,6 +24,7 @@ const PQ = {
   // translucent helpers
   onGreen: "rgba(249,242,228,",   // off-white alpha on green
   onOff: "rgba(20,51,34,",      // green alpha on off-white
+  destructive: "#7f1616",
 };
 
 const HERO = 'Hero';
@@ -34,7 +35,7 @@ const GOLD_SOFT = "#EBCE81";
 const GOLD_DEEP = "#A97C22";
 
 // Table difficulty level colours — used consistently across all screens
-const DIFF_COLORS = { Smurf: "#A9C4D6", Easy: "#6D7A62", Fair: "#A16A03", Hard: "#B65A2F", Fierce: "#630206" };
+const DIFF_COLORS = { Smurf: "#a9c4d6", Easy: "#6d7a62", Fair: "#a16a03", Hard: "#b65a2f", Fierce: "#630206" };
 const diffColorOf = (d) => DIFF_COLORS[d] || "#6E6A5E";
 
 // ── Icons (simple line glyphs) ─────────────────────────────────

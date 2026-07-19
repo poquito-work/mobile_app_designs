@@ -230,24 +230,25 @@ function ConfirmSheet({ kind, onClose, onConfirm }) {
   const isDelete = kind === "delete";
   const body = isDelete
     ? "Deleting your account is permanent and cannot be undone. Your profile, game history, statistics, friends, achievements, and all associated data will be permanently deleted.\n\nAre you sure?"
-    : "You'll need to sign in again to get back to your tables";
+    : "You'll have to login again to access your account";
   const cta = isDelete ? "Yes, I'm sure" : "Log out";
-  const cancel = isDelete ? "No, I changed my mind" : "Cancel";
+  const cancel = isDelete ? "No, I change my mind" : "Cancel";
   const title = isDelete ? "Delete account" : "Log out";
+  const activeColor = isDelete ? PQ.destructive : PQ.rust;
   return (
     <div onClick={onClose} className="pq-modal-backdrop" style={{ position: "absolute", inset: 0, zIndex: 70, background: "rgba(20,51,34,0.5)", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
       <div onClick={(e) => e.stopPropagation()} className="pq-pop-in" style={{ width: "100%", background: PQ.off, borderTopLeftRadius: 26, borderTopRightRadius: 26, padding: "14px 22px 30px" }}>
         <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }} />
-        <span style={{ width: 54, height: 54, borderRadius: "50%", background: isDelete ? "rgba(99,2,6,0.1)" : "rgba(182,90,47,0.1)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
+        <span style={{ width: 54, height: 54, borderRadius: "50%", background: "transparent", border: `1.5px solid ${activeColor}`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
           {isDelete
-            ? <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#630206" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M5 7h14M9 7V5a1.5 1.5 0 011.5-1.5h3A1.5 1.5 0 0115 5v2M7 7l1 12.5a1.5 1.5 0 001.5 1.4h5A1.5 1.5 0 0016 19.5L17 7" /></svg>
-            : <HIcon name="leave" size={24} stroke={PQ.rust} sw={1.9} />}
+            ? <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={activeColor} strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M5 7h14M9 7V5a1.5 1.5 0 011.5-1.5h3A1.5 1.5 0 0115 5v2M7 7l1 12.5a1.5 1.5 0 001.5 1.4h5A1.5 1.5 0 0016 19.5L17 7" /></svg>
+            : <HIcon name="leave" size={24} stroke={activeColor} sw={1.9} />}
         </span>
         <h2 style={{ margin: 0, textAlign: "center", fontFamily: HERO, fontWeight: 700, fontSize: 19, letterSpacing: "0.03em", textTransform: "uppercase", color: PQ.ink }}>{title}</h2>
-        <p style={{ margin: "10px 0 22px", textAlign: "center", fontSize: 14, lineHeight: 1.5, color: PQ.inkSoft, whiteSpace: "pre-line" }}>{body}</p>
+        <p style={{ margin: "10px 0 22px", textAlign: isDelete ? "justify" : "center", fontSize: 14, lineHeight: 1.5, color: PQ.inkSoft, whiteSpace: "pre-line" }}>{body}</p>
         <div style={{ display: "flex", flexDirection: "column", gap: 11 }}>
-          <button onClick={() => { pock("select"); onConfirm(); }} className="pq-press" style={{ height: 54, borderRadius: 15, border: "none", cursor: "pointer", background: isDelete ? "#630206" : `linear-gradient(160deg, ${PQ.rustSoft}, ${PQ.rust} 52%, ${PQ.rustDeep})`, color: PQ.off, fontFamily: HERO, fontWeight: 700, fontSize: 13.5, letterSpacing: "0.08em", textTransform: "uppercase" }}>{cta}</button>
-          <button onClick={onClose} className="pq-press" style={{ height: 54, borderRadius: 15, border: `1.5px solid ${PQ.lineMid}`, background: "transparent", cursor: "pointer", color: PQ.ink, fontFamily: HERO, fontWeight: 700, fontSize: 13.5, letterSpacing: "0.08em", textTransform: "uppercase" }}>{cancel}</button>
+          <button onClick={() => { pock("select"); onConfirm(); }} className="pq-press" style={{ height: 54, borderRadius: 15, border: "none", cursor: "pointer", background: activeColor, color: PQ.off, fontFamily: HERO, fontWeight: 700, fontSize: 13.5, letterSpacing: "0.08em", textTransform: "uppercase" }}>{cta}</button>
+          <button onClick={onClose} className="pq-press" style={{ height: 54, borderRadius: 15, border: `1.5px solid ${activeColor}`, background: "transparent", cursor: "pointer", color: activeColor, fontFamily: HERO, fontWeight: 700, fontSize: 13.5, letterSpacing: "0.08em", textTransform: "uppercase" }}>{cancel}</button>
         </div>
       </div>
     </div>
@@ -265,11 +266,11 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
   const [faqOpen, setFaqOpen] = React.useState(false);
   const [subOpen, setSubOpen] = React.useState(false);
   const [confirm, setConfirm] = React.useState(null); // "logout" | "delete" | null
-  const stats = seg === "season"
-    ? [["42", "Games played"], ["61%", "Win rate"], ["486", "Highest score"], ["2nd", "Avg finish"]]
-    : [["1,204", "Games played"], ["58%", "Win rate"], ["512", "Highest score"]];
-  const positions = [["1st", "38%"], ["2nd", "27%"], ["3rd", "21%"], ["4th", "14%"]];
-  const favs = [["Mei L.", 2, true], ["Arjun P.", 1, true], ["Priya R.", 0, false], ["Sam K.", 1, true]];
+  const displayStats = seg === "season"
+    ? { games: "42", winRate: "61%", highest: "486", positions: [["1st", "25%"], ["2nd", "35%"], ["3rd", "25%"], ["4th", "15%"]] }
+    : { games: "1,204", winRate: "58%", highest: "512", positions: [["1st", "38%"], ["2nd", "27%"], ["3rd", "21%"], ["4th", "14%"]] };
+  const statsSeason = [["42", "Games played"], ["61%", "Win rate"], ["486", "Highest score"], ["2nd", "Avg finish"]];
+  const favs = [["Mei L.", 2, true, "Jade I"], ["Arjun P.", 1, true, "Jade III"], ["Priya R.", 0, false, "Bamboo I"], ["Sam K.", 1, true, "Bamboo II"]];
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", gap: 14 }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0 }}>
@@ -308,48 +309,73 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
 
         <Seg options={[{ label: "Current Season", value: "season" }, { label: "Career", value: "career" }]} value={seg} onChange={setSeg} />
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-          {stats.map(([v, l]) => (
-            <div key={l} style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 16, padding: "16px 16px 14px", background: PQ.off }}>
-              <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 26, color: PQ.green, lineHeight: 1 }}>{v}</div>
-              <div style={{ marginTop: 8, fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.inkFaint }}>{l}</div>
+        {seg === "season" ? (
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+            {statsSeason.map(([v, l]) => (
+              <div key={l} style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 16, padding: "16px 16px 14px", background: PQ.off }}>
+                <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 26, color: PQ.green, lineHeight: 1 }}>{v}</div>
+                <div style={{ marginTop: 8, fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.inkFaint }}>{l}</div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+            {/* Left Column: Stack of three narrow boxes */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {/* Box 1: Games Played */}
+              <div style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 14, padding: "10px 12px", background: PQ.off }}>
+                <div style={{ fontFamily: HERO, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.inkSoft }}>GAMES PLAYED</div>
+                <div style={{ marginTop: 4, fontFamily: HERO, fontWeight: 700, fontSize: 24, color: "#1FA855", lineHeight: 1 }}>{displayStats.games}</div>
+              </div>
+              {/* Box 2: Win Rate */}
+              <div style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 14, padding: "10px 12px", background: PQ.off }}>
+                <div style={{ fontFamily: HERO, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.inkSoft }}>WIN RATE</div>
+                <div style={{ marginTop: 4, fontFamily: HERO, fontWeight: 700, fontSize: 20, color: PQ.ink, lineHeight: 1 }}>{displayStats.winRate}</div>
+              </div>
+              {/* Box 3: Highest Score */}
+              <div style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 14, padding: "10px 12px", background: PQ.off }}>
+                <div style={{ fontFamily: HERO, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.inkSoft }}>HIGHEST SCORE</div>
+                <div style={{ marginTop: 4, fontFamily: HERO, fontWeight: 700, fontSize: 20, color: PQ.ink, lineHeight: 1 }}>{displayStats.highest}</div>
+              </div>
             </div>
-          ))}
-        </div>
 
-        {seg === "career" && (
+            {/* Right Column: Position Stats */}
+            <div style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 14, padding: "12px 14px", background: PQ.off, display: "flex", flexDirection: "column" }}>
+              <div style={{ fontFamily: HERO, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 8 }}>POSITION STATS</div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 8, flex: 1, justifyContent: "space-around" }}>
+                {displayStats.positions.map(([pos, pct]) => (
+                  <div key={pos} style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 12.5, textTransform: "uppercase", color: PQ.ink }}>{pos}</span>
+                    <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 15.5, color: PQ.rust }}>{pct}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {seg === "season" && (
           <div>
-            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 12 }}>Position Stats</div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-              {positions.map(([pos, pct]) => (
-                <div key={pos} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", border: "1px solid rgba(20,51,34,0.08)", borderRadius: 14, padding: "12px 16px", background: PQ.off }}>
-                  <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.06em", textTransform: "uppercase", color: PQ.ink }}>{pos}</span>
-                  <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 18, color: PQ.rust }}>{pct}</span>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: PQ.inkSoft }}>My Peeps</div>
+              <button onClick={onFind} className="pq-press" style={{ background: "none", border: "none", cursor: "pointer", fontFamily: HERO, fontWeight: 700, fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", color: PQ.rust }}>Show all</button>
+            </div>
+            <div className="pq-scroll" style={{ display: "flex", gap: 16, overflowX: "auto", paddingBottom: 4 }}>
+              {favs.map(([name, av, online, tier]) => (
+                <div key={name} style={{ flexShrink: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: 5, width: 68, userSelect: "none" }}>
+                  <span style={{ position: "relative", width: 54, height: 54, flexShrink: 0 }}>
+                    <span style={{ display: "block", width: 54, height: 54, borderRadius: "50%", overflow: "hidden", background: AVATARS[av].bg, border: `1.5px solid ${PQ.line}` }}>
+                      <img src={avatarSrc(av)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(av)})`, transformOrigin: "center 40%" }} />
+                    </span>
+                    {online && <span style={{ position: "absolute", top: -1, right: -1, width: 13, height: 13, borderRadius: "50%", background: "#1FA855", border: `2px solid ${PQ.off}` }} />}
+                  </span>
+                  <span style={{ fontFamily: HERO, fontSize: 11, fontWeight: 600, color: PQ.inkSoft, whiteSpace: "nowrap" }}>{name}</span>
+                  <span style={{ fontFamily: HERO, fontSize: 8.5, fontWeight: 700, color: PQ.rust, letterSpacing: "0.04em", textTransform: "uppercase", marginTop: 1 }}>{tier}</span>
                 </div>
               ))}
             </div>
           </div>
         )}
-
-        <div>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: PQ.inkSoft }}>My Peeps</div>
-            <button onClick={onFind} className="pq-press" style={{ background: "none", border: "none", cursor: "pointer", fontFamily: HERO, fontWeight: 700, fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", color: PQ.rust }}>Show all</button>
-          </div>
-          <div className="pq-scroll" style={{ display: "flex", gap: 16, overflowX: "auto", paddingBottom: 4 }}>
-            {favs.map(([name, av, online]) => (
-              <button key={name} onClick={onOther} className="pq-press" style={{ flexShrink: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: 7, width: 60, background: "none", border: "none", cursor: "pointer" }}>
-                <span style={{ position: "relative", width: 54, height: 54, flexShrink: 0 }}>
-                  <span style={{ display: "block", width: 54, height: 54, borderRadius: "50%", overflow: "hidden", background: AVATARS[av].bg, border: `1.5px solid ${PQ.line}` }}>
-                    <img src={avatarSrc(av)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(av)})`, transformOrigin: "center 40%" }} />
-                  </span>
-                  {online && <span style={{ position: "absolute", top: -1, right: -1, width: 13, height: 13, borderRadius: "50%", background: "#1FA855", border: `2px solid ${PQ.off}` }} />}
-                </span>
-                <span style={{ fontFamily: HERO, fontSize: 11, fontWeight: 600, color: PQ.inkSoft, whiteSpace: "nowrap" }}>{name}</span>
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
 
       {menu && (
@@ -623,7 +649,26 @@ function PublicLobbyScreen({ onBack, onJoin, onPrivate }) {
             {(openFilter === "speed" ? ["All", "Slow", "Medium", "Fast"] : ["All", "Smurf", "Easy", "Fair", "Hard", "Fierce"]).map((o) => {
               const cur = openFilter === "speed" ? speedF : diffF;
               const on = cur === o;
-              return <button key={o} onClick={() => { if (openFilter === "speed") setSpeedF(o); else setDiffF(o); setOpenFilter(null); }} className="pq-press" style={{ height: 32, padding: "0 13px", borderRadius: 999, cursor: "pointer", border: `1.5px solid ${on ? PQ.rust : PQ.line}`, background: on ? "rgba(182,90,47,0.08)" : "transparent", color: on ? PQ.rust : PQ.inkSoft, fontFamily: HERO, fontWeight: 700, fontSize: 11, letterSpacing: "0.04em", textTransform: "uppercase" }}>{o}</button>;
+              const col = openFilter === "speed"
+                ? PQ.rust
+                : (o === "All" ? PQ.rust : DIFF_COLORS[o]);
+              const border = `1.5px solid ${on ? col : PQ.line}`;
+              const bg = on ? `${col}14` : "transparent";
+              const textColor = on ? col : PQ.inkSoft;
+              return (
+                <button
+                  key={o}
+                  onClick={() => { if (openFilter === "speed") setSpeedF(o); else setDiffF(o); setOpenFilter(null); }}
+                  className="pq-press"
+                  style={{
+                    height: 32, padding: "0 13px", borderRadius: 999, cursor: "pointer",
+                    border, background: bg, color: textColor,
+                    fontFamily: HERO, fontWeight: 700, fontSize: 11, letterSpacing: "0.04em", textTransform: "uppercase"
+                  }}
+                >
+                  {o}
+                </button>
+              );
             })}
           </div>
         )}
@@ -704,7 +749,7 @@ function LobbyInfoOverlay({ overlay, onClose }) {
 
 // ═══════════════ PRIVATE LOBBY (overlay) ═══════════════
 function PrivateLobbyScreen({ onBack, onJoin }) {
-  const CORRECT = "K7M9P2";
+  const CORRECT = "PFZ9";
   const [code, setCode] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
@@ -820,7 +865,7 @@ function PracticeScreen({ onBack, onStart }) {
             <input type="range" min={0} max={100} step={1} value={pos} onChange={(e) => setPos(+e.target.value)}
               style={{ width: "100%", accentColor: PQ.rust, height: 6, cursor: "pointer", outline: "none", border: "none", borderRadius: 3, background: `linear-gradient(to right, ${PQ.rust} 0%, ${PQ.rust} ${pos}%, #C8C0AE ${pos}%, #C8C0AE 100%)` }} />
             <div style={{ position: "relative", height: 32, marginTop: 8 }}>
-              {[["Slow", "60s", 0], ["Medium", "30s", 60], ["Fast", "10s", 100]].map(([t, sLabel, fp]) => (
+              {[["Slow", "60s", 0], ["Medium", "30s", 50], ["Fast", "10s", 100]].map(([t, sLabel, fp]) => (
                 <div key={t} style={{ position: "absolute", left: fp + "%", transform: `translateX(${fp === 0 ? "0" : fp === 100 ? "-100%" : "-50%"})`, textAlign: "center" }}>
                   <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color: tier === t ? PQ.rust : PQ.inkFaint }}>{t}</div>
                   <div style={{ marginTop: 2, fontSize: 10, color: PQ.inkFaint }}>{sLabel}</div>
@@ -1339,32 +1384,147 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
     { name: "Sam K.", av: 3 },
   ];
   const WINDS = ["East", "South", "West", "North"];
+  
   const [phase, setPhase] = React.useState("intro"); // intro | rolling | tie | done
   const [vals, setVals] = React.useState([[1, 1], [1, 1], [1, 1], [1, 1]]);
+  const [active, setActive] = React.useState([true, true, true, true]);
+  const [rolled, setRolled] = React.useState([false, false, false, false]);
+  const [rolling, setRolling] = React.useState([false, false, false, false]);
+  const [sums, setSums] = React.useState([0, 0, 0, 0]);
   const [order, setOrder] = React.useState(null); // player index → wind index
 
-  const roll = () => {
-    if (phase !== "intro" && phase !== "tie") return;
-    pock("select");
-    setPhase("rolling");
-    const id = setInterval(() => setVals(players.map(() => [1 + Math.floor(Math.random() * 6), 1 + Math.floor(Math.random() * 6)])), 90);
-    setTimeout(() => {
-      clearInterval(id);
-      const finals = players.map((_, i) => {
-        const a = 1 + Math.floor(Math.random() * 6), b = 1 + Math.floor(Math.random() * 6);
-        return { i, pair: [a, b], sum: a + b };
-      });
-      setVals(finals.map((f) => f.pair));
-      const top = Math.max(...finals.map((f) => f.sum));
-      const tied = finals.filter((f) => f.sum === top);
-      if (tied.length > 1) { setPhase("tie"); pock("select"); return; }
-      const ranked = [...finals].sort((a, b) => b.sum - a.sum);
+  // Auto-start game if bot becomes East
+  React.useEffect(() => {
+    if (phase === "done" && order && order[0] !== 0) {
+      const timer = setTimeout(() => {
+        if (typeof pock === "function") pock("select");
+        onEnter();
+      }, 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [phase, order]);
+
+  const checkRoundEnd = (currentSums) => {
+    // Find highest sum among active players
+    const activeSums = currentSums.map((s, idx) => active[idx] ? s : -1);
+    const top = Math.max(...activeSums);
+    
+    // Find tied active players
+    const tiedIndices = [];
+    active.forEach((act, idx) => {
+      if (act && currentSums[idx] === top) {
+        tiedIndices.push(idx);
+      }
+    });
+
+    if (tiedIndices.length > 1) {
+      // Tie breaker round
+      setTimeout(() => {
+        setPhase("tie");
+        if (typeof pock === "function") pock("select");
+        
+        // Deactivate eliminated players
+        setActive(act => act.map((a, idx) => a && tiedIndices.includes(idx)));
+        // Reset rolled for active players
+        setRolled(rd => rd.map((r, idx) => tiedIndices.includes(idx) ? false : r));
+        
+        // If user is not active, let first tied bot roll automatically
+        if (!tiedIndices.includes(0)) {
+          rollNext(tiedIndices[0], tiedIndices, currentSums);
+        }
+      }, 600);
+    } else {
+      // Unique winner
+      const winnerIdx = tiedIndices[0];
       const seatOf = {};
-      ranked.forEach((r, rank) => { seatOf[r.i] = rank; });
+      seatOf[winnerIdx] = 0; // East
+      seatOf[(winnerIdx + 1) % 4] = 1; // South
+      seatOf[(winnerIdx + 2) % 4] = 2; // West
+      seatOf[(winnerIdx + 3) % 4] = 3; // North
+      
       setOrder(seatOf);
       setPhase("done");
-      pock("select");
-    }, 1700);
+      if (typeof pock === "function") pock("select");
+    }
+  };
+
+  const rollNext = (idx, activeList, currentSums) => {
+    if (idx >= 4) {
+      checkRoundEnd(currentSums);
+      return;
+    }
+    
+    const isActive = activeList ? activeList.includes(idx) : active[idx];
+    if (!isActive) {
+      rollNext(idx + 1, activeList, currentSums);
+      return;
+    }
+
+    setTimeout(() => {
+      setRolling(r => { const next = [...r]; next[idx] = true; return next; });
+      
+      let count = 0;
+      const interval = setInterval(() => {
+        setVals(v => {
+          const next = [...v];
+          next[idx] = [1 + Math.floor(Math.random() * 6), 1 + Math.floor(Math.random() * 6)];
+          return next;
+        });
+        count++;
+      }, 80);
+
+      setTimeout(() => {
+        clearInterval(interval);
+        const a = 1 + Math.floor(Math.random() * 6);
+        const b = 1 + Math.floor(Math.random() * 6);
+        
+        const nextSums = [...currentSums];
+        nextSums[idx] = a + b;
+        
+        setVals(v => { const next = [...v]; next[idx] = [a, b]; return next; });
+        setSums(nextSums);
+        setRolling(r => { const next = [...r]; next[idx] = false; return next; });
+        setRolled(rd => { const next = [...rd]; next[idx] = true; return next; });
+        
+        rollNext(idx + 1, activeList, nextSums);
+      }, 800);
+    }, 400);
+  };
+
+  const userRoll = () => {
+    if (phase !== "intro" && phase !== "tie") return;
+    if (phase === "tie" && !active[0]) return;
+    
+    if (typeof pock === "function") pock("select");
+    setPhase("rolling");
+    setRolling(r => { const next = [...r]; next[0] = true; return next; });
+
+    let count = 0;
+    const interval = setInterval(() => {
+      setVals(v => {
+        const next = [...v];
+        next[0] = [1 + Math.floor(Math.random() * 6), 1 + Math.floor(Math.random() * 6)];
+        return next;
+      });
+      count++;
+    }, 80);
+
+    setTimeout(() => {
+      clearInterval(interval);
+      const a = 1 + Math.floor(Math.random() * 6);
+      const b = 1 + Math.floor(Math.random() * 6);
+      
+      const nextSums = [...sums];
+      nextSums[0] = a + b;
+      
+      setVals(v => { const next = [...v]; next[0] = [a, b]; return next; });
+      setSums(nextSums);
+      setRolling(r => { const next = [...r]; next[0] = false; return next; });
+      setRolled(rd => { const next = [...rd]; next[0] = true; return next; });
+      
+      // Let other active players roll sequentially
+      rollNext(1, null, nextSums);
+    }, 800);
   };
 
   return (
@@ -1386,20 +1546,35 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
           const wind = seated ? WINDS[order[i]] : null;
           const isEast = wind === "East";
           const you = i === 0;
-          const canTap = you && (phase === "intro" || phase === "tie");
+          const isActive = active[i];
+          const hasRolled = rolled[i];
+          const isRolling = rolling[i];
+          const canTap = you && isActive && (phase === "intro" || phase === "tie") && !hasRolled;
+          
           return (
-            <div key={p.name} style={{ display: "flex", alignItems: "center", gap: 14, padding: "12px 14px", borderRadius: 16, background: PQ.off, border: `1.5px solid ${isEast ? PQ.rust : you && canTap ? PQ.lineMid : PQ.line}`, transition: "border-color .3s" }}>
+            <div key={p.name} style={{ display: "flex", alignItems: "center", gap: 14, padding: "12px 14px", borderRadius: 16, background: PQ.off, border: `1.5px solid ${isEast ? PQ.rust : you && canTap ? PQ.lineMid : PQ.line}`, opacity: isActive ? 1 : 0.45, transition: "border-color .3s, opacity .3s" }}>
               <span style={{ width: 48, height: 48, flexShrink: 0, borderRadius: "50%", overflow: "hidden", background: AVATARS[p.av].bg, border: `1.5px solid ${PQ.line}` }}>
                 <img src={avatarSrc(p.av)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(p.av)})`, transformOrigin: "center 40%" }} />
               </span>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 15, color: PQ.ink }}>{p.name}</div>
                 <div style={{ marginTop: 3, fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: seated ? (isEast ? PQ.rust : PQ.green) : PQ.inkFaint }}>
-                  {seated ? `${wind} seat · ${vals[i][0] + vals[i][1]}` : canTap ? "Tap to roll" : phase === "rolling" ? "Rolling…" : "Ready"}                </div>
+                  {seated 
+                    ? `${wind} seat · ${vals[i][0] + vals[i][1]}` 
+                    : isRolling 
+                      ? "Rolling…" 
+                      : !isActive 
+                        ? `Eliminated · Final: ${vals[i][0] + vals[i][1]}`
+                        : hasRolled 
+                          ? `Rolled: ${vals[i][0] + vals[i][1]}` 
+                          : canTap 
+                            ? "Tap to roll" 
+                            : "Waiting..."}
+                </div>
               </div>
-              <button onClick={canTap ? roll : undefined} className={canTap ? "pq-press pq-pulse" : ""} style={{ display: "flex", gap: 6, padding: canTap ? 6 : 0, borderRadius: 12, border: canTap ? `1.5px solid ${PQ.rust}` : "none", background: "transparent", cursor: canTap ? "pointer" : "default" }}>
-                <Dice value={vals[i][0]} rolling={phase === "rolling"} />
-                <Dice value={vals[i][1]} rolling={phase === "rolling"} />
+              <button onClick={canTap ? userRoll : undefined} className={canTap ? "pq-press pq-pulse" : ""} style={{ display: "flex", gap: 6, padding: canTap ? 6 : 0, borderRadius: 12, border: canTap ? `1.5px solid ${PQ.rust}` : "none", background: "transparent", cursor: canTap ? "pointer" : "default", pointerEvents: canTap ? "auto" : "none" }}>
+                <Dice value={vals[i][0]} rolling={isRolling} />
+                <Dice value={vals[i][1]} rolling={isRolling} />
               </button>
             </div>
           );
@@ -1407,9 +1582,19 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
       </div>
 
       <div style={{ padding: "14px 22px 26px", borderTop: `1px solid ${PQ.line}`, background: PQ.off, flexShrink: 0 }}>
-        {phase === "done"
-          ? <Btn variant="primary" trailingIcon="arrowR" onClick={onEnter}>Start Game</Btn>
-          : <Btn variant="primary" disabled={phase === "rolling"} onClick={roll}>{phase === "rolling" ? "Rolling…" : phase === "tie" ? "Roll again" : "Tap your dice to roll"}</Btn>}
+        {phase === "done" ? (
+          order[0] === 0 ? (
+            <Btn variant="primary" trailingIcon="arrowR" onClick={onEnter}>Start Game</Btn>
+          ) : (
+            <div style={{ textAlign: "center", padding: "10px 0", fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.06em", textTransform: "uppercase", color: PQ.rust }}>
+              Waiting for East to start...
+            </div>
+          )
+        ) : (
+          <Btn variant="primary" disabled={phase === "rolling" || (phase === "tie" && !active[0])} onClick={userRoll}>
+            {phase === "rolling" ? "Rolling…" : phase === "tie" ? (active[0] ? "Roll Tie-Breaker" : "Watching Tie-Breaker…") : "Tap your dice to roll"}
+          </Btn>
+        )}
       </div>
     </div>
   );

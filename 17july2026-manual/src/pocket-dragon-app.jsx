@@ -254,7 +254,22 @@ function PocketDragonApp() {
   // ── IN-APP ─────────────────────────────────────────────────
   let phoneBody;
   if (route === "config") {
-    phoneBody = <GameConfigScreen title={extendMode ? "Extend Game" : "Create A Game"} subtitle={extendMode ? "Adjust the setup and keep playing" : "Set the house rules — blame them later"} onBack={home} onCreate={() => { setLobbyHost(true); setRoute("waiting"); }} onShare={() => { setLobbyHost(true); setRoute("waiting"); }} onInvite={() => setRoute("invite")} />;
+    phoneBody = (
+      <GameConfigScreen 
+        title={extendMode ? "Extend Game" : "Create A Game"} 
+        subtitle={extendMode ? "Adjust the setup and keep playing" : "Set the house rules — blame them later"} 
+        onBack={home} 
+        onCreate={() => { setLobbyHost(true); setRoute("waiting"); }} 
+        onShare={() => {
+          const text = "You're invited to join my private table on Pocket Dragon.\n\nTable Code: PFZ9\n\nSee you at the table!\nTo begin: 1) Open the app 2) go to Join game 3) Private 4) Enter the code";
+          const link = `https://api.whatsapp.com/send?phone=919028619880&text=${encodeURIComponent(text)}`;
+          window.open(link, "_blank");
+          setLobbyHost(true);
+          setRoute("waiting");
+        }} 
+        onInvite={() => setRoute("invite")} 
+      />
+    );
   } else if (route === "waiting") {
     phoneBody = <WaitingLobbyScreen isHost={lobbyHost} lobbyType={lobbyHost ? "Private Lobby" : "Public Lobby"} tableName={lobbyHost ? "The Jade Parlour" : "East Wind Table"} onBack={home} onStart={() => setRoute("seating")} />;
   } else if (route === "seating") {

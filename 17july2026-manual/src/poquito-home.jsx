@@ -384,7 +384,10 @@ function AccessOption({ icon, title, desc, active, onTap }) {
   );
 }
 
-function posToSecs(pos) { return Math.round(60 - (pos / 100) * 50); }
+function posToSecs(pos) {
+  if (pos <= 50) return Math.round(60 - (pos / 50) * 30);
+  return Math.round(30 - ((pos - 50) / 50) * 20);
+}
 function secsToTier(s) { return s >= 31 ? "Slow" : s >= 16 ? "Medium" : "Fast"; }
 
 // ── Invite by Username modal ──
@@ -481,7 +484,7 @@ function GameConfigScreen({ onBack, onCreate, onInvite, onShare, title = "Create
             <input type="range" min={0} max={100} step={1} value={pos} onChange={(e) => setPos(+e.target.value)}
               style={{ width: "100%", marginTop: 16, accentColor: PQ.rust, height: 6, cursor: "pointer", outline: "none", border: "none", borderRadius: 3, background: `linear-gradient(to right, ${PQ.rust} 0%, ${PQ.rust} ${pos}%, #C8C0AE ${pos}%, #C8C0AE 100%)` }} />
             <div style={{ position: "relative", height: 32, marginTop: 8 }}>
-              {[["Slow", "60s", 0], ["Medium", "30s", 60], ["Fast", "10s", 100]].map(([t, sLabel, fp]) => (
+              {[["Slow", "60s", 0], ["Medium", "30s", 50], ["Fast", "10s", 100]].map(([t, sLabel, fp]) => (
                 <div key={t} style={{ position: "absolute", left: fp + "%", transform: `translateX(${fp === 0 ? "0" : fp === 100 ? "-100%" : "-50%"})`, textAlign: "center" }}>
                   <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color: tier === t ? PQ.rust : PQ.inkFaint }}>{t}</div>
                   <div style={{ marginTop: 2, fontSize: 10, color: PQ.inkFaint }}>{sLabel}</div>
@@ -503,7 +506,7 @@ function GameConfigScreen({ onBack, onCreate, onInvite, onShare, title = "Create
           <CfgSection label="Private Table">
             <div style={{ position: "relative", border: "1px solid rgba(20,51,34,0.08)", borderRadius: 16, padding: 14 }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
-                <div><div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", color: PQ.inkFaint }}>ROOM CODE</div><div style={{ marginTop: 3, fontFamily: HERO, fontWeight: 700, fontSize: 22, letterSpacing: "0.18em", color: PQ.green }}>K7M9P2</div></div>
+                <div><div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", color: PQ.inkFaint }}>ROOM CODE</div><div style={{ marginTop: 3, fontFamily: HERO, fontWeight: 700, fontSize: 22, letterSpacing: "0.18em", color: PQ.green }}>PFZ9</div></div>
                 <div style={{ display: "flex", gap: 8 }}>
                   <button onClick={copyCode} className="pq-press" style={{ width: 42, height: 42, border: `1.5px solid ${copied ? "#1FA855" : PQ.line}`, borderRadius: 12, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     {copied
