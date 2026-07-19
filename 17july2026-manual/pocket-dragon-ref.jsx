@@ -1,7 +1,8 @@
-// pocket-dragon-ref.jsx — AUTO-CONCATENATED faithful reference bundle + extensions.
+/* ===== BUNDLED POCKET DRAGON REF ===== */
 
+// Start of File: ios-frame.jsx
 /* ===== ios-frame.jsx ===== */
-// @ds-adherence-ignore -- omelette starter scaffold (raw elements/hex/px by design)
+// @ds-adherence-ignore -- liquid glass starter scaffold (raw elements/hex/px by design)
 
 /* BEGIN USAGE */
 // iOS.jsx — Simplified iOS 26 (Liquid Glass) device frame
@@ -57,7 +58,7 @@ function IOSStatusBar({ dark = false, time = '9:41' }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// Liquid glass pill — blur + tint + shine
+// Liquid glass pill — blur + shine
 // ─────────────────────────────────────────────────────────────
 function IOSGlassPill({ children, dark = false, style = {} }) {
   return (
@@ -351,7 +352,9 @@ Object.assign(window, {
   IOSDevice, IOSStatusBar, IOSNavBar, IOSGlassPill, IOSList, IOSListRow, IOSKeyboard,
 });
 
+// End of File: ios-frame.jsx
 
+// Start of File: poquito-ui.jsx
 /* ===== poquito-ui.jsx ===== */
 // poquito-ui.jsx — Pocket Dragon brand primitives, theme, decorations, form controls.
 // Exports to window. Palette: Deep Green, Rust Orange, Off White (+ warm dark grey for text).
@@ -381,6 +384,11 @@ const PQ = {
 };
 
 const HERO = 'Hero';
+
+// Gold colors for Rewards and Scoring screens
+const GOLD = "#C9972F";
+const GOLD_SOFT = "#EBCE81";
+const GOLD_DEEP = "#A97C22";
 
 // Table difficulty level colours — used consistently across all screens
 const DIFF_COLORS = { Smurf: "#A9C4D6", Easy: "#6D7A62", Fair: "#A16A03", Hard: "#B65A2F", Fierce: "#630206" };
@@ -426,7 +434,6 @@ function SocialIcon({ name, size = 20 }) {
 
 // ── Tile monogram (a "one dot" mahjong tile) ───────────────────
 function TileMark({ size = 56, tone = "light" }) {
-  // tone light = cream tile (for dark bg); tone dark = green tile (for light bg)
   const face = tone === "light" ? PQ.off : PQ.green;
   const motif = tone === "light" ? PQ.green : PQ.off;
   const r = size * 0.26;
@@ -495,7 +502,6 @@ function LogoImg({ height = 88, style }) {
 }
 
 // ── Decorative backdrops ───────────────────────────────────────
-// Dark green backdrop (kept for the print cover / any green surface)
 function GreenBackdrop({ children, glow = true }) {
   return (
     <div style={{ position: "absolute", inset: 0, background: PQ.green, overflow: "hidden" }}>
@@ -518,7 +524,6 @@ function GreenBackdrop({ children, glow = true }) {
   );
 }
 
-// Light cream backdrop with warm ambient light + faint green dot grid
 function LightBackdrop({ children, glow = true }) {
   return (
     <div style={{ position: "absolute", inset: 0, background: PQ.off, overflow: "hidden" }}>
@@ -541,7 +546,6 @@ function LightBackdrop({ children, glow = true }) {
   );
 }
 
-// floating faint tiles — `tone` sets the outline color (light=cream, dark=green)
 function FloatingTiles({ items, tone = "light" }) {
   const stroke = tone === "light" ? PQ.off : PQ.green;
   const fill = tone === "light" ? "rgba(249,242,228,0.03)" : "rgba(20,51,34,0.02)";
@@ -562,7 +566,7 @@ function FloatingTiles({ items, tone = "light" }) {
   );
 }
 
-// ── Screen shell (fills the device, handles safe areas) ────────
+// ── Screen shell ───────────────────────────────────────────────
 function Screen({ children, bg = PQ.off, dark = false, pad = 24, top = 64, bottom = 30, style }) {
   return (
     <div style={{
@@ -585,14 +589,12 @@ function Btn({ children, variant = "primary", dark = false, disabled, onClick, s
   };
   let v = {};
   const rustGrad = `linear-gradient(160deg, ${PQ.rustSoft} 0%, ${PQ.rust} 52%, ${PQ.rustDeep} 100%)`;
-  // primary = rust filled box with brand rust gradient
   if (variant === "primary") v = disabled
     ? { background: "rgba(20,51,34,0.10)", color: PQ.inkFaint, border: "1.5px solid transparent" }
     : { background: rustGrad, color: PQ.off, border: "1.5px solid transparent" };
   if (variant === "rust") v = disabled
     ? { background: "rgba(20,51,34,0.10)", color: PQ.inkFaint, border: "1.5px solid transparent" }
     : { background: rustGrad, color: PQ.off, border: "1.5px solid transparent" };
-  // ghost with rust text (client: secondary "Login — text in rust")
   if (variant === "ghost") v = {
     background: "transparent", color: PQ.rust,
     border: `1.5px solid rgba(182,90,47,0.32)`
@@ -610,8 +612,6 @@ function TextLink({ children, color = PQ.rust, onClick, weight = 700, size = 13.
 // ── Field ──────────────────────────────────────────────────────
 function Field({ icon, label, value, onChange, placeholder, type = "text", dark = false,
   state = "idle", right, onFocus, onBlur, focused, optional, required, inputMode, maxLength, as, prefix }) {
-  // state: idle | focus | valid | error
-  // Transparent fill, outline-only. Error → rust border; valid → darker-cream border + green check.
   const border =
     state === "error" ? PQ.rust :
       state === "valid" ? PQ.lineMid :
@@ -649,7 +649,7 @@ function Field({ icon, label, value, onChange, placeholder, type = "text", dark 
               fontFamily: HERO, fontSize: 16, color: value ? txt : PQ.inkFaint,
               appearance: "none", cursor: "pointer"
             }}>
-            {right /* options passed via right for selects */}
+            {right}
           </select>
         ) : (
           <input value={value} onChange={onChange} placeholder={placeholder} type={type}
@@ -668,7 +668,7 @@ function Field({ icon, label, value, onChange, placeholder, type = "text", dark 
   );
 }
 
-// placeholder color for inputs
+// placeholder style injection
 const __pqStyle = document.createElement("style");
 __pqStyle.textContent = `
 input::placeholder{color:${PQ.inkFaint};opacity:1;}
@@ -684,7 +684,7 @@ input::-webkit-contacts-auto-fill-button,input::-webkit-credentials-auto-fill-bu
 `;
 document.head.appendChild(__pqStyle);
 
-// ── Helper line (valid / error / hint) ─────────────────────────
+// ── Helper line ────────────────────────────────────────────────
 function Helper({ state, children, dark = false }) {
   if (!children) return null;
   const col = state === "valid" ? (dark ? "#9ED8B0" : PQ.green) : state === "error" ? PQ.rust :
@@ -713,7 +713,7 @@ function Check({ checked, onChange, children, dark = false }) {
   );
 }
 
-// ── Toggle (remember me) — RUST when on ────────────────────────
+// ── Toggle ─────────────────────────────────────────────────────
 function Toggle({ on, onChange }) {
   return (
     <div onClick={onChange} style={{
@@ -729,7 +729,7 @@ function Toggle({ on, onChange }) {
   );
 }
 
-// ── OTP input — NO fill; red (invalid) / green (verified) border states ──
+// ── OTP input ──────────────────────────────────────────────────
 function OTP({ value = "", length = 6, onChange, state = "idle", focusedIdx = -1 }) {
   const cells = Array.from({ length });
   return (
@@ -737,7 +737,6 @@ function OTP({ value = "", length = 6, onChange, state = "idle", focusedIdx = -1
       {cells.map((_, i) => {
         const ch = value[i] || "";
         const active = i === value.length && focusedIdx !== -2;
-        // no background fill; border turns green when verified, red when invalid
         const border =
           state === "valid" ? PQ.green :
             state === "error" ? PQ.rust :
@@ -773,7 +772,6 @@ function Steps({ n, i }) {
 
 // ── Top bar with back ──────────────────────────────────────────
 function TopBar({ onBack, right, dark = false, plain = false }) {
-  // plain = bare back arrow with no surrounding box
   return (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 22 }}>
       {plain ? (
@@ -808,7 +806,7 @@ function Title({ children, dark = false, sub, size = 24 }) {
   );
 }
 
-// ── Rust ring with check (Email Verified / Password Updated) ───
+// ── Rust ring with check ───────────────────────────────────────
 function RustRing({ size = 96, sw = 2.5 }) {
   return (
     <div style={{
@@ -823,10 +821,13 @@ function RustRing({ size = 96, sw = 2.5 }) {
 
 Object.assign(window, {
   PQ, HERO, Icon, TileMark, Wordmark, Lockup, GreenBackdrop, LightBackdrop, FloatingTiles,
-  Screen, Btn, TextLink, Field, Helper, Check, Toggle, OTP, Steps, TopBar, Title, RustRing, LogoImg, LOGO_SRC,
+  Screen, Btn, TextLink, Field, Helper, Check, Toggle, OTP, Steps, TopBar, Title, RustRing, LogoImg, LOGO_SRC, DRAGON_SRC, FULLLOGO_SRC, DRAGON_GREEN_SRC, LOBBY_BOARD_SRC, diffColorOf, SocialIcon,
+  GOLD, GOLD_SOFT, GOLD_DEEP
 });
 
+// End of File: poquito-ui.jsx
 
+// Start of File: poquito-screens.jsx
 /* ===== poquito-screens.jsx ===== */
 // poquito-screens.jsx — Pocket Dragon auth screens. Each screen is self-contained &
 // interactive; pass `seed` to pre-populate for static showcase frames.
@@ -919,7 +920,6 @@ function AvatarPicker({ value = 0, onPick }) {
   const [open, setOpen] = React.useState(false);
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, marginBottom: 8 }}>
-      {/* single tappable avatar with camera badge */}
       <button onClick={() => setOpen(true)} className="pq-press" style={{
         position: "relative", width: 88, height: 88, borderRadius: "50%", padding: 0, cursor: "pointer",
         background: AVATARS[value].bg, border: "none", overflow: "visible",
@@ -1064,7 +1064,7 @@ function RegisterScreen({ go, seed = {}, setEmail }) {
 
   const eState = email ? (emailOK(email) ? "valid" : "error") : "idle";
   const uc = userCheck(user);
-  const pwState = pw ? "valid" : "idle";                 // no minimum length
+  const pwState = pw ? "valid" : "idle";
   const cState = cpw ? (cpw === pw ? "valid" : "error") : "idle";
 
   const canSubmit = eState === "valid" && uc.state === "valid" && !!pw && cState === "valid" && !!city && agree;
@@ -1121,11 +1121,11 @@ function RegisterScreen({ go, seed = {}, setEmail }) {
   );
 }
 
-// ── EMAIL VERIFIED panel (shared terminal state) ───────────────
+// ── EMAIL VERIFIED panel ───────────────────────────────────────
 function VerifiedPanel({ go, cta, live }) {
   React.useEffect(() => {
-    if (!live || cta) return;            // auto-proceed only in the live verify flow
-    const t = setTimeout(() => go("welcome"), 5000);   // keep visible ≥ 5s
+    if (!live || cta) return;
+    const t = setTimeout(() => go("welcome"), 5000);
     return () => clearTimeout(t);
   }, [live]);
   return (
@@ -1147,7 +1147,7 @@ function VerifiedPanel({ go, cta, live }) {
 function VerifyScreen({ go, email = "you@example.com", live, seed = {} }) {
   const CODE = "402231";
   const [otp, setOtp] = React.useState(seed.otp || "");
-  const [status, setStatus] = React.useState(seed.status || "idle"); // idle|error|verified
+  const [status, setStatus] = React.useState(seed.status || "idle");
   const [secs, setSecs] = React.useState(seed.secs ?? 42);
   React.useEffect(() => {
     if (!live || status === "verified") return;
@@ -1199,7 +1199,7 @@ function VerifyScreen({ go, email = "you@example.com", live, seed = {} }) {
   );
 }
 
-// numeric keypad — flat cream keys, darker-cream borders (no white fill)
+// numeric keypad
 function Keypad({ onKey }) {
   const keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "", "0", "del"];
   return (
@@ -1255,9 +1255,9 @@ function LoginScreen({ go, seed = {} }) {
   );
 }
 
-// ── FORGOT PASSWORD (3 steps + success) ────────────────────────
+// ── FORGOT PASSWORD ────────────────────────────────────────────
 function ForgotFlow({ go, live, seed = {} }) {
-  const [step, setStep] = React.useState(seed.step ?? 0); // 0 email,1 otp,2 reset,3 success
+  const [step, setStep] = React.useState(seed.step ?? 0);
   const [email, setEmail] = React.useState(seed.email || "");
   const [otp, setOtp] = React.useState(seed.otp || "");
   const [otpStatus, setOtpStatus] = React.useState(seed.otpStatus || "idle");
@@ -1275,7 +1275,7 @@ function ForgotFlow({ go, live, seed = {} }) {
     return () => clearInterval(t);
   }, [live, step, secs]);
 
-  const pwState = pw ? "valid" : "idle";                 // no minimum length
+  const pwState = pw ? "valid" : "idle";
   const cState = cpw ? (cpw === pw ? "valid" : "error") : "idle";
   const mm = Math.floor(secs / 60), ss = String(secs % 60).padStart(2, "0");
   const back = () => step === 0 ? go("login") : setStep(s => s - 1);
@@ -1349,7 +1349,7 @@ function ForgotFlow({ go, live, seed = {} }) {
   );
 }
 
-// ── Registration success terminal (Email Verified) ────────────
+// ── Success terminal ───────────────────────────────────────────
 function SuccessScreen({ go }) {
   return (
     <Screen bg={PQ.off} top={70} bottom={30} style={{ position: "relative" }}>
@@ -1378,10 +1378,12 @@ function PoquitoApp() {
 
 Object.assign(window, {
   SplashScreen, WelcomeScreen, RegisterScreen, VerifyScreen, Keypad, AvatarPicker, AvatarModal, CitySelect, VerifiedPanel,
-  LoginScreen, ForgotFlow, SuccessScreen, PoquitoApp, userCheck, emailOK, CITIES,
+  LoginScreen, ForgotFlow, SuccessScreen, PoquitoApp, userCheck, emailOK, CITIES, AVATARS, avatarSrc, avatarScale
 });
 
+// End of File: poquito-screens.jsx
 
+// Start of File: poquito-home.jsx
 /* ===== poquito-home.jsx ===== */
 // poquito-home.jsx — Pocket Dragon Home Module. Extends the onboarding design system
 // (PQ tokens, HERO, Icon from poquito-ui.jsx). Exports to window.
@@ -1432,7 +1434,7 @@ function pock(kind) {
   } catch (e) { /* no audio — silent */ }
 }
 
-// ── Mahjong suit glyphs (kept for decorative use) ────────────────
+// ── Mahjong suit glyphs ──────────────────────────────────────────
 function SuitGlyph({ suit, size = 30, color = PQ.green }) {
   const s = size;
   if (suit === "bamboo") {
@@ -1453,14 +1455,15 @@ function SuitGlyph({ suit, size = 30, color = PQ.green }) {
 
 // ── Hero panel (deep-green surface — whole box clickable → Profile) ──
 const HERO_AVATAR = (typeof window !== "undefined" && window.__resources && window.__resources.girl) || "assets/avatars/poquito-girl.png";
-function HeroPanel({ username = "avachen88", tier = "Firefly I", nextTier = "Firefly II", rp = 100, rpMax = 200, onOpen, onNotify }) {
+function HeroPanel({ username = "avachen88", rp = 100, rpMax = 200, onOpen, onNotify }) {
   const pct = Math.max(0, Math.min(100, (rp / rpMax) * 100));
+  const activeAvatar = (typeof AVATARS !== "undefined" && typeof window !== "undefined" && window.PocketDragonApp) ? avatarSrc(1) : HERO_AVATAR;
+  
   return (
     <div style={{
       position: "relative", overflow: "hidden", borderRadius: 24, width: "100%", textAlign: "left",
       background: PQ.green, padding: "20px 20px 22px", color: PQ.off,
     }}>
-      {/* notification bell — top-right, muted off-white (matches RP colour) */}
       <button onClick={() => { pock("select"); onNotify && onNotify(); }} className="pq-press" style={{
         position: "absolute", top: 16, right: 16, zIndex: 2, width: 30, height: 30, borderRadius: "50%",
         background: "transparent", border: "none", cursor: "pointer", padding: 0,
@@ -1474,7 +1477,7 @@ function HeroPanel({ username = "avachen88", tier = "Firefly I", nextTier = "Fir
           width: 88, height: 88, borderRadius: "50%", flexShrink: 0, overflow: "hidden", padding: 0, cursor: "pointer",
           background: "rgba(249,242,228,0.12)", border: "2px solid rgba(249,242,228,0.35)"
         }}>
-          <img src={HERO_AVATAR} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <img src={activeAvatar} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </button>
         <div style={{ flex: 1, minWidth: 0, paddingRight: 34 }}>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(249,242,228,0.6)" }}>Hey</div>
@@ -1488,14 +1491,14 @@ function HeroPanel({ username = "avachen88", tier = "Firefly I", nextTier = "Fir
         <div style={{ height: "100%", width: `${pct}%`, background: `linear-gradient(90deg, ${PQ.rustSoft}, ${PQ.rust})`, borderRadius: 4 }} />
       </div>
       <div style={{ marginTop: 8, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <span style={{ fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: PQ.off }}>{tier}</span>
-        <span style={{ fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(249,242,228,0.5)" }}>{nextTier}</span>
+        <span style={{ fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: PQ.off }}>FIREFLY I</span>
+        <span style={{ fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(249,242,228,0.5)" }}>FIREFLY II</span>
       </div>
     </div>
   );
 }
 
-// ── Resume card (replaces the ongoing banner; lives in the Hub) ──
+// ── Resume card ──
 function ResumeCard({ onResume, onLeave }) {
   return (
     <div className="pq-banner" style={{
@@ -1526,9 +1529,7 @@ function ResumeCard({ onResume, onLeave }) {
   );
 }
 
-// ── Hub action card (icon top-left, arrow bottom-right, no boxes) ──
-// Natural height: grows to fit content; arrow sits in a reserved right gutter
-// so multi-line copy never collides with it or spills into adjacent cards.
+// ── Hub action card ──
 function HubCard({ icon, title, sub, subParts, active, onTap, delay = 0 }) {
   const accent = active ? PQ.rust : PQ.inkSoft;
   return (
@@ -1539,7 +1540,6 @@ function HubCard({ icon, title, sub, subParts, active, onTap, delay = 0 }) {
         borderRadius: 18, padding: 16, width: "100%", flexShrink: 0,
         display: "flex", flexDirection: "row", alignItems: "center", gap: 14, overflow: "hidden",
       }}>
-      {/* icon to the left of the title */}
       <HIcon name={icon} size={26} stroke={accent} sw={1.8} style={{ flexShrink: 0 }} />
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 15.5, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink, lineHeight: 1.12 }}>{title}</div>
@@ -1552,7 +1552,7 @@ function HubCard({ icon, title, sub, subParts, active, onTap, delay = 0 }) {
   );
 }
 
-// ── Bottom navigation ────────────────────────────────────────────
+// ── Bottom navigation ──
 const NAV = [
   { id: "home", label: "Hub", icon: "home" },
   { id: "profile", label: "Profile", icon: "users" },
@@ -1584,7 +1584,7 @@ function BottomNav({ active, onChange }) {
   );
 }
 
-// ── Toast (lightweight nav feedback) ─────────────────────────────
+// ── Toast ──
 function Toast({ msg }) {
   if (!msg) return null;
   return (
@@ -1597,7 +1597,7 @@ function Toast({ msg }) {
   );
 }
 
-// ── Placeholder for non-Home tabs ────────────────────────────────
+// ── TabStub ──
 function TabStub({ icon, label }) {
   return (
     <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: 40, gap: 16 }}>
@@ -1612,7 +1612,7 @@ function TabStub({ icon, label }) {
   );
 }
 
-// ── Home screen ──────────────────────────────────────────────────
+// ── Home screen ──
 function HomeScreen({ showOngoing, onCard, onAvatar, onLeave, selected, onNotify }) {
   const A = (id) => ({ active: selected === id, onTap: () => onCard(id) });
   return (
@@ -1633,7 +1633,7 @@ function HomeScreen({ showOngoing, onCard, onAvatar, onLeave, selected, onNotify
   );
 }
 
-// ── Create Game · configuration screen ───────────────────────────
+// ── Create Game · configuration screen ──
 function CfgSection({ label, hint, children }) {
   return (
     <div>
@@ -1646,7 +1646,6 @@ function CfgSection({ label, hint, children }) {
   );
 }
 
-// long horizontal variant selection card (name + subtitle split)
 function VariantRow({ letter, name, subtitle, desc, active, onTap }) {
   return (
     <button onClick={() => { pock("select"); onTap && onTap(); }} className="pq-press" style={{
@@ -1676,7 +1675,6 @@ function VariantRow({ letter, name, subtitle, desc, active, onTap }) {
   );
 }
 
-// elegant [-] n [+] stepper — labelled, touch-friendly
 function Stepper({ label, value, min = 3, max = 4, onChange }) {
   const btn = (glyph, dis, fn) => (
     <button onClick={() => { if (dis) return; pock("select"); fn(); }} className={dis ? "" : "pq-press"} style={{
@@ -1704,7 +1702,6 @@ function Stepper({ label, value, min = 3, max = 4, onChange }) {
   );
 }
 
-// East/West variant row with an independent (-) n (+) counter
 function VariantCounter({ letter, name, subtitle, value, min = 0, max = 10, onChange }) {
   const on = value > 0;
   const btn = (glyph, dis, fn) => (
@@ -1751,7 +1748,6 @@ function Chip({ label, active, onTap }) {
   );
 }
 
-// Player Access option — standalone icon (no box), rust on select
 function AccessOption({ icon, title, desc, active, onTap }) {
   return (
     <button onClick={() => { pock("select"); onTap && onTap(); }} className="pq-press" style={{
@@ -1774,11 +1770,10 @@ function AccessOption({ icon, title, desc, active, onTap }) {
   );
 }
 
-// timer: slider position 0..100 (left=Slow/60s, right=Fast/10s)
 function posToSecs(pos) { return Math.round(60 - (pos / 100) * 50); }
 function secsToTier(s) { return s >= 31 ? "Slow" : s >= 16 ? "Medium" : "Fast"; }
 
-// ── Invite by Username (popup/modal): favourites by default, avatar + green dot ──
+// ── Invite by Username modal ──
 function InvitePlayersModal({ onClose }) {
   const [q, setQ] = React.useState("");
   const [state, setState] = React.useState({ p1: "invite", p2: "joined", p3: "invite", p4: "invited" });
@@ -1795,7 +1790,7 @@ function InvitePlayersModal({ onClose }) {
       <div onClick={(e) => e.stopPropagation()} className="pq-sheet-up" style={{ width: "100%", maxHeight: "82%", background: PQ.off, borderTopLeftRadius: 26, borderTopRightRadius: 26, display: "flex", flexDirection: "column" }}>
         <div style={{ flexShrink: 0, padding: "11px 0 2px", display: "flex", justifyContent: "center" }}><div style={{ width: 40, height: 4, borderRadius: 999, background: PQ.line }} /></div>
         <div style={{ flexShrink: 0, padding: "8px 22px 12px" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
+          <div style={{ display: "flex", alignItems: "center", justifycontent: "space-between", marginBottom: 14 }}>
             <h2 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 18, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Invite Players</h2>
             <button onClick={onClose} className="pq-press" style={{ width: 36, height: 36, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="close" size={18} stroke={PQ.ink} sw={1.9} /></button>
           </div>
@@ -1837,9 +1832,8 @@ function InvitePlayersModal({ onClose }) {
 function GameConfigScreen({ onBack, onCreate, onInvite, onShare, title = "Create A Game", subtitle = "Set the house rules — blame them later" }) {
   const [east, setEast] = React.useState(0);
   const [west, setWest] = React.useState(0);
-  const [rounds, setRounds] = React.useState(null);
-  const [pos, setPos] = React.useState(30);          // continuous slider position
-  const [timerOn, setTimerOn] = React.useState(true); // ON by default
+  const [pos, setPos] = React.useState(30);
+  const [timerOn, setTimerOn] = React.useState(true);
   const [access, setAccess] = React.useState(null);
   const [inviteOpen, setInviteOpen] = React.useState(false);
   const [copied, setCopied] = React.useState(false);
@@ -1858,14 +1852,12 @@ function GameConfigScreen({ onBack, onCreate, onInvite, onShare, title = "Create
         <p style={{ margin: "9px 0 0", fontSize: 13.5, lineHeight: 1.5, color: PQ.inkSoft }}>{subtitle}</p>
       </div>
       <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", padding: "16px 22px 22px", display: "flex", flexDirection: "column", gap: 24 }}>
-        {/* consolidated Game Setup: variant + rounds */}
         <CfgSection label="Game Setup">
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             <VariantCounter letter="W" name="West" subtitle="Goulash" value={west} onChange={setWest} />
           </div>
         </CfgSection>
 
-        {/* turn timer — continuous slider, Slow→Fast */}
         <CfgSection label="Turn Timer" hint={timerOn ? `${secs}s · ${tier}` : "Off"}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14 }}>
             <div style={{ fontFamily: HERO, fontWeight: 600, fontSize: 12.5, color: PQ.ink }}>Enable / Disable Turn Timer</div>
@@ -1886,7 +1878,6 @@ function GameConfigScreen({ onBack, onCreate, onInvite, onShare, title = "Create
           </>)}
         </CfgSection>
 
-        {/* player access */}
         <CfgSection label="Player Access">
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             <AccessOption icon="users" title="Public" desc="Visible to all players in the public lobby" active={access === "public"} onTap={() => setAccess("public")} />
@@ -1919,7 +1910,7 @@ function GameConfigScreen({ onBack, onCreate, onInvite, onShare, title = "Create
         )}
       </div>
       <div style={{ padding: "14px 22px 26px", borderTop: `1px solid ${PQ.line}`, background: PQ.off }}>
-        <Btn variant="primary" disabled={!canCreate} onClick={() => { pock("select"); onCreate && onCreate(); }}>{title}</Btn>
+        <Btn variant="primary" disabled={!canCreate} onClick={() => { pock("select"); onCreate && onCreate(); }}>Create Game</Btn>
       </div>
       {inviteOpen && <InvitePlayersModal onClose={() => setInviteOpen(false)} />}
     </div>
@@ -1932,813 +1923,9 @@ Object.assign(window, {
   CfgSection, VariantRow, VariantCounter, Stepper, Chip, AccessOption, GameConfigScreen,
 });
 
+// End of File: poquito-home.jsx
 
-/* ===== poquito-game.jsx ===== */
-// poquito-game.jsx — Pocket Dragon · Screen 11 (core gameplay table).
-// Extends the PQ system (PQ, HERO, Icon, SuitGlyph, pock from earlier files).
-// Deep-green felt is the table surface; translucent panels for HUD; tiles built
-// geometrically from our suit glyphs. Exports GameScreen to window.
-
-// One gameplay-only brass/gold accent — reserved SOLELY for the Mahjong win button.
-const GOLD = "#C9972F", GOLD_SOFT = "#E6BE63", GOLD_DEEP = "#9A7320";
-const FELT_INK = "#0A1C12";
-// representative exposed/claimed tiles row (read-only display, gameplay)
-const EXPOSED_DEMO = [
-  { suit: "char", value: 3 }, { suit: "char", value: 3 }, { suit: "char", value: 5 },
-  { suit: "dot", value: 5 }, { suit: "dot", value: 5 }, { suit: "dot", value: 5 },
-  { suit: "bamboo", value: 8 }, { suit: "bamboo", value: 8 },
-  { suit: "dragon", value: "G" }, { suit: "dragon", value: "G" },
-  { suit: "dot", value: 9 }, { suit: "dot", value: 9 }, { suit: "dot", value: 9 },
-];
-// Gameplay reskin palette (aubergine felt + bronze/gold frame + purple accent) — per primary-player reference
-const GP = {
-  feltOuter: "#150C1E", felt: "#2A1A38", feltCenter: "#3C2551",
-  frame: "#B88A40", frameSoft: "#E3B968", frameDeep: "#6E4F22",
-  purple: "#C77DD6", purpleSoft: "#E2B0EC",
-  cream: "#F4ECDD", mute: "rgba(244,236,221,0.62)", faint: "rgba(244,236,221,0.38)",
-  line: "rgba(244,236,221,0.15)", panel: "rgba(20,11,28,0.55)", panelSolid: "rgba(20,11,28,0.82)",
-};
-
-// ── Classic mahjong pip layouts (dots) ───────────────────────────
-function DotFace({ n, w }) {
-  const s = Math.round(w * 0.86);
-  const P = { c: [7.5, 15, 22.5] };
-  const pos = {
-    1: [[15, 15]],
-    2: [[15, 8], [15, 22]],
-    3: [[7.5, 7.5], [15, 15], [22.5, 22.5]],
-    4: [[8, 8], [22, 8], [8, 22], [22, 22]],
-    5: [[8, 8], [22, 8], [15, 15], [8, 22], [22, 22]],
-    6: [[8, 7], [8, 15], [8, 23], [22, 7], [22, 15], [22, 23]],
-    7: [[8, 7], [8, 15], [8, 23], [22, 7], [22, 15], [22, 23], [15, 15]],
-    8: [[7.5, 7], [15, 7], [22.5, 7], [7.5, 15], [22.5, 15], [7.5, 23], [15, 23], [22.5, 23]],
-    9: [[7.5, 7.5], [15, 7.5], [22.5, 7.5], [7.5, 15], [15, 15], [22.5, 15], [7.5, 22.5], [15, 22.5], [22.5, 22.5]],
-  }[n] || [[15, 15]];
-  const pal = ["#2f5fa0", "#1f7a43", "#b02a1e"];
-  const r = n === 1 ? 5 : 3.3;
-  return (
-    <svg width={s} height={s} viewBox="0 0 30 30">
-      {pos.map(([cx, cy], i) => {
-        const c = pal[i % pal.length];
-        return <g key={i}><circle cx={cx} cy={cy} r={r} fill="#f7f1e4" stroke={c} strokeWidth={1.8} /><circle cx={cx} cy={cy} r={r * 0.4} fill={c} /></g>;
-      })}
-    </svg>
-  );
-}
-
-// ── Classic mahjong bamboo sticks (sou) ──────────────────────────
-function BambooFace({ n, w }) {
-  const s = Math.round(w * 0.86);
-  const stick = (x, y, key, col) => (
-    <g key={key}>
-      <rect x={x - 1.7} y={y} width={3.4} height={8} rx={1.7} fill="none" stroke={col} strokeWidth={1.5} />
-      <line x1={x - 1.7} y1={y + 4} x2={x + 1.7} y2={y + 4} stroke={col} strokeWidth={1.2} />
-    </g>
-  );
-  const cols = { c1: [15], c2: [10, 20], c3: [7, 15, 23] };
-  // rows of columns per count (classic-ish)
-  const rowsFor = {
-    1: [[15]],
-    2: [[10, 20]],
-    3: [[7, 15, 23]],
-    4: [[10, 20], [10, 20]],
-    5: [[10, 20], [15], [10, 20]],
-    6: [[7, 15, 23], [7, 15, 23]],
-    7: [[15], [7, 15, 23], [7, 15, 23]],
-    8: [[7, 15, 23], [7, 15, 23], [11, 19]],
-    9: [[7, 15, 23], [7, 15, 23], [7, 15, 23]],
-  }[n] || [[15]];
-  const ys = { 1: [11], 2: [4, 18], 3: [2, 11, 20] }[rowsFor.length] || [2, 11, 20];
-  const green = "#1f7a43", red = "#b02a1e";
-  return (
-    <svg width={s} height={s} viewBox="0 0 30 30">
-      {rowsFor.map((row, ri) => row.map((x, ci) => stick(x, ys[ri], ri + "-" + ci, (n === 1 || (n % 2 === 1 && ri === Math.floor(rowsFor.length / 2) && row.length === 1)) ? red : green)))}
-    </svg>
-  );
-}
-
-// ── Tile face content (classic mahjong faces) ───────────────────
-function TileFace({ suit, value, w }) {
-  if (suit === "dragon") {
-    const isR = value === "R";
-    return <span style={{ fontFamily: "'Noto Serif SC','Playfair Display',serif", fontWeight: 700, fontSize: Math.max(13, w * 0.6), color: isR ? "#c0392b" : "#1f7a43", lineHeight: 1 }}>{isR ? "中" : "發"}</span>;
-  }
-  if (suit === "wind") {
-    const map = { E: "東", S: "南", W: "西", N: "北" };
-    return <span style={{ fontFamily: "'Noto Serif SC','Playfair Display',serif", fontWeight: 700, fontSize: Math.max(12, w * 0.55), color: "#2a3550", lineHeight: 1 }}>{map[value] || value}</span>;
-  }
-  if (suit === "char") {
-    return (
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", lineHeight: 0.9 }}>
-        <span style={{ fontFamily: "'Oswald','Hero',sans-serif", fontWeight: 700, fontSize: Math.max(11, w * 0.46), color: "#2f5fa0" }}>{value}</span>
-        <span style={{ fontFamily: "'Noto Serif SC','Playfair Display',serif", fontWeight: 700, fontSize: Math.max(11, w * 0.46), color: "#b02a1e" }}>萬</span>
-      </div>
-    );
-  }
-  const n = typeof value === "number" ? value : 1;
-  return suit === "dot" ? <DotFace n={n} w={w} /> : <BambooFace n={n} w={w} />;
-}
-
-// ── Tile (face-up, face-down, or side-on) ────────────────────────
-function Tile({ suit, value, w = 32, faceDown, side, selected, raised, onTap, style }) {
-  const r = Math.max(4, w * 0.16);
-  const h = side ? Math.round(w * 0.72) : Math.round(w * 1.36);
-  if (faceDown) {
-    return (
-      <div onClick={onTap} style={{
-        width: side ? Math.round(w * 1.36) : w, height: side ? w : h, borderRadius: r, flexShrink: 0,
-        background: `linear-gradient(150deg, ${PQ.green2}, ${PQ.green} 58%, ${PQ.greenDeep})`,
-        border: "1px solid rgba(249,242,228,0.12)", position: "relative", overflow: "hidden",
-        boxShadow: "0 1px 2px rgba(0,0,0,0.35)", ...style,
-      }}>
-        <div style={{
-          position: "absolute", inset: 0, backgroundImage:
-            "repeating-linear-gradient(45deg, rgba(249,242,228,0.09) 0 1.5px, transparent 1.5px 6px), repeating-linear-gradient(-45deg, rgba(249,242,228,0.07) 0 1.5px, transparent 1.5px 6px)"
-        }} />
-        <div style={{ position: "absolute", inset: "24% 28%", borderRadius: 3, border: "1px solid rgba(203,124,85,0.45)" }} />
-      </div>
-    );
-  }
-  return (
-    <div onClick={onTap} className={onTap ? "pq-press" : ""} style={{
-      width: w, height: h, borderRadius: r, flexShrink: 0,
-      background: "linear-gradient(180deg,#FFFDF6,#F2E8D2)",
-      border: `1px solid ${selected ? PQ.rust : "rgba(20,51,34,0.2)"}`,
-      transform: selected || raised ? "translateY(-12px)" : "none",
-      transition: "transform .16s cubic-bezier(.2,.8,.3,1), border-color .12s, box-shadow .16s",
-      boxShadow: selected ? "0 10px 18px -6px rgba(182,90,47,0.55)" : "0 2px 3px rgba(0,0,0,0.28), inset 0 -2px 0 rgba(20,51,34,0.08)",
-      display: "flex", alignItems: "center", justifyContent: "center", position: "relative",
-      cursor: onTap ? "pointer" : "default", ...style,
-    }}>
-      <TileFace suit={suit} value={value} w={w} />
-    </div>
-  );
-}
-
-// ── Face-down fan (opponent concealed hand) ──────────────────────
-function Fan({ count, side, w = 19 }) {
-  return (
-    <div style={{ display: "flex", flexDirection: side ? "column" : "row", gap: side ? 2 : 2 }}>
-      {Array.from({ length: count }).map((_, i) => <Tile key={i} faceDown side={side} w={w} />)}
-    </div>
-  );
-}
-
-// ── Exposed meld cluster (face-up, offset toward centre) ─────────
-function Meld({ tiles, w = 18, side }) {
-  return (
-    <div style={{ display: "flex", flexDirection: side ? "column" : "row", gap: 1.5 }}>
-      {tiles.map((t, i) => <Tile key={i} suit={t.suit} value={t.value} w={w} />)}
-    </div>
-  );
-}
-
-// ── Turn-timer arc ───────────────────────────────────────────────
-function TimerArc({ pct, secs, size = 36 }) {
-  const r = (size - 5) / 2, c = 2 * Math.PI * r;
-  const danger = pct < 0.26;
-  const col = danger ? GP.purple : GP.frameSoft;
-  return (
-    <div style={{ position: "relative", width: size, height: size, flexShrink: 0 }}>
-      <svg width={size} height={size} style={{ transform: "rotate(-90deg)", display: "block" }}>
-        <circle cx={size / 2} cy={size / 2} r={r} stroke="rgba(244,236,221,0.2)" strokeWidth={3.2} fill="none" />
-        <circle cx={size / 2} cy={size / 2} r={r} stroke={col} strokeWidth={3.2} fill="none"
-          strokeDasharray={c} strokeDashoffset={c * (1 - pct)} strokeLinecap="round"
-          style={{ transition: "stroke-dashoffset .9s linear, stroke .3s" }} />
-      </svg>
-      <span className={danger ? "pq-timer-pulse" : ""} style={{
-        position: "absolute", inset: 0, display: "flex",
-        alignItems: "center", justifyContent: "center", fontFamily: HERO, fontWeight: 700,
-        fontSize: 13, color: danger ? GP.purple : GP.cream
-      }}>{secs}</span>
-    </div>
-  );
-}
-
-// ── Nameplate (translucent surface-bamboo panel) ─────────────────
-function Nameplate({ name, wind, tiles, score, tier, flowers = 0, active, bot, disconnected, timer, align = "left" }) {
-  return (
-    <div style={{
-      display: "inline-flex", alignItems: "center", gap: 8, maxWidth: 200,
-      background: active ? "rgba(60,37,81,0.78)" : GP.panel,
-      backdropFilter: "blur(9px)", WebkitBackdropFilter: "blur(9px)",
-      border: `1.5px solid ${active ? GP.frameSoft : GP.frame}`,
-      borderRadius: 13, padding: "6px 9px",
-      boxShadow: active ? "0 6px 18px -8px rgba(199,125,214,0.5)" : "0 4px 14px -8px rgba(0,0,0,0.55)",
-    }}>
-      <span style={{
-        width: 26, height: 26, borderRadius: 8, flexShrink: 0, display: "flex", alignItems: "center",
-        justifyContent: "center", background: active ? GP.purple : "rgba(244,236,221,0.1)",
-        border: `1px solid ${active ? GP.purpleSoft : "rgba(244,236,221,0.2)"}`,
-        fontFamily: HERO, fontWeight: 700, fontSize: 13, color: active ? "#2A1A38" : GP.cream
-      }}>{wind}</span>
-      <div style={{ minWidth: 0, textAlign: "left" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-          <span style={{
-            fontFamily: HERO, fontWeight: 700, fontSize: 12, letterSpacing: "0.02em",
-            color: GP.cream, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: 96
-          }}>{name}</span>
-          {flowers > 0 && <span style={{ display: "inline-flex", alignItems: "center", gap: 2 }}>
-            {Array.from({ length: flowers }).map((_, i) => <span key={i} style={{ width: 5, height: 5, borderRadius: "50%", background: GP.frameSoft }} />)}
-          </span>}
-        </div>
-        {bot ? (
-          <div style={{ marginTop: 2, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: GP.purpleSoft }}>Bot playing for {name.split(" ")[0]}</div>
-        ) : disconnected ? (
-          <div style={{ marginTop: 2, display: "flex", alignItems: "center", gap: 4, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: GP.purpleSoft }}>
-            <span className="pq-pulse" style={{ width: 5, height: 5, borderRadius: "50%", background: GP.purple }} />Reconnecting…
-          </div>
-        ) : (
-          <div style={{ marginTop: 2, display: "flex", alignItems: "center", gap: 7, fontFamily: HERO, fontSize: 10, color: GP.mute }}>
-            {tier && <span style={{ color: GP.purpleSoft, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase" }}>{tier}</span>}
-            <span>{tiles}<span style={{ opacity: 0.55 }}>·tiles</span></span>
-            <span style={{ color: GP.cream, fontWeight: 700 }}>{score} pts</span>
-          </div>
-        )}
-      </div>
-      {active && timer != null && <TimerArc pct={timer.pct} secs={timer.secs} />}
-    </div>
-  );
-}
-
-// ── Direction / seat compass chip ────────────────────────────────
-function Compass({ prevailing = "E" }) {
-  const winds = [["N", "50%", "8%"], ["E", "84%", "50%"], ["S", "50%", "84%"], ["W", "16%", "50%"]];
-  return (
-    <div style={{
-      position: "relative", width: 46, height: 46, borderRadius: 12,
-      background: "rgba(10,28,18,0.55)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)",
-      border: "1px solid rgba(249,242,228,0.16)"
-    }}>
-      <div style={{ position: "absolute", inset: 13, transform: "rotate(45deg)", border: "1px solid rgba(249,242,228,0.25)", borderRadius: 3 }} />
-      {winds.map(([w, l, t]) => (
-        <span key={w} style={{
-          position: "absolute", left: l, top: t, transform: "translate(-50%,-50%)",
-          fontFamily: HERO, fontWeight: 700, fontSize: 10,
-          color: w === prevailing ? PQ.rustSoft : "rgba(249,242,228,0.5)"
-        }}>{w}</span>
-      ))}
-    </div>
-  );
-}
-
-// ── Round / wall info pill ───────────────────────────────────────
-function InfoPill({ children }) {
-  return (
-    <div style={{
-      display: "inline-flex", alignItems: "center", gap: 7, padding: "6px 12px", borderRadius: 999,
-      background: "rgba(10,28,18,0.5)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)",
-      border: "1px solid rgba(249,242,228,0.16)", fontFamily: HERO, fontWeight: 700, fontSize: 11,
-      letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(249,242,228,0.82)"
-    }}>{children}</div>
-  );
-}
-
-// ── Vertical gold edge strip (East / West seat label + exposed tiles per reference) ──
-function EdgeStrip({ side, name, tier, pts, disconnected, exposed = [] }) {
-  const isLeft = side === "left";
-  const rot = isLeft ? "rotate(180deg)" : "none";
-  const lbl = { writingMode: "vertical-rl", transform: rot, fontFamily: HERO, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", whiteSpace: "nowrap" };
-  return (
-    <div style={{
-      position: "absolute", [isLeft ? "left" : "right"]: 10, top: 56, bottom: 150, width: 54, zIndex: 6,
-      display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 12,
-      background: GP.panel, border: `1.5px solid ${GP.frame}`, borderRadius: 12,
-      boxShadow: "inset 0 0 20px rgba(0,0,0,0.35)", padding: "10px 0"
-    }}>
-      <span style={{ ...lbl, fontSize: 11.5, color: GP.cream }}>{name}</span>
-      {disconnected
-        ? <span style={{ ...lbl, fontSize: 10, color: GP.purpleSoft }}>Reconnecting</span>
-        : <span style={{ ...lbl, fontSize: 10.5, color: GP.purpleSoft }}>{tier}</span>}
-      <span style={{ ...lbl, fontSize: 10.5, color: GP.mute }}>{pts} pts</span>
-      {/* dedicated exposed-tile section for this player */}
-      {exposed.length > 0 && (
-        <div style={{ marginTop: 4, display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
-          {exposed.map((t, i) => <Tile key={i} suit={t.suit} value={t.value} w={13} />)}
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ── Small circular glass icon button ─────────────────────────────
-function GlassIconBtn({ children, onClick, label }) {
-  return (
-    <button onClick={onClick} aria-label={label} className="pq-press" style={{
-      width: 38, height: 38, borderRadius: "50%", cursor: "pointer",
-      background: GP.panel, backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)",
-      border: `1.5px solid ${GP.frame}`, display: "flex", alignItems: "center", justifyContent: "center",
-    }}>{children}</button>
-  );
-}
-
-// ── Action tray (Chow / Pong / Kong — authentic terms) ───────────
-function ActionTray({ actions, onAct }) {
-  const order = ["chow", "pong", "kong"];
-  const avail = order.filter((a) => actions.includes(a));
-  if (!avail.length) return null;
-  return (
-    <div className="pq-tray-in" style={{ display: "flex", gap: 8, justifyContent: "center" }}>
-      {avail.map((a) => (
-        <button key={a} onClick={() => { pock("select"); onAct(a); }} className="pq-press" style={{
-          height: 38, padding: "0 18px", borderRadius: 11, cursor: "pointer",
-          background: "rgba(244,236,221,0.95)", border: `1.5px solid ${GP.purple}`,
-          color: "#7B2C8C", fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase",
-        }}>{a}</button>
-      ))}
-    </div>
-  );
-}
-
-// ── Mahjong win button (brass/gold glow when legally available) ──
-function MahjongButton({ ready, onWin }) {
-  return (
-    <button onClick={() => { if (!ready) return; pock("select"); onWin(); }} disabled={!ready}
-      className={ready ? "pq-press pq-mahjong-glow" : ""} style={{
-        height: 52, flex: 1.3, borderRadius: 14, cursor: ready ? "pointer" : "not-allowed",
-        background: ready ? `linear-gradient(160deg, ${GOLD_SOFT}, ${GOLD} 55%, ${GOLD_DEEP})` : "rgba(249,242,228,0.08)",
-        border: `1.5px solid ${ready ? "#EBCE81" : "rgba(249,242,228,0.16)"}`,
-        color: ready ? "#3A2A06" : "rgba(249,242,228,0.35)",
-        fontFamily: HERO, fontWeight: 700, fontSize: 17, letterSpacing: "0.14em", textTransform: "uppercase",
-        display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-      }}>Mahjong</button>
-  );
-}
-
-// ── Animated score number (subtle incremental tick) ──────────────
-function TickScore({ value, style }) {
-  const [shown, setShown] = React.useState(value);
-  const [bump, setBump] = React.useState(false);
-  React.useEffect(() => {
-    if (value === shown) return;
-    setBump(true);
-    const step = value > shown ? 1 : -1;
-    const id = setInterval(() => {
-      setShown((s) => {
-        if (s === value) { clearInterval(id); return s; }
-        return s + step * Math.max(1, Math.round(Math.abs(value - s) / 6));
-      });
-    }, 45);
-    const t = setTimeout(() => setBump(false), 320);
-    return () => { clearInterval(id); clearTimeout(t); };
-  }, [value]);
-  return <span style={{ display: "inline-block", transition: "transform .15s", transform: bump ? "scale(1.18)" : "none", ...style }}>{shown}</span>;
-}
-
-// ── Seats / initial hand data ────────────────────────────────────
-const YOU_HAND = [
-  { suit: "bamboo", value: 2 }, { suit: "bamboo", value: 3 }, { suit: "bamboo", value: 4 },
-  { suit: "dot", value: 5 }, { suit: "dot", value: 6 }, { suit: "dot", value: 7 },
-  { suit: "char", value: 8 }, { suit: "char", value: 9 },
-  { suit: "dot", value: 9 }, { suit: "dot", value: 9 },
-  { suit: "wind", value: "E" }, { suit: "wind", value: "E" }, { suit: "wind", value: "E" },
-];
-const DISCARDS = [
-  { suit: "char", value: 1 }, { suit: "bamboo", value: 9 }, { suit: "dot", value: 1 },
-  { suit: "wind", value: "W" }, { suit: "char", value: 5 }, { suit: "dragon", value: "G" },
-  { suit: "bamboo", value: 7 }, { suit: "dot", value: 3 }, { suit: "char", value: 2 },
-];
-
-// ── Game screen ──────────────────────────────────────────────────
-function GameScreen({ onExit, demo = {} }) {
-  const [hand, setHand] = React.useState(YOU_HAND);
-  const [drawn, setDrawn] = React.useState({ suit: "dot", value: 9 }); // latest draw, separated
-  const [sel, setSel] = React.useState(null);                          // selected index (hand) or -1 for drawn
-  const [pool, setPool] = React.useState(DISCARDS);
-  const [myMelds, setMyMelds] = React.useState([]);
-  const [score, setScore] = React.useState(48);
-  const [pct, setPct] = React.useState(1);
-  const [secs, setSecs] = React.useState(20);
-  const [won, setWon] = React.useState(false);
-  const [menuOpen, setMenuOpen] = React.useState(false);
-  const [exchange, setExchange] = React.useState(false);
-  const [dibDab, setDibDab] = React.useState(0);
-  const [walling, setWalling] = React.useState(0);
-  const tilesLeft = Math.max(0, 84 - pool.length);
-  // discard pile auto-scales down as it grows so the whole pile stays visible
-  const discardW = pool.length > 40 ? 12 : pool.length > 28 ? 14 : pool.length > 18 ? 16 : 19;
-  const SUIT_ORDER = { bamboo: 0, dot: 1, char: 2, wind: 3, dragon: 4 };
-  const sortHand = () => { pock("select"); setHand((h) => [...h].sort((a, b) => (SUIT_ORDER[a.suit] - SUIT_ORDER[b.suit]) || ((typeof a.value === "number" ? a.value : 99) - (typeof b.value === "number" ? b.value : 99)) || String(a.value).localeCompare(String(b.value)))); };
-  const drawTile = () => { if (drawn) return; pock("select"); setDrawn({ suit: ["bamboo", "dot", "char"][Math.floor(Math.random() * 3)], value: Math.ceil(Math.random() * 9) }); resetTimer(); };
-
-  const full = drawn ? [...hand, drawn] : hand;
-  const selTile = sel == null ? null : (sel === -1 ? drawn : hand[sel]);
-
-  // available calls from the selected tile (authentic: pong=2 held, kong=3 held, chow=run)
-  const actions = React.useMemo(() => {
-    if (!selTile) return [];
-    const same = hand.filter((t) => t.suit === selTile.suit && t.value === selTile.value).length + (drawn && drawn.suit === selTile.suit && drawn.value === selTile.value ? 1 : 0);
-    const out = [];
-    if (same >= 3) out.push("pong"), out.push("kong");
-    else if (same >= 2) out.push("pong");
-    if (typeof selTile.value === "number") {
-      const has = (v) => full.some((t) => t.suit === selTile.suit && t.value === v);
-      if ((has(selTile.value - 1) && has(selTile.value - 2)) || (has(selTile.value - 1) && has(selTile.value + 1)) || (has(selTile.value + 1) && has(selTile.value + 2))) out.push("chow");
-    }
-    return out;
-  }, [sel]);
-
-  const mahjongReady = !!demo.win || won;
-
-  // turn timer (your seat active)
-  React.useEffect(() => {
-    if (won) return;
-    if (secs <= 0) {           // missed turn → bot covers your discard (guarded so idle review won't empty the hand)
-      const t = setTimeout(() => { if (hand.length > 5) doDiscard(0, true); else resetTimer(); }, 600);
-      return () => clearTimeout(t);
-    }
-    const id = setTimeout(() => { setSecs((s) => s - 1); setPct((p) => Math.max(0, p - 1 / 20)); }, 950);
-    return () => clearTimeout(id);
-  }, [secs, won]);
-
-  const resetTimer = () => { setSecs(20); setPct(1); };
-
-  function doDiscard(idx, auto) {
-    const tile = idx === -1 ? drawn : hand[idx];
-    if (!tile) return;
-    pock("select");
-    setPool((p) => [...p, tile]);
-    if (idx === -1) setDrawn(null);
-    else { setHand((h) => h.filter((_, i) => i !== idx)); }
-    setSel(null);
-    setScore((s) => s + (auto ? 1 : 3));
-    resetTimer();
-    // brief opponent beat → you draw again
-    setTimeout(() => { if (!drawn) setDrawn({ suit: ["bamboo", "dot", "char"][Math.floor(Math.random() * 3)], value: Math.ceil(Math.random() * 9) }); }, 900);
-  }
-
-  function doMeld(kind) {
-    if (!selTile) return;
-    pock("select");
-    const n = kind === "kong" ? 4 : kind === "chow" ? 3 : 3;
-    let take = [];
-    if (kind === "chow" && typeof selTile.value === "number") {
-      const v = selTile.value, s = selTile.suit;
-      const pick = (val) => full.find((t) => t.suit === s && t.value === val);
-      take = [pick(v - 1), pick(v), pick(v + 1)].filter(Boolean);
-      if (take.length < 3) take = [pick(v), pick(v + 1), pick(v + 2)].filter(Boolean);
-    } else {
-      take = full.filter((t) => t.suit === selTile.suit && t.value === selTile.value).slice(0, n);
-    }
-    let removedDrawn = false;
-    // consume: remove first matching tiles from hand / drawn
-    let need = take.map((t) => t.suit + "" + t.value);
-    const newHand = [];
-    hand.forEach((t) => { const k = t.suit + "" + t.value; const i = need.indexOf(k); if (i > -1) { need.splice(i, 1); } else newHand.push(t); });
-    if (drawn) { const k = drawn.suit + "" + drawn.value; const i = need.indexOf(k); if (i > -1) { need.splice(i, 1); removedDrawn = true; } }
-    setMyMelds((m) => [...m, take]);
-    setHand(newHand);
-    if (removedDrawn) setDrawn(null);
-    setSel(null);
-    setScore((s) => s + 6);
-    resetTimer();
-  }
-
-  const claim = () => { if (!actions.length) return; doMeld(actions[0]); };
-  const menuRow = { width: "100%", textAlign: "left", padding: "15px 18px", background: PQ.off, border: "none", borderBottom: `1px solid ${PQ.line}`, cursor: "pointer", fontFamily: HERO, fontWeight: 600, fontSize: 14.5, color: PQ.ink };
-  const ctrl = (label, onClick, icon, disabled, glow) => (
-    <button onClick={disabled ? undefined : onClick} disabled={disabled} className={glow ? "pq-mahjong-glow" : (disabled ? "" : "pq-press")} style={{
-      minWidth: 0, height: 34, padding: "0 10px", borderRadius: 9,
-      cursor: disabled ? "not-allowed" : "pointer",
-      background: glow ? `linear-gradient(160deg, ${GP.frameSoft}, ${GP.frame} 55%, ${GP.frameDeep})` : GP.panel,
-      border: `1.5px solid ${glow ? GP.frameSoft : disabled ? "rgba(244,236,221,0.14)" : GP.frame}`,
-      color: glow ? "#2A1A38" : disabled ? GP.faint : GP.cream,
-      fontFamily: HERO, fontWeight: 700, fontSize: 10.5, letterSpacing: "0.04em", textTransform: "uppercase",
-      display: "flex", alignItems: "center", justifyContent: "center", whiteSpace: "nowrap",
-    }}>{label}</button>
-  );
-
-  // ── reference gameplay palette (dark casino table on beige) ──
-  const OSW = "'Oswald', 'Hero', sans-serif";
-  const PF = "'Playfair Display', serif";
-  const RG = {
-    bg: "#ded6c4", table: "#242424", panel: "linear-gradient(#34373b,#26282b)", panelBorder: "#565b5f",
-    cream: "#f3ecdc", label: "#b7bdb5", labelDim: "#8a9a8c", teal: "#6fa0ae", scoreBox: "#0a1a10",
-    gold: "#d8a53a", tierGold: "#9a7c44", youBlue: "#3a5f86", youGold: "#c9a24a", rust: "#c47a34", orange: "#c76334", ptGrey: "#888e92", gameGrey: "#757b80",
-    btn: "linear-gradient(#3a3d40,#2a2c2e)", btnText: "#dfe6da", menuText: "#cfd8cc"
-  };
-  // static opponent exposed melds (mapped to this app's tile renderer)
-  const oppMelds = [
-    [{ suit: "char", value: 3 }, { suit: "char", value: 4 }, { suit: "char", value: 5 }],
-    [{ suit: "dot", value: 2 }, { suit: "dot", value: 3 }, { suit: "dot", value: 4 }],
-    [{ suit: "bamboo", value: 6 }, { suit: "bamboo", value: 6 }, { suit: "bamboo", value: 6 }],
-    [{ suit: "dragon", value: "R" }, { suit: "dragon", value: "R" }, { suit: "dragon", value: "R" }],
-  ];
-  const westMelds = [
-    [{ suit: "char", value: 5 }, { suit: "dot", value: 5 }, { suit: "char", value: 5 }],
-    [{ suit: "dragon", value: "R" }, { suit: "dragon", value: "R" }, { suit: "dragon", value: "R" }],
-    [{ suit: "bamboo", value: 7 }, { suit: "bamboo", value: 8 }, { suit: "bamboo", value: 9 }],
-  ];
-  const yourExposed = myMelds.flat().length ? myMelds.flat() : EXPOSED_DEMO;
-  // flowers (represented per reference): red-dragon row + green-dragon row
-  const oppFlowers = [
-    [{ suit: "dragon", value: "R" }, { suit: "dragon", value: "R" }, { suit: "dragon", value: "R" }, { suit: "dragon", value: "R" }],
-    [{ suit: "dragon", value: "G" }, { suit: "dragon", value: "G" }, { suit: "dragon", value: "G" }],
-  ];
-  const yourFlowers = [
-    [{ suit: "dragon", value: "R" }, { suit: "dragon", value: "R" }, { suit: "dragon", value: "R" }, { suit: "dragon", value: "R" }],
-    [{ suit: "dragon", value: "G" }, { suit: "dragon", value: "G" }, { suit: "dragon", value: "G" }],
-  ];
-  const expBorder = pct > 0 ? RG.rust : RG.panelBorder;
-  const expShadow = pct > 0 ? "0 0 16px rgba(196,122,52,.5), inset 0 0 14px rgba(196,122,52,.12)" : "none";
-  const AV = ["boy", "llama", "owl"];
-  const seatAv = (i) => AV_RES(`assets/avatars/poquito-${AV[i % AV.length]}.png`, AV[i % AV.length]);
-
-  // vertical side panel (North / South opponents) — narrowed; left panel clears the phone notch
-  const SidePanel = ({ side, wind, name, av }) => (
-    <div style={{
-      position: "absolute", [side]: side === "left" ? 20 : 8, top: 32, width: 92, bottom: 60, zIndex: 4,
-      background: RG.panel, border: `2px solid ${RG.panelBorder}`, borderRadius: 12, padding: 7,
-      boxShadow: "inset 0 0 18px rgba(0,0,0,0.5)", overflow: "hidden"
-    }}>
-      <div style={{ display: "flex", gap: 6 }}>
-        <div style={{ flexShrink: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
-          <span style={{ width: 38, height: 38, borderRadius: "50%", overflow: "hidden", border: "2px solid #c9b48a", display: "block" }}>
-            <img src={av} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-          </span>
-          <span style={{ fontFamily: OSW, fontWeight: 700, fontSize: 12, color: "#eef0ea" }}>{name}</span>
-        </div>
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 2 }}>
-          <span style={{ fontFamily: OSW, fontSize: 9, letterSpacing: "0.12em", color: RG.label }}>{wind}</span>
-          <div style={{ width: "100%", background: RG.scoreBox, borderRadius: 4, padding: "1px 5px", textAlign: "right" }}><span style={{ fontFamily: OSW, fontWeight: 700, fontSize: 14, color: RG.ptGrey }}>1,240</span></div>
-          <span style={{ fontFamily: OSW, fontSize: 8.5, letterSpacing: "0.1em", color: RG.ptGrey }}>JADE II</span>
-        </div>
-      </div>
-      <span style={{ display: "block", fontFamily: OSW, fontSize: 8.5, letterSpacing: "0.12em", color: RG.gameGrey, margin: "6px 0 4px 2px" }}>EXPOSED</span>
-      <div style={{ display: "flex", flexDirection: "column", gap: 3, alignItems: "center" }}>
-        {oppMelds.map((m, r) => (
-          <div key={r} style={{ display: "flex", gap: 2, justifyContent: "center" }}>
-            {m.map((t, i) => <Tile key={i} suit={t.suit} value={t.value} w={20} />)}
-          </div>
-        ))}
-      </div>
-      {/* centred rust divider between exposed tiles and flowers */}
-      <div style={{ height: 1.5, width: "58%", margin: "8px auto 6px", background: PQ.rust, borderRadius: 2 }} />
-      {/* flowers (smaller tiles) */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 3, alignItems: "center" }}>
-        {oppFlowers.map((m, r) => (
-          <div key={r} style={{ display: "flex", gap: 2, justifyContent: "center" }}>
-            {m.map((t, i) => <Tile key={i} suit={t.suit} value={t.value} w={17} />)}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-
-  return (
-    <div style={{ position: "absolute", inset: 0, overflow: "hidden", background: RG.bg, fontFamily: OSW }}>
-      {/* dark casino table */}
-      <div style={{
-        position: "absolute", inset: 4, background: RG.table, borderRadius: 22,
-        boxShadow: "inset 0 0 0 2px #3a3a3a, inset 0 0 40px rgba(0,0,0,0.6)", pointerEvents: "none"
-      }} />
-
-      {/* TOP BAR */}
-      <div style={{ position: "absolute", left: 12, top: 8, right: 12, height: 26, zIndex: 12, display: "flex", alignItems: "stretch" }}>
-        <div style={{ display: "flex", alignItems: "center", paddingLeft: 6, paddingRight: 14, borderRight: "1px solid rgba(255,255,255,.13)" }}>
-          <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 15, color: RG.orange, letterSpacing: "0.06em" }}>EAST ROUND</span>
-        </div>
-        <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 6, borderRight: "1px solid rgba(255,255,255,.13)" }}>
-          <span style={{ fontFamily: OSW, fontSize: 10, letterSpacing: "0.12em", color: RG.gameGrey }}>GAME</span>
-          <span style={{ fontFamily: OSW, fontWeight: 700, fontSize: 13, color: RG.gameGrey }}>2/4</span>
-        </div>
-        <div style={{ flex: 1.1, display: "flex", alignItems: "center", justifyContent: "center", gap: 6, borderRight: "1px solid rgba(255,255,255,.13)" }}>
-          <span style={{ fontFamily: OSW, fontWeight: 700, fontSize: 15, color: RG.rust }}>{tilesLeft}</span>
-          <span style={{ fontFamily: OSW, fontSize: 10, letterSpacing: "0.12em", color: RG.gameGrey }}>TILES LEFT</span>
-        </div>
-        <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 6, borderRight: "1px solid rgba(255,255,255,.13)" }}>
-          <span style={{ fontFamily: OSW, fontSize: 10, letterSpacing: "0.12em", color: RG.gameGrey }}>BANK</span>
-          <span style={{ fontFamily: OSW, fontWeight: 700, fontSize: 13, color: RG.gameGrey }}><TickScore value={score} /></span>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, paddingLeft: 14 }}>
-          <button onClick={() => setMenuOpen(true)} className="pq-press" style={{ height: 22, display: "flex", alignItems: "center", gap: 5, padding: "0 10px", border: `1.5px solid ${RG.panelBorder}`, borderRadius: 7, background: RG.btn, cursor: "pointer" }}>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="#cbd3cb"><rect x="6" y="4" width="4" height="16" rx="1" /><rect x="14" y="4" width="4" height="16" rx="1" /></svg>
-            <span style={{ fontFamily: OSW, fontSize: 10, letterSpacing: "0.12em", color: RG.gameGrey, fontWeight: 600 }}>PAUSE</span>
-          </button>
-          <button onClick={() => onExit && onExit("home")} className="pq-press" style={{ height: 22, display: "flex", alignItems: "center", gap: 5, padding: "0 10px", border: `1.5px solid ${RG.panelBorder}`, borderRadius: 7, background: RG.btn, cursor: "pointer" }}>
-            <span style={{ fontFamily: OSW, fontSize: 10, letterSpacing: "0.12em", color: RG.gameGrey, fontWeight: 600 }}>EXIT</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#cbd3cb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 4H6a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4" /><path d="M16 17l5-5-5-5" /><path d="M21 12H9" /></svg>
-          </button>
-        </div>
-      </div>
-
-      {/* LEFT / RIGHT side panels (North / South opponents) */}
-      <SidePanel side="left" wind="NORTH" name="Mei" av={seatAv(1)} />
-      <SidePanel side="right" wind="SOUTH" name="Sam" av={seatAv(2)} />
-
-      {/* TOP HAND (West player, exposed melds) */}
-      <div style={{
-        position: "absolute", left: 112, top: 32, width: 588, height: 44, zIndex: 4,
-        background: RG.panel, border: `2px solid ${RG.panelBorder}`, borderRadius: 10, display: "flex", alignItems: "center", padding: "0 8px", gap: 10
-      }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
-          <span style={{ width: 32, height: 32, borderRadius: "50%", overflow: "hidden", border: `2px solid ${RG.youBlue}`, display: "block" }}>
-            <img src={seatAv(0)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-          </span>
-          <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.05 }}>
-            <span style={{ fontFamily: OSW, fontSize: 8.5, letterSpacing: "0.12em", color: RG.label }}>WEST</span>
-            <span style={{ fontFamily: OSW, fontWeight: 700, fontSize: 12, color: RG.teal }}>1,240</span>
-          </div>
-        </div>
-        <div className="pq-scroll" style={{ display: "flex", alignItems: "center", gap: 6, overflowX: "auto" }}>
-          {westMelds.map((m, g) => (
-            <div key={g} style={{ display: "flex", gap: 2 }}>{m.map((t, i) => <Tile key={i} suit={t.suit} value={t.value} w={20} />)}</div>
-          ))}
-        </div>
-      </div>
-
-      {/* CENTER FELT — discard pile + dragon watermark + scroll chevron */}
-      <div style={{
-        position: "absolute", left: 112, top: 80, width: 588, height: 150, zIndex: 3,
-        background: "radial-gradient(ellipse 62% 90% at 50% 46%, #3d3d3d 0%, #2c2c2c 46%, #202020 74%, #191919 100%)",
-        border: "2px solid #a05a24", borderRadius: 12, boxShadow: "inset 0 0 34px rgba(0,0,0,0.75)", overflow: "hidden",
-        display: "flex", alignItems: "center", justifyContent: "center", padding: 8
-      }}>
-        <img src={DRAGON_GREEN_SRC} alt="Poquito" draggable={false} style={{ position: "absolute", left: "50%", top: "47%", transform: "translate(-50%,-50%)", height: 118, width: "auto", opacity: 0.5, pointerEvents: "none" }} />
-        <div style={{ position: "relative", display: "flex", flexWrap: "wrap", gap: 2, justifyContent: "center", alignContent: "center", maxHeight: "100%", overflow: "hidden" }}>
-          {pool.map((t, i) => <Tile key={i} suit={t.suit} value={t.value} w={discardW} raised={i === pool.length - 1} />)}
-        </div>
-        <div style={{ position: "absolute", right: 12, bottom: 4, color: "#6a6a6a", fontSize: 18, lineHeight: 1 }}>⌄</div>
-        {/* EXCHANGE toggle (top-right of felt) */}
-        <button onClick={() => { pock("select"); setExchange((v) => !v); }} className="pq-press" style={{ position: "absolute", top: 10, right: 12, zIndex: 5, display: "flex", alignItems: "center", gap: 8, height: 28, padding: "0 6px 0 12px", borderRadius: 999, background: "rgba(10,10,10,0.55)", border: `1.5px solid ${RG.panelBorder}`, cursor: "pointer" }}>
-          <span style={{ fontFamily: OSW, fontWeight: 700, fontSize: 10.5, letterSpacing: "0.12em", color: RG.cream }}>EXCHANGE</span>
-          <span style={{ width: 34, height: 18, borderRadius: 999, background: exchange ? PQ.rust : "#4a4d50", position: "relative", transition: "background .2s" }}>
-            <span style={{ position: "absolute", top: 2, left: exchange ? 18 : 2, width: 14, height: 14, borderRadius: "50%", background: "#f3ecdc", transition: "left .2s" }} />
-          </span>
-        </button>
-      </div>
-
-      {/* YOUR EXPOSED AREA (rust border + glow on your turn) — extends to end of buttons */}
-      <div style={{
-        position: "absolute", left: 108, top: 234, width: 592, height: 66, zIndex: 4,
-        border: `2px solid ${expBorder}`, borderRadius: 12, boxShadow: expShadow
-      }} />
-      {/* exposed tiles inside the area: flowers group + centred rust vertical divider + exposed melds */}
-      <div className="pq-scroll" style={{ position: "absolute", left: 118, top: 240, width: 412, height: 54, zIndex: 5, display: "flex", alignItems: "center", gap: 6, overflowX: "auto" }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 2, flexShrink: 0 }}>
-          <div style={{ display: "flex", gap: 2 }}>{yourFlowers[0].map((t, i) => <Tile key={i} suit={t.suit} value={t.value} w={17} />)}</div>
-          <div style={{ display: "flex", gap: 2 }}>{yourFlowers[1].map((t, i) => <Tile key={i} suit={t.suit} value={t.value} w={17} />)}</div>
-        </div>
-        <span style={{ width: 1.5, height: 40, background: PQ.rust, borderRadius: 2, flexShrink: 0 }} />
-        <div style={{ display: "flex", alignItems: "center", gap: 3 }}>
-          {yourExposed.map((t, i) => <Tile key={i} suit={t.suit} value={t.value} w={22} />)}
-        </div>
-      </div>
-
-      {/* MAHJONG / LET'S GO + CLAIM / DIB DAB + DRAW / WALLING */}
-      <button onClick={() => { if (exchange) { setExchange(false); resetTimer(); } else if (mahjongReady) setWon(true); }} className={(!exchange && mahjongReady) ? "pq-mahjong-glow" : "pq-press"} style={{
-        position: "absolute", left: 546, top: 234, width: 90, height: 66, zIndex: 6,
-        background: PQ.rust, border: `2px solid ${PQ.rust}`, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center",
-        boxShadow: "0 3px 8px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.25)", cursor: "pointer"
-      }}>
-        <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: exchange ? 18 : 20, color: "#fbf3e4", textAlign: "center", lineHeight: 1.05, letterSpacing: "0.02em" }}>{exchange ? "Let's Go" : "Mahjong"}</span>
-      </button>
-      {exchange ? (
-        <>
-          <button onClick={() => { pock("select"); setDibDab((n) => Math.min(3, n + 1)); }} className="pq-press" style={{
-            position: "absolute", left: 642, top: 234, width: 58, height: 31, zIndex: 6,
-            background: RG.btn, border: `1.5px solid ${RG.rust}`, borderRadius: 9, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 2, cursor: "pointer"
-          }}>
-            <span style={{ fontFamily: OSW, fontSize: 10.5, letterSpacing: "0.06em", color: RG.rust, fontWeight: 700 }}>DIB DAB</span>
-            <span style={{ display: "flex", gap: 3 }}>{[0, 1, 2].map((i) => <span key={i} style={{ width: 4, height: 4, borderRadius: "50%", background: i < dibDab ? PQ.rust : "rgba(196,122,52,0.3)" }} />)}</span>
-          </button>
-          <button onClick={() => { pock("select"); setWalling((n) => Math.min(3, n + 1)); }} className="pq-press" style={{
-            position: "absolute", left: 642, top: 269, width: 58, height: 31, zIndex: 6,
-            background: RG.btn, border: `1.5px solid ${RG.rust}`, borderRadius: 9, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 2, cursor: "pointer"
-          }}>
-            <span style={{ fontFamily: OSW, fontSize: 10.5, letterSpacing: "0.06em", color: RG.rust, fontWeight: 700 }}>WALLING</span>
-            <span style={{ display: "flex", gap: 3 }}>{[0, 1, 2].map((i) => <span key={i} style={{ width: 4, height: 4, borderRadius: "50%", background: i < walling ? PQ.rust : "rgba(196,122,52,0.3)" }} />)}</span>
-          </button>
-        </>
-      ) : (
-        <>
-          <button onClick={claim} disabled={!actions.length} className={actions.length ? "pq-press" : ""} style={{
-            position: "absolute", left: 642, top: 234, width: 58, height: 31, zIndex: 6,
-            background: RG.btn, border: `1.5px solid ${actions.length ? RG.rust : "rgba(86,91,95,0.5)"}`, borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center",
-            cursor: actions.length ? "pointer" : "not-allowed"
-          }}>
-            <span style={{ fontFamily: OSW, fontSize: 13, letterSpacing: "0.1em", color: RG.rust, fontWeight: 700 }}>CLAIM</span>
-          </button>
-          <button onClick={drawTile} disabled={!!drawn} className={drawn ? "" : "pq-press"} style={{
-            position: "absolute", left: 642, top: 269, width: 58, height: 31, zIndex: 6,
-            background: RG.btn, border: `1.5px solid ${drawn ? "rgba(86,91,95,0.5)" : RG.rust}`, borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center",
-            cursor: drawn ? "not-allowed" : "pointer"
-          }}>
-            <span style={{ fontFamily: OSW, fontSize: 13, letterSpacing: "0.1em", color: RG.rust, fontWeight: 700 }}>DRAW</span>
-          </button>
-        </>
-      )}
-
-      {/* MENU + RULES (bottom-left) — small icons per reference: hamburger + question mark */}
-      <div style={{ position: "absolute", left: 16, bottom: 8, display: "flex", gap: 14, zIndex: 6 }}>
-        <button onClick={() => setMenuOpen(true)} className="pq-press" style={{ background: "none", border: "none", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: 4, padding: 0 }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 2.5, width: 13 }}><span style={{ height: 2, background: RG.menuText, borderRadius: 2 }} /><span style={{ height: 2, background: RG.menuText, borderRadius: 2 }} /><span style={{ height: 2, background: RG.menuText, borderRadius: 2 }} /></div>
-          <span style={{ fontFamily: OSW, fontSize: 8, letterSpacing: "0.1em", color: RG.menuText }}>MENU</span>
-        </button>
-        <button onClick={() => onExit && onExit("info")} className="pq-press" style={{ background: "none", border: "none", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: 4, padding: 0 }}>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={RG.menuText} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.2 9a2.8 2.8 0 015.6.3c0 1.9-2.8 2.5-2.8 4.2" /><circle cx="12" cy="17.6" r="0.5" fill={RG.menuText} stroke="none" /></svg>
-          <span style={{ fontFamily: OSW, fontSize: 8, letterSpacing: "0.1em", color: RG.menuText }}>RULES</span>
-        </button>
-      </div>
-
-      {/* BOTTOM HAND (You — East, active): avatar + tag + 13 tiles + DRAWN */}
-      <div style={{ position: "absolute", left: 110, bottom: 6, display: "flex", alignItems: "center", gap: 6, zIndex: 6 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 7, flexShrink: 0, marginRight: 4 }}>
-          <span style={{ width: 42, height: 42, borderRadius: "50%", overflow: "hidden", border: `2px solid ${RG.youBlue}`, boxShadow: "0 0 0 3px rgba(58,95,134,.25)", display: "block" }}>
-            <img src={PE_AV} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-          </span>
-          <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.1 }}>
-            <span style={{ fontFamily: OSW, fontSize: 9, letterSpacing: "0.12em", color: RG.label }}>EAST</span>
-            <span style={{ fontFamily: OSW, fontWeight: 700, fontSize: 13, color: RG.youGold }}>50,000</span>
-            <span style={{ fontFamily: OSW, fontWeight: 700, fontSize: 11, color: "#eef0ea", whiteSpace: "nowrap" }}>You <span style={{ color: "#c88a3a", fontSize: 9 }}>FIREFLY III</span></span>
-          </div>
-        </div>
-        <div className="pq-scroll" style={{ display: "flex", alignItems: "flex-end", gap: 3, overflowX: "auto", maxWidth: 430 }}>
-          {hand.map((t, i) => (
-            <Tile key={i} suit={t.suit} value={t.value} w={30} selected={sel === i} raised={sel === i}
-              onTap={() => { if (sel === i) doDiscard(i); else setSel(i); }} />
-          ))}
-        </div>
-        {drawn && (
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, marginLeft: 6, flexShrink: 0 }}>
-            <div style={{ border: `2px solid #6b87aa`, borderRadius: 7, padding: 1 }}>
-              <Tile suit={drawn.suit} value={drawn.value} w={28} selected={sel === -1} raised={false}
-                onTap={() => { if (sel === -1) doDiscard(-1); else setSel(-1); }} />
-            </div>
-            <span style={{ fontFamily: OSW, fontSize: 7.5, letterSpacing: "0.1em", color: RG.labelDim }}>DRAWN</span>
-          </div>
-        )}
-      </div>
-
-      {/* TIMER + SORT (bottom-right) */}
-      <div style={{ position: "absolute", right: 12, bottom: 8, width: 96, display: "flex", flexDirection: "column", alignItems: "center", gap: 5, zIndex: 6 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={RG.orange} strokeWidth="2"><circle cx="12" cy="13" r="8" /><path d="M12 9v4l2.5 2" /><path d="M9 2h6" /></svg>
-          <span style={{ fontFamily: OSW, fontWeight: 700, fontSize: 15, color: RG.orange }}>0:{String(secs).padStart(2, "0")}</span>
-        </div>
-        <button onClick={sortHand} className="pq-press" style={{ width: 96, height: 44, background: RG.btn, border: `1.5px solid ${RG.panelBorder}`, borderRadius: 11, display: "flex", alignItems: "center", justifyContent: "center", gap: 7, cursor: "pointer" }}>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke={RG.btnText} strokeWidth="2" strokeLinecap="round"><path d="M4 6h13M4 12h9M4 18h5" /><path d="M18 15l3 3 3-3M21 18V9" /></svg>
-          <span style={{ fontFamily: OSW, fontSize: 14, letterSpacing: "0.1em", color: RG.btnText, fontWeight: 600 }}>SORT</span>
-        </button>
-      </div>
-
-      {/* call tray (chow/pong/kong) — floats above the hand when a tile is selected */}
-      {actions.length > 0 && (
-        <div style={{ position: "absolute", left: "50%", bottom: 60, transform: "translateX(-50%)", zIndex: 14 }}>
-          <ActionTray actions={actions} onAct={doMeld} />
-        </div>
-      )}
-
-      {/* MENU (Game Settings submenu + Rules) */}
-      {menuOpen && (
-        <div className="pq-modal-backdrop" onClick={() => setMenuOpen(false)} style={{ position: "absolute", inset: 0, zIndex: 25, background: "rgba(10,28,18,0.55)", display: "flex", alignItems: "center", justifyContent: "center", padding: 28 }}>
-          <div onClick={(e) => e.stopPropagation()} className="pq-pop-in" style={{ width: 320, maxHeight: "86%", overflowY: "auto", background: PQ.off, borderRadius: 20, boxShadow: "0 24px 60px -20px rgba(0,0,0,0.6)" }}>
-            <div style={{ padding: "16px 18px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: `1px solid ${PQ.line}` }}>
-              <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 14, letterSpacing: "0.06em", textTransform: "uppercase", color: PQ.ink }}>Menu</span>
-              <button onClick={() => setMenuOpen(false)} className="pq-press" style={{ width: 32, height: 32, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="close" size={16} stroke={PQ.ink} sw={1.9} /></button>
-            </div>
-            <div style={{ padding: "6px 18px 4px", fontFamily: HERO, fontWeight: 700, fontSize: 10.5, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.inkFaint, marginTop: 8 }}>Game Settings</div>
-            {["Tile Configuration", "Turn Timer", "Sound", "Haptic", "Volume", "Layout"].map((s) => (
-              <button key={s} onClick={() => pock("select")} className="pq-press" style={{ ...menuRow, display: "flex", alignItems: "center", justifyContent: "space-between" }}>{s}<Icon name="chevR" size={16} stroke={PQ.inkFaint} /></button>
-            ))}
-            <div style={{ padding: "12px 18px 4px", fontFamily: HERO, fontWeight: 700, fontSize: 10.5, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.inkFaint }}>More</div>
-            <button onClick={() => { setMenuOpen(false); onExit && onExit("info"); }} className="pq-press" style={menuRow}>Rules</button>
-            <button onClick={() => { setMenuOpen(false); onExit && onExit(); }} className="pq-press" style={menuRow}>Leave table</button>
-            <button onClick={() => { setMenuOpen(false); onExit && onExit("logout"); }} className="pq-press" style={{ ...menuRow, color: PQ.rust, borderBottom: "none" }}>Log out</button>
-          </div>
-        </div>
-      )}
-
-      {/* win celebration (light, in-flow — not a separate end screen) */}
-      {won && (
-        <div className="pq-modal-backdrop" onClick={() => setWon(false)} style={{
-          position: "absolute", inset: 0, zIndex: 30,
-          background: "rgba(10,28,18,0.72)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 28
-        }}>
-          <div className="pq-pop-in" style={{ textAlign: "center" }}>
-            <div className="pq-mahjong-glow" style={{
-              width: 96, height: 96, margin: "0 auto", borderRadius: "50%",
-              background: `linear-gradient(160deg, ${GOLD_SOFT}, ${GOLD} 55%, ${GOLD_DEEP})`, display: "flex", alignItems: "center", justifyContent: "center",
-              border: "2px solid #EBCE81"
-            }}>
-              <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 30, color: "#3A2A06" }}>萬</span>
-            </div>
-            <div style={{ marginTop: 18, fontFamily: HERO, fontWeight: 700, fontSize: 30, letterSpacing: "0.08em", textTransform: "uppercase", color: PQ.off }}>Mahjong!</div>
-            <div style={{ marginTop: 8, fontSize: 13.5, color: "rgba(249,242,228,0.7)" }}>Self-drawn · East Round · +120 points</div>
-            <button onClick={() => { setWon(false); onExit && onExit("results"); }} className="pq-press" style={{
-              marginTop: 20, height: 46, padding: "0 26px", borderRadius: 13,
-              background: PQ.rust, border: "none", color: PQ.off, fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase", cursor: "pointer"
-            }}>Continue</button>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-Object.assign(window, { Tile, Fan, Meld, TimerArc, Nameplate, Compass, ActionTray, MahjongButton, TickScore, GameScreen });
-
-
+// Start of File: pocket-dragon-extra.jsx
 /* ===== pocket-dragon-extra.jsx (new screens) ===== */
 // pocket-dragon-extra.jsx — NEW screens extending the Pocket Dragon journey.
 // Built strictly with the existing PQ system (PQ, HERO, Icon, HIcon, Btn, Field,
@@ -4332,6 +3519,10 @@ Object.assign(window, {
 });
 
 
+
+// End of File: pocket-dragon-extra.jsx
+
+// Start of File: pocket-dragon-app.jsx
 /* ===== pocket-dragon-app.jsx (composition) ===== */
 // pocket-dragon-app.jsx — faithful composition + extended journey. Reproduces the
 // reference HomeApp controller (portrait Phone for onboarding/home/config, landscape
@@ -4385,6 +3576,61 @@ function Sw({ label, on, set }) {
           transform: on ? "translateX(17px)" : "translateX(0)", transition: "transform .18s",
           boxShadow: "0 1px 3px rgba(0,0,0,0.25)"
         }} />
+      </div>
+    </div>
+  );
+}
+
+// ── Gameplay Mockup Image Screen (Figma import placeholder) ──────
+function GameScreen({ onExit }) {
+  const handleExit = () => {
+    if (typeof pock === "function") pock("select");
+    if (onExit) onExit("results"); // Proceed to final results screen when exiting gameplay
+  };
+
+  return (
+    <div 
+      onClick={handleExit}
+      style={{
+        position: "absolute",
+        inset: 0,
+        background: "#150C1E",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "stretch",
+        alignItems: "stretch",
+        overflow: "hidden",
+        cursor: "pointer"
+      }}
+      title="Click anywhere to return"
+    >
+      <img 
+        src="assets/gameplay-placeholder.png" 
+        alt="Gameplay Board Figma Mockup" 
+        draggable={false}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          display: "block",
+          userSelect: "none"
+        }} 
+      />
+      {/* Floating Indicator */}
+      <div style={{
+        position: "absolute",
+        top: 20,
+        left: 20,
+        padding: "6px 12px",
+        background: "rgba(20, 11, 28, 0.72)",
+        borderRadius: 8,
+        color: "#fff",
+        fontSize: 11,
+        fontFamily: HERO,
+        pointerEvents: "none",
+        border: "1.5px solid rgba(255, 255, 255, 0.22)"
+      }}>
+        ← Tap anywhere to exit game
       </div>
     </div>
   );
@@ -4588,7 +3834,7 @@ function PocketDragonApp() {
     <div className="stage">
       {route === "game" ? (
         <PhoneLandscape>
-          <GameScreen demo={game} onExit={(what) => { if (what === "info") return flash("Rule Book"); if (what === "logout") return go("login"); if (what === "results") return setRoute("results"); home(); }} />
+          <GameScreen onExit={(what) => { if (what === "info") return flash("Rule Book"); if (what === "logout") return go("login"); if (what === "results") return setRoute("results"); home(); }} />
           <Toast msg={toast} />
         </PhoneLandscape>
       ) : (
@@ -4625,4 +3871,5 @@ function PocketDragonApp() {
 if (typeof module !== "undefined") { module.exports = { PocketDragonApp }; }
 window.PocketDragonApp = PocketDragonApp;
 
+// End of File: pocket-dragon-app.jsx
 
