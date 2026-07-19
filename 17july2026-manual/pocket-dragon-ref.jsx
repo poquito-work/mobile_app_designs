@@ -848,12 +848,12 @@ function userCheck(u) {
 // avatar presets — real illustrated avatars (resolved for export via window.__resources)
 const AV_RES = (path, id) => (typeof window !== "undefined" && window.__resources && window.__resources[id]) || path;
 const AVATARS = [
-  { id: "boy", label: "Boy", src: "assets/avatars/boy.png", bg: "#DCEAF2", scale: 1.0 },
-  { id: "girl", label: "Girl", src: "assets/avatars/girl.png", bg: "#C2A18C", scale: 1.0 },
-  { id: "bunny", label: "Bunny", src: "assets/avatars/bunny.png", bg: "#F4EFE9", scale: 1.0 },
-  { id: "llama", label: "Llama", src: "assets/avatars/llama.png", bg: "#2E3192", scale: 1.0 },
-  { id: "owl", label: "Owl", src: "assets/avatars/owl.png", bg: "#E8A857", scale: 1.0 },
-  { id: "porc", label: "Hedgehog", src: "assets/avatars/porc.png", bg: "#F6F3EC", scale: 1.0 },
+  { id: "boy", label: "Boy", src: "assets/avatars/poquito-boy.png", bg: "#DCEAF2", scale: 1.0 },
+  { id: "girl", label: "Girl", src: "assets/avatars/poquito-girl.png", bg: "#C2A18C", scale: 1.0 },
+  { id: "bunny", label: "Bunny", src: "assets/avatars/poquito-bunny.png", bg: "#F4EFE9", scale: 1.0 },
+  { id: "llama", label: "Llama", src: "assets/avatars/poquito-llama.png", bg: "#2E3192", scale: 1.0 },
+  { id: "owl", label: "Owl", src: "assets/avatars/poquito-owl.png", bg: "#E8A857", scale: 1.0 },
+  { id: "porc", label: "Hedgehog", src: "assets/avatars/poquito-porc.png", bg: "#F6F3EC", scale: 1.0 },
 ];
 function avatarSrc(i) { const a = AVATARS[i] || AVATARS[0]; return AV_RES(a.src, a.id); }
 function avatarScale(i) { const a = AVATARS[i] || AVATARS[0]; return a.scale || 1; }
@@ -1452,7 +1452,7 @@ function SuitGlyph({ suit, size = 30, color = PQ.green }) {
 }
 
 // ── Hero panel (deep-green surface — whole box clickable → Profile) ──
-const HERO_AVATAR = (typeof window !== "undefined" && window.__resources && window.__resources.girl) || "assets/avatars/girl.png";
+const HERO_AVATAR = (typeof window !== "undefined" && window.__resources && window.__resources.girl) || "assets/avatars/poquito-girl.png";
 function HeroPanel({ username = "avachen88", tier = "Firefly I", nextTier = "Firefly II", rp = 100, rpMax = 200, onOpen, onNotify }) {
   const pct = Math.max(0, Math.min(100, (rp / rpMax) * 100));
   return (
@@ -2442,7 +2442,7 @@ function GameScreen({ onExit, demo = {} }) {
   const expBorder = pct > 0 ? RG.rust : RG.panelBorder;
   const expShadow = pct > 0 ? "0 0 16px rgba(196,122,52,.5), inset 0 0 14px rgba(196,122,52,.12)" : "none";
   const AV = ["boy", "llama", "owl"];
-  const seatAv = (i) => AV_RES(`assets/avatars/${AV[i % AV.length]}.png`, AV[i % AV.length]);
+  const seatAv = (i) => AV_RES(`assets/avatars/poquito-${AV[i % AV.length]}.png`, AV[i % AV.length]);
 
   // vertical side panel (North / South opponents) — narrowed; left panel clears the phone notch
   const SidePanel = ({ side, wind, name, av }) => (
@@ -2745,7 +2745,7 @@ Object.assign(window, { Tile, Fan, Meld, TimerArc, Nameplate, Compass, ActionTra
 // Toggle, Steps, TopBar, RustRing, pock) defined earlier in the bundle. Onboarding
 // and Home are untouched. Exports all screens to window.
 
-const PE_AV = (typeof window !== "undefined" && window.__resources && window.__resources.girl) || "assets/avatars/girl.png";
+const PE_AV = (typeof window !== "undefined" && window.__resources && window.__resources.girl) || "assets/avatars/poquito-girl.png";
 
 // ── extra line icons (same 24px stroke style as Icon) ────────────
 function XIcon({ name, size = 20, stroke = "currentColor", sw = 1.7, style }) {
