@@ -3676,7 +3676,7 @@ function RulesScreen() {
           <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: PQ.rust }}>Free Trial</span>
         </div>
         <div style={{ fontFamily: HERO, fontSize: 13.5, lineHeight: 1.5, color: PQ.inkSoft }}>You are currently enjoying the free trial period. It ends on <span style={{ color: PQ.ink, fontWeight: 700 }}>23 Jul 2026</span>.</div>
-        <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.5, color: PQ.inkSoft }}>Subscriptions are available exclusively through our website <a href="https://pocketdragon.in" target="_blank" style={{ color: PQ.rust, fontWeight: 700, textDecoration: "none" }}>https://www.pocketdragon.in</a></div>
+        <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.5, color: PQ.inkSoft }}>Subscriptions are available exclusively through our website <a href="https://pocketdragon.in" target="_blank" style={{ color: PQ.rust, fontWeight: 700, textDecoration: "none" }}>www.pocketdragon.in</a></div>
       </div>
       <div style={{ flexShrink: 0 }}>
         <Seg options={[{ label: "Rules", value: "rules" }, { label: "Tiers & Ranks", value: "ranks" }]} value={seg} onChange={setSeg} />
@@ -3787,7 +3787,7 @@ function SubscriptionSheet({ onClose }) {
               paddingBottom: 1,
               transition: "opacity 0.2s ease"
             }}>
-              https://www.pocketdragon.in
+              www.pocketdragon.in
             </a>
           </div>
 
