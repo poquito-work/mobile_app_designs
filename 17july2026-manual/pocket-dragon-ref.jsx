@@ -2923,6 +2923,7 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
   const [edit, setEdit] = React.useState(false);
   const [pwOpen, setPwOpen] = React.useState(false);
   const [faqOpen, setFaqOpen] = React.useState(false);
+  const [subOpen, setSubOpen] = React.useState(false);
   const [confirm, setConfirm] = React.useState(null); // "logout" | "delete" | null
   const stats = seg === "season"
     ? [["42", "Games played"], ["61%", "Win rate"], ["486", "Highest score"], ["2nd", "Avg finish"]]
@@ -3018,7 +3019,7 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
             <div style={{ display: "flex", flexDirection: "column" }}>
               <Row label="Edit profile" plain onClick={() => { setMenu(false); setEdit(true); }}/>
               <Row label="Change password" plain onClick={() => { setMenu(false); setPwOpen(true); }}/>
-              <Row label="Subscription" plain onClick={() => { setMenu(false); onSubscriptions && onSubscriptions(); }}/>
+              <Row label="Subscription" plain onClick={() => { setMenu(false); setSubOpen(true); }}/>
               <Row label="FAQ" plain onClick={() => { setMenu(false); setFaqOpen(true); }}/>
               <Row label="Log out" plain onClick={() => { setMenu(false); setConfirm("logout"); }}/>
               <Row label="Delete account" plain last onClick={() => { setMenu(false); setConfirm("delete"); }}/>
@@ -3031,6 +3032,7 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
 
       {edit && <EditProfileSheet onClose={() => setEdit(false)}/>}
       {pwOpen && <ChangePasswordSheet onClose={() => setPwOpen(false)}/>}
+      {subOpen && <SubscriptionSheet onClose={() => setSubOpen(false)}/>}
       {faqOpen && <FaqSheet onClose={() => setFaqOpen(false)}/>}
       {confirm && <ConfirmSheet kind={confirm} onClose={() => setConfirm(null)} onConfirm={() => { const k = confirm; setConfirm(null); if (k === "logout") onLogout && onLogout(); else onLogout && onLogout(); }}/>}
     </div>
@@ -3676,39 +3678,50 @@ function RulesScreen() {
   );
 }
 
-// ═══════════════ SUBSCRIPTION (overlay, pushed from Profile menu) ═══════════════
-function SubscriptionScreen({ onBack, onSubscribe }) {
-  const [plan, setPlan] = React.useState("annual");
-  const benefits = ["Unlimited private tables", "Priority matchmaking", "Custom tile borders & player tags", "Full career stats history"];
+// ═══════════════ SUBSCRIPTION (bottom sheet popup) ═══════════════
+function SubscriptionSheet({ onClose }) {
   return (
-    <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", background: PQ.off }}>
-      <div style={{ padding: "60px 22px 6px", display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
-        <div onClick={onBack} className="pq-press" style={{ width: 40, height: 40, marginLeft: -8, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><Icon name="chevL" size={24} stroke={PQ.ink} sw={1.8}/></div>
-        <h1 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 22, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Premium</h1>
-      </div>
-      <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", padding: "12px 22px 24px", display: "flex", flexDirection: "column", gap: 18 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12, borderRadius: 16, padding: "14px 16px", background: PQ.offWarm, border: `1px solid ${PQ.line}` }}>
-          <XIcon name="timer" size={20} stroke={PQ.rust}/><div><div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 14, color: PQ.ink }}>Free trial active</div><div style={{ marginTop: 2, fontSize: 12.5, color: PQ.inkSoft }}>Your trial has 6 days left.</div></div>
+    <div onClick={onClose} className="pq-modal-backdrop" style={{ position: "absolute", inset: 0, zIndex: 66, background: "rgba(20,51,34,0.45)", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
+      <div onClick={(e) => e.stopPropagation()} className="pq-modal-sheet" style={{ width: "100%", background: PQ.off, borderTopLeftRadius: 26, borderTopRightRadius: 26, padding: "14px 22px 30px" }}>
+        <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }}/>
+
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
+          <h2 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 18, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Subscription</h2>
+          <button onClick={onClose} className="pq-press" style={{ width: 36, height: 36, borderRadius: "50%", border: `1.5px solid ${PQ.line}`, background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="close" size={18} stroke={PQ.ink} sw={1.9}/></button>
         </div>
-        <div style={{ display: "flex", gap: 12 }}>
-          {[["monthly", "Monthly Pro", "₹199.0", "monthly", ""], ["annual", "Annual Pro", "₹1999.0", "annual", "SAVE 27%"]].map(([id, name, price, per, save]) => {
-            const on = plan === id;
-            return <button key={id} onClick={() => { pock("select"); setPlan(id); }} className="pq-press" style={{ flex: 1, position: "relative", textAlign: "left", cursor: "pointer", borderRadius: 18, padding: "18px 16px", background: on ? "rgba(182,90,47,0.05)" : PQ.off, border: `1.5px solid ${on ? PQ.rust : PQ.line}` }}>
-              {save && <span style={{ position: "absolute", top: -10, right: 14, height: 20, padding: "0 8px", display: "flex", alignItems: "center", borderRadius: 999, background: PQ.rust, fontFamily: HERO, fontWeight: 700, fontSize: 9, letterSpacing: "0.1em", color: PQ.off }}>{save}</span>}
-              <div style={{ fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: on ? PQ.rust : PQ.inkSoft }}>{name}</div>
-              <div style={{ marginTop: 12, fontFamily: HERO, fontWeight: 700, fontSize: 26, color: PQ.green }}>{price}</div>
-              <div style={{ marginTop: 2, fontFamily: HERO, fontSize: 11, color: PQ.inkFaint }}>{per}</div>
-            </button>;
-          })}
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <div style={{
+            fontFamily: HERO,
+            fontSize: 14.5,
+            lineHeight: 1.6,
+            color: PQ.ink,
+            fontWeight: 500,
+          }}>
+            To subscribe, modify or cancel subscription, please go to 'My Account' and select 'Subscription' on our website{" "}
+            <a href="https://pocketdragon.in" target="_blank" rel="noopener noreferrer" style={{
+              color: PQ.rust,
+              fontWeight: 700,
+              textDecoration: "none",
+              borderBottom: `1.5px solid ${PQ.rust}`,
+              paddingBottom: 1,
+              transition: "opacity 0.2s ease"
+            }}>
+              pocketdragon.in
+            </a>
+          </div>
+
+          <Btn variant="primary" onClick={() => { pock("select"); window.open("https://pocketdragon.in", "_blank"); }}>
+            Visit Website
+          </Btn>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          {benefits.map((b) => <div key={b} style={{ display: "flex", alignItems: "center", gap: 11 }}><span style={{ width: 22, height: 22, flexShrink: 0, borderRadius: "50%", background: "rgba(20,51,34,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="check" size={13} stroke={PQ.green} sw={2.4}/></span><span style={{ fontFamily: HERO, fontSize: 13.5, color: PQ.ink }}>{b}</span></div>)}
-        </div>
-        <Btn variant="primary" onClick={() => onSubscribe(plan)}>SUBSCRIBE · <span style={{ textTransform: "none" }}>{plan === "annual" ? "Annual" : "Monthly"}</span></Btn>
-        <div style={{ fontFamily: HERO, fontSize: 11, lineHeight: 1.5, color: PQ.inkFaint, textAlign: "center" }}>Auto-renews via e-NACH – manage or cancel anytime.</div>
       </div>
     </div>
   );
+}
+
+function SubscriptionScreen({ onBack }) {
+  return <SubscriptionSheet onClose={onBack} />;
 }
 
 // ═══════════════ PAYMENT (overlay, 9.1) ═══════════════
@@ -4211,7 +4224,7 @@ Object.assign(window, {
   XIcon, Star, Shell, Seg, Group, Row, Avi, SectionLabel,
   ProfileScreen, SearchScreen, OtherProfileScreen, SettingsScreen,
   PublicLobbyScreen, PrivateLobbyScreen, InviteScreen, PracticeScreen,
-  RejoinScreen, SubscriptionScreen, PaymentScreen, NotificationsScreen,
+  RejoinScreen, SubscriptionScreen, SubscriptionSheet, PaymentScreen, NotificationsScreen,
   LobbySeat, WaitingLobbyScreen, MiniTile, PreGameSheet, PreGameScreen,
 });
 
