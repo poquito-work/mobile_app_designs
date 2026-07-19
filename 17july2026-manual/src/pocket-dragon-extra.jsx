@@ -84,13 +84,17 @@ function Seg({ options, value, onChange }) {
 function Group({ children }) {
   return <div style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 16, overflow: "hidden" }}>{children}</div>;
 }
-function Row({ icon, label, value, onClick, danger, last, plain }) {
+function Row({ icon, label, value, onClick, danger, last, plain, iconImg }) {
   return (
     <button onClick={onClick} className="pq-press" style={{
       width: "100%", display: "flex", alignItems: "center", gap: 12, padding: "15px 16px", background: PQ.off,
       border: "none", borderBottom: (last || plain) ? "none" : "1px solid rgba(20,51,34,0.07)", cursor: "pointer", textAlign: "left"
     }}>
-      {icon && <XIcon name={icon} size={19} stroke={danger ? PQ.rust : PQ.inkSoft} />}
+      {iconImg ? (
+        <img src={iconImg} style={{ width: 19, height: 19, objectFit: "contain", flexShrink: 0 }} alt="" />
+      ) : (
+        icon && <XIcon name={icon} size={19} stroke={danger ? PQ.rust : PQ.inkSoft} />
+      )}
       <span style={{ flex: 1, fontFamily: HERO, fontWeight: 600, fontSize: 14.5, color: danger ? PQ.rust : PQ.ink }}>{label}</span>
       {value && <span style={{ fontSize: 13, fontWeight: danger ? 700 : 500, color: danger ? PQ.rust : PQ.inkFaint }}>{value}</span>}
       <XIcon name="chevR" size={18} stroke={danger ? PQ.rust : PQ.inkFaint} />
@@ -610,7 +614,7 @@ function SettingsScreen() {
         <div>
           <SectionLabel>Support</SectionLabel>
           <Group>
-            <Row icon="bug" label="Report a Bug" onClick={() => setPanel("bug")} />
+            <Row iconImg="assets/Report a bug icon.png" label="Report a Bug" onClick={() => setPanel("bug")} />
             <Row icon="spark" label="Feature Request" onClick={() => setPanel("feature")} />
             <Row icon="help" label="Contact Support" onClick={() => setPanel("contact")} />
             <Row icon="doc" label="FAQs" last onClick={() => window.open("https://pocketdragon.in/#faqs", "_blank")} />

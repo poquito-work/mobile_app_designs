@@ -38,6 +38,7 @@
     - [ ] Buttons - approved, dont change it.
 
 - [ ] **EXTEND THE GAME screen**
+    - [ ] Heading: EXTEND THE ROUND (please remove the icon)
     - [ ] 
 
 
