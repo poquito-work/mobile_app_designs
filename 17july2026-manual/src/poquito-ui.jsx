@@ -38,6 +38,10 @@ const GOLD_DEEP = "#A97C22";
 const DIFF_COLORS = { Smurf: "#a9c4d6", Easy: "#6d7a62", Fair: "#a16a03", Hard: "#b65a2f", Fierce: "#630206" };
 const diffColorOf = (d) => DIFF_COLORS[d] || "#6E6A5E";
 
+// Tier colors for Rules & Ranking Screen
+const TIER_COLORS = { Firefly: "#E8C84A", Koi: "#00658F", Tiger: "#F1A33D", Phoenix: "#7F1616", Dragon: "#34604F" };
+
+
 // ── Icons (simple line glyphs) ─────────────────────────────────
 function Icon({ name, size = 20, stroke = "currentColor", sw = 1.6, style }) {
   const p = { fill: "none", stroke, strokeWidth: sw, strokeLinecap: "round", strokeLinejoin: "round" };
@@ -466,5 +470,5 @@ function RustRing({ size = 96, sw = 2.5 }) {
 Object.assign(window, {
   PQ, HERO, Icon, TileMark, Wordmark, Lockup, GreenBackdrop, LightBackdrop, FloatingTiles,
   Screen, Btn, TextLink, Field, Helper, Check, Toggle, OTP, Steps, TopBar, Title, RustRing, LogoImg, LOGO_SRC, DRAGON_SRC, FULLLOGO_SRC, DRAGON_GREEN_SRC, LOBBY_BOARD_SRC, diffColorOf, SocialIcon,
-  GOLD, GOLD_SOFT, GOLD_DEEP
+  GOLD, GOLD_SOFT, GOLD_DEEP, TIER_COLORS
 });

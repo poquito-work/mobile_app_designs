@@ -395,6 +395,10 @@ const GOLD_DEEP = "#A97C22";
 const DIFF_COLORS = { Smurf: "#a9c4d6", Easy: "#6d7a62", Fair: "#a16a03", Hard: "#b65a2f", Fierce: "#630206" };
 const diffColorOf = (d) => DIFF_COLORS[d] || "#6E6A5E";
 
+// Tier colors for Rules & Ranking Screen
+const TIER_COLORS = { Firefly: "#E8C84A", Koi: "#00658F", Tiger: "#F1A33D", Phoenix: "#7F1616", Dragon: "#34604F" };
+
+
 // ── Icons (simple line glyphs) ─────────────────────────────────
 function Icon({ name, size = 20, stroke = "currentColor", sw = 1.6, style }) {
   const p = { fill: "none", stroke, strokeWidth: sw, strokeLinecap: "round", strokeLinejoin: "round" };
@@ -823,7 +827,7 @@ function RustRing({ size = 96, sw = 2.5 }) {
 Object.assign(window, {
   PQ, HERO, Icon, TileMark, Wordmark, Lockup, GreenBackdrop, LightBackdrop, FloatingTiles,
   Screen, Btn, TextLink, Field, Helper, Check, Toggle, OTP, Steps, TopBar, Title, RustRing, LogoImg, LOGO_SRC, DRAGON_SRC, FULLLOGO_SRC, DRAGON_GREEN_SRC, LOBBY_BOARD_SRC, diffColorOf, SocialIcon,
-  GOLD, GOLD_SOFT, GOLD_DEEP
+  GOLD, GOLD_SOFT, GOLD_DEEP, TIER_COLORS
 });
 
 // End of File: poquito-ui.jsx
@@ -2892,10 +2896,12 @@ function SetChip({ title, sub }) {
     </div>
   );
 }
-function ClimbItem({ title, children }) {
+function ClimbItem({ title, icon, children }) {
   return (
-    <div style={{ display: "flex", gap: 12 }}>
-      <span style={{ flexShrink: 0, marginTop: 3 }}><XIcon name="arrowUp" size={20} stroke={PQ.rust} /></span>
+    <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+      <span style={{ flexShrink: 0, marginTop: 3 }}>
+        <XIcon name={icon} size={20} stroke={PQ.rust} sw={1.8} />
+      </span>
       <div>
         <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 14, color: PQ.rust }}>{title}</div>
         <div style={{ marginTop: 3, fontSize: 13, lineHeight: 1.55, color: PQ.inkSoft }}>{children}</div>
@@ -2903,24 +2909,214 @@ function ClimbItem({ title, children }) {
     </div>
   );
 }
-function EarnItem({ title, children }) {
+
+function RulesTile({ suit, value, w = 32, h = 42, style }) {
+  let folder = "";
+  let filename = "";
+  if (suit === "rings") {
+    folder = "Original/Rings";
+    filename = `${value}r.png`;
+  } else if (suit === "craks" || suit === "characters") {
+    folder = "Original/Craks";
+    filename = `${value}c.png`;
+  } else if (suit === "bamboos") {
+    folder = "Original/Bamboos";
+    filename = `${value}b.png`;
+  } else if (suit === "dragons" || suit === "winds" || suit === "honours") {
+    folder = "Original/Honours";
+    filename = `${value}.png`;
+  } else if (suit === "flowers") {
+    folder = "Flowers";
+    filename = `${value}.png`;
+  }
+  const src = `assets/rules-ranking/tile-design/${folder}/${filename}`;
   return (
-    <div>
+    <img
+      src={src}
+      style={{
+        width: w,
+        height: h,
+        objectFit: "contain",
+        flexShrink: 0,
+        ...style
+      }}
+      alt={`${suit} ${value}`}
+    />
+  );
+}
+
+function HandDisplay({ title, desc, tiles, note }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 6, padding: "4px 0" }}>
       <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 13.5, color: PQ.rust }}>{title}</div>
-      <div style={{ marginTop: 3, fontSize: 13, lineHeight: 1.55, color: PQ.inkSoft }}>{children}</div>
+      <div style={{ fontSize: 13, color: PQ.inkSoft, lineHeight: 1.45 }}>{desc}</div>
+      <div style={{ display: "flex", gap: 2, flexWrap: "wrap", margin: "4px 0" }}>
+        {tiles.map((t, idx) => (
+          <RulesTile key={idx} suit={t.suit} value={t.value} w={24} h={33} />
+        ))}
+      </div>
+      {note && <div style={{ fontSize: 12, color: PQ.rust, fontStyle: "italic", lineHeight: 1.4 }}>{note}</div>}
+    </div>
+  );
+}
+
+function DoubleGroup({ title, items, note }) {
+  return (
+    <div style={{ marginTop: 14 }}>
+      <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 13.5, color: PQ.green, borderBottom: `1px solid ${PQ.line}`, paddingBottom: 4, marginBottom: 8 }}>{title}</div>
+      <ul style={{ margin: 0, paddingLeft: 20, fontSize: 13, lineHeight: 1.6, color: PQ.inkSoft }}>
+        {items.map((item, idx) => (
+          <li key={idx} style={{ marginBottom: 4 }}>
+            {typeof item === "string" ? (
+              item
+            ) : (
+              <span>
+                {item.text}
+                {item.note && <span style={{ color: PQ.rust, fontStyle: "italic" }}> {item.note}</span>}
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+      {note && <div style={{ fontSize: 12, color: PQ.inkSoft, fontStyle: "italic", marginTop: 6, lineHeight: 1.45 }}>{note}</div>}
+    </div>
+  );
+}
+
+function ScoringTable() {
+  const rows = [
+    {
+      set: "Pung of Minor tiles (numbers 2-8)",
+      tiles: [{ suit: "craks", value: 3 }, { suit: "craks", value: 3 }, { suit: "craks", value: 3 }],
+      exp: "2",
+      con: "4"
+    },
+    {
+      set: "Pung of Honour and/or Terminal tiles",
+      tiles: [{ suit: "rings", value: 1 }, { suit: "rings", value: 1 }, { suit: "rings", value: 1 }],
+      exp: "4",
+      con: "8"
+    },
+    {
+      set: "Kong of Minor tiles (numbers 2-8)",
+      tiles: [{ suit: "rings", value: 3 }, { suit: "rings", value: 3 }, { suit: "rings", value: 3 }, { suit: "rings", value: 3 }],
+      exp: "8",
+      con: "16"
+    },
+    {
+      set: "Kong of Honour and/or Terminal tiles",
+      tiles: [{ suit: "dragons", value: "red" }, { suit: "dragons", value: "red" }, { suit: "dragons", value: "red" }, { suit: "dragons", value: "red" }],
+      exp: "16",
+      con: "32"
+    },
+    {
+      set: "Each Flower",
+      tiles: [{ suit: "flowers", value: "blue-f1" }],
+      exp: "—",
+      con: "4"
+    },
+    {
+      set: "Pair of Honour and/or Terminal tiles",
+      tiles: [{ suit: "winds", value: "S" }, { suit: "winds", value: "S" }],
+      exp: "—",
+      con: "2"
+    },
+    {
+      set: "Player declaring Mahjong",
+      tiles: [],
+      exp: "—",
+      con: "20"
+    }
+  ];
+  return (
+    <div style={{ overflowX: "auto", margin: "8px 0" }}>
+      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12.5, color: PQ.inkSoft }}>
+        <thead>
+          <tr style={{ borderBottom: `1.5px solid ${PQ.line}`, color: PQ.ink, fontFamily: HERO, fontWeight: 700, textTransform: "uppercase", fontSize: 11, letterSpacing: "0.04em" }}>
+            <th style={{ textAlign: "left", padding: "8px 4px" }}>Set</th>
+            <th style={{ textAlign: "left", padding: "8px 4px" }}>Visual</th>
+            <th style={{ textAlign: "center", padding: "8px 4px" }}>Exposed</th>
+            <th style={{ textAlign: "center", padding: "8px 4px" }}>Concealed</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r, idx) => (
+            <tr key={idx} style={{ borderBottom: `1px solid ${PQ.line}` }}>
+              <td style={{ padding: "8px 4px", color: PQ.ink, fontWeight: 500 }}>{r.set}</td>
+              <td style={{ padding: "8px 4px" }}>
+                <div style={{ display: "flex", gap: 1 }}>
+                  {r.tiles.map((t, tIdx) => (
+                    <RulesTile key={tIdx} suit={t.suit} value={t.value} w={16} h={22} style={{ borderRadius: 2 }} />
+                  ))}
+                </div>
+              </td>
+              <td style={{ padding: "8px 4px", textAlign: "center", fontFamily: HERO, fontWeight: 700 }}>{r.exp}</td>
+              <td style={{ padding: "8px 4px", textAlign: "center", fontFamily: HERO, fontWeight: 700 }}>{r.con}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div style={{ fontSize: 12, color: PQ.inkSoft, fontStyle: "italic", marginTop: 8 }}>
+        Player who declares Mahjong does not pay other players
+      </div>
+    </div>
+  );
+}
+
+function SetBlock({ title, desc, children }) {
+  return (
+    <div style={{ border: `1.5px solid ${PQ.line}`, borderRadius: 16, padding: "14px 12px", background: PQ.off, display: "flex", flexDirection: "column", gap: 10 }}>
+      <div>
+        <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 14, letterSpacing: "0.02em", color: PQ.green }}>{title}</div>
+        <div style={{ fontSize: 12, color: PQ.inkSoft, marginTop: 2 }}>{desc}</div>
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function SetExample({ tiles, label }) {
+  const isPung = tiles.length === 3;
+  const tw = isPung ? 29 : 32;
+  const th = isPung ? 39 : 42;
+  return (
+    <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 6, minWidth: 0 }}>
+      <div style={{ display: "flex", gap: 3 }}>
+        {tiles.map((t, idx) => (
+          <RulesTile key={idx} suit={t.suit} value={t.value} w={tw} h={th} />
+        ))}
+      </div>
+      <div style={{ fontSize: 10.5, lineHeight: 1.2, color: PQ.inkSoft, textAlign: "center" }}>{label}</div>
+    </div>
+  );
+}
+
+function KongExample({ tiles, label }) {
+  const bottomTiles = tiles.slice(0, 3);
+  const topTile = tiles[3];
+  return (
+    <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 6, minWidth: 0 }}>
+      <div style={{ position: "relative", width: 93, height: 49, flexShrink: 0 }}>
+        <div style={{ position: "absolute", left: 0, top: 10 }}>
+          <RulesTile suit={bottomTiles[0].suit} value={bottomTiles[0].value} w={29} h={39} />
+        </div>
+        <div style={{ position: "absolute", left: 32, top: 10 }}>
+          <RulesTile suit={bottomTiles[1].suit} value={bottomTiles[1].value} w={29} h={39} />
+        </div>
+        <div style={{ position: "absolute", left: 64, top: 10 }}>
+          <RulesTile suit={bottomTiles[2].suit} value={bottomTiles[2].value} w={29} h={39} />
+        </div>
+        <div style={{ position: "absolute", left: 32, top: 5, zIndex: 5, transform: "rotate(90deg)" }}>
+          <RulesTile suit={topTile.suit} value={topTile.value} w={29} h={39} style={{ boxShadow: "0 3px 6px rgba(20,51,34,0.35)" }} />
+        </div>
+      </div>
+      <div style={{ fontSize: 10.5, lineHeight: 1.2, color: PQ.inkSoft, textAlign: "center" }}>{label}</div>
     </div>
   );
 }
 
 function RulesScreen() {
   const [seg, setSeg] = React.useState("rules");
-  const TIERS = [
-    { name: "Firefly", c: "#E8C84A" },
-    { name: "Koi", c: "#00658F" },
-    { name: "Tiger", c: "#F1A33D" },
-    { name: "Phoenix", c: "#7F1616" },
-    { name: "Dragon", c: "#34604F" },
-  ];
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", gap: 14 }}>
       <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 24, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink, flexShrink: 0 }}>Rules &amp; Ranking</div>
@@ -2934,76 +3130,426 @@ function RulesScreen() {
         <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.5, color: PQ.inkSoft }}>Subscriptions are available exclusively through our website <a href="https://pocketdragon.in" target="_blank" style={{ color: PQ.rust, fontWeight: 700, textDecoration: "none" }}>www.pocketdragon.in</a></div>
       </div>
       <div style={{ flexShrink: 0 }}>
-        <Seg options={[{ label: "Rules", value: "rules" }, { label: "Tiers & Ranks", value: "ranks" }]} value={seg} onChange={setSeg} />
+        <Seg options={[{ label: "Rules", value: "rules" }, { label: "Ranking", value: "ranks" }]} value={seg} onChange={setSeg} />
       </div>
 
       <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", margin: "0 -4px", padding: "2px 4px 12px" }}>
         {seg === "rules" ? (
           <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
-            <RuleBlock label="Objective">Build a complete hand of 14 tiles by combining them into sets, as per the variation of the game you're playing.</RuleBlock>
-            <RuleBlock label="Gameplay">The game is played with 144 tiles. Three suits — Rings, Characters and Bamboos — run 1 through 9, with four of each number (108 tiles), plus Winds, Dragons and Flowers.</RuleBlock>
+            <RuleBlock label="Objective">Build a complete hand of 14 tiles by combining them into certain sets as per the variations of the game.</RuleBlock>
+            
             <div>
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 10 }}>Sets</div>
-              <div style={{ display: "flex", gap: 10 }}>
-                <SetChip title="Pung" sub="3 of a kind" />
-                <SetChip title="Kong" sub="4 of a kind" />
-                <SetChip title="Pair" sub="2 of a kind" />
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 8 }}>Gameplay &amp; Tiles</div>
+              <div style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft, marginBottom: 12 }}>
+                The game is played with 144 tiles which comprise of:
               </div>
-              <div style={{ marginTop: 10, fontSize: 12.5, lineHeight: 1.55, color: PQ.inkSoft, fontStyle: "italic" }}>Kongs count as 3 tiles once placed on the rack (exposed or concealed) and earn 1 extra tile from the Flower Wall.</div>
+              
+              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: PQ.ink, marginBottom: 6 }}>Three Suits (108 tiles total): Rings, Characters, and Bamboos (numbers 1-9, 4 of each)</div>
+                  
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    <div>
+                      <div style={{ fontSize: 11, color: PQ.inkSoft, marginBottom: 2 }}>Rings:</div>
+                      <div style={{ display: "flex", gap: 3, overflowX: "auto", paddingBottom: 4 }} className="pq-scroll">
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(v => <RulesTile key={v} suit="rings" value={v} />)}
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <div style={{ fontSize: 11, color: PQ.inkSoft, marginBottom: 2 }}>Characters 'Craks':</div>
+                      <div style={{ display: "flex", gap: 3, overflowX: "auto", paddingBottom: 4 }} className="pq-scroll">
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(v => <RulesTile key={v} suit="craks" value={v} />)}
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <div style={{ fontSize: 11, color: PQ.inkSoft, marginBottom: 2 }}>Bamboos:</div>
+                      <div style={{ display: "flex", gap: 3, overflowX: "auto", paddingBottom: 4 }} className="pq-scroll">
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(v => <RulesTile key={v} suit="bamboos" value={v} />)}
+                      </div>
+                      <div style={{ fontSize: 11.5, color: PQ.inkSoft, fontStyle: "italic", marginTop: 2 }}>
+                        The first tile of the Bamboos suit is usually a bird instead of a single bamboo.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: PQ.ink, marginBottom: 6 }}>Honour Tiles (28 tiles total): Dragons (Red, Green, White) &amp; Winds (E, S, W, N, 4 of each)</div>
+                  <div style={{ display: "flex", gap: 3, flexWrap: "wrap" }}>
+                    <RulesTile suit="dragons" value="red" />
+                    <RulesTile suit="dragons" value="green" />
+                    <RulesTile suit="dragons" value="white" />
+                    <div style={{ width: 6 }} />
+                    <RulesTile suit="winds" value="E" />
+                    <RulesTile suit="winds" value="S" />
+                    <RulesTile suit="winds" value="W" />
+                    <RulesTile suit="winds" value="N" />
+                  </div>
+                </div>
+
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: PQ.ink, marginBottom: 6 }}>Flower Tiles (8 tiles total): Flowers (Blue 1-4) &amp; Seasons (Red 1-4)</div>
+                  <div style={{ display: "flex", gap: 3, flexWrap: "wrap" }}>
+                    {["blue-f1", "blue-f2", "blue-f3", "blue-f4"].map(v => <RulesTile key={v} suit="flowers" value={v} />)}
+                    <div style={{ width: 6 }} />
+                    {["red-f1", "red-f2", "red-f3", "red-f4"].map(v => <RulesTile key={v} suit="flowers" value={v} />)}
+                  </div>
+                </div>
+              </div>
             </div>
-            <RuleBlock label="Goulash Objective">Make 4 Pungs/Kongs + 1 Pair, per the valid combinations in the Hands section.</RuleBlock>
+
             <div>
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 8 }}>Claiming Tiles</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 12 }}>Sets</div>
+              
+              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                {/* Pung Block */}
+                <SetBlock title="Pung" desc="3 of a kind">
+                  <div style={{ display: "flex", gap: 6 }}>
+                    <SetExample
+                      tiles={[{ suit: "rings", value: 9 }, { suit: "rings", value: 9 }, { suit: "rings", value: 9 }]}
+                      label="Same number, same suit"
+                    />
+                    <SetExample
+                      tiles={[{ suit: "dragons", value: "red" }, { suit: "dragons", value: "red" }, { suit: "dragons", value: "red" }]}
+                      label="3 Dragons (same colour)"
+                    />
+                    <SetExample
+                      tiles={[{ suit: "winds", value: "W" }, { suit: "winds", value: "W" }, { suit: "winds", value: "W" }]}
+                      label="3 Winds (same direction)"
+                    />
+                  </div>
+                </SetBlock>
+
+                {/* Kong Block */}
+                <SetBlock title="Kong" desc="4 of a kind">
+                  <div style={{ display: "flex", gap: 6 }}>
+                    <KongExample
+                      tiles={[{ suit: "craks", value: 4 }, { suit: "craks", value: 4 }, { suit: "craks", value: 4 }, { suit: "craks", value: 4 }]}
+                      label="Same number, same suit"
+                    />
+                    <KongExample
+                      tiles={[{ suit: "dragons", value: "green" }, { suit: "dragons", value: "green" }, { suit: "dragons", value: "green" }, { suit: "dragons", value: "green" }]}
+                      label="4 Dragons (same colour)"
+                    />
+                    <KongExample
+                      tiles={[{ suit: "winds", value: "E" }, { suit: "winds", value: "E" }, { suit: "winds", value: "E" }, { suit: "winds", value: "E" }]}
+                      label="4 Winds (same direction)"
+                    />
+                  </div>
+                  <div style={{ fontSize: 12.5, lineHeight: 1.4, color: PQ.inkSoft, marginTop: 4 }}>
+                    Kongs count as 3 tiles (once put on top of rack: exposed/concealed) and get 1 extra tile from the Flower Wall.
+                  </div>
+                </SetBlock>
+
+                {/* Pair Block */}
+                <SetBlock title="Pair" desc="2 of a kind">
+                  <div style={{ display: "flex", gap: 6 }}>
+                    <SetExample
+                      tiles={[{ suit: "rings", value: 9 }, { suit: "rings", value: 9 }]}
+                      label="Same number, same suit"
+                    />
+                    <SetExample
+                      tiles={[{ suit: "dragons", value: "red" }, { suit: "dragons", value: "red" }]}
+                      label="2 Dragons (same colour)"
+                    />
+                    <SetExample
+                      tiles={[{ suit: "winds", value: "W" }, { suit: "winds", value: "W" }]}
+                      label="2 Winds (same direction)"
+                    />
+                  </div>
+                </SetBlock>
+              </div>
+            </div>
+
+            <RuleBlock label="Goulash Objective">
+              To make 4 Pungs/Kongs + 1 Pair (as per the valid combinations in the Hands section below).
+            </RuleBlock>
+
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 12 }}>Hands</div>
+              <div style={{ fontSize: 13.5, color: PQ.inkSoft, marginBottom: 14, lineHeight: 1.5 }}>
+                To get a count, your completed hand has to be valid. The validity of the hand depends on fulfilling at least three conditions or ‘doubles’.
+              </div>
+              
+              <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+                <HandDisplay
+                  title="Option 1: Clean Hand (3 Doubles)"
+                  desc="All Pungs/Kongs in one suit only (all Rings, all Bamboos, all Craks, or all Honours)"
+                  tiles={[
+                    { suit: "rings", value: 1 }, { suit: "rings", value: 1 }, { suit: "rings", value: 1 },
+                    { suit: "rings", value: 2 }, { suit: "rings", value: 2 }, { suit: "rings", value: 2 },
+                    { suit: "rings", value: 5 }, { suit: "rings", value: 5 }, { suit: "rings", value: 5 },
+                    { suit: "rings", value: 8 }, { suit: "rings", value: 8 }, { suit: "rings", value: 8 },
+                    { suit: "rings", value: 9 }, { suit: "rings", value: 9 }
+                  ]}
+                />
+
+                <HandDisplay
+                  title="Option 1 (Alternate): Honour Hand (3 Doubles)"
+                  desc="All Pungs/Kongs/Pair consist entirely of Wind and Dragon tiles."
+                  tiles={[
+                    { suit: "dragons", value: "red" }, { suit: "dragons", value: "red" }, { suit: "dragons", value: "red" },
+                    { suit: "dragons", value: "green" }, { suit: "dragons", value: "green" }, { suit: "dragons", value: "green" },
+                    { suit: "winds", value: "E" }, { suit: "winds", value: "E" }, { suit: "winds", value: "E" },
+                    { suit: "winds", value: "W" }, { suit: "winds", value: "W" }, { suit: "winds", value: "W" },
+                    { suit: "dragons", value: "white" }, { suit: "dragons", value: "white" }
+                  ]}
+                />
+
+                <HandDisplay
+                  title="Option 2: Major Hand (1 Double)"
+                  desc="All Pungs/Kongs in Honours + 1’s &amp; 9s (same suit)"
+                  tiles={[
+                    { suit: "dragons", value: "green" }, { suit: "dragons", value: "green" }, { suit: "dragons", value: "green" },
+                    { suit: "winds", value: "W" }, { suit: "winds", value: "W" }, { suit: "winds", value: "W" },
+                    { suit: "dragons", value: "white" }, { suit: "dragons", value: "white" }, { suit: "dragons", value: "white" },
+                    { suit: "rings", value: 1 }, { suit: "rings", value: 1 }, { suit: "rings", value: 1 },
+                    { suit: "rings", value: 9 }, { suit: "rings", value: 9 }
+                  ]}
+                  note="Note: Since a Major Hand gives only 1 double, to have a valid hand, a player must fulfill any 2 other doubles (please see Doubles section)."
+                />
+
+                <HandDisplay
+                  title="Option 3: Mixed Hand (No Doubles)"
+                  desc="All Pungs/Kongs in Honours + any 1 suit"
+                  tiles={[
+                    { suit: "winds", value: "W" }, { suit: "winds", value: "W" }, { suit: "winds", value: "W" },
+                    { suit: "dragons", value: "green" }, { suit: "dragons", value: "green" }, { suit: "dragons", value: "green" },
+                    { suit: "bamboos", value: 2 }, { suit: "bamboos", value: 2 }, { suit: "bamboos", value: 2 },
+                    { suit: "bamboos", value: 5 }, { suit: "bamboos", value: 5 }, { suit: "bamboos", value: 5 },
+                    { suit: "bamboos", value: 8 }, { suit: "bamboos", value: 8 }
+                  ]}
+                  note="Note: Since a Mixed Hand does not give any, to have a valid hand, a player must fulfill any 3 doubles (please see Doubles section)."
+                />
+
+                <HandDisplay
+                  title="Option 4: Terminal Hand (3 Doubles)"
+                  desc="All Pungs/Kongs of 1’s + 9’s (different suits)"
+                  tiles={[
+                    { suit: "rings", value: 9 }, { suit: "rings", value: 9 }, { suit: "rings", value: 9 },
+                    { suit: "rings", value: 1 }, { suit: "rings", value: 1 }, { suit: "rings", value: 1 },
+                    { suit: "bamboos", value: 1 }, { suit: "bamboos", value: 1 }, { suit: "bamboos", value: 1 },
+                    { suit: "craks", value: 9 }, { suit: "craks", value: 9 }, { suit: "craks", value: 9 },
+                    { suit: "craks", value: 1 }, { suit: "craks", value: 1 }
+                  ]}
+                  note="Note: Special scoring for this hand mentioned under ‘3 Doubles’."
+                />
+              </div>
+            </div>
+
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 8 }}>Doubles</div>
+              
+              <DoubleGroup
+                title="1 Double"
+                items={[
+                  "1 Own Flower",
+                  { text: "1 Round Flower", note: "(if Own Flower = Round Flower, 2 doubles)" },
+                  "Pung/Kong of Green/Red/White Dragon (each)",
+                  "Pung/Kong of Own Wind",
+                  { text: "Pung/Kong of Round Wind", note: "(if Own Wind = Round Wind, 2 doubles)" },
+                  "Pung/Kong of 1 + Pung/Kong of 9, both in same suit",
+                  "Three concealed Pungs",
+                  { text: "Major Hand (Pungs/Kongs of Honours & Terminals)", note: "Note¹: Honours=Winds & Dragons; Terminals=1’s & 9’s; Note²: You cannot end in a Terminal Pair unless you have a Pung of a Terminal in the same suit" },
+                  { text: "Presence of all 3 Dragons (Pungs/Kongs; could be a mix of Pungs/Kongs)", note: "Note: This double is in addition to the doubles you get for each Pung/Kong of Dragons" },
+                  { text: "Presence of any 3 Winds (Pungs/Kongs; could be a mix of Pungs/Kongs)", note: "Note: This double is in addition to the doubles you get for each Pung/Kong of Wind (Own/Round)" },
+                  "Mahjong on last tile of the game",
+                  "Kong Kong Mahjong (Mahjong on 2 consecutive tiles from Flower Wall)",
+                  "Clean Sweep (declaring Mahjong for an entire round, i.e. all 4 games)",
+                  { text: "Being East (even if East does not Mahjong)", note: "Note: This does not qualify as a double to fulfil conditions; this is only an extra double" }
+                ]}
+              />
+
+              <DoubleGroup
+                title="2 Doubles"
+                items={[
+                  "If Own Flower = Round Flower",
+                  { text: "Pair of Own Flower*", note: "(see note below)" },
+                  { text: "Pair of Round Flower*", note: "(see note below)" },
+                  "If Own Wind = Round Wind: Pung/Kong of that",
+                  "3 Kongs (exposed & concealed mix allowed)",
+                  "4 concealed Pungs"
+                ]}
+                note="*Note: Can claim 500 points for each mentioned Pair immediately (before the first discard, if applicable or as soon as you get the pair) or keep it for counting as doubles; once claimed, these Flowers cannot count as doubles; however, in case of getting a Bouquet later with these flowers, 1000 points can be claimed for the Bouquet."
+              />
+
+              <DoubleGroup
+                title="3 Doubles"
+                items={[
+                  "All Honours hand (Winds & Dragons)",
+                  "Clean suit hand (All Pungs/Kongs in one suit only)",
+                  { text: "Terminal hand or Heads and Tails hand: Pungs/Kongs of 1’s and 9’s only (mixed suits; no other tile should be present)", note: "Note: If Mahjong declared, 5000 points from all (including East); if ‘calling’, 2500 points" },
+                  { text: "Bouquet of Flowers (Flowers 1,2,3,4 all red/all blue)", note: "Note: Can claim 1000 points for the Bouquet immediately (before the first discard if applicable or as soon as you get the pair) or keep it for counting as doubles; once claimed, the Flowers cannot count as doubles; if points claimed and a player gets own/round flower during the game, they can claim 500 points for the pair" },
+                  "3 concealed Kongs",
+                  "4 Kongs (exposed & concealed mix allowed)",
+                  "Concealed Mahjong (Pungs & Kongs mix)",
+                  "Concealed Mahjong with 4 concealed Pungs"
+                ]}
+              />
+
+              <DoubleGroup title="4 Doubles" items={["4 concealed Kongs"]} />
+              
+              <DoubleGroup
+                title="5 Doubles"
+                items={[
+                  { text: "Standing hand (Dealt ‘calling’)", note: "Note: “Dealt” would mean after all exchanges, before first discard; if a player has a “Standing hand”, they should place all their tiles (except 2) face down on top of their rack & declare they have a Standing hand. No changes allowed" }
+                ]}
+              />
+
+              <DoubleGroup
+                title="6 Doubles"
+                items={[
+                  { text: "2 Bouquets", note: "Note: Can claim 5000 points for the Bouquets immediately (before the first discard if applicable or as soon as you get it) or keep it for counting as doubles; once claimed, the Flowers cannot count as doubles" }
+                ]}
+              />
+
+              <DoubleGroup
+                title="7 Doubles"
+                items={[
+                  { text: "4 Pungs/Kongs of Winds + Pair of Dragons", note: "Note: No extra doubles for individual Pungs/Kongs of Winds (these are included in the calculation of 7 doubles)" }
+                ]}
+              />
+
+              <DoubleGroup title="8 Doubles" items={["Earth’s Blessing (Mahjong with East’s first discard)"]} />
+              <DoubleGroup title="9 Doubles" items={["Heaven’s Blessing (East is dealt Mahjong)"]} />
+            </div>
+
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 8 }}>Score</div>
+              <ScoringTable />
+            </div>
+
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 12 }}>Rules for Claiming Tiles</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                <div><span style={{ fontFamily: HERO, fontWeight: 700, color: PQ.green }}>Pung — </span><span style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft }}>Pick up the last discarded tile from anyone to complete a Pung (if you already hold a pair). The Pung is then exposed on your rack.</span></div>
+                <div>
+                  <span style={{ fontFamily: HERO, fontWeight: 700, color: PQ.green }}>Mahjong — </span>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft }}>
+                    Tile for Mahjong can be picked from anywhere, for any set (even a Pair); if 2 players need the same tile to declare Mahjong, the player closest to the discarder gets preference (in order of E-S-W-N).
+                  </span>
+                </div>
+                
+                <div>
+                  <span style={{ fontFamily: HERO, fontWeight: 700, color: PQ.green }}>Pung — </span>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft }}>
+                    Can pick up last discarded tile from anywhere for completing a Pung (ie if you already have a pair in your hand); the Pung (now exposed) will then be displayed on rack.
+                  </span>
+                </div>
+                
                 <div>
                   <span style={{ fontFamily: HERO, fontWeight: 700, color: PQ.green }}>Kong</span>
                   <ol style={{ margin: "6px 0 0", paddingLeft: 18, fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft }}>
-                    <li><b>From discard:</b> Pick up the last discarded tile to complete a Kong (if you already hold a Pung). The Kong is then exposed on your rack.</li>
-                    <li><b>Concealed Pung:</b> If you hold a concealed Pung and draw the 4th tile from the wall, upgrade to a Kong — displayed face down (still concealed).</li>
-                    <li><b>Exposed Pung:</b> If you have an exposed Pung and self-draw the 4th tile, upgrade to a Kong — displayed exposed on the rack.</li>
+                    <li><b>Picking from discard:</b> Can pick up last discarded tile from anywhere for completing a Kong (ie if you already have a Pung in your hand); the Kong (now exposed) will then be displayed on rack.</li>
+                    <li><b>Concealed Pung:</b> If you already have a concealed Pung in your hand and you pick up the 4th tile from the wall, you can upgrade the Pung to a Kong; the Kong (still concealed) will then be displayed face down on the rack.</li>
+                    <li>
+                      <b>Exposed Pung:</b>
+                      <ul style={{ margin: "4px 0 0", paddingLeft: 16 }}>
+                        <li>a) If you have an Exposed Pung on the rack and you self pick the 4th tile, you can upgrade the Pung to a Kong; the Kong (exposed) will then be displayed on the rack.</li>
+                        <li>b) If you have an Exposed Pung on the rack and someone throws the 4th tile, you cannot pick up that tile to make it a Kong.</li>
+                      </ul>
+                    </li>
                   </ol>
                 </div>
               </div>
             </div>
-            <RuleBlock label="General Rules">
-              The tile for Mahjong can be picked from anywhere, for any set (even a pair). If two players need the same tile to declare, the one closest to the discarder wins (order E–S–W–N).
-              <div style={{ height: 8 }} />
-              East always gives and gets double points to and from all players.
-              <div style={{ height: 8 }} />
-              A wrong Mahjong declaration makes the defaulter a "dead hand": they pay a 1000/2000E penalty, keep playing to the end, and can't claim any sets or Mahjong.
-            </RuleBlock>
-            <RuleBlock label="Nobody Wins">If no tiles remain on the wall, the game is a draw — each player puts 500 points in the bank for the next game's winner. The East player keeps the East position.</RuleBlock>
+
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 8 }}>General &amp; Special Rules</div>
+              <ul style={{ margin: 0, paddingLeft: 20, fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft }}>
+                <li style={{ marginBottom: 6 }}><b>East Wind Multiplier:</b> East always gives and gets double (points) to/from all players.</li>
+                <li style={{ marginBottom: 6 }}>
+                  <b>False Mahjong:</b> If it’s a wrong declaration of Mahjong, the game can still continue with the other 3 players, with the defaulter being declared a ‘dead hand’; the defaulter is liable to pay a penalty of 1000/2000E points to the other players and plays till the end of the game.
+                  <div style={{ fontSize: 12, color: PQ.rust, fontStyle: "italic", marginTop: 2 }}>
+                    Note: for a dead hand, the player will not be allowed to claim any sets/Mahjong. They have to settle points and will not get a count for their hand.
+                  </div>
+                </li>
+                <li style={{ marginBottom: 6 }}>
+                  <b>Draw:</b> If there are no more tiles left on the wall, the game has gone into a draw; each player places 500 points in the bank (to be claimed by the winner of the next game).
+                  <div style={{ fontSize: 12, color: PQ.rust, fontStyle: "italic", marginTop: 2 }}>
+                    Note: East player retains East position.
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 8 }}>Penalty</div>
+              <ul style={{ margin: 0, paddingLeft: 20, fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft }}>
+                <li style={{ marginBottom: 6 }}>When a player has atleast 3 Pungs/Kongs on their rack, they are “on penalty”. Anyone giving them a tile which helps them declare Mahjong, has to pay for the entire table (unless they themselves were ‘calling’: need only 1 more tile to Mahjong).</li>
+                <li style={{ marginBottom: 6 }}>If 3 players are “on penalty”, the 4th player is not liable to pay penalty even if they give a tile for Mahjong, even if they are not ‘calling’.</li>
+                <li style={{ marginBottom: 6 }}>If all 4 players are “on penalty”, penalty applies to all, unless ‘calling’, i.e. whoever gives the tile for Mahjong, they’ll have to pay for the table.</li>
+                <li style={{ marginBottom: 6 }}>If a player pays penalty to the declaring player, no other player gets a count.</li>
+              </ul>
+            </div>
           </div>
         ) : (
-          <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <div>
-              <div style={{ display: "flex", height: 12, borderRadius: 999, overflow: "hidden", border: `1px solid ${PQ.line}` }}>
-                {TIERS.map((t) => <span key={t.name} style={{ flex: 1, background: t.c }} />)}
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 6 }}>Your Rank Journey</div>
+              <div style={{ fontSize: 13, color: PQ.inkSoft, marginBottom: 12 }}>Everything is fair, transparent, and in your hands.</div>
+              
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 8 }}>The Ladder</div>
+              
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 6, margin: "10px 0 14px" }}>
+                {[
+                  { name: "Firefly", folder: "Firefly" },
+                  { name: "Koi", folder: "Koi" },
+                  { name: "Tiger", folder: "Tiger" },
+                  { name: "Phoenix", folder: "Phoenix" },
+                  { name: "Dragon", folder: "Original" }
+                ].map((t) => (
+                  <div key={t.name} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6, flex: 1 }}>
+                    <img
+                      src={`assets/rules-ranking/tile-design/${t.folder}/tile back.png`}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        aspectRatio: "3/4",
+                        objectFit: "contain",
+                        flexShrink: 0
+                      }}
+                      alt={t.name}
+                    />
+                    <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 10.5, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.rust }}>{t.name}</div>
+                  </div>
+                ))}
               </div>
-              <div style={{ display: "flex", justifyContent: "space-between", marginTop: 8 }}>
-                {TIERS.map((t) => <span key={t.name} style={{ fontFamily: HERO, fontWeight: 700, fontSize: 10.5, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>{t.name}</span>)}
-              </div>
-              <div style={{ marginTop: 12, fontFamily: HERO, fontWeight: 700, fontSize: 15, color: PQ.green, textAlign: "center", letterSpacing: "0.02em" }}>4 tiers. 12 ranks. 1 Dragon leaderboard.</div>
+              <div style={{ fontSize: 12.5, color: PQ.inkSoft, fontStyle: "italic", textAlign: "center" }}>4 tiers · 12 ranks · 1 Dragon leaderboard</div>
             </div>
 
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 14 }}>How You Climb</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-                <ClimbItem title="Earn RP every game">Chase Ranked Points, win hands, stack RP, and crash the next tier's party.</ClimbItem>
-                <ClimbItem title="Protected when you first arrive">New tier unlocked? Your first drop is protected. One bad game doesn't send you back.</ClimbItem>
-                <ClimbItem title="Earn your promotion">At each tier's final rank (e.g. Firefly III), win 2 of 3 promotion games to move on — no lucky shortcuts.</ClimbItem>
-                <ClimbItem title="Season Reset">Each new season brings a soft tier reset — keeping competition fresh while preserving part of your progress. Top Dragon players remain in Dragon.</ClimbItem>
+                <ClimbItem title="Earn RP every game" icon="spark">
+                  Chase Ranked Points, win hands, stack RP, and crash the next tier's party.
+                </ClimbItem>
+                <ClimbItem title="Protected when you first arrive" icon="shield">
+                  New tier unlocked? Your first drop is protected. One bad game doesn't send you back.
+                </ClimbItem>
+                <ClimbItem title="Earn your promotion" icon="trophy">
+                  At each tier’s final rank (ex Firefly III), you have to win 2 out of 3 promotion games to move on to the next tier - no lucky shortcuts.
+                </ClimbItem>
+                <ClimbItem title="Season Reset" icon="timer">
+                  Each new season brings a soft tier reset - to keep competition fresh while preserving part of your progress - top Dragon players remain in Dragon.
+                </ClimbItem>
               </div>
             </div>
 
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 6 }}>How You Earn Points</div>
               <div style={{ fontSize: 13, color: PQ.inkSoft, marginBottom: 14 }}>Every game counts. Every hand tells a story.</div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                <EarnItem title="Finish Higher, Earn More">1st place earns the most points; 4th loses a few. Simple — finish well, climb fast.</EarnItem>
-                <EarnItem title="Risk vs Reward">Beat stronger opponents to earn more points. Lower-risk games give you fewer.</EarnItem>
-                <EarnItem title="Bonus RP Awaits">From concealed hands and fast/last-tile wins to high doubles and table limit — special hands earn extra RP.</EarnItem>
+              <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+                <ClimbItem title="Finish Higher, Earn More" icon="arrowUp">
+                  1st place earns the most points. 4th place loses a few. Simple. Finish well, climb fast.
+                </ClimbItem>
+                <ClimbItem title="Risk vs Reward" icon="globe">
+                  Beat stronger opponents to earn more points; Lower-risk games will give you fewer points.
+                </ClimbItem>
+                <ClimbItem title="Bonus RP Awaits" icon="spark">
+                  From Concealed Hands and Fast/Last Tile Wins to High Doubles and Table Limit (and many more),-- special hands earn extra RP.
+                </ClimbItem>
               </div>
             </div>
           </div>
@@ -3796,7 +4342,7 @@ function GameScreen({ onExit }) {
   };
 
   return (
-    <div 
+    <div
       onClick={handleExit}
       style={{
         position: "absolute",
@@ -3811,9 +4357,9 @@ function GameScreen({ onExit }) {
       }}
       title="Click anywhere to return"
     >
-      <img 
-        src="assets/gameplay-placeholder.png" 
-        alt="Gameplay Board Figma Mockup" 
+      <img
+        src="assets/figma-gameboard.png"
+        alt="Gameplay Board Figma Mockup"
         draggable={false}
         style={{
           width: "100%",
@@ -3821,7 +4367,7 @@ function GameScreen({ onExit }) {
           objectFit: "cover",
           display: "block",
           userSelect: "none"
-        }} 
+        }}
       />
       {/* Floating Indicator */}
       <div style={{
@@ -3987,19 +4533,19 @@ function PocketDragonApp() {
   let phoneBody;
   if (route === "config") {
     phoneBody = (
-      <GameConfigScreen 
-        title={extendMode ? "Extend Game" : "Create A Game"} 
-        subtitle={extendMode ? "Adjust the setup and keep playing" : "Set the house rules — blame them later"} 
-        onBack={home} 
-        onCreate={() => { setLobbyHost(true); setRoute("waiting"); }} 
+      <GameConfigScreen
+        title={extendMode ? "Extend Game" : "Create A Game"}
+        subtitle={extendMode ? "Adjust the setup and keep playing" : "Set the house rules — blame them later"}
+        onBack={home}
+        onCreate={() => { setLobbyHost(true); setRoute("waiting"); }}
         onShare={() => {
           const text = "You're invited to join my private table on Pocket Dragon.\n\nTable Code: PFZ9\n\nSee you at the table!\nTo begin: 1) Open the app 2) go to Join game 3) Private 4) Enter the code";
           const link = `https://api.whatsapp.com/send?phone=919028619880&text=${encodeURIComponent(text)}`;
           window.open(link, "_blank");
           setLobbyHost(true);
           setRoute("waiting");
-        }} 
-        onInvite={() => setRoute("invite")} 
+        }}
+        onInvite={() => setRoute("invite")}
       />
     );
   } else if (route === "waiting") {
