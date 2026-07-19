@@ -382,6 +382,7 @@ const PQ = {
   onGreen: "rgba(249,242,228,",   // off-white alpha on green
   onOff: "rgba(20,51,34,",      // green alpha on off-white
   destructive: "#7f1616",
+  greenText: "#1b5a42",
 };
 
 const HERO = 'Hero';

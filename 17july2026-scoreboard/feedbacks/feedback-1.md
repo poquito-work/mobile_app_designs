@@ -39,13 +39,9 @@
 
 - [ ] **EXTEND THE GAME screen**
     - [ ] Heading: EXTEND THE ROUND (please remove the icon)
-    - [ ] 
-
-
-approved
-
-
-buttons approved; placement to be done like image
+    - [ ] Right below heading, instead of "Set the house rules - blame them later", please write: "Everyone still seated will be invited to continue"
+    - [ ] Change button text to "Extend Round"
+    - [ ] Reference for placing the image '17july2026-scoreboard/assets/extend.png' as at '17july2026-scoreboard/feedbacks/extendgame.png' 
 
 
 
