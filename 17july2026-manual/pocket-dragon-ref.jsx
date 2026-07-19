@@ -1957,6 +1957,7 @@ function XIcon({ name, size = 20, stroke = "currentColor", sw = 1.7, style }) {
     globe: <g {...p}><circle cx="12" cy="12" r="8.5" /><path d="M3.5 12h17M12 3.5c2.4 2.3 2.4 14.7 0 17M12 3.5c-2.4 2.3-2.4 14.7 0 17" /></g>,
     timer: <g {...p}><circle cx="12" cy="13" r="7.5" /><path d="M12 13V9M9.5 3.5h5" /></g>,
     wa: <g {...p}><path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1z" /><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.6.8-1.1l-1.4-1-1 .8a4 4 0 01-2.4-2.4l.8-1-1-1.4C9.6 8.5 9 8.9 9 9.5z" fill={stroke} stroke="none" /></g>,
+    bug: <g {...p}><rect x="8" y="6" width="8" height="12" rx="4" /><path d="M12 6V3M8 9H5M8 12H4M8 15H5M16 9h3M16 12h4M16 15h3M9 18a3 3 0 006 0" /></g>,
   };
   return <svg width={size} height={size} viewBox="0 0 24 24" style={{ display: "block", ...style }}>{paths[name]}</svg>;
 }
@@ -2023,7 +2024,7 @@ function Row({ icon, label, value, onClick, danger, last, plain }) {
     }}>
       {icon && <XIcon name={icon} size={19} stroke={danger ? PQ.rust : PQ.inkSoft} />}
       <span style={{ flex: 1, fontFamily: HERO, fontWeight: 600, fontSize: 14.5, color: danger ? PQ.rust : PQ.ink }}>{label}</span>
-      {value && <span style={{ fontSize: 13, color: PQ.inkFaint }}>{value}</span>}
+      {value && <span style={{ fontSize: 13, fontWeight: danger ? 700 : 500, color: danger ? PQ.rust : PQ.inkFaint }}>{value}</span>}
       <XIcon name="chevR" size={18} stroke={danger ? PQ.rust : PQ.inkFaint} />
     </button>
   );
@@ -2437,10 +2438,10 @@ function SettingsDetail({ panel, onBack }) {
       </div>
       <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", padding: "4px 4px 20px", display: "flex", flexDirection: "column", gap: 16 }}>
         {panel === "about" && (
-          <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: PQ.inkSoft }}>Pocket Dragon is a mobile-first, character-driven Mahjong experience built for players of every level. Enjoy fair, social multiplayer play across public and private tables — no wagers, no real-money stakes, just the joy of the game.</p>
+          <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: PQ.inkSoft, textAlign: "justify" }}>Pocket Dragon is a mobile-first, character-driven Mahjong experience built for players of every level. Enjoy fair, social multiplayer play across public and private tables — no wagers, no real-money stakes, just the joy of the game.</p>
         )}
         {panel === "aboutus" && (
-          <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: PQ.inkSoft }}>Pocket Dragon brings together the strategy, skill, and social spirit of Mahjong. Whether you're discovering the game for the first time or refining years of experience, every match is an opportunity to learn, compete, and connect with players who share your passion. Our platform provides fair offline and online social and multiplayer Mahjong games.</p>
+          <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, color: PQ.inkSoft, textAlign: "justify" }}>Pocket Dragon brings together the strategy, skill, and social spirit of Mahjong. Whether you're discovering the game for the first time or refining years of experience, every match is an opportunity to learn, compete, and connect with players who share your passion. Our platform provides fair offline and online social and multiplayer Mahjong games.</p>
         )}
         {isForm && sent && (
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14, padding: "30px 0", textAlign: "center" }}>
@@ -2470,7 +2471,10 @@ function SettingsDetail({ panel, onBack }) {
             <textarea value={desc} onChange={(e) => setDesc(e.target.value)} placeholder={panel === "feature" ? "Describe the feature you'd like to see" : panel === "contact" ? "How can we help?" : "Describe what went wrong"} style={field} />
           </div>
           {panel === "bug" && (
-            <button className="pq-press" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, height: 52, borderRadius: 13, border: `1.5px dashed ${PQ.lineMid}`, background: "transparent", cursor: "pointer", fontFamily: HERO, fontWeight: 700, fontSize: 12.5, letterSpacing: "0.06em", textTransform: "uppercase", color: PQ.inkSoft }}><Icon name="plus" size={16} stroke={PQ.inkSoft} sw={2} />Attach screenshot / recording <span style={{ fontWeight: 400, textTransform: "none", letterSpacing: 0 }}>· optional</span></button>
+            <div>
+              <div style={{ ...label, display: "flex", gap: 6, alignItems: "baseline" }}>Upload <span style={{ fontWeight: 400, letterSpacing: "0.06em", opacity: 0.7 }}>· Optional</span></div>
+              <button className="pq-press" style={{ width: "100%", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, height: 52, borderRadius: 13, border: `1.5px dashed ${PQ.lineMid}`, background: "transparent", cursor: "pointer", fontFamily: HERO, fontWeight: 700, fontSize: 12.5, letterSpacing: "0.06em", textTransform: "uppercase", color: PQ.inkSoft }}><Icon name="plus" size={16} stroke={PQ.inkSoft} sw={2} />Attach screenshot / recording</button>
+            </div>
           )}
           <Btn variant="primary" disabled={panel === "bug" && !desc.trim()} onClick={() => { pock("select"); setSent(true); }}>Submit</Btn>
         </>)}
@@ -2485,6 +2489,7 @@ function SettingsScreen() {
   const [sound, setSound] = React.useState(true);
   const [vol, setVol] = React.useState(70);
   const [panel, setPanel] = React.useState(null);
+  const [updateAvailable, setUpdateAvailable] = React.useState(false);
   if (panel) return <SettingsDetail panel={panel} onBack={() => setPanel(null)} />;
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", gap: 14 }}>
@@ -2517,17 +2522,30 @@ function SettingsScreen() {
             <Row icon="spark" label="About Us" onClick={() => setPanel("aboutus")} />
             <Row icon="doc" label="Terms & Conditions" onClick={() => window.open("https://pocketdragon.in/terms", "_blank")} />
             <Row icon="shield" label="Privacy Policy" onClick={() => window.open("https://pocketdragon.in/privacy", "_blank")} />
-            <Row icon="spark" label="App Version" value="1.0.0" last onClick={() => { }} />
+            <Row
+              icon="spark"
+              label="App Version"
+              value={updateAvailable ? "Update Available" : "1.0.0 (Latest)"}
+              danger={updateAvailable}
+              last
+              onClick={() => {
+                pock("select");
+                if (updateAvailable) {
+                  window.open("https://pocketdragon.in/download", "_blank");
+                } else {
+                  setUpdateAvailable(true);
+                }
+              }}
+            />
           </Group>
-          <div style={{ marginTop: 8, fontFamily: HERO, fontSize: 12, color: PQ.inkFaint, paddingLeft: 4 }}>You're on the latest version.</div>
         </div>
         <div>
           <SectionLabel>Support</SectionLabel>
           <Group>
-            <Row icon="help" label="Report a Bug" onClick={() => setPanel("bug")} />
+            <Row icon="bug" label="Report a Bug" onClick={() => setPanel("bug")} />
             <Row icon="spark" label="Feature Request" onClick={() => setPanel("feature")} />
             <Row icon="help" label="Contact Support" onClick={() => setPanel("contact")} />
-            <Row icon="doc" label="FAQs" value="↗" last onClick={() => window.open("https://pocketdragon.in/faqs", "_blank")} />
+            <Row icon="doc" label="FAQs" last onClick={() => window.open("https://pocketdragon.in/#faqs", "_blank")} />
           </Group>
         </div>
       </div>
@@ -3316,7 +3334,7 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
     { name: "Sam K.", av: 3 },
   ];
   const WINDS = ["East", "South", "West", "North"];
-  
+
   const [phase, setPhase] = React.useState("intro"); // intro | rolling | tie | done
   const [vals, setVals] = React.useState([[1, 1], [1, 1], [1, 1], [1, 1]]);
   const [active, setActive] = React.useState([true, true, true, true]);
@@ -3340,7 +3358,7 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
     // Find highest sum among active players
     const activeSums = currentSums.map((s, idx) => active[idx] ? s : -1);
     const top = Math.max(...activeSums);
-    
+
     // Find tied active players
     const tiedIndices = [];
     active.forEach((act, idx) => {
@@ -3354,12 +3372,12 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
       setTimeout(() => {
         setPhase("tie");
         if (typeof pock === "function") pock("select");
-        
+
         // Deactivate eliminated players
         setActive(act => act.map((a, idx) => a && tiedIndices.includes(idx)));
         // Reset rolled for active players
         setRolled(rd => rd.map((r, idx) => tiedIndices.includes(idx) ? false : r));
-        
+
         // If user is not active, let first tied bot roll automatically
         if (!tiedIndices.includes(0)) {
           rollNext(tiedIndices[0], tiedIndices, currentSums);
@@ -3373,7 +3391,7 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
       seatOf[(winnerIdx + 1) % 4] = 1; // South
       seatOf[(winnerIdx + 2) % 4] = 2; // West
       seatOf[(winnerIdx + 3) % 4] = 3; // North
-      
+
       setOrder(seatOf);
       setPhase("done");
       if (typeof pock === "function") pock("select");
@@ -3385,7 +3403,7 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
       checkRoundEnd(currentSums);
       return;
     }
-    
+
     const isActive = activeList ? activeList.includes(idx) : active[idx];
     if (!isActive) {
       rollNext(idx + 1, activeList, currentSums);
@@ -3394,7 +3412,7 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
 
     setTimeout(() => {
       setRolling(r => { const next = [...r]; next[idx] = true; return next; });
-      
+
       let count = 0;
       const interval = setInterval(() => {
         setVals(v => {
@@ -3409,15 +3427,15 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
         clearInterval(interval);
         const a = 1 + Math.floor(Math.random() * 6);
         const b = 1 + Math.floor(Math.random() * 6);
-        
+
         const nextSums = [...currentSums];
         nextSums[idx] = a + b;
-        
+
         setVals(v => { const next = [...v]; next[idx] = [a, b]; return next; });
         setSums(nextSums);
         setRolling(r => { const next = [...r]; next[idx] = false; return next; });
         setRolled(rd => { const next = [...rd]; next[idx] = true; return next; });
-        
+
         rollNext(idx + 1, activeList, nextSums);
       }, 800);
     }, 400);
@@ -3426,7 +3444,7 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
   const userRoll = () => {
     if (phase !== "intro" && phase !== "tie") return;
     if (phase === "tie" && !active[0]) return;
-    
+
     if (typeof pock === "function") pock("select");
     setPhase("rolling");
     setRolling(r => { const next = [...r]; next[0] = true; return next; });
@@ -3445,15 +3463,15 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
       clearInterval(interval);
       const a = 1 + Math.floor(Math.random() * 6);
       const b = 1 + Math.floor(Math.random() * 6);
-      
+
       const nextSums = [...sums];
       nextSums[0] = a + b;
-      
+
       setVals(v => { const next = [...v]; next[0] = [a, b]; return next; });
       setSums(nextSums);
       setRolling(r => { const next = [...r]; next[0] = false; return next; });
       setRolled(rd => { const next = [...rd]; next[0] = true; return next; });
-      
+
       // Let other active players roll sequentially
       rollNext(1, null, nextSums);
     }, 800);
@@ -3482,7 +3500,7 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
           const hasRolled = rolled[i];
           const isRolling = rolling[i];
           const canTap = you && isActive && (phase === "intro" || phase === "tie") && !hasRolled;
-          
+
           return (
             <div key={p.name} style={{ display: "flex", alignItems: "center", gap: 14, padding: "12px 14px", borderRadius: 16, background: PQ.off, border: `1.5px solid ${isEast ? PQ.rust : you && canTap ? PQ.lineMid : PQ.line}`, opacity: isActive ? 1 : 0.45, transition: "border-color .3s, opacity .3s" }}>
               <span style={{ width: 48, height: 48, flexShrink: 0, borderRadius: "50%", overflow: "hidden", background: AVATARS[p.av].bg, border: `1.5px solid ${PQ.line}` }}>
@@ -3491,16 +3509,16 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 15, color: PQ.ink }}>{p.name}</div>
                 <div style={{ marginTop: 3, fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: seated ? (isEast ? PQ.rust : PQ.green) : PQ.inkFaint }}>
-                  {seated 
-                    ? `${wind} seat · ${vals[i][0] + vals[i][1]}` 
-                    : isRolling 
-                      ? "Rolling…" 
-                      : !isActive 
+                  {seated
+                    ? `${wind} seat · ${vals[i][0] + vals[i][1]}`
+                    : isRolling
+                      ? "Rolling…"
+                      : !isActive
                         ? `Eliminated · Final: ${vals[i][0] + vals[i][1]}`
-                        : hasRolled 
-                          ? `Rolled: ${vals[i][0] + vals[i][1]}` 
-                          : canTap 
-                            ? "Tap to roll" 
+                        : hasRolled
+                          ? `Rolled: ${vals[i][0] + vals[i][1]}`
+                          : canTap
+                            ? "Tap to roll"
                             : "Waiting..."}
                 </div>
               </div>
