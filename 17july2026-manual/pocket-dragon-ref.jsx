@@ -380,7 +380,7 @@ const PQ = {
   onOff: "rgba(20,51,34,",      // green alpha on off-white
 };
 
-const HERO = '"Hero", "Helvetica Neue", Helvetica, Arial, sans-serif';
+const HERO = 'Hero';
 
 // Table difficulty level colours — used consistently across all screens
 const DIFF_COLORS = { Smurf: "#A9C4D6", Easy: "#6D7A62", Fair: "#A16A03", Hard: "#B65A2F", Fierce: "#630206" };
@@ -1761,7 +1761,7 @@ function AccessOption({ icon, title, desc, active, onTap }) {
       <HIcon name={icon} size={24} stroke={active ? PQ.rust : PQ.inkSoft} sw={1.8} style={{ flexShrink: 0 }} />
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 14, letterSpacing: "0.03em", textTransform: "uppercase", color: PQ.ink }}>{title}</div>
-        <div style={{ marginTop: 4, fontSize: 11.5, lineHeight: 1.35, color: PQ.inkSoft }}>{desc}</div>
+        <div style={{ fontFamily: HERO, marginTop: 4, fontSize: 11.5, lineHeight: 1.35, color: PQ.inkSoft }}>{desc}</div>
       </div>
       <span style={{
         width: 22, height: 22, borderRadius: "50%", flexShrink: 0, border: `2px solid ${active ? PQ.rust : PQ.line}`,
