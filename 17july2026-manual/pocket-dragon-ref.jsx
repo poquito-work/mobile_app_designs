@@ -4109,7 +4109,7 @@ function SeatAssignmentScreen({ onBack, onEnter }) {
           <HIcon name="dice" size={24} stroke={PQ.rust} sw={1.8} />
           <h1 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 22, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Roll for East</h1>
         </div>
-        <p style={{ margin: "9px 0 0", fontSize: 13.5, lineHeight: 1.5, color: phase === "tie" ? PQ.rust : PQ.inkSoft, fontWeight: phase === "tie" ? 700 : 400 }}>{phase === "tie" ? "It's a tie! Please roll again." : phase === "rolling" ? "Rolling for everyone…" : "Highest roll becomes East. May the tiles be in your favour."}</p>
+        <p style={{ margin: "9px 0 0", fontSize: 13.5, lineHeight: 1.5, color: phase === "tie" ? PQ.rust : PQ.inkSoft, fontWeight: phase === "tie" ? 700 : 400 }}>{phase === "tie" ? "It's a tie! Please roll again." : "Highest roll becomes East. May the tiles be in your favour."}</p>
       </div>
 
       <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", padding: "16px 22px 12px", display: "flex", flexDirection: "column", gap: 12 }}>
