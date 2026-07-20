@@ -2887,9 +2887,9 @@ function RejoinScreen({ onBack, onRejoin, onHome, expired, botTurns = 2 }) {
 // Small building blocks for the Rules & Ranking content
 function RuleBlock({ label, children }) {
   return (
-    <div>
+    <div style={{ fontFamily: HERO }}>
       <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 8 }}>{label}</div>
-      <div style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft }}>{children}</div>
+      <div style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft, textAlign: "justify" }}>{children}</div>
     </div>
   );
 }
@@ -2909,7 +2909,7 @@ function ClimbItem({ title, icon, children }) {
       </span>
       <div>
         <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 14, color: PQ.rust }}>{title}</div>
-        <div style={{ marginTop: 3, fontSize: 13, lineHeight: 1.55, color: PQ.inkSoft }}>{children}</div>
+        <div style={{ marginTop: 3, fontSize: 13, lineHeight: 1.55, color: PQ.inkSoft, textAlign: "justify", fontFamily: HERO }}>{children}</div>
       </div>
     </div>
   );
@@ -2952,38 +2952,64 @@ function RulesTile({ suit, value, w = 32, h = 42, style }) {
 
 function HandDisplay({ title, desc, tiles, note }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 6, padding: "4px 0" }}>
-      <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 13.5, color: PQ.rust }}>{title}</div>
-      <div style={{ fontSize: 13, color: PQ.inkSoft, lineHeight: 1.45 }}>{desc}</div>
+    <div style={{ display: "flex", flexDirection: "column", gap: 6, padding: "4px 0", fontFamily: HERO }}>
+      <div style={{ fontFamily: HERO, fontWeight: 400, fontSize: 13.5, color: PQ.rust }}>{title}</div>
+      <div style={{ fontSize: 13, color: PQ.inkSoft, lineHeight: 1.45, textAlign: "justify" }}>{desc}</div>
       <div style={{ display: "flex", gap: 2, flexWrap: "wrap", margin: "4px 0" }}>
         {tiles.map((t, idx) => (
           <RulesTile key={idx} suit={t.suit} value={t.value} w={24} h={33} />
         ))}
       </div>
-      {note && <div style={{ fontSize: 12, color: PQ.rust, fontStyle: "italic", lineHeight: 1.4 }}>{note}</div>}
+      {note && <div style={{ fontSize: 12, color: PQ.rust, fontStyle: "italic", lineHeight: 1.4, textAlign: "justify" }}>{note}</div>}
     </div>
   );
 }
 
 function DoubleGroup({ title, items, note }) {
+  const [open, setOpen] = React.useState(false);
   return (
-    <div style={{ marginTop: 14 }}>
-      <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 13.5, color: PQ.green, borderBottom: `1px solid ${PQ.line}`, paddingBottom: 4, marginBottom: 8 }}>{title}</div>
-      <ul style={{ margin: 0, paddingLeft: 20, fontSize: 13, lineHeight: 1.6, color: PQ.inkSoft }}>
-        {items.map((item, idx) => (
-          <li key={idx} style={{ marginBottom: 4 }}>
-            {typeof item === "string" ? (
-              item
-            ) : (
-              <span>
-                {item.text}
-                {item.note && <span style={{ color: PQ.rust, fontStyle: "italic" }}> {item.note}</span>}
-              </span>
-            )}
-          </li>
-        ))}
-      </ul>
-      {note && <div style={{ fontSize: 12, color: PQ.inkSoft, fontStyle: "italic", marginTop: 6, lineHeight: 1.45 }}>{note}</div>}
+    <div style={{ marginTop: 14, fontFamily: HERO }}>
+      <div
+        onClick={() => setOpen(!open)}
+        style={{
+          fontFamily: HERO,
+          fontWeight: 700,
+          fontSize: 13.5,
+          color: PQ.green,
+          borderBottom: `1px solid ${PQ.line}`,
+          paddingBottom: 6,
+          marginBottom: open ? 8 : 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          cursor: "pointer",
+          userSelect: "none"
+        }}
+      >
+        <span>{title}</span>
+        <div style={{ transform: open ? "rotate(180deg)" : "none", transition: "transform 0.2s ease" }}>
+          <Icon name="chevD" size={16} stroke={PQ.green} sw={2} />
+        </div>
+      </div>
+      {open && (
+        <>
+          <ul style={{ margin: 0, paddingLeft: 20, fontSize: 13, lineHeight: 1.6, color: PQ.inkSoft, textAlign: "justify" }}>
+            {items.map((item, idx) => (
+              <li key={idx} style={{ marginBottom: 4 }}>
+                {typeof item === "string" ? (
+                  item
+                ) : (
+                  <span>
+                    {item.text}
+                    {item.note && <span style={{ color: PQ.rust, fontStyle: "italic" }}> {item.note}</span>}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+          {note && <div style={{ fontSize: 12, color: PQ.inkSoft, fontStyle: "italic", marginTop: 6, lineHeight: 1.45, textAlign: "justify" }}>{note}</div>}
+        </>
+      )}
     </div>
   );
 }
@@ -3017,24 +3043,21 @@ function ScoringTable() {
     {
       set: "Each Flower",
       tiles: [{ suit: "flowers", value: "blue-f1" }],
-      exp: "—",
       con: "4"
     },
     {
       set: "Pair of Honour and/or Terminal tiles",
       tiles: [{ suit: "winds", value: "S" }, { suit: "winds", value: "S" }],
-      exp: "—",
       con: "2"
     },
     {
       set: "Player declaring Mahjong",
       tiles: [],
-      exp: "—",
       con: "20"
     }
   ];
   return (
-    <div style={{ overflowX: "auto", margin: "8px 0" }}>
+    <div style={{ overflowX: "auto", margin: "8px 0", fontFamily: HERO }}>
       <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12.5, color: PQ.inkSoft }}>
         <thead>
           <tr style={{ borderBottom: `1.5px solid ${PQ.line}`, color: PQ.ink, fontFamily: HERO, fontWeight: 700, textTransform: "uppercase", fontSize: 11, letterSpacing: "0.04em" }}>
@@ -3055,8 +3078,14 @@ function ScoringTable() {
                   ))}
                 </div>
               </td>
-              <td style={{ padding: "8px 4px", textAlign: "center", fontFamily: HERO, fontWeight: 700 }}>{r.exp}</td>
-              <td style={{ padding: "8px 4px", textAlign: "center", fontFamily: HERO, fontWeight: 700 }}>{r.con}</td>
+              {r.exp !== undefined ? (
+                <>
+                  <td style={{ padding: "8px 4px", textAlign: "center", fontFamily: HERO, fontWeight: 700, fontSize: 14.5, color: PQ.ink }}>{r.exp}</td>
+                  <td style={{ padding: "8px 4px", textAlign: "center", fontFamily: HERO, fontWeight: 700, fontSize: 14.5, color: PQ.ink }}>{r.con}</td>
+                </>
+              ) : (
+                <td colSpan={2} style={{ padding: "8px 4px", textAlign: "center", fontFamily: HERO, fontWeight: 700, fontSize: 14.5, color: PQ.ink }}>{r.con}</td>
+              )}
             </tr>
           ))}
         </tbody>
@@ -3070,10 +3099,10 @@ function ScoringTable() {
 
 function SetBlock({ title, desc, children }) {
   return (
-    <div style={{ border: `1.5px solid ${PQ.line}`, borderRadius: 16, padding: "14px 12px", background: PQ.off, display: "flex", flexDirection: "column", gap: 10 }}>
+    <div style={{ border: `1.5px solid ${PQ.line}`, borderRadius: 16, padding: "14px 12px", background: PQ.off, display: "flex", flexDirection: "column", gap: 10, fontFamily: HERO }}>
       <div>
         <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 14, letterSpacing: "0.02em", color: PQ.green }}>{title}</div>
-        <div style={{ fontSize: 12, color: PQ.inkSoft, marginTop: 2 }}>{desc}</div>
+        <div style={{ fontSize: 12, color: PQ.inkSoft, marginTop: 2, textAlign: "justify" }}>{desc}</div>
       </div>
       {children}
     </div>
@@ -3112,7 +3141,7 @@ function KongExample({ tiles, label }) {
           <RulesTile suit={bottomTiles[2].suit} value={bottomTiles[2].value} w={29} h={39} />
         </div>
         <div style={{ position: "absolute", left: 32, top: 5, zIndex: 5, transform: "rotate(90deg)" }}>
-          <RulesTile suit={topTile.suit} value={topTile.value} w={29} h={39} style={{ boxShadow: "0 3px 6px rgba(20,51,34,0.35)" }} />
+          <RulesTile suit={topTile.suit} value={topTile.value} w={29} h={39} />
         </div>
       </div>
       <div style={{ fontSize: 10.5, lineHeight: 1.2, color: PQ.inkSoft, textAlign: "center" }}>{label}</div>
@@ -3123,17 +3152,8 @@ function KongExample({ tiles, label }) {
 function RulesScreen() {
   const [seg, setSeg] = React.useState("rules");
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%", gap: 14 }}>
+    <div style={{ display: "flex", flexDirection: "column", height: "100%", gap: 14, fontFamily: HERO }}>
       <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 24, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink, flexShrink: 0 }}>Rules &amp; Ranking</div>
-      {/* current subscription status */}
-      <div style={{ flexShrink: 0, border: `1.5px solid ${PQ.line}`, borderRadius: 16, padding: "14px 16px", background: "rgba(182,90,47,0.05)" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-          <HIcon name="crown" size={16} stroke={PQ.rust} sw={1.8} />
-          <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: PQ.rust }}>Free Trial</span>
-        </div>
-        <div style={{ fontFamily: HERO, fontSize: 13.5, lineHeight: 1.5, color: PQ.inkSoft }}>You are currently enjoying the free trial period. It ends on <span style={{ color: PQ.ink, fontWeight: 700 }}>23 Jul 2026</span>.</div>
-        <div style={{ marginTop: 8, fontSize: 13, lineHeight: 1.5, color: PQ.inkSoft }}>Subscriptions are available exclusively through our website <a href="https://pocketdragon.in" target="_blank" style={{ color: PQ.rust, fontWeight: 700, textDecoration: "none" }}>www.pocketdragon.in</a></div>
-      </div>
       <div style={{ flexShrink: 0 }}>
         <Seg options={[{ label: "Rules", value: "rules" }, { label: "Ranking", value: "ranks" }]} value={seg} onChange={setSeg} />
       </div>
@@ -3145,7 +3165,7 @@ function RulesScreen() {
 
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 8 }}>Gameplay &amp; Tiles</div>
-              <div style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft, marginBottom: 12 }}>
+              <div style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft, marginBottom: 12, textAlign: "justify" }}>
                 The game is played with 144 tiles which comprise of:
               </div>
 
@@ -3173,7 +3193,7 @@ function RulesScreen() {
                       <div style={{ display: "flex", gap: 3, overflowX: "auto", paddingBottom: 4 }} className="pq-scroll">
                         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(v => <RulesTile key={v} suit="bamboos" value={v} />)}
                       </div>
-                      <div style={{ fontSize: 11.5, color: PQ.inkSoft, fontStyle: "italic", marginTop: 2 }}>
+                      <div style={{ fontSize: 11.5, color: PQ.inkSoft, fontStyle: "italic", marginTop: 2, textAlign: "justify" }}>
                         The first tile of the Bamboos suit is usually a bird instead of a single bamboo.
                       </div>
                     </div>
@@ -3181,7 +3201,8 @@ function RulesScreen() {
                 </div>
 
                 <div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: PQ.ink, marginBottom: 6 }}>Honour Tiles (28 tiles total): Dragons (Red, Green, White) &amp; Winds (E, S, W, N, 4 of each)</div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: PQ.ink, marginBottom: 4 }}>Honour Tiles (28 tiles total): Dragons (Red, Green, White) &amp; Winds (E, S, W, N, 4 of each)</div>
+                  <div style={{ fontSize: 11.5, color: PQ.inkSoft, fontStyle: "italic", marginBottom: 6, textAlign: "justify" }}>Honour Hand: Pungs/Kongs + Pair of Wind/Dragons</div>
                   <div style={{ display: "flex", gap: 3, flexWrap: "wrap" }}>
                     <RulesTile suit="dragons" value="red" />
                     <RulesTile suit="dragons" value="green" />
@@ -3243,8 +3264,8 @@ function RulesScreen() {
                       label="4 Winds (same direction)"
                     />
                   </div>
-                  <div style={{ fontSize: 12.5, lineHeight: 1.4, color: PQ.inkSoft, marginTop: 4 }}>
-                    Kongs count as 3 tiles (once put on top of rack: exposed/concealed) and get 1 extra tile from the Flower Wall.
+                  <div style={{ fontSize: 12.5, lineHeight: 1.4, color: PQ.inkSoft, marginTop: 4, textAlign: "justify" }}>
+                    Kongs count as 3 tiles once put on top of rack (exposed/concealed) and get 1 extra tile from the Flower Wall.
                   </div>
                 </SetBlock>
 
@@ -3269,13 +3290,13 @@ function RulesScreen() {
             </div>
 
             <RuleBlock label="Goulash Objective">
-              To make 4 Pungs/Kongs + 1 Pair (as per the valid combinations in the Hands section below).
+              <span style={{ fontWeight: 600, color: PQ.ink }}>To make 4 Pungs/Kongs + 1 Pair (as per the valid combinations in the Hands section below).</span>
             </RuleBlock>
 
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 12 }}>Hands</div>
-              <div style={{ fontSize: 13.5, color: PQ.inkSoft, marginBottom: 14, lineHeight: 1.5 }}>
-                To get a count, your completed hand has to be valid. The validity of the hand depends on fulfilling at least three conditions or ‘doubles’.
+              <div style={{ fontSize: 13.5, color: PQ.inkSoft, marginBottom: 14, lineHeight: 1.5, textAlign: "justify" }}>
+                To get a count, your completed hand has to be valid. The validity of the hand depends on fulfilling <span style={{ fontWeight: 600, color: PQ.ink }}>at least three conditions or ‘doubles’</span>.
               </div>
 
               <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
@@ -3288,18 +3309,6 @@ function RulesScreen() {
                     { suit: "rings", value: 5 }, { suit: "rings", value: 5 }, { suit: "rings", value: 5 },
                     { suit: "rings", value: 8 }, { suit: "rings", value: 8 }, { suit: "rings", value: 8 },
                     { suit: "rings", value: 9 }, { suit: "rings", value: 9 }
-                  ]}
-                />
-
-                <HandDisplay
-                  title="Option 1 (Alternate): Honour Hand (3 Doubles)"
-                  desc="All Pungs/Kongs/Pair consist entirely of Wind and Dragon tiles."
-                  tiles={[
-                    { suit: "dragons", value: "red" }, { suit: "dragons", value: "red" }, { suit: "dragons", value: "red" },
-                    { suit: "dragons", value: "green" }, { suit: "dragons", value: "green" }, { suit: "dragons", value: "green" },
-                    { suit: "winds", value: "E" }, { suit: "winds", value: "E" }, { suit: "winds", value: "E" },
-                    { suit: "winds", value: "W" }, { suit: "winds", value: "W" }, { suit: "winds", value: "W" },
-                    { suit: "dragons", value: "white" }, { suit: "dragons", value: "white" }
                   ]}
                 />
 
@@ -3326,7 +3335,7 @@ function RulesScreen() {
                     { suit: "bamboos", value: 5 }, { suit: "bamboos", value: 5 }, { suit: "bamboos", value: 5 },
                     { suit: "bamboos", value: 8 }, { suit: "bamboos", value: 8 }
                   ]}
-                  note="Note: Since a Mixed Hand does not give any, to have a valid hand, a player must fulfill any 3 doubles (please see Doubles section)."
+                  note="Note: Since a Mixed Hand does not give any doubles, to have a valid hand, a player must fulfill any 3 doubles (please see Doubles section)."
                 />
 
                 <HandDisplay
@@ -3430,49 +3439,49 @@ function RulesScreen() {
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 12 }}>Rules for Claiming Tiles</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                 <div>
-                  <span style={{ fontFamily: HERO, fontWeight: 700, color: PQ.green }}>Mahjong — </span>
-                  <span style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft }}>
+                  <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 13.5, color: PQ.green }}>Mahjong: </span>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft, textAlign: "justify" }}>
                     Tile for Mahjong can be picked from anywhere, for any set (even a Pair); if 2 players need the same tile to declare Mahjong, the player closest to the discarder gets preference (in order of E-S-W-N).
                   </span>
                 </div>
 
                 <div>
-                  <span style={{ fontFamily: HERO, fontWeight: 700, color: PQ.green }}>Pung — </span>
-                  <span style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft }}>
+                  <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 13.5, color: PQ.green }}>Pung: </span>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft, textAlign: "justify" }}>
                     Can pick up last discarded tile from anywhere for completing a Pung (ie if you already have a pair in your hand); the Pung (now exposed) will then be displayed on rack.
                   </span>
                 </div>
 
                 <div>
-                  <span style={{ fontFamily: HERO, fontWeight: 700, color: PQ.green }}>Kong</span>
-                  <ol style={{ margin: "6px 0 0", paddingLeft: 18, fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft }}>
-                    <li><b>Picking from discard:</b> Can pick up last discarded tile from anywhere for completing a Kong (ie if you already have a Pung in your hand); the Kong (now exposed) will then be displayed on rack.</li>
-                    <li><b>Concealed Pung:</b> If you already have a concealed Pung in your hand and you pick up the 4th tile from the wall, you can upgrade the Pung to a Kong; the Kong (still concealed) will then be displayed face down on the rack.</li>
-                    <li>
+                  <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 13.5, color: PQ.green, marginBottom: 4 }}>Kong:</div>
+                  <ul style={{ margin: "4px 0 0", paddingLeft: 20, fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft, textAlign: "justify" }}>
+                    <li style={{ marginBottom: 4 }}><b>Picking from discard:</b> Can pick up last discarded tile from anywhere for completing a Kong (ie if you already have a Pung in your hand); the Kong (now exposed) will then be displayed on rack.</li>
+                    <li style={{ marginBottom: 4 }}><b>Concealed Pung:</b> If you already have a concealed Pung in your hand and you pick up the 4th tile from the wall, you can upgrade the Pung to a Kong; the Kong (still concealed) will then be displayed face down on the rack.</li>
+                    <li style={{ marginBottom: 4 }}>
                       <b>Exposed Pung:</b>
-                      <ul style={{ margin: "4px 0 0", paddingLeft: 16 }}>
-                        <li>a) If you have an Exposed Pung on the rack and you self pick the 4th tile, you can upgrade the Pung to a Kong; the Kong (exposed) will then be displayed on the rack.</li>
-                        <li>b) If you have an Exposed Pung on the rack and someone throws the 4th tile, you cannot pick up that tile to make it a Kong.</li>
+                      <ul style={{ margin: "4px 0 0", paddingLeft: 18, listStyleType: "circle" }}>
+                        <li style={{ marginBottom: 4 }}>If you have an Exposed Pung on the rack and you self pick the 4th tile, you can upgrade the Pung to a Kong; the Kong (exposed) will then be displayed on the rack.</li>
+                        <li>If you have an Exposed Pung on the rack and someone throws the 4th tile, you cannot pick up that tile to make it a Kong.</li>
                       </ul>
                     </li>
-                  </ol>
+                  </ul>
                 </div>
               </div>
             </div>
 
             <div>
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 8 }}>General &amp; Special Rules</div>
-              <ul style={{ margin: 0, paddingLeft: 20, fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft }}>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 8 }}>General Rules</div>
+              <ul style={{ margin: 0, paddingLeft: 20, fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft, textAlign: "justify" }}>
                 <li style={{ marginBottom: 6 }}><b>East Wind Multiplier:</b> East always gives and gets double (points) to/from all players.</li>
                 <li style={{ marginBottom: 6 }}>
                   <b>False Mahjong:</b> If it’s a wrong declaration of Mahjong, the game can still continue with the other 3 players, with the defaulter being declared a ‘dead hand’; the defaulter is liable to pay a penalty of 1000/2000E points to the other players and plays till the end of the game.
-                  <div style={{ fontSize: 12, color: PQ.rust, fontStyle: "italic", marginTop: 2 }}>
+                  <div style={{ fontSize: 12, color: PQ.rust, fontStyle: "italic", marginTop: 2, textAlign: "justify" }}>
                     Note: for a dead hand, the player will not be allowed to claim any sets/Mahjong. They have to settle points and will not get a count for their hand.
                   </div>
                 </li>
                 <li style={{ marginBottom: 6 }}>
                   <b>Draw:</b> If there are no more tiles left on the wall, the game has gone into a draw; each player places 500 points in the bank (to be claimed by the winner of the next game).
-                  <div style={{ fontSize: 12, color: PQ.rust, fontStyle: "italic", marginTop: 2 }}>
+                  <div style={{ fontSize: 12, color: PQ.rust, fontStyle: "italic", marginTop: 2, textAlign: "justify" }}>
                     Note: East player retains East position.
                   </div>
                 </li>
@@ -3481,19 +3490,19 @@ function RulesScreen() {
 
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 8 }}>Penalty</div>
-              <ul style={{ margin: 0, paddingLeft: 20, fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft }}>
-                <li style={{ marginBottom: 6 }}>When a player has atleast 3 Pungs/Kongs on their rack, they are “on penalty”. Anyone giving them a tile which helps them declare Mahjong, has to pay for the entire table (unless they themselves were ‘calling’: need only 1 more tile to Mahjong).</li>
-                <li style={{ marginBottom: 6 }}>If 3 players are “on penalty”, the 4th player is not liable to pay penalty even if they give a tile for Mahjong, even if they are not ‘calling’.</li>
-                <li style={{ marginBottom: 6 }}>If all 4 players are “on penalty”, penalty applies to all, unless ‘calling’, i.e. whoever gives the tile for Mahjong, they’ll have to pay for the table.</li>
-                <li style={{ marginBottom: 6 }}>If a player pays penalty to the declaring player, no other player gets a count.</li>
+              <ul style={{ margin: 0, paddingLeft: 20, fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft, textAlign: "justify" }}>
+                <li style={{ marginBottom: 6 }}>When a player has atleast 3 Pungs/Kongs on their rack, they are “on penalty”. Anyone giving them a tile which helps them declare Mahjong, has to <b>pay for the entire table (unless they themselves were ‘calling’</b>: need only 1 more tile to Mahjong).</li>
+                <li style={{ marginBottom: 6 }}>If 3 players are “on penalty”, the <b>4th player is not liable</b> to pay penalty even if they give a tile for Mahjong, even if they are not ‘calling’.</li>
+                <li style={{ marginBottom: 6 }}>If all 4 players are “on penalty”, <b>penalty applies to all, unless ‘calling’</b>, i.e. whoever gives the tile for Mahjong, they’ll have to pay for the table.</li>
+                <li style={{ marginBottom: 6 }}>If a player pays penalty to the declaring player, <b>no other player gets a count</b>.</li>
               </ul>
             </div>
           </div>
         ) : (
-          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 24, fontFamily: HERO }}>
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 6 }}>Your Rank Journey</div>
-              <div style={{ fontSize: 13, color: PQ.inkSoft, marginBottom: 12 }}>Everything is fair, transparent, and in your hands.</div>
+              <div style={{ fontSize: 13, color: PQ.inkSoft, marginBottom: 12, textAlign: "justify" }}>Everything is fair, transparent, and in your hands.</div>
 
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 8 }}>The Ladder</div>
 
@@ -3544,7 +3553,7 @@ function RulesScreen() {
 
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 6 }}>How You Earn Points</div>
-              <div style={{ fontSize: 13, color: PQ.inkSoft, marginBottom: 14 }}>Every game counts. Every hand tells a story.</div>
+              <div style={{ fontSize: 13, color: PQ.inkSoft, marginBottom: 14, textAlign: "justify" }}>Every game counts. Every hand tells a story.</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
                 <ClimbItem title="Finish Higher, Earn More" icon="arrowUp">
                   1st place earns the most points. 4th place loses a few. Simple. Finish well, climb fast.
