@@ -94,7 +94,7 @@ function HeroPanel({ username = "avachen88", rp = 100, rpMax = 200, onOpen, onNo
           <img src={activeAvatar} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         </button>
         <div style={{ flex: 1, minWidth: 0, paddingRight: 34 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(249,242,228,0.6)" }}>Hey</div>
+          <div style={{ fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(249,242,228,0.6)" }}>Hey</div>
           <div style={{ marginTop: 4, fontFamily: HERO, fontWeight: 700, fontSize: 23, letterSpacing: "0.02em", textTransform: "uppercase", lineHeight: 1.04, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{username}</div>
         </div>
       </div>
@@ -120,9 +120,9 @@ function ResumeCard({ onResume, onLeave }) {
     }}>
       <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 9 }}>
         <span className="pq-pulse" style={{ width: 8, height: 8, borderRadius: "50%", background: PQ.rust }} />
-        <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust }}>Your turn · Ongoing</span>
+        <span style={{ fontFamily: HERO, fontSize: 10.5, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust }}>Your turn · Ongoing</span>
       </div>
-      <div style={{ fontSize: 13, lineHeight: 1.45, color: PQ.inkSoft, fontWeight: 400 }}>Life happens. A bot stepped in. Pick up where you left off.</div>
+      <div style={{ fontFamily: HERO, fontSize: 13, lineHeight: 1.45, color: PQ.inkSoft, fontWeight: 400 }}>Life happens. A bot stepped in. Pick up where you left off.</div>
       <div style={{ marginTop: 10, display: "flex", alignItems: "center", gap: 7, fontFamily: HERO, fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: PQ.green }}>
         <HIcon name="clock" size={14} stroke={PQ.green} sw={1.8} /><span>Game 3 of 5</span>
       </div>
@@ -157,8 +157,8 @@ function HubCard({ icon, title, sub, subParts, active, onTap, delay = 0 }) {
       <HIcon name={icon} size={26} stroke={accent} sw={1.8} style={{ flexShrink: 0 }} />
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 15.5, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink, lineHeight: 1.12 }}>{title}</div>
-        <div style={{ marginTop: 7, fontSize: 12, lineHeight: 1.45, color: PQ.inkSoft, fontWeight: 400, overflowWrap: "break-word", textWrap: "pretty" }}>
-          {subParts ? subParts.map((p, i) => <span key={i} style={p.rust ? { color: PQ.rust, fontWeight: 600 } : null}>{p.t}</span>) : sub}
+        <div style={{ fontFamily: HERO, marginTop: 7, fontSize: 12, lineHeight: 1.45, color: PQ.inkSoft, fontWeight: 400, overflowWrap: "break-word", textWrap: "pretty" }}>
+          {subParts ? subParts.map((p, i) => <span key={i} style={p.rust ? { fontFamily: HERO, color: PQ.rust, fontWeight: 600 } : { fontFamily: HERO }}>{p.t}</span>) : sub}
         </div>
       </div>
       <HIcon name="arrowR" size={20} stroke={accent} sw={2} style={{ flexShrink: 0 }} />
@@ -190,7 +190,7 @@ function BottomNav({ active, onChange }) {
           }}>
             <span style={{ position: "absolute", top: -10, width: 18, height: 3, borderRadius: 2, background: on ? PQ.rust : "transparent" }} />
             <HIcon name={t.icon} size={23} stroke={col} sw={on ? 1.9 : 1.6} />
-            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: col, textAlign: "center", lineHeight: 1.15, whiteSpace: "pre-line" }}>{t.label.replace(" & ", " &\n")}</span>
+            <span style={{ fontFamily: HERO, fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: col, textAlign: "center", lineHeight: 1.15, whiteSpace: "pre-line" }}>{t.label.replace(" & ", " &\n")}</span>
           </button>
         );
       })}

@@ -362,7 +362,7 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
         {seg === "season" && (
           <div>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: PQ.inkSoft }}>My Peeps</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: PQ.inkSoft, fontFamily: HERO }}>My Peeps</div>
               <button onClick={onFind} className="pq-press" style={{ background: "none", border: "none", cursor: "pointer", fontFamily: HERO, fontWeight: 700, fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", color: PQ.rust }}>Show all</button>
             </div>
             <div className="pq-scroll" style={{ display: "flex", gap: 16, overflowX: "auto", paddingBottom: 4 }}>
@@ -436,13 +436,13 @@ function SearchScreen({ onBack, onOther }) {
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: PQ.inkFaint, padding: "4px 2px" }}>{res.length} player{res.length > 1 ? "s" : ""}</div>
           {res.map(([id, name, tier, ini]) => (
             <div key={id} style={{ display: "flex", alignItems: "center", gap: 12, padding: 12, border: "1px solid rgba(20,51,34,0.08)", borderRadius: 16, background: PQ.off }}>
-              <button onClick={onOther} className="pq-press" style={{ flex: 1, minWidth: 0, display: "flex", alignItems: "center", gap: 12, background: "none", border: "none", cursor: "pointer", textAlign: "left", padding: 0 }}>
+              <div style={{ flex: 1, minWidth: 0, display: "flex", alignItems: "center", gap: 12, textAlign: "left", padding: 0 }}>
                 <Avi ini={ini} size={44} />
                 <span style={{ minWidth: 0 }}>
                   <span style={{ display: "block", fontFamily: HERO, fontWeight: 700, fontSize: 15, color: PQ.ink }}>{name}</span>
                   <span style={{ display: "block", marginTop: 2, fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: PQ.inkFaint }}>{tier}</span>
                 </span>
-              </button>
+              </div>
               <button onClick={() => { pock("select"); setFav((f) => ({ ...f, [id]: !f[id] })); }} className="pq-press" style={{ width: 40, height: 40, border: "none", background: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}><Star on={!!fav[id]} /></button>
             </div>
           ))}
@@ -614,7 +614,7 @@ function SettingsScreen() {
         <div>
           <SectionLabel>Support</SectionLabel>
           <Group>
-            <Row iconImg="assets/Report a bug icon.png" label="Report a Bug" onClick={() => setPanel("bug")} />
+            <Row iconImg="assets/Report a bug icon.png?v=2" label="Report a Bug" onClick={() => setPanel("bug")} />
             <Row icon="spark" label="Feature Request" onClick={() => setPanel("feature")} />
             <Row icon="help" label="Contact Support" onClick={() => setPanel("contact")} />
             <Row icon="doc" label="FAQs" last onClick={() => window.open("https://pocketdragon.in/#faqs", "_blank")} />
