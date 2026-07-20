@@ -1,5 +1,5 @@
 function Scoreboard({
-  winnerName = "Ava", wind = "East", gameNumber = 3, totalGames = 3,
+  winnerName = "Ava", wind = "West", gameNumber = 1, totalGames = 3,
   finalScore = 4000, rp = 50, frame = true, controls = true,
 }) {
   useFonts();
@@ -22,7 +22,12 @@ function Scoreboard({
     { tiles: [{ suit: "dot", value: 4 }, { suit: "dot", value: 4 }, { suit: "dot", value: 4 }] },
     { tiles: [{ suit: "wind", value: "W" }, { suit: "wind", value: "W" }] },
   ];
-  const flowers = Array(4).fill({ suit: "dragon", value: "G" });
+  const flowers = [
+    { suit: "flower", value: "blue-f1" },
+    { suit: "flower", value: "blue-f2" },
+    { suit: "flower", value: "blue-f3" },
+    { suit: "flower", value: "blue-f4" }
+  ];
   const pointsItems = [
     { name: "Winning hand", val: "10" }, { name: "Concealed Kong", val: "8" },
     { name: "Exposed Kong", val: "4" }, { name: "Concealed Pung", val: "2" }, { name: "Bonus flowers ×4", val: "4" },
@@ -33,7 +38,7 @@ function Scoreboard({
   const opponents = [
     {
       name: "Lena", wind: "South", placeLabel: "2nd", avatar: boyAv, score: 1200, rp: 10, pts: "14", dbl: "1", foul: false,
-      flowers: [{ suit: "dragon", value: "G" }, { suit: "dragon", value: "R" }],
+      flowers: [{ suit: "flower", value: "blue-f1" }, { suit: "flower", value: "red-f1" }],
       melds: [
         { tiles: [{ suit: "dot", value: 5 }, { down: true }, { suit: "dot", value: 5 }] },
         { tiles: [{ suit: "bamboo", value: 6 }, { suit: "bamboo", value: 7 }, { suit: "bamboo", value: 8 }] },
@@ -42,7 +47,7 @@ function Scoreboard({
     },
     {
       name: "Marco", wind: "West", placeLabel: "3rd", avatar: llamaAv, score: 1400, rp: 5, pts: "8", dbl: "0", foul: false,
-      flowers: [{ suit: "dragon", value: "G" }],
+      flowers: [{ suit: "flower", value: "blue-f1" }],
       melds: [
         { tiles: [{ suit: "char", value: 3 }, { suit: "char", value: 3 }, { suit: "char", value: 3 }] },
         { tiles: [{ suit: "dot", value: 1 }, { suit: "dot", value: 2 }, { suit: "dot", value: 3 }] },
@@ -52,7 +57,7 @@ function Scoreboard({
     {
       name: "Priya", wind: "North", placeLabel: "4th", avatar: bunnyAv, score: 1400, rp: 0, pts: "6", dbl: "1", foul: true,
       reason: "Declared Mahjong on an incomplete hand.",
-      flowers: [{ suit: "dragon", value: "R" }],
+      flowers: [{ suit: "flower", value: "red-f1" }],
       melds: [
         { tiles: [{ suit: "bamboo", value: 2 }, { suit: "bamboo", value: 3 }, { suit: "bamboo", value: 4 }] },
         { tiles: [{ suit: "dot", value: 7 }, { suit: "dot", value: 8 }, { suit: "dot", value: 9 }] },
@@ -120,14 +125,14 @@ function Scoreboard({
                   <div style={{ ...L, fontSize: 9 }}>{op.wind} · {op.placeLabel}</div>
                 </div>
                 <div style={{ display: "flex", gap: 2.5, flexShrink: 0 }}>
-                  {op.flowers.map((f, j) => <Tile key={j} suit={f.suit} value={f.value} w={28} />)}
+                  {op.flowers.map((f, j) => <Tile key={j} suit={f.suit} value={f.value} size="tiny" />)}
                 </div>
               </div>
               <div className="pq-scroll" style={{ marginTop: 16, overflowX: "auto", paddingBottom: 4 }}>
                 <div style={{ display: "flex", gap: 12, width: "max-content" }}>
                   {op.melds.map((m, j) => (
                     <div key={j} style={{ display: "flex", gap: 1.5 }}>
-                      {m.tiles.map((t, k) => <Tile key={k} suit={t.suit} value={t.value} w={36} faceDown={t.down} />)}
+                      {m.tiles.map((t, k) => <Tile key={k} suit={t.suit} value={t.value} size="small" faceDown={t.down} />)}
                     </div>
                   ))}
                 </div>
@@ -233,29 +238,30 @@ function Scoreboard({
     <div className="pq-scroll" style={{ position: "absolute", inset: 0, overflowY: "auto", background: "#F9F2E4" }}>
       <div style={{ display: "flex", flexDirection: "column", padding: "16px 26px 0 66px" }}>
         <div style={{ textAlign: "center" }}>
+          <div style={{ ...L, fontSize: 10, letterSpacing: "0.22em", color: EAST_ROUND_COLOR, marginBottom: 4 }}>SCOREBOARD</div>
           <div style={{ fontFamily: F, fontWeight: 700, fontSize: 30, lineHeight: 1, letterSpacing: "0.06em", color: GREEN }}>MAHJONG!</div>
-          <div style={{ ...L, fontSize: 10, letterSpacing: "0.14em", color: "#6E6A5E", marginTop: 4 }}>{wind} Round | Game {gameNumber} of {totalGames}</div>
+          <div style={{ ...L, fontSize: 10, letterSpacing: "0.14em", color: SUBHEADER_WIND_COLOR, marginTop: 4 }}>{wind} Round | Game {gameNumber} of {totalGames}</div>
         </div>
         <div style={{ marginTop: 14, display: "flex", alignItems: "center", gap: 14 }}>
           <span style={{ width: 48, height: 48, flexShrink: 0, borderRadius: "50%", overflow: "hidden", background: "#C2A18C" }}>
             <img src={girlAv} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           </span>
-          <div style={{ minWidth: 0, marginRight: 16 }}>
-            <div style={{ fontFamily: F, fontWeight: 700, fontSize: 18, color: "#6E6A5E", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{winnerName}</div>
+          <div style={{ minWidth: 0 }}>
+            <div style={{ fontFamily: F, fontWeight: 700, fontSize: 18, color: WINNER_NAME_COLOR, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{winnerName}</div>
             <div style={{ ...L, letterSpacing: "0.16em", marginTop: 3 }}>{wind}</div>
           </div>
+        </div>
+        <div style={{ marginTop: 14, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <span style={{ ...L, fontSize: 11, letterSpacing: "0.18em", color: RUST }}>Winner's Hand</span>
           <div style={{ display: "flex", gap: 3, flexShrink: 0 }}>
-            {flowers.map((f, i) => <Tile key={i} suit={f.suit} value={f.value} w={28} />)}
+            {flowers.map((f, i) => <Tile key={i} suit={f.suit} value={f.value} size="tiny" />)}
           </div>
         </div>
-        <div style={{ marginTop: 14, display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
-          <span style={{ ...L, fontSize: 11, letterSpacing: "0.18em", color: RUST }}>Winner's Hand</span>
-        </div>
-        <div className="pq-scroll" style={{ marginTop: 8, overflowX: "auto", paddingBottom: 4 }}>
+        <div className="pq-scroll" style={{ marginTop: 12, overflowX: "auto", paddingBottom: 4 }}>
           <div style={{ display: "flex", gap: 16, width: "max-content", padding: "2px 2px 0" }}>
             {melds.map((m, i) => (
               <div key={i} style={{ display: "flex", gap: 2, flexShrink: 0 }}>
-                {m.tiles.map((t, j) => <Tile key={j} suit={t.suit} value={t.value} w={36} faceDown={t.down} />)}
+                {m.tiles.map((t, j) => <Tile key={j} suit={t.suit} value={t.value} size="small" faceDown={t.down} />)}
               </div>
             ))}
           </div>
@@ -277,11 +283,11 @@ function Scoreboard({
               </div>
             </div>
           ))}
-          <div style={{ width: 180, flexShrink: 0, display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 16, paddingLeft: 4 }}>
+          <div style={{ width: 180, flexShrink: 0, display: "flex", flexDirection: "row", alignItems: "flex-start", justifyContent: "space-between", gap: 16, padding: "13px 4px 13px 16px" }}>
             {[["Score", sign(finalScore)], ["Reward", sign(rp) + " RP"]].map(([t, v], i) => (
-              <div key={i} style={{ flex: 1 }}>
-                <div style={{ ...L, fontSize: 9.5, letterSpacing: "0.16em" }}>{t}</div>
-                <div style={{ fontFamily: F, fontWeight: 700, fontSize: 20, lineHeight: 1, color: GREEN, fontVariantNumeric: "tabular-nums", marginTop: 4 }}>{v}</div>
+              <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
+                <span style={L}>{t}</span>
+                <span style={{ fontFamily: F, fontWeight: 700, fontSize: 20, color: GREEN, fontVariantNumeric: "tabular-nums" }}>{v}</span>
               </div>
             ))}
           </div>
@@ -307,14 +313,14 @@ function Scoreboard({
                   <div style={{ ...L, fontSize: 9 }}>{op.wind} · {op.placeLabel}</div>
                 </div>
                 <div style={{ display: "flex", gap: 2.5, flexShrink: 0 }}>
-                  {op.flowers.map((f, j) => <Tile key={j} suit={f.suit} value={f.value} w={28} />)}
+                  {op.flowers.map((f, j) => <Tile key={j} suit={f.suit} value={f.value} size="tiny" />)}
                 </div>
               </div>
               <div className="pq-scroll" style={{ marginTop: 16, overflowX: "auto", paddingBottom: 4 }}>
                 <div style={{ display: "flex", gap: 12, width: "max-content" }}>
                   {op.melds.map((m, j) => (
                     <div key={j} style={{ display: "flex", gap: 1.5 }}>
-                      {m.tiles.map((t, k) => <Tile key={k} suit={t.suit} value={t.value} w={36} faceDown={t.down} />)}
+                      {m.tiles.map((t, k) => <Tile key={k} suit={t.suit} value={t.value} size="small" faceDown={t.down} />)}
                     </div>
                   ))}
                 </div>
@@ -420,7 +426,7 @@ function Scoreboard({
         </button>
         <div>
           <div style={{ display: "flex", alignItems: "center" }}>
-            <span style={{ fontFamily: F, fontWeight: 700, fontSize: 24, letterSpacing: "0.02em", textTransform: "uppercase", color: "#37342B" }}>Extend the Round</span>
+            <span style={{ fontFamily: F, fontWeight: 700, fontSize: 24, letterSpacing: "0.02em", textTransform: "uppercase", color: "#37342B" }}>EXTEND THE ROUND</span>
           </div>
           <div style={{ marginTop: 2, fontFamily: F, fontSize: 12.5, color: "#9A9385" }}>Everyone still seated will be invited to continue</div>
         </div>
