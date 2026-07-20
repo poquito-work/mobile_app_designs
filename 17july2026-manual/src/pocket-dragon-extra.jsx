@@ -1205,17 +1205,17 @@ function RulesScreen() {
         {seg === "rules" ? (
           <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
             <RuleBlock label="Objective">Build a complete hand of 14 tiles by combining them into certain sets as per the variations of the game.</RuleBlock>
-            
+
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 8 }}>Gameplay &amp; Tiles</div>
               <div style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft, marginBottom: 12 }}>
                 The game is played with 144 tiles which comprise of:
               </div>
-              
+
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                 <div>
                   <div style={{ fontSize: 12, fontWeight: 700, color: PQ.ink, marginBottom: 6 }}>Three Suits (108 tiles total): Rings, Characters, and Bamboos (numbers 1-9, 4 of each)</div>
-                  
+
                   <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                     <div>
                       <div style={{ fontSize: 11, color: PQ.inkSoft, marginBottom: 2 }}>Rings:</div>
@@ -1223,14 +1223,14 @@ function RulesScreen() {
                         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(v => <RulesTile key={v} suit="rings" value={v} />)}
                       </div>
                     </div>
-                    
+
                     <div>
                       <div style={{ fontSize: 11, color: PQ.inkSoft, marginBottom: 2 }}>Characters 'Craks':</div>
                       <div style={{ display: "flex", gap: 3, overflowX: "auto", paddingBottom: 4 }} className="pq-scroll">
                         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(v => <RulesTile key={v} suit="craks" value={v} />)}
                       </div>
                     </div>
-                    
+
                     <div>
                       <div style={{ fontSize: 11, color: PQ.inkSoft, marginBottom: 2 }}>Bamboos:</div>
                       <div style={{ display: "flex", gap: 3, overflowX: "auto", paddingBottom: 4 }} className="pq-scroll">
@@ -1270,7 +1270,7 @@ function RulesScreen() {
 
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 12 }}>Sets</div>
-              
+
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                 {/* Pung Block */}
                 <SetBlock title="Pung" desc="3 of a kind">
@@ -1340,7 +1340,7 @@ function RulesScreen() {
               <div style={{ fontSize: 13.5, color: PQ.inkSoft, marginBottom: 14, lineHeight: 1.5 }}>
                 To get a count, your completed hand has to be valid. The validity of the hand depends on fulfilling at least three conditions or ‘doubles’.
               </div>
-              
+
               <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
                 <HandDisplay
                   title="Option 1: Clean Hand (3 Doubles)"
@@ -1409,7 +1409,7 @@ function RulesScreen() {
 
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 8 }}>Doubles</div>
-              
+
               <DoubleGroup
                 title="1 Double"
                 items={[
@@ -1458,7 +1458,7 @@ function RulesScreen() {
               />
 
               <DoubleGroup title="4 Doubles" items={["4 concealed Kongs"]} />
-              
+
               <DoubleGroup
                 title="5 Doubles"
                 items={[
@@ -1498,14 +1498,14 @@ function RulesScreen() {
                     Tile for Mahjong can be picked from anywhere, for any set (even a Pair); if 2 players need the same tile to declare Mahjong, the player closest to the discarder gets preference (in order of E-S-W-N).
                   </span>
                 </div>
-                
+
                 <div>
                   <span style={{ fontFamily: HERO, fontWeight: 700, color: PQ.green }}>Pung — </span>
                   <span style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft }}>
                     Can pick up last discarded tile from anywhere for completing a Pung (ie if you already have a pair in your hand); the Pung (now exposed) will then be displayed on rack.
                   </span>
                 </div>
-                
+
                 <div>
                   <span style={{ fontFamily: HERO, fontWeight: 700, color: PQ.green }}>Kong</span>
                   <ol style={{ margin: "6px 0 0", paddingLeft: 18, fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft }}>
@@ -1557,9 +1557,9 @@ function RulesScreen() {
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 6 }}>Your Rank Journey</div>
               <div style={{ fontSize: 13, color: PQ.inkSoft, marginBottom: 12 }}>Everything is fair, transparent, and in your hands.</div>
-              
+
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 8 }}>The Ladder</div>
-              
+
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 6, margin: "10px 0 14px" }}>
                 {[
                   { name: "Firefly", folder: "Firefly" },
@@ -1839,7 +1839,7 @@ function WaitingLobbyScreen({ isHost = true, lobbyType = "Private Lobby", tableN
       </div>
 
       {/* the table */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "8px 22px 0" }}>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", padding: "24px 22px 0" }}>
         <div style={{ position: "relative", width: 320, height: 340 }}>
           {/* board table */}
           <img src={LOBBY_BOARD_SRC} alt="Table Board" draggable={false} style={{
@@ -1864,9 +1864,10 @@ function WaitingLobbyScreen({ isHost = true, lobbyType = "Private Lobby", tableN
           !mySeated ? (
             <div style={{ textAlign: "center" }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase", color: PQ.rust }}>
+                Tap
                 <span style={{ width: 20, height: 20, borderRadius: "50%", border: `1.5px dashed ${PQ.rust}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   <Icon name="plus" size={10} stroke={PQ.rust} sw={2} />
-                </span>Tap to choose your seat
+                </span> to choose your seat
               </div>
             </div>
           ) : (
@@ -1875,9 +1876,10 @@ function WaitingLobbyScreen({ isHost = true, lobbyType = "Private Lobby", tableN
         ) : !mySeated ? (
           <div style={{ textAlign: "center" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: HERO, fontWeight: 700, fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase", color: PQ.rust }}>
+              Tap
               <span style={{ width: 20, height: 20, borderRadius: "50%", border: `1.5px dashed ${PQ.rust}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <Icon name="plus" size={10} stroke={PQ.rust} sw={2} />
-              </span>Tap to choose your seat
+              </span> to choose your seat
             </div>
           </div>
         ) : (
