@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Noto+Serif+SC:wght@700&display=swap" />
+<style>
+@font-face { font-family:"Hero"; src:url("assets/fonts/hero-300.ttf") format("truetype"); font-weight:300; font-style:normal; font-display:swap; }
+@font-face { font-family:"Hero"; src:url("assets/fonts/hero-400.ttf") format("truetype"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:"Hero"; src:url("assets/fonts/hero-700.ttf") format("truetype"); font-weight:700; font-style:normal; font-display:swap; }
+</style>
+<template id="__bundler_thumbnail" data-bg-color="#143322">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#143322"></rect>
+    <text x="600" y="380" font-family="Georgia, serif" font-size="88" font-weight="700" fill="#4FA875" text-anchor="middle" letter-spacing="8">MAHJONG!</text>
+    <text x="600" y="470" font-family="Georgia, serif" font-size="38" fill="#F9F2E4" text-anchor="middle" letter-spacing="4">Gameplay</text>
+  </svg>
+</template>
+<style>
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; min-height:100%; font-family:'Hero','Helvetica Neue',Helvetica,Arial,sans-serif;
+    background:radial-gradient(120% 90% at 50% 0%, #EFE8DA 0%, #E4DCCB 60%, #DAD1BE 100%); }
+  ::selection{ background:rgba(182,90,47,0.25); }
+  .pq-press{ transition:transform .12s ease, filter .12s ease; -webkit-tap-highlight-color:transparent; }
+  .pq-press:active{ transform:scale(.97); filter:brightness(.98); }
+  .pq-scroll{ scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .pq-scroll::-webkit-scrollbar{ width:0; height:0; }
+  @keyframes pqRise{ from{ opacity:0; transform:translateY(16px); } to{ opacity:1; transform:translateY(0); } }
+  .pq-rise{ animation:pqRise .3s cubic-bezier(.2,.8,.25,1) both; }
+</style>
+</helmet>
+<x-import component-from-global-scope="GameplayApp" from="./gameplay-ref.jsx?v=1" hint-size="100%,100vh"></x-import>
+</x-dc>
+</body>
+</html>

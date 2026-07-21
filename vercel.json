@@ -4,6 +4,11 @@
       "source": "/17july2026-manual",
       "destination": "/17july2026-manual/",
       "permanent": false
+    },
+    {
+      "source": "/17july2026-gameplay",
+      "destination": "/17july2026-gameplay/",
+      "permanent": false
     }
   ],
   "rewrites": [
