@@ -314,50 +314,39 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
 
         <Seg options={[{ label: "Current Season", value: "season" }, { label: "Career", value: "career" }]} value={seg} onChange={setSeg} />
 
-        {seg === "season" ? (
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-            {statsSeason.map(([v, l]) => (
-              <div key={l} style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 16, padding: "16px 16px 14px", background: PQ.off }}>
-                <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 26, color: PQ.green, lineHeight: 1 }}>{v}</div>
-                <div style={{ marginTop: 8, fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.inkFaint }}>{l}</div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-            {/* Left Column: Stack of three narrow boxes */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {/* Box 1: Games Played */}
-              <div style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 14, padding: "10px 12px", background: PQ.off }}>
-                <div style={{ fontFamily: HERO, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.inkSoft }}>GAMES PLAYED</div>
-                <div style={{ marginTop: 4, fontFamily: HERO, fontWeight: 700, fontSize: 24, color: "#1FA855", lineHeight: 1 }}>{displayStats.games}</div>
-              </div>
-              {/* Box 2: Win Rate */}
-              <div style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 14, padding: "10px 12px", background: PQ.off }}>
-                <div style={{ fontFamily: HERO, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.inkSoft }}>WIN RATE</div>
-                <div style={{ marginTop: 4, fontFamily: HERO, fontWeight: 700, fontSize: 20, color: PQ.ink, lineHeight: 1 }}>{displayStats.winRate}</div>
-              </div>
-              {/* Box 3: Highest Score */}
-              <div style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 14, padding: "10px 12px", background: PQ.off }}>
-                <div style={{ fontFamily: HERO, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.inkSoft }}>HIGHEST SCORE</div>
-                <div style={{ marginTop: 4, fontFamily: HERO, fontWeight: 700, fontSize: 20, color: PQ.ink, lineHeight: 1 }}>{displayStats.highest}</div>
-              </div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+          {/* Left Column: Stack of three narrow boxes */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {/* Box 1: Games Played */}
+            <div style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 14, padding: "10px 12px", background: PQ.off }}>
+              <div style={{ fontFamily: HERO, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.inkSoft }}>GAMES PLAYED</div>
+              <div style={{ marginTop: 4, fontFamily: HERO, fontWeight: 700, fontSize: 20, color: PQ.ink, lineHeight: 1 }}>{displayStats.games}</div>
             </div>
+            {/* Box 2: Win Rate */}
+            <div style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 14, padding: "10px 12px", background: PQ.off }}>
+              <div style={{ fontFamily: HERO, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.inkSoft }}>WIN RATE</div>
+              <div style={{ marginTop: 4, fontFamily: HERO, fontWeight: 700, fontSize: 20, color: PQ.ink, lineHeight: 1 }}>{displayStats.winRate}</div>
+            </div>
+            {/* Box 3: Highest Score */}
+            <div style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 14, padding: "10px 12px", background: PQ.off }}>
+              <div style={{ fontFamily: HERO, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.inkSoft }}>HIGHEST SCORE</div>
+              <div style={{ marginTop: 4, fontFamily: HERO, fontWeight: 700, fontSize: 20, color: PQ.ink, lineHeight: 1 }}>{displayStats.highest}</div>
+            </div>
+          </div>
 
-            {/* Right Column: Position Stats */}
-            <div style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 14, padding: "12px 14px", background: PQ.off, display: "flex", flexDirection: "column" }}>
-              <div style={{ fontFamily: HERO, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 8 }}>POSITION STATS</div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 8, flex: 1, justifyContent: "space-around" }}>
-                {displayStats.positions.map(([pos, pct]) => (
-                  <div key={pos} style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                    <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 12.5, textTransform: "uppercase", color: PQ.ink }}>{pos}</span>
-                    <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 15.5, color: PQ.rust }}>{pct}</span>
-                  </div>
-                ))}
-              </div>
+          {/* Right Column: Position Stats */}
+          <div style={{ border: "1px solid rgba(20,51,34,0.08)", borderRadius: 14, padding: "12px 14px", background: PQ.off, display: "flex", flexDirection: "column" }}>
+            <div style={{ fontFamily: HERO, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: PQ.inkSoft, marginBottom: 8 }}>POSITION STATS</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, flex: 1, justifyContent: "space-around" }}>
+              {displayStats.positions.map(([pos, pct]) => (
+                <div key={pos} style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                  <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 12.5, textTransform: "uppercase", color: PQ.ink }}>{pos}</span>
+                  <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 15.5, color: PQ.rust }}>{pct}</span>
+                </div>
+              ))}
             </div>
           </div>
-        )}
+        </div>
 
         {seg === "season" && (
           <div>
@@ -1656,17 +1645,22 @@ function SubscriptionSheet({ onClose }) {
             color: PQ.ink,
             fontWeight: 500,
           }}>
-            To subscribe, modify or cancel subscription, please go to 'My Account' and select 'Subscription' on our website{" "}
-            <a href="https://pocketdragon.in" target="_blank" rel="noopener noreferrer" style={{
-              color: PQ.rust,
-              fontWeight: 700,
-              textDecoration: "none",
-              borderBottom: `1.5px solid ${PQ.rust}`,
-              paddingBottom: 1,
-              transition: "opacity 0.2s ease"
-            }}>
-              www.pocketdragon.in
-            </a>
+            <div>
+              To subscribe, modify or cancel subscription, please visit our website{" "}
+              <a href="https://pocketdragon.in" target="_blank" rel="noopener noreferrer" style={{
+                color: PQ.rust,
+                fontWeight: 700,
+                textDecoration: "none",
+                borderBottom: `1.5px solid ${PQ.rust}`,
+                paddingBottom: 1,
+                transition: "opacity 0.2s ease"
+              }}>
+                www.pocketdragon.in
+              </a>
+            </div>
+            <div style={{ marginTop: 12, fontWeight: 600, color: PQ.inkSoft }}>
+              Login &gt; &lsquo;My Account&apos; &gt; &apos;Subscription&apos;
+            </div>
           </div>
 
           <Btn variant="primary" onClick={() => { pock("select"); window.open("https://pocketdragon.in", "_blank"); }}>
