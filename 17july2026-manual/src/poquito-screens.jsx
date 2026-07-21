@@ -60,7 +60,7 @@ function WelcomeScreen({ go }) {
       <div style={{ position: "absolute", inset: 0, background: PQ.off }} />
       <Screen bg="transparent" top={66} bottom={34} style={{ justifyContent: "space-between" }}>
         <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", gap: 20 }}>
-          <LogoImg height={84} style={{ alignSelf: "flex-start" }} />
+          <LogoImg height={84} src="assets/pocketdragon-tm.png" style={{ alignSelf: "flex-start" }} />
           <div>
             <div style={{
               fontFamily: HERO, fontWeight: 700, fontSize: 40, lineHeight: 1.04,

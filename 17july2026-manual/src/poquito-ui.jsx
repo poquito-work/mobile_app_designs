@@ -145,8 +145,8 @@ const DRAGON_SRC = (typeof window !== "undefined" && window.__resources && windo
 const FULLLOGO_SRC = (typeof window !== "undefined" && window.__resources && window.__resources.logoFull) || "assets/poquito-logo-full.png";
 const DRAGON_GREEN_SRC = (typeof window !== "undefined" && window.__resources && window.__resources.dragonGreen) || "assets/poquito-dragon-green.png";
 const LOBBY_BOARD_SRC = (typeof window !== "undefined" && window.__resources && window.__resources.lobbyBoard) || "assets/lobby-board.png";
-function LogoImg({ height = 88, style }) {
-  return <img src={LOGO_SRC} alt="Pocket Dragon" draggable={false}
+function LogoImg({ height = 88, style, src }) {
+  return <img src={src || LOGO_SRC} alt="Pocket Dragon" draggable={false}
     style={{ height, width: "auto", flexShrink: 0, objectFit: "contain", display: "block", userSelect: "none", ...style }} />;
 }
 

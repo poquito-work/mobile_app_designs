@@ -502,8 +502,8 @@ const DRAGON_SRC = (typeof window !== "undefined" && window.__resources && windo
 const FULLLOGO_SRC = (typeof window !== "undefined" && window.__resources && window.__resources.logoFull) || "assets/poquito-logo-full.png";
 const DRAGON_GREEN_SRC = (typeof window !== "undefined" && window.__resources && window.__resources.dragonGreen) || "assets/poquito-dragon-green.png";
 const LOBBY_BOARD_SRC = (typeof window !== "undefined" && window.__resources && window.__resources.lobbyBoard) || "assets/lobby-board.png";
-function LogoImg({ height = 88, style }) {
-  return <img src={LOGO_SRC} alt="Pocket Dragon" draggable={false}
+function LogoImg({ height = 88, style, src }) {
+  return <img src={src || LOGO_SRC} alt="Pocket Dragon" draggable={false}
     style={{ height, width: "auto", flexShrink: 0, objectFit: "contain", display: "block", userSelect: "none", ...style }} />;
 }
 
@@ -896,7 +896,7 @@ function WelcomeScreen({ go }) {
       <div style={{ position: "absolute", inset: 0, background: PQ.off }} />
       <Screen bg="transparent" top={66} bottom={34} style={{ justifyContent: "space-between" }}>
         <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", gap: 20 }}>
-          <LogoImg height={84} style={{ alignSelf: "flex-start" }} />
+          <LogoImg height={84} src="assets/pocketdragon-tm.png" style={{ alignSelf: "flex-start" }} />
           <div>
             <div style={{
               fontFamily: HERO, fontWeight: 700, fontSize: 40, lineHeight: 1.04,
@@ -2540,7 +2540,7 @@ function SettingsScreen() {
         <div>
           <SectionLabel>Support</SectionLabel>
           <Group>
-            <Row iconImg="assets/Report a bug icon.png?v=2" label="Report a Bug" onClick={() => setPanel("bug")} />
+            <Row iconImg="assets/Report a bug icon v2.png" label="Report a Bug" onClick={() => setPanel("bug")} />
             <Row icon="spark" label="Feature Request" onClick={() => setPanel("feature")} />
             <Row icon="help" label="Contact Support" onClick={() => setPanel("contact")} />
             <Row icon="doc" label="FAQs" last onClick={() => window.open("https://pocketdragon.in/#faqs", "_blank")} />
