@@ -3497,15 +3497,15 @@ function RulesScreen() {
 
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 6, margin: "10px 0 14px" }}>
                 {[
-                  { name: "Firefly", folder: "Firefly" },
-                  { name: "Koi", folder: "Koi" },
-                  { name: "Tiger", folder: "Tiger" },
-                  { name: "Phoenix", folder: "Phoenix" },
-                  { name: "Dragon", folder: "Original" }
+                  { name: "Firefly", file: "Firefly.png" },
+                  { name: "Koi", file: "Koi.png" },
+                  { name: "Tiger", file: "Tiger.png" },
+                  { name: "Phoenix", file: "Phoenix.png" },
+                  { name: "Dragon", file: "dragon.png" }
                 ].map((t) => (
                   <div key={t.name} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6, flex: 1 }}>
                     <img
-                      src={`assets/rules-ranking/tile-design/${t.folder}/tile back.png`}
+                      src={`assets/rules-ranking/tiers/${t.file}`}
                       style={{
                         width: "100%",
                         height: "auto",
@@ -3515,7 +3515,6 @@ function RulesScreen() {
                       }}
                       alt={t.name}
                     />
-                    <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 10.5, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.rust }}>{t.name}</div>
                   </div>
                 ))}
               </div>
