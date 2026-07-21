@@ -2540,7 +2540,7 @@ function SettingsScreen() {
         <div>
           <SectionLabel>Support</SectionLabel>
           <Group>
-            <Row iconImg="assets/Report a bug icon v2.png" label="Report a Bug" onClick={() => setPanel("bug")} />
+            <Row iconImg="assets/Report a bug.svg" label="Report a Bug" onClick={() => setPanel("bug")} />
             <Row icon="spark" label="Feature Request" onClick={() => setPanel("feature")} />
             <Row icon="help" label="Contact Support" onClick={() => setPanel("contact")} />
             <Row icon="doc" label="FAQs" last onClick={() => window.open("https://pocketdragon.in/#faqs", "_blank")} />
