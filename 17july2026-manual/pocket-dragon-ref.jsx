@@ -961,7 +961,7 @@ function AvatarModal({ value = 0, onClose, onConfirm }) {
       }}>
         <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }} />
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
-          <h2 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 18, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Choose Avatar</h2>
+          <h2 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 18, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Meet Your Alter Ego</h2>
           <button onClick={onClose} className="pq-press" style={{
             width: 36, height: 36, borderRadius: "50%", border: `1.5px solid ${PQ.line}`,
             background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
@@ -1055,8 +1055,10 @@ function CitySelect({ value, onChange, focused, onFocus, onBlur }) {
 }
 
 // ── REGISTRATION ───────────────────────────────────────────────
-function RegisterScreen({ go, seed = {}, setEmail }) {
-  const [avatar, setAvatar] = React.useState(seed.avatar ?? 0);
+function RegisterScreen({ go, seed = {}, setEmail, avatar, setAvatar }) {
+  const [localAvatar, setLocalAvatar] = React.useState(seed.avatar ?? 0);
+  const activeAvatar = avatar !== undefined ? avatar : localAvatar;
+  const activeSetAvatar = setAvatar || setLocalAvatar;
   const [email, setE] = React.useState(seed.email || "");
   const [phone, setPhone] = React.useState(seed.phone || "");
   const [city, setCity] = React.useState(seed.city || "");
@@ -1081,7 +1083,7 @@ function RegisterScreen({ go, seed = {}, setEmail }) {
       <TopBar onBack={() => go("welcome")} plain />
       <div style={{ flex: 1, overflowY: "auto", marginRight: -8, paddingRight: 8 }} className="pq-scroll">
         <Title size={20} sub="Email verification is required before your account goes live">Create Account</Title>
-        <AvatarPicker value={avatar} onPick={setAvatar} />
+        <AvatarPicker value={activeAvatar} onPick={activeSetAvatar} />
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div>
             <Field icon="mail" label="Email Address" required value={email} onChange={(e) => setE(e.target.value)}
@@ -1461,9 +1463,12 @@ function SuitGlyph({ suit, size = 30, color = PQ.green }) {
 
 // ── Hero panel (deep-green surface — whole box clickable → Profile) ──
 const HERO_AVATAR = (typeof window !== "undefined" && window.__resources && window.__resources.girl) || "assets/avatars/poquito-girl.png";
-function HeroPanel({ username = "avachen88", rp = 100, rpMax = 200, onOpen, onNotify }) {
+function HeroPanel({ username = "avachen88", rp = 100, rpMax = 200, avatar = 1, onOpen, onNotify }) {
   const pct = Math.max(0, Math.min(100, (rp / rpMax) * 100));
-  const activeAvatar = (typeof AVATARS !== "undefined" && typeof window !== "undefined" && window.PocketDragonApp) ? avatarSrc(1) : HERO_AVATAR;
+  const hasAv = (typeof AVATARS !== "undefined");
+  const avBg = hasAv && AVATARS[avatar] ? AVATARS[avatar].bg : "rgba(249,242,228,0.12)";
+  const avSrc = hasAv && AVATARS[avatar] ? avatarSrc(avatar) : HERO_AVATAR;
+  const avScale = hasAv && AVATARS[avatar] ? avatarScale(avatar) : 1;
   
   return (
     <div style={{
@@ -1481,9 +1486,9 @@ function HeroPanel({ username = "avachen88", rp = 100, rpMax = 200, onOpen, onNo
       <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
         <button onClick={() => { pock("select"); onOpen && onOpen(); }} className="pq-press" style={{
           width: 88, height: 88, borderRadius: "50%", flexShrink: 0, overflow: "hidden", padding: 0, cursor: "pointer",
-          background: "rgba(249,242,228,0.12)", border: "2px solid rgba(249,242,228,0.35)"
+          background: avBg, border: "2px solid rgba(249,242,228,0.35)"
         }}>
-          <img src={activeAvatar} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <img src={avSrc} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avScale})`, transformOrigin: "center 40%" }} />
         </button>
         <div style={{ flex: 1, minWidth: 0, paddingRight: 34 }}>
           <div style={{ fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(249,242,228,0.6)" }}>Hey</div>
@@ -1619,11 +1624,11 @@ function TabStub({ icon, label }) {
 }
 
 // ── Home screen ──
-function HomeScreen({ showOngoing, onCard, onAvatar, onLeave, selected, onNotify }) {
+function HomeScreen({ showOngoing, onCard, onAvatar, onLeave, selected, onNotify, avatar = 1 }) {
   const A = (id) => ({ active: selected === id, onTap: () => onCard(id) });
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", gap: 16 }}>
-      <HeroPanel onOpen={onAvatar} onNotify={onNotify} />
+      <HeroPanel onOpen={onAvatar} onNotify={onNotify} avatar={avatar} />
       <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 23, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>The Hub</div>
       <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: 12, margin: "0 -4px", padding: "2px 4px 4px" }}>
         {showOngoing && <ResumeCard onResume={() => onCard("resume")} onLeave={onLeave} />}
@@ -2198,11 +2203,13 @@ function ConfirmSheet({ kind, onClose, onConfirm }) {
 }
 
 // ═══════════════ PROFILE (tab content) ═══════════════
-function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscriptions }) {
+function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscriptions, avatar, setAvatar }) {
   const [seg, setSeg] = React.useState("season");
   const [menu, setMenu] = React.useState(false);
   const [picker, setPicker] = React.useState(false);
-  const [avatar, setAvatar] = React.useState(1);
+  const [localAvatar, setLocalAvatar] = React.useState(1);
+  const activeAvatar = avatar !== undefined ? avatar : localAvatar;
+  const activeSetAvatar = setAvatar || setLocalAvatar;
   const [edit, setEdit] = React.useState(false);
   const [pwOpen, setPwOpen] = React.useState(false);
   const [faqOpen, setFaqOpen] = React.useState(false);
@@ -2230,10 +2237,10 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
       <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: 22, margin: "0 -4px", padding: "2px 4px 8px" }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
           <button onClick={() => { pock("select"); setPicker(true); }} className="pq-press" style={{ position: "relative", width: 96, height: 96, padding: 0, border: "none", background: "none", cursor: "pointer" }}>
-            <span style={{ position: "absolute", inset: 0, borderRadius: "50%", overflow: "hidden", background: avatar === "default" ? "rgba(20,51,34,0.06)" : AVATARS[avatar].bg, display: "flex", alignItems: "center", justifyContent: "center" }}>
-              {avatar === "default"
+            <span style={{ position: "absolute", inset: 0, borderRadius: "50%", overflow: "hidden", background: activeAvatar === "default" ? "rgba(20,51,34,0.06)" : AVATARS[activeAvatar].bg, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              {activeAvatar === "default"
                 ? <svg width="46%" height="46%" viewBox="0 0 24 24" fill={PQ.inkFaint} stroke="none"><circle cx="12" cy="8" r="4" /><path d="M4 20.5a8 8 0 0116 0z" /></svg>
-                : <img src={avatarSrc(avatar)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(avatar)})`, transformOrigin: "center 40%" }} />}
+                : <img src={avatarSrc(activeAvatar)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(activeAvatar)})`, transformOrigin: "center 40%" }} />}
             </span>
             <span style={{ position: "absolute", right: -1, bottom: -1, width: 30, height: 30, borderRadius: "50%", background: PQ.rust, border: `2.5px solid ${PQ.off}`, display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="plus" size={16} stroke={PQ.off} sw={2.2} /></span>
           </button>
@@ -2325,7 +2332,7 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
         </div>
       )}
 
-      {picker && <AvatarModal value={avatar} onClose={() => setPicker(false)} onConfirm={(i) => { setAvatar(i); setPicker(false); }} />}
+      {picker && <AvatarModal value={activeAvatar} onClose={() => setPicker(false)} onConfirm={(i) => { activeSetAvatar(i); setPicker(false); }} />}
 
       {edit && <EditProfileSheet onClose={() => setEdit(false)} />}
       {pwOpen && <ChangePasswordSheet onClose={() => setPwOpen(false)} />}
@@ -2488,6 +2495,7 @@ function SettingsScreen() {
   const [vol, setVol] = React.useState(70);
   const [panel, setPanel] = React.useState(null);
   const [updateAvailable, setUpdateAvailable] = React.useState(false);
+  const SET_RES = (path, id) => (typeof window !== "undefined" && window.__resources && window.__resources[id]) || path;
   if (panel) return <SettingsDetail panel={panel} onBack={() => setPanel(null)} />;
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", gap: 14 }}>
@@ -2517,11 +2525,11 @@ function SettingsScreen() {
         <div>
           <SectionLabel>About Pocket Dragon</SectionLabel>
           <Group>
-            <Row iconImg="assets/About Us.png" label="About Us" onClick={() => setPanel("aboutus")} />
-            <Row icon="doc" label="Terms & Conditions" onClick={() => window.open("https://pocketdragon.in/terms", "_blank")} />
-            <Row icon="shield" label="Privacy Policy" onClick={() => window.open("https://pocketdragon.in/privacy", "_blank")} />
+            <Row iconImg={SET_RES("assets/setting_icons/about us.png", "iconAbout")} label="About Us" onClick={() => setPanel("aboutus")} />
+            <Row iconImg={SET_RES("assets/setting_icons/T&C.png", "iconTC")} label="Terms & Conditions" onClick={() => window.open("https://pocketdragon.in/terms", "_blank")} />
+            <Row iconImg={SET_RES("assets/setting_icons/Privacy policy.png", "iconPrivacy")} label="Privacy Policy" onClick={() => window.open("https://pocketdragon.in/privacy", "_blank")} />
             <Row
-              icon="spark"
+              iconImg={SET_RES("assets/setting_icons/app version.png", "iconVersion")}
               label="App Version"
               value={updateAvailable ? "Update Available" : "1.0.0 (Latest)"}
               danger={updateAvailable}
@@ -2540,10 +2548,10 @@ function SettingsScreen() {
         <div>
           <SectionLabel>Support</SectionLabel>
           <Group>
-            <Row iconImg="assets/Report a bug-v3.svg" label="Report a Bug" onClick={() => setPanel("bug")} />
-            <Row iconImg="assets/Wishlist.png" label="Wishlist" onClick={() => setPanel("feature")} />
-            <Row iconImg="assets/Contact.png" label="Contact Support" onClick={() => setPanel("contact")} />
-            <Row icon="help" label="FAQs" last onClick={() => window.open("https://pocketdragon.in/#faqs", "_blank")} />
+            <Row iconImg={SET_RES("assets/setting_icons/report bug.png", "iconBug")} label="Report a Bug" onClick={() => setPanel("bug")} />
+            <Row iconImg={SET_RES("assets/setting_icons/Wishlist.png", "iconWishlist")} label="Wishlist" onClick={() => setPanel("feature")} />
+            <Row iconImg={SET_RES("assets/setting_icons/contact.png", "iconContact")} label="Contact Support" onClick={() => setPanel("contact")} />
+            <Row iconImg={SET_RES("assets/setting_icons/FAQ.png", "iconFAQ")} label="FAQs" last onClick={() => window.open("https://pocketdragon.in/#faqs", "_blank")} />
           </Group>
         </div>
       </div>
@@ -4441,9 +4449,9 @@ function RewardCard({ reward, index }) {
   );
 }
 
-function ResultsScreen({ canExtend = true, onExtend, onHome, rewards = null }) {
+function ResultsScreen({ canExtend = true, onExtend, onHome, rewards = null, avatar = 1 }) {
   const ranked = [
-    { rank: 1, name: "You", av: 1, score: 120, you: true },
+    { rank: 1, name: "You", av: avatar, score: 120, you: true },
     { rank: 2, name: "Diego R.", av: 0, score: 95 },
     { rank: 3, name: "Mei Lin", av: 3, score: 60 },
     { rank: 4, name: "Hana K.", av: 4, score: 40 },
@@ -4502,6 +4510,7 @@ function ResultsScreen({ canExtend = true, onExtend, onHome, rewards = null }) {
 
 function PocketDragonApp() {
   const [screen, setScreen] = React.useState("splash");   // onboarding screen, or "app"
+  const [avatar, setAvatar] = React.useState(1);           // default avatar is girl (1)
   const [email, setEmail] = React.useState("ava.chen@example.com");
   const [anim, setAnim] = React.useState("in");
   const [tab, setTab] = React.useState("home");
@@ -4538,7 +4547,7 @@ function PocketDragonApp() {
     let view = null;
     if (screen === "splash") view = <SplashScreen go={go} live />;
     else if (screen === "welcome") view = <WelcomeScreen go={go} />;
-    else if (screen === "register") view = <RegisterScreen go={go} live setEmail={setEmail} />;
+    else if (screen === "register") view = <RegisterScreen go={go} live setEmail={setEmail} avatar={avatar} setAvatar={setAvatar} />;
     else if (screen === "verify") view = <VerifyScreen go={goApp} live email={email} />;
     else if (screen === "login") view = <LoginScreen go={goApp} />;
     else if (screen === "forgot") view = <ForgotFlow go={go} live />;
@@ -4575,7 +4584,7 @@ function PocketDragonApp() {
   } else if (route === "seating") {
     phoneBody = <SeatAssignmentScreen onBack={() => setRoute("waiting")} onEnter={() => setRoute("game")} />;
   } else if (route === "results") {
-    phoneBody = <ResultsScreen canExtend={true} onExtend={() => { setExtendMode(true); setRoute("config"); }} onHome={() => { setOngoing(false); home(); }} />;
+    phoneBody = <ResultsScreen canExtend={true} onExtend={() => { setExtendMode(true); setRoute("config"); }} onHome={() => { setOngoing(false); home(); }} avatar={avatar} />;
   } else if (route === "practice") {
     phoneBody = <PracticeScreen onBack={home} onStart={() => setRoute("seating")} />;
   } else if (route === "lobby") {
@@ -4605,9 +4614,9 @@ function PocketDragonApp() {
           <div key={tab + (tab === "home" ? (ongoing ? "-1" : "-0") : "")} className="pq-tabview"
             style={{ flex: 1, padding: "62px 22px 18px", display: "flex", flexDirection: "column", overflow: "hidden" }}>
             {tab === "home"
-              ? <HomeScreen showOngoing={ongoing} onCard={onCard} onAvatar={() => goTab("profile")} onLeave={() => { setOngoing(false); flash("You left the table"); }} selected={selected} onNotify={() => setRoute("notifications")} />
+              ? <HomeScreen showOngoing={ongoing} onCard={onCard} onAvatar={() => goTab("profile")} onLeave={() => { setOngoing(false); flash("You left the table"); }} selected={selected} onNotify={() => setRoute("notifications")} avatar={avatar} />
               : tab === "profile"
-                ? <ProfileScreen onFind={() => setRoute("search")} onOther={() => openOther("home")} onLogout={() => { home(); go("splash"); }} onNotifications={() => setRoute("notifications")} onSubscriptions={() => setRoute("subscription")} />
+                ? <ProfileScreen onFind={() => setRoute("search")} onOther={() => openOther("home")} onLogout={() => { home(); go("splash"); }} onNotifications={() => setRoute("notifications")} onSubscriptions={() => setRoute("subscription")} avatar={avatar} setAvatar={setAvatar} />
                 : tab === "settings"
                   ? <SettingsScreen />
                   : tab === "subscription"

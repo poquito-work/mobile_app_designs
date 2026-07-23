@@ -261,11 +261,13 @@ function ConfirmSheet({ kind, onClose, onConfirm }) {
 }
 
 // ═══════════════ PROFILE (tab content) ═══════════════
-function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscriptions }) {
+function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscriptions, avatar, setAvatar }) {
   const [seg, setSeg] = React.useState("season");
   const [menu, setMenu] = React.useState(false);
   const [picker, setPicker] = React.useState(false);
-  const [avatar, setAvatar] = React.useState(1);
+  const [localAvatar, setLocalAvatar] = React.useState(1);
+  const activeAvatar = avatar !== undefined ? avatar : localAvatar;
+  const activeSetAvatar = setAvatar || setLocalAvatar;
   const [edit, setEdit] = React.useState(false);
   const [pwOpen, setPwOpen] = React.useState(false);
   const [faqOpen, setFaqOpen] = React.useState(false);
@@ -293,10 +295,10 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
       <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: 22, margin: "0 -4px", padding: "2px 4px 8px" }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
           <button onClick={() => { pock("select"); setPicker(true); }} className="pq-press" style={{ position: "relative", width: 96, height: 96, padding: 0, border: "none", background: "none", cursor: "pointer" }}>
-            <span style={{ position: "absolute", inset: 0, borderRadius: "50%", overflow: "hidden", background: avatar === "default" ? "rgba(20,51,34,0.06)" : AVATARS[avatar].bg, display: "flex", alignItems: "center", justifyContent: "center" }}>
-              {avatar === "default"
+            <span style={{ position: "absolute", inset: 0, borderRadius: "50%", overflow: "hidden", background: activeAvatar === "default" ? "rgba(20,51,34,0.06)" : AVATARS[activeAvatar].bg, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              {activeAvatar === "default"
                 ? <svg width="46%" height="46%" viewBox="0 0 24 24" fill={PQ.inkFaint} stroke="none"><circle cx="12" cy="8" r="4" /><path d="M4 20.5a8 8 0 0116 0z" /></svg>
-                : <img src={avatarSrc(avatar)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(avatar)})`, transformOrigin: "center 40%" }} />}
+                : <img src={avatarSrc(activeAvatar)} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avatarScale(activeAvatar)})`, transformOrigin: "center 40%" }} />}
             </span>
             <span style={{ position: "absolute", right: -1, bottom: -1, width: 30, height: 30, borderRadius: "50%", background: PQ.rust, border: `2.5px solid ${PQ.off}`, display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="plus" size={16} stroke={PQ.off} sw={2.2} /></span>
           </button>
@@ -388,7 +390,7 @@ function ProfileScreen({ onFind, onOther, onLogout, onNotifications, onSubscript
         </div>
       )}
 
-      {picker && <AvatarModal value={avatar} onClose={() => setPicker(false)} onConfirm={(i) => { setAvatar(i); setPicker(false); }} />}
+      {picker && <AvatarModal value={activeAvatar} onClose={() => setPicker(false)} onConfirm={(i) => { activeSetAvatar(i); setPicker(false); }} />}
 
       {edit && <EditProfileSheet onClose={() => setEdit(false)} />}
       {pwOpen && <ChangePasswordSheet onClose={() => setPwOpen(false)} />}
@@ -551,6 +553,7 @@ function SettingsScreen() {
   const [vol, setVol] = React.useState(70);
   const [panel, setPanel] = React.useState(null);
   const [updateAvailable, setUpdateAvailable] = React.useState(false);
+  const SET_RES = (path, id) => (typeof window !== "undefined" && window.__resources && window.__resources[id]) || path;
   if (panel) return <SettingsDetail panel={panel} onBack={() => setPanel(null)} />;
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", gap: 14 }}>
@@ -580,11 +583,11 @@ function SettingsScreen() {
         <div>
           <SectionLabel>About Pocket Dragon</SectionLabel>
           <Group>
-            <Row iconImg="assets/About Us.png" label="About Us" onClick={() => setPanel("aboutus")} />
-            <Row icon="doc" label="Terms & Conditions" onClick={() => window.open("https://pocketdragon.in/terms", "_blank")} />
-            <Row icon="shield" label="Privacy Policy" onClick={() => window.open("https://pocketdragon.in/privacy", "_blank")} />
+            <Row iconImg={SET_RES("assets/setting_icons/about us.png", "iconAbout")} label="About Us" onClick={() => setPanel("aboutus")} />
+            <Row iconImg={SET_RES("assets/setting_icons/T&C.png", "iconTC")} label="Terms & Conditions" onClick={() => window.open("https://pocketdragon.in/terms", "_blank")} />
+            <Row iconImg={SET_RES("assets/setting_icons/Privacy policy.png", "iconPrivacy")} label="Privacy Policy" onClick={() => window.open("https://pocketdragon.in/privacy", "_blank")} />
             <Row
-              icon="spark"
+              iconImg={SET_RES("assets/setting_icons/app version.png", "iconVersion")}
               label="App Version"
               value={updateAvailable ? "Update Available" : "1.0.0 (Latest)"}
               danger={updateAvailable}
@@ -603,10 +606,10 @@ function SettingsScreen() {
         <div>
           <SectionLabel>Support</SectionLabel>
           <Group>
-            <Row iconImg="assets/Report a bug-v3.svg" label="Report a Bug" onClick={() => setPanel("bug")} />
-            <Row iconImg="assets/Wishlist.png" label="Wishlist" onClick={() => setPanel("feature")} />
-            <Row iconImg="assets/Contact.png" label="Contact Support" onClick={() => setPanel("contact")} />
-            <Row icon="help" label="FAQs" last onClick={() => window.open("https://pocketdragon.in/#faqs", "_blank")} />
+            <Row iconImg={SET_RES("assets/setting_icons/report bug.png", "iconBug")} label="Report a Bug" onClick={() => setPanel("bug")} />
+            <Row iconImg={SET_RES("assets/setting_icons/Wishlist.png", "iconWishlist")} label="Wishlist" onClick={() => setPanel("feature")} />
+            <Row iconImg={SET_RES("assets/setting_icons/contact.png", "iconContact")} label="Contact Support" onClick={() => setPanel("contact")} />
+            <Row iconImg={SET_RES("assets/setting_icons/FAQ.png", "iconFAQ")} label="FAQs" last onClick={() => window.open("https://pocketdragon.in/#faqs", "_blank")} />
           </Group>
         </div>
       </div>

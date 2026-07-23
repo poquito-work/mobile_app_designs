@@ -69,9 +69,12 @@ function SuitGlyph({ suit, size = 30, color = PQ.green }) {
 
 // ── Hero panel (deep-green surface — whole box clickable → Profile) ──
 const HERO_AVATAR = (typeof window !== "undefined" && window.__resources && window.__resources.girl) || "assets/avatars/poquito-girl.png";
-function HeroPanel({ username = "avachen88", rp = 100, rpMax = 200, onOpen, onNotify }) {
+function HeroPanel({ username = "avachen88", rp = 100, rpMax = 200, avatar = 1, onOpen, onNotify }) {
   const pct = Math.max(0, Math.min(100, (rp / rpMax) * 100));
-  const activeAvatar = (typeof AVATARS !== "undefined" && typeof window !== "undefined" && window.PocketDragonApp) ? avatarSrc(1) : HERO_AVATAR;
+  const hasAv = (typeof AVATARS !== "undefined");
+  const avBg = hasAv && AVATARS[avatar] ? AVATARS[avatar].bg : "rgba(249,242,228,0.12)";
+  const avSrc = hasAv && AVATARS[avatar] ? avatarSrc(avatar) : HERO_AVATAR;
+  const avScale = hasAv && AVATARS[avatar] ? avatarScale(avatar) : 1;
   
   return (
     <div style={{
@@ -89,9 +92,9 @@ function HeroPanel({ username = "avachen88", rp = 100, rpMax = 200, onOpen, onNo
       <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
         <button onClick={() => { pock("select"); onOpen && onOpen(); }} className="pq-press" style={{
           width: 88, height: 88, borderRadius: "50%", flexShrink: 0, overflow: "hidden", padding: 0, cursor: "pointer",
-          background: "rgba(249,242,228,0.12)", border: "2px solid rgba(249,242,228,0.35)"
+          background: avBg, border: "2px solid rgba(249,242,228,0.35)"
         }}>
-          <img src={activeAvatar} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <img src={avSrc} alt="" draggable={false} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transform: `scale(${avScale})`, transformOrigin: "center 40%" }} />
         </button>
         <div style={{ flex: 1, minWidth: 0, paddingRight: 34 }}>
           <div style={{ fontFamily: HERO, fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(249,242,228,0.6)" }}>Hey</div>
@@ -227,11 +230,11 @@ function TabStub({ icon, label }) {
 }
 
 // ── Home screen ──
-function HomeScreen({ showOngoing, onCard, onAvatar, onLeave, selected, onNotify }) {
+function HomeScreen({ showOngoing, onCard, onAvatar, onLeave, selected, onNotify, avatar = 1 }) {
   const A = (id) => ({ active: selected === id, onTap: () => onCard(id) });
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", gap: 16 }}>
-      <HeroPanel onOpen={onAvatar} onNotify={onNotify} />
+      <HeroPanel onOpen={onAvatar} onNotify={onNotify} avatar={avatar} />
       <div style={{ fontFamily: HERO, fontWeight: 700, fontSize: 23, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>The Hub</div>
       <div className="pq-scroll" style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: 12, margin: "0 -4px", padding: "2px 4px 4px" }}>
         {showOngoing && <ResumeCard onResume={() => onCard("resume")} onLeave={onLeave} />}

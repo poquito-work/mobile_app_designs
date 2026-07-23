@@ -141,9 +141,9 @@ function RewardCard({ reward, index }) {
   );
 }
 
-function ResultsScreen({ canExtend = true, onExtend, onHome, rewards = null }) {
+function ResultsScreen({ canExtend = true, onExtend, onHome, rewards = null, avatar = 1 }) {
   const ranked = [
-    { rank: 1, name: "You", av: 1, score: 120, you: true },
+    { rank: 1, name: "You", av: avatar, score: 120, you: true },
     { rank: 2, name: "Diego R.", av: 0, score: 95 },
     { rank: 3, name: "Mei Lin", av: 3, score: 60 },
     { rank: 4, name: "Hana K.", av: 4, score: 40 },
@@ -202,6 +202,7 @@ function ResultsScreen({ canExtend = true, onExtend, onHome, rewards = null }) {
 
 function PocketDragonApp() {
   const [screen, setScreen] = React.useState("splash");   // onboarding screen, or "app"
+  const [avatar, setAvatar] = React.useState(1);           // default avatar is girl (1)
   const [email, setEmail] = React.useState("ava.chen@example.com");
   const [anim, setAnim] = React.useState("in");
   const [tab, setTab] = React.useState("home");
@@ -238,7 +239,7 @@ function PocketDragonApp() {
     let view = null;
     if (screen === "splash") view = <SplashScreen go={go} live />;
     else if (screen === "welcome") view = <WelcomeScreen go={go} />;
-    else if (screen === "register") view = <RegisterScreen go={go} live setEmail={setEmail} />;
+    else if (screen === "register") view = <RegisterScreen go={go} live setEmail={setEmail} avatar={avatar} setAvatar={setAvatar} />;
     else if (screen === "verify") view = <VerifyScreen go={goApp} live email={email} />;
     else if (screen === "login") view = <LoginScreen go={goApp} />;
     else if (screen === "forgot") view = <ForgotFlow go={go} live />;
@@ -275,7 +276,7 @@ function PocketDragonApp() {
   } else if (route === "seating") {
     phoneBody = <SeatAssignmentScreen onBack={() => setRoute("waiting")} onEnter={() => setRoute("game")} />;
   } else if (route === "results") {
-    phoneBody = <ResultsScreen canExtend={true} onExtend={() => { setExtendMode(true); setRoute("config"); }} onHome={() => { setOngoing(false); home(); }} />;
+    phoneBody = <ResultsScreen canExtend={true} onExtend={() => { setExtendMode(true); setRoute("config"); }} onHome={() => { setOngoing(false); home(); }} avatar={avatar} />;
   } else if (route === "practice") {
     phoneBody = <PracticeScreen onBack={home} onStart={() => setRoute("seating")} />;
   } else if (route === "lobby") {
@@ -305,9 +306,9 @@ function PocketDragonApp() {
           <div key={tab + (tab === "home" ? (ongoing ? "-1" : "-0") : "")} className="pq-tabview"
             style={{ flex: 1, padding: "62px 22px 18px", display: "flex", flexDirection: "column", overflow: "hidden" }}>
             {tab === "home"
-              ? <HomeScreen showOngoing={ongoing} onCard={onCard} onAvatar={() => goTab("profile")} onLeave={() => { setOngoing(false); flash("You left the table"); }} selected={selected} onNotify={() => setRoute("notifications")} />
+              ? <HomeScreen showOngoing={ongoing} onCard={onCard} onAvatar={() => goTab("profile")} onLeave={() => { setOngoing(false); flash("You left the table"); }} selected={selected} onNotify={() => setRoute("notifications")} avatar={avatar} />
               : tab === "profile"
-                ? <ProfileScreen onFind={() => setRoute("search")} onOther={() => openOther("home")} onLogout={() => { home(); go("splash"); }} onNotifications={() => setRoute("notifications")} onSubscriptions={() => setRoute("subscription")} />
+                ? <ProfileScreen onFind={() => setRoute("search")} onOther={() => openOther("home")} onLogout={() => { home(); go("splash"); }} onNotifications={() => setRoute("notifications")} onSubscriptions={() => setRoute("subscription")} avatar={avatar} setAvatar={setAvatar} />
                 : tab === "settings"
                   ? <SettingsScreen />
                   : tab === "subscription"

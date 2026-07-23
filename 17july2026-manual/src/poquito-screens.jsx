@@ -125,7 +125,7 @@ function AvatarModal({ value = 0, onClose, onConfirm }) {
       }}>
         <div style={{ width: 40, height: 4, borderRadius: 2, background: PQ.line, margin: "0 auto 18px" }} />
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
-          <h2 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 18, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Choose Avatar</h2>
+          <h2 style={{ margin: 0, fontFamily: HERO, fontWeight: 700, fontSize: 18, letterSpacing: "0.04em", textTransform: "uppercase", color: PQ.ink }}>Meet Your Alter Ego</h2>
           <button onClick={onClose} className="pq-press" style={{
             width: 36, height: 36, borderRadius: "50%", border: `1.5px solid ${PQ.line}`,
             background: "transparent", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
@@ -219,8 +219,10 @@ function CitySelect({ value, onChange, focused, onFocus, onBlur }) {
 }
 
 // ── REGISTRATION ───────────────────────────────────────────────
-function RegisterScreen({ go, seed = {}, setEmail }) {
-  const [avatar, setAvatar] = React.useState(seed.avatar ?? 0);
+function RegisterScreen({ go, seed = {}, setEmail, avatar, setAvatar }) {
+  const [localAvatar, setLocalAvatar] = React.useState(seed.avatar ?? 0);
+  const activeAvatar = avatar !== undefined ? avatar : localAvatar;
+  const activeSetAvatar = setAvatar || setLocalAvatar;
   const [email, setE] = React.useState(seed.email || "");
   const [phone, setPhone] = React.useState(seed.phone || "");
   const [city, setCity] = React.useState(seed.city || "");
@@ -245,7 +247,7 @@ function RegisterScreen({ go, seed = {}, setEmail }) {
       <TopBar onBack={() => go("welcome")} plain />
       <div style={{ flex: 1, overflowY: "auto", marginRight: -8, paddingRight: 8 }} className="pq-scroll">
         <Title size={20} sub="Email verification is required before your account goes live">Create Account</Title>
-        <AvatarPicker value={avatar} onPick={setAvatar} />
+        <AvatarPicker value={activeAvatar} onPick={activeSetAvatar} />
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div>
             <Field icon="mail" label="Email Address" required value={email} onChange={(e) => setE(e.target.value)}
