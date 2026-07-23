@@ -2422,7 +2422,7 @@ function SettingsDetail({ panel, onBack }) {
     about: { title: "About Pocket Dragon" },
     aboutus: { title: "About Us" },
     bug: { title: "Report a Bug" },
-    feature: { title: "Feature Request" },
+    feature: { title: "Wishlist" },
     contact: { title: "Contact Support" },
   }[panel];
   const field = { width: "100%", minHeight: 120, padding: "12px 14px", borderRadius: 13, border: `1.5px solid ${PQ.line}`, background: "transparent", fontFamily: HERO, fontSize: 14, color: PQ.ink, resize: "none", outline: "none", boxSizing: "border-box" };
@@ -2466,7 +2466,7 @@ function SettingsDetail({ panel, onBack }) {
           )}
           <div>
             <span style={label}>Description{panel === "bug" && <span style={{ color: "#d64542" }}>*</span>}</span>
-            <textarea value={desc} onChange={(e) => setDesc(e.target.value)} placeholder={panel === "feature" ? "Describe the feature you'd like to see" : panel === "contact" ? "How can we help?" : "Describe what went wrong"} style={field} />
+            <textarea value={desc} onChange={(e) => setDesc(e.target.value)} placeholder={panel === "feature" ? "Tell us what you'd like us to add, improve, or change" : panel === "contact" ? "How can we help?" : "Describe what went wrong"} style={field} />
           </div>
           {panel === "bug" && (
             <div>
@@ -2517,7 +2517,7 @@ function SettingsScreen() {
         <div>
           <SectionLabel>About Pocket Dragon</SectionLabel>
           <Group>
-            <Row icon="spark" label="About Us" onClick={() => setPanel("aboutus")} />
+            <Row iconImg="assets/About Us.png" label="About Us" onClick={() => setPanel("aboutus")} />
             <Row icon="doc" label="Terms & Conditions" onClick={() => window.open("https://pocketdragon.in/terms", "_blank")} />
             <Row icon="shield" label="Privacy Policy" onClick={() => window.open("https://pocketdragon.in/privacy", "_blank")} />
             <Row
@@ -2541,9 +2541,9 @@ function SettingsScreen() {
           <SectionLabel>Support</SectionLabel>
           <Group>
             <Row iconImg="assets/Report a bug-v3.svg" label="Report a Bug" onClick={() => setPanel("bug")} />
-            <Row icon="spark" label="Feature Request" onClick={() => setPanel("feature")} />
-            <Row icon="help" label="Contact Support" onClick={() => setPanel("contact")} />
-            <Row icon="doc" label="FAQs" last onClick={() => window.open("https://pocketdragon.in/#faqs", "_blank")} />
+            <Row iconImg="assets/Wishlist.png" label="Wishlist" onClick={() => setPanel("feature")} />
+            <Row iconImg="assets/Contact.png" label="Contact Support" onClick={() => setPanel("contact")} />
+            <Row icon="help" label="FAQs" last onClick={() => window.open("https://pocketdragon.in/#faqs", "_blank")} />
           </Group>
         </div>
       </div>
@@ -3427,16 +3427,16 @@ function RulesScreen() {
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PQ.rust, marginBottom: 12 }}>Rules for Claiming Tiles</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                <div>
+                <div style={{ textAlign: "justify" }}>
                   <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 13.5, color: PQ.green }}>Mahjong: </span>
-                  <span style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft, textAlign: "justify" }}>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft }}>
                     Tile for Mahjong can be picked from anywhere, for any set (even a Pair); if 2 players need the same tile to declare Mahjong, the player closest to the discarder gets preference (in order of E-S-W-N).
                   </span>
                 </div>
 
-                <div>
+                <div style={{ textAlign: "justify" }}>
                   <span style={{ fontFamily: HERO, fontWeight: 700, fontSize: 13.5, color: PQ.green }}>Pung: </span>
-                  <span style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft, textAlign: "justify" }}>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.6, color: PQ.inkSoft }}>
                     Can pick up last discarded tile from anywhere for completing a Pung (ie if you already have a pair in your hand); the Pung (now exposed) will then be displayed on rack.
                   </span>
                 </div>

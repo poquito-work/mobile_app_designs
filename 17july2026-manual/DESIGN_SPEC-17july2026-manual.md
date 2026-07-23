@@ -102,6 +102,9 @@ All static files listed below are placed in the `assets/` directory.
 - `assets/lobby-board.png`: Staging table top board illustration (150x150px).
 - `assets/figma-gameboard.png`: Landscape full-screen gameboard mockup image.
 - `assets/Report a bug-v3.svg`: Vector icon for bug reporting link.
+- `assets/About Us.png`: Icon image for "About Us" settings row.
+- `assets/Contact.png`: Icon image for "Contact Support" settings row.
+- `assets/Wishlist.png`: Icon image for "Wishlist" settings row.
 
 ### User Avatar Presets
 Each avatar corresponds to a specific preset background and scaling.
@@ -745,9 +748,9 @@ Secure payment portal.
   - Section 1: *"Game settings"*
     - Rows: *"Haptics"* (switch), *"Sound"* (switch), *"Volume"* (slider, values: 0-100).
   - Section 2: *"About Pocket Dragon"*
-    - Rows: *"About Us"*, *"Terms & Conditions"*, *"Privacy Policy"*, *"App Version"*.
+    - Rows: *"About Us"* (uses `assets/About Us.png` icon image), *"Terms & Conditions"*, *"Privacy Policy"*, *"App Version"*.
   - Section 3: *"Support"*
-    - Rows: *"Report a Bug"*, *"Feature Request"*, *"Contact Support"*, *"FAQs"*.
+    - Rows: *"Report a Bug"* (uses `assets/Report a bug-v3.svg` icon image), *"Wishlist"* (uses `assets/Wishlist.png` icon image), *"Contact Support"* (uses `assets/Contact.png` icon image), *"FAQs"* (uses standard `"help"` icon).
 - **Color Mappings**:
   - Settings Card: border `rgba(20,51,34,0.08)`, background `PQ.off`. Inner divider line uses `rgba(20,51,34,0.07)`. Row label uses `PQ.ink`.
   - Toggles: Active uses `PQ.rust`, Inactive uses `PQ.toggle-off`. Knob is `PQ.off`.
@@ -761,8 +764,8 @@ Secure payment portal.
   - About App: *"Pocket Dragon is a mobile-first, character-driven Mahjong experience... no wagers, no stakes, just the joy of the game."*
 - **Colors**: Paragraph text uses `PQ.inkSoft`.
 
-#### Step 23B: Support Submit Forms (Bug / Feature / Contact)
-- **Texts**: Fields for Issue Category dropdown ("Gameplay", "Technical Issue", "Profile", "Other"), Description textarea, Dashed upload link *"Attach screenshot / recording"*, submit button.
+#### Step 23B: Support Submit Forms (Bug / Wishlist / Contact)
+- **Texts**: Fields for Issue Category dropdown ("Gameplay", "Technical Issue", "Profile", "Other"), Description textarea (placeholder for Wishlist is *"Tell us what you'd like us to add, improve, or change"*), Dashed upload link *"Attach screenshot / recording"*, submit button.
 - **Submit Success view**: Icon: check mark badge. Title: *"Thanks — we got it"*, sub: *"Our team will review your submission."*.
 - **Colors**: Fields use default tokens. Dashed attachment link uses `PQ.lineMid` border and `PQ.inkSoft` text. Success title: `PQ.ink`, sub: `PQ.inkSoft`.
 
