@@ -104,7 +104,7 @@ function AvatarPicker({ value = 0, onPick }) {
           display: "flex", alignItems: "center", justifyContent: "center",
         }}><Icon name="plus" size={14} stroke={PQ.off} sw={2.4} /></span>
       </button>
-      <div style={{ fontSize: 12, color: PQ.inkSoft, letterSpacing: "0.02em" }}>Tap to choose your avatar</div>
+      <div style={{ fontSize: 12, color: PQ.inkSoft, letterSpacing: "0.02em" }}>Tap to choose your look</div>
       {open && <AvatarModal value={value} onClose={() => setOpen(false)}
         onConfirm={(i) => { onPick && onPick(i); setOpen(false); }} />}
     </div>
