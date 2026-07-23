@@ -647,6 +647,7 @@ Displays game rules, tile suits catalog, and hand structures.
   - Goulash Objective: *"To make 4 Pungs/Kongs + 1 Pair (as per the valid combinations in the Hands section below)."*
 - **Hands List**:
   - Option 1: Clean Hand (3 Doubles) - All Pungs/Kongs in one suit only (all Rings, all Bamboos, all Craks, or all Honours). Shows 14 tiles list.
+  - Honour Hand: Pungs/Kongs + Pair of Winds/Dragons - All Pungs/Kongs of Winds/Dragons (Honours) only. Shows 15 tiles list.
   - Option 2: Major Hand (1 Double) - All Pungs/Kongs in Honours + 1’s & 9s (same suit). Shows 14 tiles list. Description note.
   - Option 3: Mixed Hand (No Doubles) - All Pungs/Kongs in Honours + any 1 suit. Shows 14 tiles list. Description note.
   - Option 4: Terminal Hand (3 Doubles) - All Pungs/Kongs of 1’s + 9’s (different suits). Shows 14 tiles list. Description note.

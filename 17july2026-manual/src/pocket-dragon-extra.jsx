@@ -1017,8 +1017,8 @@ function HandDisplay({ title, desc, tiles, note }) {
   );
 }
 
-function DoubleGroup({ title, items, note }) {
-  const [open, setOpen] = React.useState(false);
+function DoubleGroup({ title, items, note, defaultOpen = false }) {
+  const [open, setOpen] = React.useState(defaultOpen);
   return (
     <div style={{ marginTop: 14, fontFamily: HERO }}>
       <div
@@ -1365,6 +1365,18 @@ function RulesScreen() {
                 />
 
                 <HandDisplay
+                  title="Honour Hand: Pungs/Kongs + Pair of Winds/Dragons"
+                  desc="All Pungs/Kongs of Winds/Dragons (Honours) only"
+                  tiles={[
+                    { suit: "dragons", value: "red" }, { suit: "dragons", value: "red" }, { suit: "dragons", value: "red" },
+                    { suit: "dragons", value: "green" }, { suit: "dragons", value: "green" }, { suit: "dragons", value: "green" },
+                    { suit: "winds", value: "E" }, { suit: "winds", value: "E" }, { suit: "winds", value: "E" }, { suit: "winds", value: "E" },
+                    { suit: "winds", value: "W" }, { suit: "winds", value: "W" }, { suit: "winds", value: "W" },
+                    { suit: "dragons", value: "white" }, { suit: "dragons", value: "white" }
+                  ]}
+                />
+
+                <HandDisplay
                   title="Option 2: Major Hand (1 Double)"
                   desc="All Pungs/Kongs in Honours + 1’s &amp; 9s (same suit)"
                   tiles={[
@@ -1410,6 +1422,7 @@ function RulesScreen() {
 
               <DoubleGroup
                 title="1 Double"
+                defaultOpen={true}
                 items={[
                   "1 Own Flower",
                   { text: "1 Round Flower", note: "(if Own Flower = Round Flower, 2 doubles)" },
