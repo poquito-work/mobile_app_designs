@@ -12,7 +12,15 @@ function Scoreboard({
   const [extendCount, setExtendCount] = useState(0);
   const [timerOn, setTimerOn] = useState(true);
   const [speed, setSpeed] = useState(0);
+  const [drawCountdown, setDrawCountdown] = useState(10);
   const go = (i) => { setActivePanel(i); setExtendConfig(false); };
+
+  useEffect(() => {
+    if (outcome !== "draw" || activePanel !== 0 || extendConfig) return;
+    setDrawCountdown(10);
+    const id = setInterval(() => setDrawCountdown((c) => (c > 0 ? c - 1 : 0)), 1000);
+    return () => clearInterval(id);
+  }, [outcome, activePanel, extendConfig]);
 
   // ── data ──
   const melds = [
@@ -32,7 +40,7 @@ function Scoreboard({
     { name: "Exposed Kong", val: "4" }, { name: "Concealed Pung", val: "2" }, { name: "Bonus flowers ×4", val: "4" },
   ];
   const doublesItems = [
-    { name: "Half flush", val: "×3" }, { name: "Self-drawn", val: "×2" }, { name: "Seat wind", val: "×1" },
+    { name: "Half flush", val: "3" }, { name: "Self-drawn", val: "2" }, { name: "Seat wind", val: "1" },
   ];
   const opponents = [
     {
@@ -76,6 +84,8 @@ function Scoreboard({
   const isGuest = !isHost;
   const sumAccept = isGuest && invited;
 
+  const DECLINE_INVITE_URL = "https://mobileapp.poquito.review-link.in/17july2026-manual/";
+
   // ── style helpers ──
   const L = { fontFamily: F, fontWeight: 700, fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: "#6E6A5E" };
   const cardBox = { border: "1.5px solid #E3D6BB", borderRadius: 16 };
@@ -84,44 +94,44 @@ function Scoreboard({
   const outlineBtn = { background: "transparent", border: "1.5px solid rgba(20,51,34,0.32)", color: "#143322", fontFamily: F, fontWeight: 700, textTransform: "uppercase" };
   const rowGap = 14;
   const scoreBlockWidth = 180;
+  const metricTitle = { ...L, fontSize: 11 };
 
-  const metricRow = (label, val, color) => (
-    <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
-      <span style={{ ...L, fontSize: 9, color: "#9A9385", letterSpacing: "0.16em", minWidth: 54, flexShrink: 0 }}>{label}</span>
-      <span style={{ fontFamily: F, fontWeight: 700, fontSize: 20, color, fontVariantNumeric: "tabular-nums", flex: 1, textAlign: "right" }}>{val}</span>
+  const metricCol = (label, val, color = GREEN) => (
+    <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+      <span style={metricTitle}>{label}</span>
+      <span style={{ fontFamily: F, fontWeight: 700, fontSize: 16, color, fontVariantNumeric: "tabular-nums" }}>{val}</span>
     </div>
   );
 
   const opponentCard = (op, i) => (
     <div key={i} style={{ ...cardBox, borderRadius: 18, padding: "14px 16px" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-        <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 10 }}>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <Avatar src={op.avatar} size={44} />
-            <div style={{ marginLeft: 12, minWidth: 0 }}>
-              <div style={{ fontFamily: F, fontWeight: 700, fontSize: 16, color: "#37342B", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{op.name}</div>
-              <div style={{ ...L, fontSize: 9 }}>{op.wind} · {op.placeLabel}</div>
-            </div>
-            <div style={{ display: "flex", gap: 2.5, marginLeft: 20, flexShrink: 0 }}>
-              {op.flowers.map((f, j) => <Tile key={j} suit={f.suit} value={f.value} size="tiny" />)}
-            </div>
-          </div>
-          <div className="pq-scroll" style={{ overflowX: "auto", paddingBottom: 4 }}>
-            <div style={{ display: "flex", gap: 12, width: "max-content" }}>
-              {op.melds.map((m, j) => (
-                <div key={j} style={{ display: "flex", gap: 1.5 }}>
-                  {m.tiles.map((t, k) => <Tile key={k} suit={t.suit} value={t.value} size="small" faceDown={t.down} />)}
-                </div>
-              ))}
-            </div>
+      <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+        <div style={{ flex: 1, minWidth: 0, display: "flex", alignItems: "center" }}>
+          <Avatar src={op.avatar} size={44} />
+          <div style={{ marginLeft: 12, minWidth: 0 }}>
+            <div style={{ fontFamily: F, fontWeight: 700, fontSize: 16, color: "#37342B", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{op.name}</div>
+            <div style={{ ...L, fontSize: 9 }}>{op.wind} · {op.placeLabel}</div>
           </div>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 4, flexShrink: 0, minWidth: 92 }}>
-          {metricRow("Points", op.pts, GREEN)}
-          {metricRow("Doubles", op.dbl, GREEN)}
-          {metricRow("Score", sign(op.score), op.score >= 0 ? GREEN : RUST)}
-          {metricRow("Reward", (op.rp > 0 ? "+" : "") + op.rp, GREEN)}
+        <div style={{ display: "flex", gap: 2.5, marginRight: scoreBlockWidth + rowGap - 16, flexShrink: 0 }}>
+          {op.flowers.map((f, j) => <Tile key={j} suit={f.suit} value={f.value} size="tiny" />)}
         </div>
+      </div>
+      <div className="pq-scroll" style={{ marginTop: 10, overflowX: "auto", paddingBottom: 4 }}>
+        <div style={{ display: "flex", gap: 12, width: "max-content" }}>
+          {op.melds.map((m, j) => (
+            <div key={j} style={{ display: "flex", gap: 1.5 }}>
+              {m.tiles.map((t, k) => <Tile key={k} suit={t.suit} value={t.value} size="small" faceDown={t.down} />)}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div style={{ marginTop: 12, borderTop: "1px solid #E3D6BB" }} />
+      <div style={{ marginTop: 12, display: "flex", justifyContent: "space-between", gap: 8 }}>
+        {metricCol("Points", op.pts)}
+        {metricCol("Doubles", op.dbl)}
+        {metricCol("Score", sign(op.score), op.score >= 0 ? GREEN : RUST)}
+        {metricCol("Reward", (op.rp > 0 ? "+" : "") + op.rp + " RP")}
       </div>
       {op.foul && (
         <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 10, border: "1.5px solid rgba(182,90,47,0.4)", borderRadius: 12, padding: "10px 12px" }}>
@@ -140,6 +150,7 @@ function Scoreboard({
       <div style={{ textAlign: "center" }}>
         <div style={{ ...L, fontSize: 11, letterSpacing: "0.26em", color: "#9A9385" }}>Score Board</div>
         <div style={{ fontFamily: F, fontWeight: 700, fontSize: 36, lineHeight: 1, letterSpacing: "0.05em", color: GREEN, marginTop: 8 }}>IT'S A DRAW</div>
+        <div style={{ ...L, fontSize: 10, letterSpacing: "0.14em", color: EAST_ROUND_COLOR, marginTop: 4 }}>{wind} Round | Game {gameNumber} of {totalGames}</div>
         <div style={{ fontFamily: F, fontWeight: 700, fontSize: 12, letterSpacing: "0.06em", textTransform: "uppercase", color: RUST, marginTop: 10 }}>East retains East position</div>
         <div style={{ fontFamily: F, fontWeight: 700, fontSize: 13, letterSpacing: "0.06em", textTransform: "uppercase", marginTop: 10 }}>
           <span style={{ color: SUBHEADER_WIND_COLOR }}>BANK </span>
@@ -159,9 +170,14 @@ function Scoreboard({
           </div>
         ))}
       </div>
-      <div style={{ marginTop: 20, display: "flex", gap: 12, maxWidth: 420, marginLeft: "auto" }}>
-        <button onClick={() => go(2)} className="pq-press" style={{ flex: 1, height: 46, borderRadius: 14, fontSize: 12, letterSpacing: "0.12em", ...outlineBtn }}>Leave Table</button>
-        <button onClick={() => go(2)} className="pq-press" style={{ flex: 1.2, height: 46, borderRadius: 14, fontSize: 12, letterSpacing: "0.12em", ...greenBtn }}>Continue Playing</button>
+      <div style={{ marginTop: 20, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
+        <span style={{ fontFamily: F, fontWeight: 700, fontSize: 12, letterSpacing: "0.04em", color: "#6E6A5E" }}>
+          Next game starts in <span style={{ color: RUST, fontVariantNumeric: "tabular-nums" }}>{drawCountdown}</span>
+        </span>
+        <div style={{ display: "flex", gap: 12, width: 420, flexShrink: 0 }}>
+          <button onClick={() => go(2)} className="pq-press" style={{ flex: 1, height: 46, borderRadius: 14, fontSize: 12, letterSpacing: "0.12em", ...outlineBtn }}>Leave Table</button>
+          <button onClick={() => go(2)} className="pq-press" style={{ flex: 1.2, height: 46, borderRadius: 14, fontSize: 12, letterSpacing: "0.12em", ...greenBtn }}>Continue Playing</button>
+        </div>
       </div>
     </div>
   );
@@ -187,7 +203,7 @@ function Scoreboard({
         <div style={{ maxWidth: 560, margin: "0 auto" }}>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontFamily: F, fontWeight: 700, fontSize: 22, letterSpacing: "0.05em", textTransform: "uppercase", color: RUST }}>Round Summary</div>
-            <div style={{ ...L, fontSize: 10, letterSpacing: "0.22em", color: og(0.55), marginTop: 4 }}>All 3 Games</div>
+            <div style={{ ...L, fontSize: 10, letterSpacing: "0.22em", color: og(0.55), marginTop: 4 }}>All Games Played</div>
           </div>
           <div style={{ marginTop: 16, display: "flex", alignItems: "center", gap: 16 }}>
             <span style={{ width: 56, height: 56, flexShrink: 0, borderRadius: "50%", overflow: "hidden", background: "#C2A18C" }}>
@@ -215,25 +231,27 @@ function Scoreboard({
               </React.Fragment>
             ))}
           </div>
-          {sumAccept && (
-            <p style={{ margin: "16px 0 0", textAlign: "center", fontFamily: F, fontSize: 13, lineHeight: 1.5, color: og(0.85) }}>
-              The Host, {winnerName}, has invited you to continue playing.
-            </p>
-          )}
         </div>
       </div>
-      <div style={{ flexShrink: 0, borderTop: `1px solid ${og(0.14)}`, display: "flex", gap: 12, justifyContent: "center", padding: "10px 40px 16px 80px" }}>
-        {isHost ? (
-          <>
-            <button onClick={() => go(0)} className="pq-press" style={{ flex: 1, maxWidth: 220, height: 46, borderRadius: 14, background: "transparent", border: "1.5px solid #B65A2F", color: "#CB7C55", fontFamily: F, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase" }}>Return to Hub</button>
-            <button onClick={() => setExtendConfig(true)} className="pq-press" style={{ flex: 1, maxWidth: 220, height: 46, borderRadius: 14, fontSize: 12, letterSpacing: "0.1em", ...primaryBtn }}>Extend Round</button>
-          </>
-        ) : (
-          <>
-            <button onClick={() => go(0)} className="pq-press" style={{ flex: 1, maxWidth: 220, height: 46, borderRadius: 14, background: "transparent", border: "1.5px solid #B65A2F", color: "#CB7C55", fontFamily: F, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase" }}>Decline Invite</button>
-            <button onClick={() => setAccepted(true)} className="pq-press" style={{ flex: 1, maxWidth: 220, height: 46, borderRadius: 14, fontSize: 12, letterSpacing: "0.1em", ...primaryBtn }}>{accepted ? "Accepted ✓" : "Accept Invite"}</button>
-          </>
+      <div style={{ flexShrink: 0, borderTop: `1px solid ${og(0.14)}`, display: "flex", flexDirection: "column", gap: 10, padding: "10px 40px 16px 80px" }}>
+        {sumAccept && (
+          <p style={{ margin: 0, textAlign: "center", fontFamily: F, fontSize: 13, lineHeight: 1.5, color: og(0.85) }}>
+            The Host, {winnerName}, has invited you to continue playing.
+          </p>
         )}
+        <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
+          {isHost ? (
+            <>
+              <button onClick={() => go(0)} className="pq-press" style={{ flex: 1, maxWidth: 220, height: 46, borderRadius: 14, background: "transparent", border: "1.5px solid #B65A2F", color: "#CB7C55", fontFamily: F, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase" }}>Return to Hub</button>
+              <button onClick={() => setExtendConfig(true)} className="pq-press" style={{ flex: 1, maxWidth: 220, height: 46, borderRadius: 14, fontSize: 12, letterSpacing: "0.1em", ...primaryBtn }}>Extend Round</button>
+            </>
+          ) : (
+            <>
+              <button onClick={() => window.open(DECLINE_INVITE_URL, "_blank")} className="pq-press" style={{ flex: 1, maxWidth: 220, height: 46, borderRadius: 14, background: "transparent", border: "1.5px solid #B65A2F", color: "#CB7C55", fontFamily: F, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase" }}>Decline Invite</button>
+              <button onClick={() => setAccepted(true)} className="pq-press" style={{ flex: 1, maxWidth: 220, height: 46, borderRadius: 14, fontSize: 12, letterSpacing: "0.1em", ...primaryBtn }}>{accepted ? "Accepted ✓" : "Accept Invite"}</button>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -276,7 +294,7 @@ function Scoreboard({
           {[["Points", "28", pointsItems], ["Doubles", "6", doublesItems]].map(([title, total, items], k) => (
             <div key={k} style={{ flex: 1, ...cardBox, padding: "13px 16px", display: "flex", flexDirection: "column" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
-                <span style={L}>{title}</span>
+                <span style={metricTitle}>{title}</span>
                 <span style={{ fontFamily: F, fontWeight: 700, fontSize: 24, lineHeight: 1, color: GREEN, fontVariantNumeric: "tabular-nums" }}>{total}</span>
               </div>
               <div style={{ marginTop: 10, flex: 1, display: "flex", flexDirection: "column", justifyContent: "flex-start", gap: 8 }}>
@@ -290,9 +308,9 @@ function Scoreboard({
             </div>
           ))}
           <div style={{ width: scoreBlockWidth, flexShrink: 0, display: "flex", flexDirection: "row", alignItems: "flex-start", justifyContent: "space-between", gap: 16, padding: "13px 0 13px 16px" }}>
-            {[["Score", sign(finalScore), "flex-start"], ["Reward", sign(rp) + " RP", "flex-end"]].map(([t, v, align], i) => (
-              <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8, alignItems: align }}>
-                <span style={L}>{t}</span>
+            {[["Score", sign(finalScore)], ["Reward", sign(rp) + " RP"]].map(([t, v], i) => (
+              <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8, alignItems: "center" }}>
+                <span style={metricTitle}>{t}</span>
                 <span style={{ fontFamily: F, fontWeight: 700, fontSize: 20, color: GREEN, fontVariantNumeric: "tabular-nums" }}>{v}</span>
               </div>
             ))}
@@ -308,7 +326,7 @@ function Scoreboard({
         <div style={{ maxWidth: 560, margin: "0 auto" }}>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontFamily: F, fontWeight: 700, fontSize: 22, letterSpacing: "0.05em", textTransform: "uppercase", color: RUST }}>Round Summary</div>
-            <div style={{ ...L, fontSize: 10, letterSpacing: "0.22em", color: og(0.55), marginTop: 4 }}>All 3 Games</div>
+            <div style={{ ...L, fontSize: 10, letterSpacing: "0.22em", color: og(0.55), marginTop: 4 }}>All Games Played</div>
           </div>
           <div style={{ marginTop: 16, display: "flex", alignItems: "center", gap: 16 }}>
             <span style={{ width: 56, height: 56, flexShrink: 0, borderRadius: "50%", overflow: "hidden", background: "#C2A18C" }}>
@@ -336,24 +354,26 @@ function Scoreboard({
               </React.Fragment>
             ))}
           </div>
+        </div>
+        <div style={{ borderTop: `1px solid ${og(0.14)}`, display: "flex", flexDirection: "column", gap: 10, padding: "20px 0 0", marginTop: 20 }}>
           {sumAccept && (
-            <p style={{ margin: "16px 0 0", textAlign: "center", fontFamily: F, fontSize: 13, lineHeight: 1.5, color: og(0.85) }}>
+            <p style={{ margin: 0, textAlign: "center", fontFamily: F, fontSize: 13, lineHeight: 1.5, color: og(0.85) }}>
               The Host, {winnerName}, has invited you to continue playing.
             </p>
           )}
-        </div>
-        <div style={{ borderTop: `1px solid ${og(0.14)}`, display: "flex", gap: 12, justifyContent: "center", padding: "20px 0 0", marginTop: 20 }}>
-          {isHost ? (
-            <>
-              <button onClick={() => go(0)} className="pq-press" style={{ flex: 1, maxWidth: 220, height: 46, borderRadius: 14, background: "transparent", border: "1.5px solid #B65A2F", color: "#CB7C55", fontFamily: F, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase" }}>Return to Hub</button>
-              <button onClick={() => setExtendConfig(true)} className="pq-press" style={{ flex: 1, maxWidth: 220, height: 46, borderRadius: 14, fontSize: 12, letterSpacing: "0.1em", ...primaryBtn }}>Extend Round</button>
-            </>
-          ) : (
-            <>
-              <button onClick={() => go(0)} className="pq-press" style={{ flex: 1, maxWidth: 220, height: 46, borderRadius: 14, background: "transparent", border: "1.5px solid #B65A2F", color: "#CB7C55", fontFamily: F, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase" }}>Decline Invite</button>
-              <button onClick={() => setAccepted(true)} className="pq-press" style={{ flex: 1, maxWidth: 220, height: 46, borderRadius: 14, fontSize: 12, letterSpacing: "0.1em", ...primaryBtn }}>{accepted ? "Accepted ✓" : "Accept Invite"}</button>
-            </>
-          )}
+          <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
+            {isHost ? (
+              <>
+                <button onClick={() => go(0)} className="pq-press" style={{ flex: 1, maxWidth: 220, height: 46, borderRadius: 14, background: "transparent", border: "1.5px solid #B65A2F", color: "#CB7C55", fontFamily: F, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase" }}>Return to Hub</button>
+                <button onClick={() => setExtendConfig(true)} className="pq-press" style={{ flex: 1, maxWidth: 220, height: 46, borderRadius: 14, fontSize: 12, letterSpacing: "0.1em", ...primaryBtn }}>Extend Round</button>
+              </>
+            ) : (
+              <>
+                <button onClick={() => window.open(DECLINE_INVITE_URL, "_blank")} className="pq-press" style={{ flex: 1, maxWidth: 220, height: 46, borderRadius: 14, background: "transparent", border: "1.5px solid #B65A2F", color: "#CB7C55", fontFamily: F, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase" }}>Decline Invite</button>
+                <button onClick={() => setAccepted(true)} className="pq-press" style={{ flex: 1, maxWidth: 220, height: 46, borderRadius: 14, fontSize: 12, letterSpacing: "0.1em", ...primaryBtn }}>{accepted ? "Accepted ✓" : "Accept Invite"}</button>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -377,6 +397,9 @@ function Scoreboard({
           </div>
           <div style={{ marginTop: 2, fontFamily: F, fontSize: 12.5, color: "#9A9385" }}>Everyone still seated will be invited to continue</div>
         </div>
+        <button onClick={() => setExtendConfig(false)} className="pq-press" style={{ marginLeft: "auto", width: 34, height: 34, flexShrink: 0, borderRadius: "50%", border: "1.5px solid #E3D6BB", background: "transparent", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <img src="assets/exit.svg" alt="Exit" style={{ width: 16, height: 16, display: "block" }} />
+        </button>
       </div>
       <div style={{ marginTop: 16, flex: 1, minHeight: 0, display: "flex", gap: 24, alignItems: "stretch" }}>
         <div style={{ flex: 1.2, display: "flex", flexDirection: "column", gap: 14 }}>
